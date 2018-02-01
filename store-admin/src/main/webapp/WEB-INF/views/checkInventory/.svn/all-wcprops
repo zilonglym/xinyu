@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/checkInventory
+END
+CheckInventoryAdd.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/checkInventory/CheckInventoryAdd.jsp
+END
+CheckInventoryList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/checkInventory/CheckInventoryList.jsp
+END
+CheckInventory.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/checkInventory/CheckInventory.jsp
+END

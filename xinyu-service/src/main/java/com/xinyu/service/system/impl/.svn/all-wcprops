@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/2828/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl
+END
+AccountServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/2250/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/AccountServiceImpl.java
+END
+ItemServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/2820/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/ItemServiceImpl.java
+END
+AuditAreaServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/2463/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/AuditAreaServiceImpl.java
+END
+AccountRolesServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/913/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/AccountRolesServiceImpl.java
+END
+SystemItemServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/2299/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/SystemItemServiceImpl.java
+END
+CheckOutServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/2866/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/CheckOutServiceImpl.java
+END
+PersonServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/907/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/PersonServiceImpl.java
+END
+ItemOperatorServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/2707/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/ItemOperatorServiceImpl.java
+END
+ItemGroupServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/2866/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/ItemGroupServiceImpl.java
+END
+AccountRoleRelationServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/968/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/AccountRoleRelationServiceImpl.java
+END
+CheckServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/2107/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/CheckServiceImpl.java
+END
+UserServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/2755/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/UserServiceImpl.java
+END
+AccountMenuServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/1008/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/AccountMenuServiceImpl.java
+END
+SnSampleServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/1493/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/SnSampleServiceImpl.java
+END
+AccountRolesRowServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/1507/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/AccountRolesRowServiceImpl.java
+END
+AccountRelationServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/1092/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/AccountRelationServiceImpl.java
+END
+CentroServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/1341/trunk/xinyu-service/src/main/java/com/xinyu/service/system/impl/CentroServiceImpl.java
+END

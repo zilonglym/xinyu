@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base
+END
+ServiceException.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/ServiceException.class
+END
+MyBatisRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/MyBatisRepository.java
+END
+Hibernates.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/Hibernates.class
+END
+EnvPropertyPlaceholderConfigurer.class
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/EnvPropertyPlaceholderConfigurer.class
+END
+DelegatingFilterExProxy.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/DelegatingFilterExProxy.java
+END
+Pagination.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/Pagination.class
+END
+MessageContextHelper.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/MessageContextHelper.class
+END
+GroupMap.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/GroupMap.class
+END
+ServiceException.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/ServiceException.java
+END
+Hibernates.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/Hibernates.java
+END
+EnvPropertyPlaceholderConfigurer.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/EnvPropertyPlaceholderConfigurer.java
+END
+Pagination.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/Pagination.java
+END
+MessageContextHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/MessageContextHelper.java
+END
+GroupMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/GroupMap.java
+END
+DelegatingFilterExProxy.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/DelegatingFilterExProxy.class
+END
+MyBatisRepository.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/base/MyBatisRepository.class
+END

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.base.PackageInfoDao">
+	<resultMap id="PackageInfoResult" type="com.xinyu.model.base.PackageInfo" >
+		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
+		<result property="stockOutOrderConfirm.id" column="FKstockOutOrderConfirmID" />
+		<result property="tmsCode" column="FtmsCode" />
+		<result property="tmsServiceName" column="FtmsServiceName" />
+		<result property="tmsOrderCode" column="FtmsOrderCode" />
+		<result property="packageCode" column="FpackageCode" />
+		<result property="packageWeight" column="FpackageWeight" />
+		<result property="packageLength" column="FpackageLength" />
+		<result property="packageWidth" column="FpackageWidth" />
+		<result property="packageHeight" column="FpackageHeight" />
+		<result property="packageVolumn" column="FpackageVolumn" />
+	</resultMap>
+	<select id="getPackageInfoById" parameterType="string"  resultMap="PackageInfoResult" >
+		 SELECT T.* 
+			FROM T_xinyu_PackageInfo T where T.FID=#{id}
+	</select>
+	<insert id="insertPackageInfo" parameterType="com.xinyu.model.base.PackageInfo" >
+		insert into T_xinyu_PackageInfo(FID,FCU,FKstockOutOrderConfirmID,FtmsCode,FtmsServiceName,FtmsOrderCode,FpackageCode,FpackageWeight,FpackageLength,FpackageWidth,FpackageHeight,FpackageVolumn)
+		VALUES(#{id},#{cu},#{stockOutOrderConfirm.id},#{tmsCode},#{tmsServiceName},#{tmsOrderCode},#{packageCode},#{packageWeight},#{packageLength},#{packageWidth},#{packageHeight},#{packageVolumn})
+	</insert>
+
+	<update id="updatePackageInfo" parameterType="com.xinyu.model.base.PackageInfo" >
+		update T_xinyu_PackageInfo
+		<set>
+			<if test="cu!=null and cu!=''">FCU=#{cu},</if>
+			<if test="stockOutOrderConfirm!=null and stockOutOrderConfirm!=''">FKstockOutOrderConfirmID=#{stockOutOrderConfirm.id},</if>
+			<if test="tmsCode!=null and tmsCode!=''">FtmsCode=#{tmsCode},</if>
+			<if test="tmsServiceName!=null and tmsServiceName!=''">FtmsServiceName=#{tmsServiceName},</if>
+			<if test="tmsOrderCode!=null and tmsOrderCode!=''">FtmsOrderCode=#{tmsOrderCode},</if>
+			<if test="packageCode!=null and packageCode!=''">FpackageCode=#{packageCode},</if>
+			<if test="packageWeight!=null and packageWeight!=''">FpackageWeight=#{packageWeight},</if>
+			<if test="packageLength!=null and packageLength!=''">FpackageLength=#{packageLength},</if>
+			<if test="packageWidth!=null and packageWidth!=''">FpackageWidth=#{packageWidth},</if>
+			<if test="packageHeight!=null and packageHeight!=''">FpackageHeight=#{packageHeight},</if>
+			<if test="packageVolumn!=null and packageVolumn!=''">FpackageVolumn=#{packageVolumn},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deletePackageInfoById"  parameterType="string"  >
+		delete  from T_xinyu_PackageInfo where fid=#{id}
+	</delete>
+</mapper> 

@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/wlpost/!svn/ver/2827/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade
+END
+ShipOrderOperatorDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/994/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/ShipOrderOperatorDao.java
+END
+ShipOrderReportDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/2500/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/ShipOrderReportDao.java
+END
+ShipOrderGroupDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/1945/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/ShipOrderGroupDao.java
+END
+DeliverRequirementsDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/831/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/DeliverRequirementsDao.java
+END
+ShipOrderDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/2748/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/ShipOrderDao.java
+END
+TmsOrderDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/2653/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/TmsOrderDao.java
+END
+ShipOrderBackItemDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/2747/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/ShipOrderBackItemDao.java
+END
+ReceiverInfoDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/2411/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/ReceiverInfoDao.java
+END
+WmsConsignOrderPackageRequirementDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/831/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/WmsConsignOrderPackageRequirementDao.java
+END
+ShipOrderBackDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/2747/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/ShipOrderBackDao.java
+END
+WmsConsignOrderItemDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/2769/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/WmsConsignOrderItemDao.java
+END
+CheckOutDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/2826/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/CheckOutDao.java
+END
+ShipOrderStopDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/2120/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/ShipOrderStopDao.java
+END
+InvoiceInfoDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/831/trunk/xinyu-dao/src/main/java/com/xinyu/dao/trade/InvoiceInfoDao.java
+END

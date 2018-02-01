@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/dao/mybatis
+END
+ReportDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/dao/mybatis/ReportDao.java
+END
+InventoryDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/dao/mybatis/InventoryDao.java
+END
+ProcessItemDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/dao/mybatis/ProcessItemDao.java
+END
+ItemDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/dao/mybatis/ItemDao.java
+END
+ProcessDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/dao/mybatis/ProcessDao.java
+END
+UserDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/dao/mybatis/UserDao.java
+END
+ShipOrderDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/dao/mybatis/ShipOrderDao.java
+END
+TradeDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/dao/mybatis/TradeDao.java
+END
+ShipOrderCancelDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/dao/mybatis/ShipOrderCancelDao.java
+END
+CentroDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/dao/mybatis/CentroDao.java
+END

@@ -1,0 +1,135 @@
+2017-12-01 18:37:40  [ main:74 ] - [ ERROR ]  httpPost URL [http://link.cainiao.com/gateway/link.do&msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831logistics_interface=<request>
+<appName>中仓网络仓储</appName>
+<mailNo>885991302975917486</mailNo>
+<cpCode>YTO</cpCode>
+</request>
+&data_digest=C4WjnW9AqI3XimiHs9873A==] error, 
+java.lang.IllegalArgumentException: Illegal character in path at index 135: http://link.cainiao.com/gateway/link.do&msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831logistics_interface=<request>
+<appName>中仓网络仓储</appName>
+<mailNo>885991302975917486</mailNo>
+<cpCode>YTO</cpCode>
+</request>
+&data_digest=C4WjnW9AqI3XimiHs9873A==
+	at java.net.URI.create(URI.java:859)
+	at org.apache.http.client.methods.HttpPost.<init>(HttpPost.java:76)
+	at com.xinyu.service.util.HttpClientUtils.httpPost(HttpClientUtils.java:70)
+	at com.xinyu.util.web.HttpUtil.submitLogist(HttpUtil.java:50)
+	at com.xinyu.common.util.XmlUtil.main(XmlUtil.java:141)
+Caused by: java.net.URISyntaxException: Illegal character in path at index 135: http://link.cainiao.com/gateway/link.do&msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831logistics_interface=<request>
+<appName>中仓网络仓储</appName>
+<mailNo>885991302975917486</mailNo>
+<cpCode>YTO</cpCode>
+</request>
+&data_digest=C4WjnW9AqI3XimiHs9873A==
+	at java.net.URI$Parser.fail(URI.java:2829)
+	at java.net.URI$Parser.checkChars(URI.java:3002)
+	at java.net.URI$Parser.parseHierarchical(URI.java:3086)
+	at java.net.URI$Parser.parse(URI.java:3034)
+	at java.net.URI.<init>(URI.java:595)
+	at java.net.URI.create(URI.java:857)
+	... 4 more
+2017-12-01 18:38:13  [ main:75 ] - [ ERROR ]  httpPost URL [http://link.cainiao.com/gateway/link.do&msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831logistics_interface=<request>
+<appName>中仓网络仓储</appName>
+<mailNo>885991302975917486</mailNo>
+<cpCode>YTO</cpCode>
+</request>
+&data_digest=C4WjnW9AqI3XimiHs9873A==] error, 
+java.lang.IllegalArgumentException: Illegal character in path at index 135: http://link.cainiao.com/gateway/link.do&msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831logistics_interface=<request>
+<appName>中仓网络仓储</appName>
+<mailNo>885991302975917486</mailNo>
+<cpCode>YTO</cpCode>
+</request>
+&data_digest=C4WjnW9AqI3XimiHs9873A==
+	at java.net.URI.create(URI.java:859)
+	at org.apache.http.client.methods.HttpPost.<init>(HttpPost.java:76)
+	at com.xinyu.service.util.HttpClientUtils.httpPost(HttpClientUtils.java:70)
+	at com.xinyu.util.web.HttpUtil.submitLogist(HttpUtil.java:50)
+	at com.xinyu.common.util.XmlUtil.main(XmlUtil.java:141)
+Caused by: java.net.URISyntaxException: Illegal character in path at index 135: http://link.cainiao.com/gateway/link.do&msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831logistics_interface=<request>
+<appName>中仓网络仓储</appName>
+<mailNo>885991302975917486</mailNo>
+<cpCode>YTO</cpCode>
+</request>
+&data_digest=C4WjnW9AqI3XimiHs9873A==
+	at java.net.URI$Parser.fail(URI.java:2829)
+	at java.net.URI$Parser.checkChars(URI.java:3002)
+	at java.net.URI$Parser.parseHierarchical(URI.java:3086)
+	at java.net.URI$Parser.parse(URI.java:3034)
+	at java.net.URI.<init>(URI.java:595)
+	at java.net.URI.create(URI.java:857)
+	... 4 more
+2017-12-01 18:39:24  [ main:57 ] - [ ERROR ]  httpPost URL [http://link.cainiao.com/gateway/link.do&msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831&logistics_interface=<request>
+<appName>中仓网络仓储</appName>
+<mailNo>885991302975917486</mailNo>
+<cpCode>YTO</cpCode>
+</request>
+&data_digest=C4WjnW9AqI3XimiHs9873A==] error, 
+java.lang.IllegalArgumentException: Illegal character in path at index 136: http://link.cainiao.com/gateway/link.do&msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831&logistics_interface=<request>
+<appName>中仓网络仓储</appName>
+<mailNo>885991302975917486</mailNo>
+<cpCode>YTO</cpCode>
+</request>
+&data_digest=C4WjnW9AqI3XimiHs9873A==
+	at java.net.URI.create(URI.java:859)
+	at org.apache.http.client.methods.HttpPost.<init>(HttpPost.java:76)
+	at com.xinyu.service.util.HttpClientUtils.httpPost(HttpClientUtils.java:70)
+	at com.xinyu.util.web.HttpUtil.submitLogist(HttpUtil.java:50)
+	at com.xinyu.common.util.XmlUtil.main(XmlUtil.java:141)
+Caused by: java.net.URISyntaxException: Illegal character in path at index 136: http://link.cainiao.com/gateway/link.do&msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831&logistics_interface=<request>
+<appName>中仓网络仓储</appName>
+<mailNo>885991302975917486</mailNo>
+<cpCode>YTO</cpCode>
+</request>
+&data_digest=C4WjnW9AqI3XimiHs9873A==
+	at java.net.URI$Parser.fail(URI.java:2829)
+	at java.net.URI$Parser.checkChars(URI.java:3002)
+	at java.net.URI$Parser.parseHierarchical(URI.java:3086)
+	at java.net.URI$Parser.parse(URI.java:3034)
+	at java.net.URI.<init>(URI.java:595)
+	at java.net.URI.create(URI.java:857)
+	... 4 more
+2017-12-01 18:39:43  [ main:67 ] - [ ERROR ]  httpPost URL [http://link.cainiao.com/gateway/link.do?msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831&logistics_interface=<request>
+<appName>中仓网络仓储</appName>
+<mailNo>885991302975917486</mailNo>
+<cpCode>YTO</cpCode>
+</request>
+&data_digest=C4WjnW9AqI3XimiHs9873A==] error, 
+java.lang.IllegalArgumentException: Illegal character in query at index 136: http://link.cainiao.com/gateway/link.do?msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831&logistics_interface=<request>
+<appName>中仓网络仓储</appName>
+<mailNo>885991302975917486</mailNo>
+<cpCode>YTO</cpCode>
+</request>
+&data_digest=C4WjnW9AqI3XimiHs9873A==
+	at java.net.URI.create(URI.java:859)
+	at org.apache.http.client.methods.HttpPost.<init>(HttpPost.java:76)
+	at com.xinyu.service.util.HttpClientUtils.httpPost(HttpClientUtils.java:70)
+	at com.xinyu.util.web.HttpUtil.submitLogist(HttpUtil.java:50)
+	at com.xinyu.common.util.XmlUtil.main(XmlUtil.java:141)
+Caused by: java.net.URISyntaxException: Illegal character in query at index 136: http://link.cainiao.com/gateway/link.do?msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831&logistics_interface=<request>
+<appName>中仓网络仓储</appName>
+<mailNo>885991302975917486</mailNo>
+<cpCode>YTO</cpCode>
+</request>
+&data_digest=C4WjnW9AqI3XimiHs9873A==
+	at java.net.URI$Parser.fail(URI.java:2829)
+	at java.net.URI$Parser.checkChars(URI.java:3002)
+	at java.net.URI$Parser.parseHierarchical(URI.java:3092)
+	at java.net.URI$Parser.parse(URI.java:3034)
+	at java.net.URI.<init>(URI.java:595)
+	at java.net.URI.create(URI.java:857)
+	... 4 more
+2017-12-01 18:40:32  [ main:63 ] - [ ERROR ]  httpPost URL [http://link.cainiao.com/gateway/link.do?msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831&logistics_interface=<request><appName>中仓网络仓储</appName><mailNo>885991302975917486</mailNo><cpCode>YTO</cpCode></request>&data_digest=UV3qsovGP+6YaQ56bDik2A==] error, 
+java.lang.IllegalArgumentException: Illegal character in query at index 136: http://link.cainiao.com/gateway/link.do?msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831&logistics_interface=<request><appName>中仓网络仓储</appName><mailNo>885991302975917486</mailNo><cpCode>YTO</cpCode></request>&data_digest=UV3qsovGP+6YaQ56bDik2A==
+	at java.net.URI.create(URI.java:859)
+	at org.apache.http.client.methods.HttpPost.<init>(HttpPost.java:76)
+	at com.xinyu.service.util.HttpClientUtils.httpPost(HttpClientUtils.java:70)
+	at com.xinyu.util.web.HttpUtil.submitLogist(HttpUtil.java:50)
+	at com.xinyu.common.util.XmlUtil.main(XmlUtil.java:141)
+Caused by: java.net.URISyntaxException: Illegal character in query at index 136: http://link.cainiao.com/gateway/link.do?msg_type=LPC_PACK_PUB_QUERY&to_code=LD-PACKPUSH&logistic_provider_id=198831&logistics_interface=<request><appName>中仓网络仓储</appName><mailNo>885991302975917486</mailNo><cpCode>YTO</cpCode></request>&data_digest=UV3qsovGP+6YaQ56bDik2A==
+	at java.net.URI$Parser.fail(URI.java:2829)
+	at java.net.URI$Parser.checkChars(URI.java:3002)
+	at java.net.URI$Parser.parseHierarchical(URI.java:3092)
+	at java.net.URI$Parser.parse(URI.java:3034)
+	at java.net.URI.<init>(URI.java:595)
+	at java.net.URI.create(URI.java:857)
+	... 4 more

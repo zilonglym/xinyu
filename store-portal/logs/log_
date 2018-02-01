@@ -1,0 +1,20 @@
+2017-06-24 15:13:02  [ main:6358 ] - [ ERROR ]  HHH000388: Unsuccessful: create index person_id on sc_check_inventory (person)
+2017-06-24 15:13:02  [ main:6358 ] - [ ERROR ]  BLOB/TEXT column 'person' used in key specification without a key length
+2017-06-24 15:13:02  [ main:6378 ] - [ ERROR ]  HHH000388: Unsuccessful: create index centro_id on sc_check_inventory (centro)
+2017-06-24 15:13:02  [ main:6378 ] - [ ERROR ]  BLOB/TEXT column 'centro' used in key specification without a key length
+2017-06-24 15:13:02  [ main:6398 ] - [ ERROR ]  HHH000388: Unsuccessful: create index check_inventory_id on sc_check_inventory_detail (check_inventory)
+2017-06-24 15:13:02  [ main:6398 ] - [ ERROR ]  BLOB/TEXT column 'check_inventory' used in key specification without a key length
+2017-06-24 15:13:02  [ main:6417 ] - [ ERROR ]  HHH000388: Unsuccessful: create index item_id on sc_check_inventory_detail (item)
+2017-06-24 15:13:02  [ main:6417 ] - [ ERROR ]  BLOB/TEXT column 'item' used in key specification without a key length
+2017-06-24 15:13:02  [ main:6436 ] - [ ERROR ]  HHH000388: Unsuccessful: create index centro_id on sc_check_inventory_detail (centro)
+2017-06-24 15:13:02  [ main:6436 ] - [ ERROR ]  BLOB/TEXT column 'centro' used in key specification without a key length
+2017-06-24 15:13:04  [ main:7153 ] - [ ERROR ]  HHH000388: Unsuccessful: create index person_id on sc_check_inventory (person)
+2017-06-24 15:13:04  [ main:7153 ] - [ ERROR ]  BLOB/TEXT column 'person' used in key specification without a key length
+2017-06-24 15:13:04  [ main:7176 ] - [ ERROR ]  HHH000388: Unsuccessful: create index centro_id on sc_check_inventory (centro)
+2017-06-24 15:13:04  [ main:7176 ] - [ ERROR ]  BLOB/TEXT column 'centro' used in key specification without a key length
+2017-06-24 15:13:04  [ main:7198 ] - [ ERROR ]  HHH000388: Unsuccessful: create index check_inventory_id on sc_check_inventory_detail (check_inventory)
+2017-06-24 15:13:04  [ main:7198 ] - [ ERROR ]  BLOB/TEXT column 'check_inventory' used in key specification without a key length
+2017-06-24 15:13:04  [ main:7221 ] - [ ERROR ]  HHH000388: Unsuccessful: create index item_id on sc_check_inventory_detail (item)
+2017-06-24 15:13:04  [ main:7221 ] - [ ERROR ]  BLOB/TEXT column 'item' used in key specification without a key length
+2017-06-24 15:13:04  [ main:7245 ] - [ ERROR ]  HHH000388: Unsuccessful: create index centro_id on sc_check_inventory_detail (centro)
+2017-06-24 15:13:04  [ main:7245 ] - [ ERROR ]  BLOB/TEXT column 'centro' used in key specification without a key length

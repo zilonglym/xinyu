@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/wlpost/!svn/ver/3/trunk/store-portal/src/main/webapp/WEB-INF/views/account
+END
+register.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/3/trunk/store-portal/src/main/webapp/WEB-INF/views/account/register.jsp
+END
+.login.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/wlpost/!svn/ver/3/trunk/store-portal/src/main/webapp/WEB-INF/views/account/.login.jsp
+END
+login.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/3/trunk/store-portal/src/main/webapp/WEB-INF/views/account/login.jsp
+END
+adminUserForm.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/3/trunk/store-portal/src/main/webapp/WEB-INF/views/account/adminUserForm.jsp
+END
+profile.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/wlpost/!svn/ver/3/trunk/store-portal/src/main/webapp/WEB-INF/views/account/profile.jsp
+END
+adminUserList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/3/trunk/store-portal/src/main/webapp/WEB-INF/views/account/adminUserList.jsp
+END

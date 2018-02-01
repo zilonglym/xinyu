@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.inventory.InventoryCountDao">
+	<resultMap id="InventoryCountResult" type="com.xinyu.model.inventory.InventoryCount" >
+	<result property="id" column="FID" />
+	<result property="storeCode" column="FstoreCode" />
+	<result property="cu" column="Fcu" />
+	<result property="orderType" column="ForderType" />
+	<result property="user.id" column="FKuserID" />
+	<result property="checkOrderCode" column="FcheckOrderCode" />
+	<result property="outBizCode" column="FoutBizCode" />
+	<result property="imbalanceOrderCode" column="FimbalanceOrderCode" />
+	<result property="adjustReasonType" column="FadjustReasonType" />
+	<result property="responsibilityCode" column="FresponsibilityCode" />
+	<result property="adjustBizKey" column="FadjustBizKey" />
+	<result property="operateTime" column="FoperateTime" />
+	<result property="remark" column="Fremark" />
+	<result property="state" column="Fstate" />
+</resultMap>
+	<select id="getInventoryCountById" parameterType="string"  resultMap="InventoryCountResult" >
+		 SELECT T.* 
+			FROM T_xinyu_InventoryCount T where T.FID=#{id}
+	</select>
+	<select id="findInventoryCountsByList" parameterType="map"  resultMap="InventoryCountResult" >
+		 SELECT T.* 
+		 FROM T_xinyu_InventoryCount T 
+		 where 1=1
+		<if test="storeCode!=null and storeCode!=''">and FstoreCode=#{storeCode}</if>
+		<if test="cu!=null and cu!=''">and Fcu=#{cu}</if>
+		<if test="status!=null and status!=''">and Fstate=#{status}</if>
+		<if test="orderType!=null and orderType!=''">and ForderType=#{orderType}</if>
+		<if test="userId!=null and userId!=''">and FKuserID=#{userId}</if>
+		<if test="checkOrderCode!=null and checkOrderCode!=''">and FcheckOrderCode=#{checkOrderCode}</if>
+		<if test="outBizCode!=null and outBizCode!=''">and FoutBizCode=#{outBizCode}</if>
+		<if test="adjustReasonType!=null and adjustReasonType!=''">and FadjustReasonType=#{adjustReasonType}</if>
+		<if test="remark!=null and remark!=''">and Fremark=#{remark}</if>
+		<if test="searchText!=null and searchText!=''">
+		 and (FcheckOrderCode like "%"#{searchText}"%" or FoutBizCode like "%"#{searchText}"%" or FimbalanceOrderCode like "%"#{searchText}"%" or Fremark like "%"#{searchText}"%")
+		</if>
+		<if test="pageSize!=null and pageSize!=''">
+			limit #{pageNum},#{pageSize}    
+		</if>
+	</select>
+	
+	<select id="getTotal" parameterType="map"  resultType="int" >
+		 SELECT count(1)
+		 FROM T_xinyu_InventoryCount T 
+		 where 1=1
+		<if test="storeCode!=null and storeCode!=''">and FstoreCode=#{storeCode}</if>
+		<if test="cu!=null and cu!=''">and Fcu=#{cu}</if>
+		<if test="status!=null and status!=''">and Fstate=#{status}</if>
+		<if test="orderType!=null and orderType!=''">and ForderType=#{orderType}</if>
+		<if test="userId!=null and userId!=''">and FKuserID=#{userId}</if>
+		<if test="checkOrderCode!=null and checkOrderCode!=''">and FcheckOrderCode=#{checkOrderCode}</if>
+		<if test="outBizCode!=null and outBizCode!=''">and FoutBizCode=#{outBizCode}</if>
+		<if test="adjustReasonType!=null and adjustReasonType!=''">and FadjustReasonType=#{adjustReasonType}</if>
+		<if test="remark!=null and remark!=''">and Fremark=#{remark}</if>
+		<if test="searchText!=null and searchText!=''">
+		 and (FcheckOrderCode like "%"#{searchText}"%" or FoutBizCode like "%"#{searchText}"%" or FimbalanceOrderCode like "%"#{searchText}"%" or Fremark like "%"#{searchText}"%")
+		</if>
+	</select>
+	
+	<insert id="insertInventoryCount" parameterType="com.xinyu.model.inventory.InventoryCount" >
+		insert into T_xinyu_InventoryCount(Fstate,FID,FstoreCode,Fcu,ForderType,FKuserID,FcheckOrderCode,FoutBizCode,FimbalanceOrderCode,FadjustReasonType,FresponsibilityCode,FadjustBizKey,FoperateTime,Fremark)
+		VALUES(#{state,jdbcType=VARCHAR},#{id},#{storeCode,jdbcType=VARCHAR},#{cu,jdbcType=VARCHAR},#{orderType,jdbcType=VARCHAR},#{user.id,jdbcType=VARCHAR},#{checkOrderCode,jdbcType=VARCHAR},#{outBizCode,jdbcType=VARCHAR},#{imbalanceOrderCode,jdbcType=VARCHAR},#{adjustReasonType,jdbcType=VARCHAR},#{responsibilityCode,jdbcType=VARCHAR},#{adjustBizKey,jdbcType=VARCHAR},#{operateTime,jdbc=datetime},#{remark,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateInventoryCount" parameterType="com.xinyu.model.inventory.InventoryCount" >
+		update T_xinyu_InventoryCount
+		<set>
+			<if test="storeCode!=null and storeCode!=''">FstoreCode=#{storeCode},</if>
+			<if test="cu!=null and cu!=''">Fcu=#{cu},</if>
+			<if test="orderType!=null and orderType!=''">ForderType=#{orderType},</if>
+			<if test="user!=null and user!=''">FKuserID=#{user.id},</if>
+			<if test="checkOrderCode!=null and checkOrderCode!=''">FcheckOrderCode=#{checkOrderCode},</if>
+			<if test="outBizCode!=null and outBizCode!=''">FoutBizCode=#{outBizCode},</if>
+			<if test="imbalanceOrderCode!=null and imbalanceOrderCode!=''">FimbalanceOrderCode=#{imbalanceOrderCode},</if>
+			<if test="adjustReasonType!=null and adjustReasonType!=''">FadjustReasonType=#{adjustReasonType},</if>
+			<if test="responsibilityCode!=null and responsibilityCode!=''">FresponsibilityCode=#{responsibilityCode},</if>
+			<if test="adjustBizKey!=null and adjustBizKey!=''">FadjustBizKey=#{adjustBizKey},</if>
+			<if test="operateTime!=null and operateTime!=''">FoperateTime=#{operateTime},</if>
+			<if test="remark!=null and remark!=''">Fremark=#{remark},</if>
+			<if test="state!=null and state!=''">Fstate=#{state},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteInventoryCountById"  parameterType="string"  >
+		delete  from T_xinyu_InventoryCount where fid=#{id}
+	</delete>
+
+</mapper> 

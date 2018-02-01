@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/wlpost/!svn/ver/2800/trunk/xinyu-model/src/main/java/com/xinyu/model/order
+END
+StockInOrderConfirm.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/1233/trunk/xinyu-model/src/main/java/com/xinyu/model/order/StockInOrderConfirm.java
+END
+StockOutOrderConfirm.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/1246/trunk/xinyu-model/src/main/java/com/xinyu/model/order/StockOutOrderConfirm.java
+END
+StockInOrder.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/1233/trunk/xinyu-model/src/main/java/com/xinyu/model/order/StockInOrder.java
+END
+StockOutOrder.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/1121/trunk/xinyu-model/src/main/java/com/xinyu/model/order/StockOutOrder.java
+END
+StockOrderOperator.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/1403/trunk/xinyu-model/src/main/java/com/xinyu/model/order/StockOrderOperator.java
+END
+ShipOrderException.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/2800/trunk/xinyu-model/src/main/java/com/xinyu/model/order/ShipOrderException.java
+END

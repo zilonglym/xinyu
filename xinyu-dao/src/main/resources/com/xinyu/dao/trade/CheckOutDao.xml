@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.trade.CheckOutDao">
+	<resultMap id="CheckOutResult" type="com.xinyu.model.trade.CheckOut" >
+	<result property="id" column="FID" />
+	<result property="item.id" column="FKitemID" />
+	<result property="shipOrder.id" column="FKshipOrderID" />
+	<result property="createDate" column="FcreateDate" />
+	<result property="orderCode" column="ForderCode" />
+	<result property="cpCompany" column="FcpCompany" />
+	<result property="barCode" column="FbarCode" />
+	<result property="itemName" column="FitemName" />
+	<result property="user.id" column="FKuserID" />
+	<result property="account.id" column="FKaccountID" />
+	<result property="num" column="Fnum" />
+	<result property="msg" column="Fmsg" />
+	<result property="status" column="FKstatus" />
+	<result property="state" column="Fstate" />
+	<result property="weight" column="Fweight" />	
+	<result property="orderDate" column="ForderDate" />
+	</resultMap>
+	
+	<select id="findCheckOuts" parameterType="string"  resultMap="CheckOutResult" >
+		 SELECT T.* 
+			FROM T_xinyu_checkout T where 1=1
+		<if test="orderDate!=null and orderDate!=''"> and ForderDate=#{orderDate}</if>
+		<if test="itemId!=null and itemId!=''"> and FKitemID=#{itemId}</if>
+		<if test="orderId!=null and orderId!=''">and FKshipOrderID=#{orderId}</if>
+		<if test="createDate!=null and createDate!=''">and FcreateDate=#{createDate}</if>
+		<if test="orderCode!=null and orderCode!=''"> and ForderCode=#{orderCode}</if>
+		<if test="cpCompany!=null and cpCompany!=''">and FcpCompany=#{cpCompany}</if>
+		<if test="barCode!=null and barCode!=''">and FbarCode=#{barCode}</if>
+		<if test="itemName!=null and itemName!=''">and FitemName=#{itemName}</if>
+		<if test="userId!=null and userId!=''">and FKuserID=#{userId}</if>
+		<if test="accountId!=null and accountId!=''">and FKaccountID=#{accountId}</if>
+		<if test="msg!=null and msg!=''">and Fmsg=#{msg}</if>
+		<if test="status=='success' and status!=null and status!=''">and FKstatus like "SUCCESS%"</if>
+		<if test="status=='fail' and status!=null and status!=''">and FKstatus like "FAIL%"</if>
+		<if test="searchText!=null and searchText!=''">
+		 and (ForderCode like "%"#{searchText}"%" or FbarCode like "%"#{searchText}"%" or FitemName like "%"#{searchText}"%" or Fmsg like "%"#{searchText}"%")
+		</if>
+		<if test="startDate!=null and endDate!=null and startDate!='' and endDate!=''">
+			 <![CDATA[
+			 and  t.FcreateDate >= date_format(#{startDate},'%Y-%m-%d %H:%i') and  t.FcreateDate < date_format(#{endDate},'%Y-%m-%d %H:%i')
+			 ]]>
+		</if>
+		order by t.FcreateDate desc
+		<if test="pageSize!=null and pageSize!=''">
+			limit #{pageNum},#{pageSize}    
+		</if>
+	</select>
+	
+	<select id="getTotal" parameterType="map"  resultType="int" >
+		 SELECT count(1)
+			FROM T_xinyu_checkout T where 1=1
+		<if test="orderDate!=null and orderDate!=''"> and ForderDate=#{orderDate}</if>
+		<if test="itemId!=null and itemId!=''"> and FKitemID=#{itemId}</if>
+		<if test="orderId!=null and orderId!=''">and FKshipOrderID=#{orderId}</if>
+		<if test="createDate!=null and createDate!=''">and FcreateDate=#{createDate}</if>
+		<if test="orderCode!=null and orderCode!=''"> and ForderCode=#{orderCode}</if>
+		<if test="cpCompany!=null and cpCompany!=''">and FcpCompany=#{cpCompany}</if>
+		<if test="barCode!=null and barCode!=''">and FbarCode=#{barCode}</if>
+		<if test="itemName!=null and itemName!=''">and FitemName=#{itemName}</if>
+		<if test="userId!=null and userId!=''">and FKuserID=#{userId}</if>
+		<if test="accountId!=null and accountId!=''">and FKaccountID=#{accountId}</if>
+		<if test="msg!=null and msg!=''">and Fmsg=#{msg}</if>
+		<if test="status=='success' and status!=null and status!=''">and FKstatus like "SUCCESS%"</if>
+		<if test="status=='fail' and status!=null and status!=''">and FKstatus like "FAIL%"</if>
+		<if test="searchText!=null and searchText!=''">
+		 and (ForderCode like "%"#{searchText}"%" or FbarCode like "%"#{searchText}"%" or FitemName like "%"#{searchText}"%" or Fmsg like "%"#{searchText}"%")
+		</if>
+		<if test="startDate!=null and endDate!=null and startDate!='' and endDate!=''">
+			 <![CDATA[
+			 and  t.FcreateDate >= date_format(#{startDate},'%Y-%m-%d %H:%i') and  t.FcreateDate < date_format(#{endDate},'%Y-%m-%d %H:%i')
+			 ]]>
+		</if>
+		order by t.FcreateDate desc
+	</select>
+	
+	<select id="getCheckOutById" parameterType="map"  resultMap="CheckOutResult" >
+		 SELECT T.* 
+			FROM T_xinyu_checkout T where T.FID=#{id}
+	</select>
+	<insert id="insertCheckOut" parameterType="com.xinyu.model.trade.CheckOut" >
+	insert into T_xinyu_checkout(FID,FKitemID,FKshipOrderID,FcreateDate,ForderCode,FcpCompany,FbarCode,FitemName,FKuserID,FKaccountID,Fnum,Fmsg,FKstatus,Fstate,Fweight,ForderDate)
+	VALUES(#{id},#{item.id,jdbcType=VARCHAR},#{shipOrder.id,jdbcType=VARCHAR},#{createDate},#{orderCode,jdbcType=VARCHAR},#{cpCompany,jdbcType=VARCHAR},#{barCode,jdbcType=VARCHAR},
+	#{itemName,jdbcType=VARCHAR},#{user.id,jdbcType=VARCHAR},#{account.id,jdbcType=VARCHAR},#{num,jdbcType=VARCHAR},#{msg,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR},
+	#{state,jdbcType=VARCHAR},#{weight,jdbcType=VARCHAR},#{orderDate})
+	</insert>
+
+	<update id="updateCheckOut" parameterType="com.xinyu.model.trade.CheckOut" >
+	update T_xinyu_checkout
+	<set>
+		<if test="item!=null and item!=''">FKitemID=#{item.id},</if>
+		<if test="shipOrder!=null and shipOrder!=''">FKshipOrderID=#{shipOrder.id},</if>
+		<if test="createDate!=null and createDate!=''">FcreateDate=#{createDate},</if>
+		<if test="orderCode!=null and orderCode!=''">ForderCode=#{orderCode},</if>
+		<if test="cpCompany!=null and cpCompany!=''">FcpCompany=#{cpCompany},</if>
+		<if test="barCode!=null and barCode!=''">FbarCode=#{barCode},</if>
+		<if test="itemName!=null and itemName!=''">FitemName=#{itemName},</if>
+		<if test="user!=null and user!=''">FKuserID=#{user.id},</if>
+		<if test="account!=null and account!=''">FKaccountID=#{account.id},</if>
+		<if test="num!=null and num!=''">Fnum=#{num},</if>
+		<if test="msg!=null and msg!=''">Fmsg=#{msg},</if>
+		<if test="status!=null and status!=''">FKstatus=#{status},</if>
+		<if test="state!=null and state!=''">Fstate=#{state},</if>
+		<if test="weight!=null and weight!=''">Fweight=#{weight},</if>
+	</set>
+	where fid=#{id}
+	</update>
+
+	<delete id="deleteCheckOutById"  parameterType="string"  >
+	delete  from T_xinyu_checkout where fid=#{id}
+	</delete>
+	
+</mapper> 

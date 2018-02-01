@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/wlpost/!svn/ver/2019/trunk/store-admin/src/main/webapp/WEB-INF/views/system
+END
+operatorRecordList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/288/trunk/store-admin/src/main/webapp/WEB-INF/views/system/operatorRecordList.jsp
+END
+centroList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/centroList.jsp
+END
+auditRulesEdit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/auditRulesEdit.jsp
+END
+auditRulesAdd.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/auditRulesAdd.jsp
+END
+sfAreaImport.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/493/trunk/store-admin/src/main/webapp/WEB-INF/views/system/sfAreaImport.jsp
+END
+batchInventory.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/batchInventory.jsp
+END
+centroEdit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/centroEdit.jsp
+END
+orderFromERPImport.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/223/trunk/store-admin/src/main/webapp/WEB-INF/views/system/orderFromERPImport.jsp
+END
+personList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/personList.jsp
+END
+orderImport.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/2018/trunk/store-admin/src/main/webapp/WEB-INF/views/system/orderImport.jsp
+END
+personPreview.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/personPreview.jsp
+END
+createUserByCentro.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/createUserByCentro.jsp
+END
+personEdit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/personEdit.jsp
+END
+auditRulesList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/auditRulesList.jsp
+END
+personAdd.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/personAdd.jsp
+END
+orderImportNew.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/2019/trunk/store-admin/src/main/webapp/WEB-INF/views/system/orderImportNew.jsp
+END
+userRolesRowEdit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/userRolesRowEdit.jsp
+END
+centroCity.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/system/centroCity.jsp
+END

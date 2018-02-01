@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="698" key="RevertDialog.location.x"/>
+	<item value="500" key="CommitDialog.weights.0"/>
+	<item value="504" key="DifferencesDialog.location.x"/>
+	<item value="500" key="CommitDialog.weights.1"/>
+	<item value="258" key="RevertDialog.location.y"/>
+	<item value="393" key="AnnotateDialog.size.y"/>
+	<item value="525" key="AnnotateDialog.size.x"/>
+	<item value="114" key="HistoryTableProvider.SVNHistoryPage.修订"/>
+	<item value="698" key="AnnotateDialog.location.x"/>
+	<item value="258" key="AnnotateDialog.location.y"/>
+	<item value="566" key="HistoryTableProvider.SVNHistoryPage.注释"/>
+	<item value="283" key="HistoryTableProvider.SVNHistoryPage.日期"/>
+	<item value="226" key="HistoryTableProvider.SVNHistoryPage.作者"/>
+	<item value="226" key="CommitDialog.location.y"/>
+	<item value="342" key="CommitDialog.location.x"/>
+	<item value="525" key="RevertDialog.size.x"/>
+	<item value="393" key="RevertDialog.size.y"/>
+	<item value="1344" key="CommitDialog.size.x"/>
+	<item value="416" key="DifferencesDialog.size.y"/>
+	<item value="676" key="CommitDialog.size.y"/>
+	<item value="913" key="DifferencesDialog.size.x"/>
+	<item value="243" key="DifferencesDialog.location.y"/>
+	<section name="CommitWizard">
+		<item value="true" key="ShowCompare"/>
+		<item value="500" key="VWeight2"/>
+		<item value="650" key="HWeight2"/>
+		<item value="500" key="VWeight1"/>
+		<item value="350" key="HWeight1"/>
+	</section>
+	<section name="NewLocationWizard">
+	</section>
+</section>

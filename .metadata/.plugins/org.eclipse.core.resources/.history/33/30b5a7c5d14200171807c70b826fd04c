@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>批次发货确认</title>
+	<link rel="stylesheet" type="text/css" href="${base}/scripts/jquery-easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="${base}/scripts/jquery-easyui/themes/icon.css">
+	<script type="text/javascript" src="${base}/scripts/jquery-easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="${base}/scripts/jquery-easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="${base}/scripts/jquery-easyui/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+	<table >
+		<tr>
+			<td>订单编 号:</td>
+			<td>${order.orderCode!''}</td>
+			<td>创建时间:</td>
+			<td>${order.createTime?string('yyyy-MM-dd hh:mm:ss')}</td>
+		</tr>
+		<tr>
+			<td>快递公司:</td>
+			<td><#if order.tmsServiceName??>${order.tmsServiceName!''}</#if></td>
+			<td>快递单号:<td>
+			<td><#if order.tmsOrderCode??>${order.tmsOrderCode!''}</#if></td>
+		</tr>
+		<tr>
+			<td>订单创建时间:</td>
+			<td><#if order.orderCreateTime??>${order.orderCreateTime?string('yyyy-MM-dd hh:mm:ss')}</#if></td>
+			<td>订单支付时间<td>
+			<td><#if order.orderPayTime??> ${order.orderPayTime?string('yyyy-MM-dd hh:mm:ss')}<#else>&nbsp;</#if></td>
+		</tr>
+		<tr>
+			<td>最后操作时间:</td>
+			<td><#if order.lastUpdateTime??>${order.lastUpdateTime?string('yyyy-MM-dd hh:mm:ss')}</#if></td>
+			<td>最后操作人:</td>
+			<td><#if order.lastUpdateBy??> ${order.lastUpdateBy.name!''}</#if></td>
+		</tr>
+		<tr>
+			<td colspan="4">
+			<table id="wmsItemTable" width="100%">
+			</table>
+			
+			</td>
+		</tr>
+	 </table>
+	 <input type="hidden" id="id" name="id" value="${order.id}"/>
+
+	<script>
+	var ctx="${ctx}";
+	$(document).ready(function(){
+			initItemsTable();
+		});
+	function initItemsTable(){
+		$('#wmsItemTable').datagrid({
+				    url:ctx+'/shipOrder/deliveryOrder/itemsData?id='+$("#id").val(),
+				    height:350,
+				    width:780,
+				    rownumbers:true,
+				    remoteSort:false,
+				    columns:[[
+				        {field:'id',checkbox:false,hidden:true},
+				        {field:'itemName',title:'商品名称',width:180},
+				        {field:'itemCode',title:'商品编码',width:180},
+				        {field:'itemQuantity',title:'商品订单数量',width:80},
+				        {field:'quantity',title:'本次确认数量',width:80},
+				        {field:'itemOutQuantity',title:'已确认数量',width:80},
+				        {field:'noQuantity',title:'未确认数量',width:80}
+				    ]]
+				   
+				});
+		}
+	</script>
+	</body>
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.graby.store.dao.mybatis.InventoryRecordDao">
+	
+	<insert id="insert" useGeneratedKeys="true" keyColumn="id">
+		insert into sc_item_inventory_record (
+		centro_id, user_id, item_id, num,type,description,date_time)
+		values (
+		#{0}, #{1}, #{2}, #{3}, #{4},#{5},now())
+	</insert>   
+	
+	<select id="existOrderNo" resultType="Long" parameterType="java.util.Map">
+		select count(1)  from sc_item_inventory_record
+		 where  item_id  =#{itemId}  and description = #{orderNo}
+	</select>
+	
+	<delete id="deleteOrderNo"  parameterType="java.util.Map">
+		delete from  sc_item_inventory_record
+		 where item_id  =#{itemId}  and  description = #{orderNo}
+	</delete>
+	
+	
+	<select id="getReport" resultType="map"   parameterType="java.util.Map"  >
+	select u.shop_name as shopname, i.code,i.title as name,i.sku as sku,i.bar_code as barCode,
+	i.position as position, e.name as centroName, i.description as description,
+	u.id as userId,
+	(select  ifnull(SUM(a.num),0) from sc_item_inventory_record a where 
+		 a.num >0  and a.item_id = b.item_id 
+		 <if test="startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+		 	<![CDATA[
+				and a.date_time > date_format(#{startDate},'%Y-%m-%d %H:%i')
+				and a.date_time <= date_format(#{endDate},'%Y-%m-%d %H:%i') 
+			]]>
+		 </if>	
+		) as anum ,
+	(select  ifnull(SUM(c.num),0) from sc_item_inventory_record c where
+		 <![CDATA[
+			c.num < 0  and c.item_id = b.item_id 
+		]]>
+	    <if test="startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+		 	<![CDATA[
+				and c.date_time > date_format(#{startDate},'%Y-%m-%d %H:%i')
+				and c.date_time <= date_format(#{endDate},'%Y-%m-%d %H:%i') 
+			]]>
+		 </if>	
+	    ) as bnum ,
+    b.num
+	from  (select *  from sc_item_inventory where 
+	centro_id  = #{centroId} 
+	<if test="userId != null and userId!=0">  
+		and user_id = #{userId}
+	 </if>
+	group by  item_id ) b   
+	left join sc_centro e on b.centro_id=e.id
+	LEFT JOIN sc_item i ON b.item_id = i.id  
+	left JOIN  sc_user u on   b.user_id = u.id
+	where 1=1
+	<if test="title != null and title!=''">  
+		and i.title like "%"#{title}"%"
+	 </if>
+	<if test="start!=null and offset!=null">
+   		limit #{start},#{offset}
+   	</if> 		
+	</select>
+	
+	<select id="getTotalResult" resultType="int"   parameterType="java.util.Map"  >
+	select count(1), u.shop_name as shopname, i.code,i.title as name,i.sku as sku,
+	i.position as position, e.name as centroName, i.description as description,
+	u.id as userId,
+	(select  ifnull(SUM(a.num),0) from sc_item_inventory_record a where 
+		 a.num >0  and a.item_id = b.item_id 
+		 <if test="startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+		 	<![CDATA[
+				and a.date_time > date_format(#{startDate},'%Y-%m-%d %H:%i')
+				and a.date_time <= date_format(#{endDate},'%Y-%m-%d %H:%i') 
+			]]>
+		 </if>	
+		) as anum ,
+	(select  ifnull(SUM(c.num),0) from sc_item_inventory_record c where 
+	    <![CDATA[
+			c.num < 0  and c.item_id = b.item_id 
+		]]>
+	    <if test="startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+		 	<![CDATA[
+				and c.date_time > date_format(#{startDate},'%Y-%m-%d %H:%i')
+				and c.date_time <= date_format(#{endDate},'%Y-%m-%d %H:%i') 
+			]]>
+		 </if>	
+	    ) as bnum ,
+    b.num
+	from  (select *  from sc_item_inventory where 
+	centro_id  = #{centroId} 
+	<if test="userId != null and userId!=0">  
+		and user_id = #{userId}
+	 </if>
+	 group by  item_id ) b   
+	left join sc_centro e on b.centro_id=e.id
+	LEFT JOIN sc_item i ON b.item_id = i.id  
+	left JOIN  sc_user u on   b.user_id = u.id
+	where 1=1
+	<if test="title != null and title!=''">  
+		and i.title like "%"#{title}"%"
+	 </if>
+	</select>
+	
+</mapper> 

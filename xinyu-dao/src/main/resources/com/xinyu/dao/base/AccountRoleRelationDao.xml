@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.dao.base.AccountRoleRelationDao">
+	<resultMap id="AccountRoleRelationResult" type="com.xinyu.model.system.AccountRoleRelation">
+		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
+		<result property="account.id" column="FKaccountID" />
+		<result property="role.id" column="FKroleID" />
+		<result property="description" column="Fdescription" />
+	</resultMap>
+	<select id="getAccountRoleRelationById" parameterType="string"
+		resultMap="AccountRoleRelationResult">
+		SELECT T.*
+		FROM T_xinyu_AccountRoleRelation T where
+		T.FID=#{id}
+	</select>
+
+	<select id="findAccountRoleRelationByAccountId" parameterType="string"
+		resultMap="AccountRoleRelationResult">
+		SELECT T.*
+		FROM T_xinyu_AccountRoleRelation T where
+		T.FKaccountID=#{accountId}
+	</select>
+	
+	<select id="getAccountRoleRelationByList" parameterType="map"
+		resultMap="AccountRoleRelationResult">
+		SELECT T.*
+		FROM T_xinyu_AccountRoleRelation T where 1=1
+		<if test="cu!=null and cu!=''">and t.FCU=#{cu}</if>
+		<if test="accountId!=null and accountId!=''">and t.FKaccountID=#{accountId}</if>
+		<if test="roleId!=null and roleId!=''">and t.FKroleID=#{roleId}</if>
+	</select>
+
+	<insert id="insertAccountRoleRelation" parameterType="com.xinyu.model.system.AccountRoleRelation">
+		insert into
+		T_xinyu_AccountRoleRelation(FID,FCU,FKaccountID,FKroleID,Fdescription)
+		VALUES(#{id},#{cu,jdbcType=VARCHAR},#{account.id,jdbcType=VARCHAR},#{role.id,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateAccountRoleRelation" parameterType="com.xinyu.model.system.AccountRoleRelation">
+		update T_xinyu_AccountRoleRelation
+		<set>
+			<if test="cu!=null and cu!=''">FCU=#{cu},</if>
+			<if test="account!=null and account!=''">FKaccountID=#{account.id},</if>
+			<if test="role!=null and role!=''">FKroleID=#{role.id},</if>
+			<if test="description!=null and description!=''">Fdescription=#{description},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteAccountRoleRelationById" parameterType="string">
+		delete
+		from T_xinyu_AccountRoleRelation where fid=#{id}
+	</delete>
+</mapper>

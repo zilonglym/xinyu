@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;private void saveShipOrderReturn(String orderId, ShipOrder order)&apos; from &apos;com.graby.store.service.qm.QmSyncService.orderCancel()&apos; to &apos;com.graby.store.service.qm.QmSyncService&apos;&#x0D;&#x0A;- Original project: &apos;store-core&apos;&#x0D;&#x0A;- Method name: &apos;saveShipOrderReturn&apos;&#x0D;&#x0A;- Destination type: &apos;com.graby.store.service.qm.QmSyncService&apos;&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" comments="false" description="Extract method &apos;saveShipOrderReturn&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src\/main\/java&lt;com.graby.store.service.qm{QmSyncService.java" name="saveShipOrderReturn" replace="false" selection="19232 438" stamp="1481092455230" version="1.0" visibility="2"/>
+</session>

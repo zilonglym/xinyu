@@ -1,0 +1,92 @@
+package com.xinyu.service.caoniao;
+
+import java.util.Date;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
+
+import com.taobao.pac.sdk.cp.SendSysParams;
+import com.taobao.pac.sdk.cp.dataobject.request.WMS_ORDER_STATUS_UPLOAD.WmsOrderStatusUploadRequest;
+import com.taobao.pac.sdk.cp.dataobject.response.WMS_ORDER_STATUS_UPLOAD.WmsOrderStatusUploadResponse;
+import com.xinyu.model.common.Entity;
+import com.xinyu.model.order.StockInOrder;
+import com.xinyu.model.order.StockOutOrder;
+import com.xinyu.model.order.enums.OrderTypeEnum;
+import com.xinyu.model.trade.ShipOrder;
+import com.xinyu.service.common.Constants;
+import com.xinyu.service.util.CaiNiaoPacClient;
+
+/**
+ * @author shark_cj
+ * @since  2017-05-23
+ * 订单状态回传
+ */
+@Component
+public class WmsOrderStatusUploadCpImpl  {
+
+	public static final Logger logger = Logger.getLogger(WmsOrderStatusUploadCpImpl.class);
+	
+	public Map<String,Object> updateOrderState(Entity entity,Map<String,Object> params,String orderType){
+		logger.debug("状态回传执行开始!"+(entity instanceof ShipOrder?"1":"0"));
+		WmsOrderStatusUploadRequest  request  = new WmsOrderStatusUploadRequest();
+		SendSysParams sendParams=new SendSysParams();
+		sendParams.setFromCode(Constants.cainiao_fromCode);
+		
+		if(entity  instanceof StockInOrder){
+			try {
+				StockInOrder  stockInOrder =    (StockInOrder)entity;
+				buildStockInOrder(stockInOrder, params,request);
+				WmsOrderStatusUploadResponse response = CaiNiaoPacClient.getClient().send(request, sendParams);
+				System.out.println("send:"+response.isSuccess());
+				System.out.println("send:"+response.getErrorCode());
+				System.out.println("send:"+response.getErrorMsg());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}else  if(entity  instanceof StockOutOrder){
+			
+			
+		}else if(entity instanceof ShipOrder){
+			logger.debug("订单状态回传");
+			try{
+				buildShipOrder((ShipOrder)entity, request);
+				WmsOrderStatusUploadResponse response = CaiNiaoPacClient.getClient().send(request, sendParams);
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+		}
+		return null;
+	}
+	
+	
+	private Map<String,Object> buildStockInOrder(StockInOrder stockInorder,Map<String,Object> params, WmsOrderStatusUploadRequest request){
+		
+		request.setOperateDate(new Date());
+		request.setStoreOrderCode("Tran_Store_13200360");
+		request.setOrderCode(stockInorder.getOrderCode());
+		
+//		OrderStatusEnum.getOrderStatusEnum("")
+		//设置接受状态
+		request.setStatus("WMS_ACCEPT");
+		request.setOrderType(stockInorder.getOrderType().getKey());
+		request.setOperator("Tran_Store_13200360");
+		request.setRemark("中仓联调测试用例");
+		request.setContent("中仓联调测试用例【接单成功】");
+		
+		return null;
+	}
+	
+	private void buildShipOrder(ShipOrder order,WmsOrderStatusUploadRequest request){
+		request.setOperateDate(new Date());
+		request.setStoreOrderCode(order.getStoreCode());
+		request.setStatus(order.getStatus().getKey());
+		request.setOrderType(OrderTypeEnum.SHIPORDER.getKey());
+		request.setOperatorContact("18973315680");
+	}
+}
+

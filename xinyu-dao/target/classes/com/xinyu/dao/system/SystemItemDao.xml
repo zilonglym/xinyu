@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.base.SystemItemDao">
+	<resultMap id="SystemItemResult" type="com.xinyu.model.system.SystemItem">
+		<result property="id" column="FID" />
+		<result property="value" column="Fvalue" />
+		<result property="description" column="Fdescription" />
+		<result property="type" column="Ftype" />
+		<result property="parentId" column="FparentId" />
+		<result property="seq" column="Fseq" />
+	</resultMap>
+	
+	<select id="findSystemItemById" parameterType="string" resultMap="SystemItemResult">
+		SELECT T.*
+		FROM t_xinyu_systemitem T where T.FID=#{id}
+	</select>
+	
+	<select id="findSystemItemByList" parameterType="map" resultMap="SystemItemResult">
+		SELECT T.*
+		FROM t_xinyu_systemitem T 
+		where 1=1 
+		<if test="type!=null and type!=''">
+			and T.Ftype=#{type}
+		</if>
+		<if test="value!=null and value!=''">
+			and T.Fvalue=#{value}
+		</if>
+		<if test="q!=null and q!=''">
+			and T.Fvalue like "%"#{q}"%" or T.Fdescription like "%"#{q}"%" or T.Ftype like "%"#{q}"%"
+		</if>
+		order by T.Fseq asc
+	</select>
+	
+	<insert id="insertSystemItem" parameterType="com.xinyu.model.system.SystemItem">
+		insert into
+		t_xinyu_systemitem(FID,Fvalue,Fdescription,Ftype,FparentId,Fseq)
+		VALUES(#{id},#{value,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{parentId,jdbcType=INTEGER},#{seq,jdbcType=INTEGER})
+	</insert>
+
+	<update id="updateSysItem" parameterType="com.xinyu.model.system.SystemItem">
+		update t_xinyu_systemitem
+		<set>
+			<if test="value!=null and value!=''">Fvalue=#{value},</if>
+			<if test="description!=null and description!=''">Fdescription=#{description},</if>
+			<if test="type!=null and type!=''">Ftype=#{type},</if>
+			<if test="parentId!=null and parentId!=0">FparentId=#{parentId},</if>
+			<if test="seq!=null and seq!=0">Fseq=#{seq},</if>
+		</set>
+		where FID=#{id}
+	</update>
+
+	<delete id="deleteSystemItemById" parameterType="string">
+		delete from t_xinyu_systemitem where FID=#{id}
+	</delete>
+
+</mapper> 

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;com.xinyu.service.caoniao.WmsConsignOrderNotifyCpImpl.getTime()&apos; to &apos;getOtherNo&apos;&#x0D;&#x0A;- Original project: &apos;xinyu-service&apos;&#x0D;&#x0A;- Original element: &apos;com.xinyu.service.caoniao.WmsConsignOrderNotifyCpImpl.getTime()&apos;&#x0D;&#x0A;- Renamed element: &apos;com.xinyu.service.caoniao.WmsConsignOrderNotifyCpImpl.getOtherNo()&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;getTime&apos;" flags="589826" id="org.eclipse.jdt.ui.rename.method" input="/src\/main\/java&lt;com.xinyu.service.caoniao{WmsConsignOrderNotifyCpImpl.java[WmsConsignOrderNotifyCpImpl~getTime" name="getOtherNo" references="true" stamp="1503979771409" version="1.0"/>
+</session>

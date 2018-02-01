@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;xinyu-web/src/main/java/com/xinyu/controller/admin/others&apos;" deleteContents="false" description="Delete resource &apos;xinyu-web/src/main/java/com/xinyu/controller/admin/others&apos;" element1="/xinyu-web/src/main/java/com/xinyu/controller/admin/others" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1505892832817"/>
+</session>

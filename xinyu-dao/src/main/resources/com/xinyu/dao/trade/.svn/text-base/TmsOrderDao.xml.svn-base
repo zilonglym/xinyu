@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.tmsOrderDao">
+
+	<resultMap id="TmsOrderResult" type="com.xinyu.model.trade.TmsOrder">
+		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
+		<result property="order.id" column="FKorderID" />
+		<result property="code" column="Fcode" />
+		<result property="orderCode" column="ForderCode" />
+		<result property="packageCode" column="FpackageCode" />
+		<result property="status" column="Fstatus" />
+		<result property="packageLength" column="FpackageLength" />
+		<result property="packageWidth" column="FpackageWidth" />
+		<result property="packageVolume" column="FpackageVolume" />
+		<result property="packageWeight" column="FpackageWeight" />
+		<result property="packageHeight" column="FpackageHeight" />
+		<result property="createDate" column="FcreateDate" />
+		
+		<result property="templateURL" column="FtemplateURL" />
+		<result property="routeCode" column="FrouteCode" />
+		<result property="sortationName" column="FsortationName" />
+		<result property="consolidationName" column="FconsolidationName" />
+		<result property="consolidationCode" column="FconsolidationCode" />
+		<result property="batchCode" column="FbatchCode" />
+		<result property="orderFlag" column="ForderFlag" />
+		<result property="items" column="Fitems" />
+		<result property="orderStatus" column="ForderStatus"/>
+		<result property="displayCode" column="FdisplayCode"/>
+		<result property="addressStatus" column="FaddressStatus"/>
+		<result property="receiverProvince" column="FreceiverProvince"/>
+		
+		
+	</resultMap>
+	<select id="getTmsOrderById" parameterType="string" resultMap="TmsOrderResult">
+		SELECT T.*
+		FROM t_xinyu_tmsOrder T where T.FID=#{id}
+	</select>
+	
+	<select id="getTotalByOrderId" parameterType="string" resultType="int">
+		SELECT count(1)
+		FROM t_xinyu_tmsOrder T
+		where fkorderId=#{orderId}
+	</select>
+	
+	<select id="getTmsOrderByList" parameterType="map" resultMap="TmsOrderResult">
+		SELECT T.*
+		FROM t_xinyu_tmsOrder T
+		<where>
+		    1=1
+		    <if test="status!=null and status!=''">
+		        and Fstatus=#{status}
+		    </if>
+		     <if test="orderId!=null and orderId!=''">
+		        and fkorderId=#{orderId}
+		    </if>
+		    <if test="orderStatus!=null and orderStatus!=''">
+		        and ForderStatus=#{orderStatus}
+		    </if>
+		    <if test="array!=null and array!=''">
+				and t.fid in
+				<foreach collection="array" index="index" item="id" open="("
+					separator="," close=")">
+					#{id}
+				</foreach>
+			</if>
+			<if
+				test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    			<![CDATA[
+					and t.`FcreateDate` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+					and t.`FcreateDate` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+				]]>
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insertTmsOrder" parameterType="com.xinyu.model.trade.TmsOrder">
+		insert into
+		t_xinyu_tmsOrder(FID,FCU,FKorderID,Fcode,ForderCode,FpackageCode,Fstatus,FpackageLength,FpackageWidth,
+		FpackageVolume,FpackageWeight,FpackageHeight,FcreateDate,FtemplateURL,FrouteCode,FsortationName,FconsolidationName,FconsolidationCode
+		,FbatchCode,ForderFlag,Fitems,ForderStatus,FdisplayCode,FreceiverProvince,FaddressStatus
+		)
+		VALUES(#{id},#{cu},#{order.id},#{code},#{orderCode},#{packageCode},#{status},#{packageLength},#{packageWidth},#{packageVolume},
+		#{packageWeight},#{packageHeight},#{createDate},#{templateURL},#{routeCode},#{sortationName},#{consolidationName},#{consolidationCode},
+		#{batchCode},#{orderFlag},#{items},#{orderStatus},#{displayCode},#{receiverProvince},#{addressStatus})
+	</insert>
+
+	<update id="updateTmsOrder" parameterType="com.xinyu.model.trade.TmsOrder">
+		update t_xinyu_tmsOrder
+		<set>
+			<if test="cu!=null and cu!=''">FCU=#{cu},</if>
+			<if test="order!=null and order!=''">FKorderID=#{order.id},</if>
+			<if test="code!=null and code!=''">Fcode=#{code},</if>
+			<if test="orderCode!=null and orderCode!=''">ForderCode=#{orderCode},</if>
+			<if test="packageCode!=null and packageCode!=''">FpackageCode=#{packageCode},</if>
+			<if test="status!=null and status!=''">Fstatus=#{status},</if>
+			<if test="packageLength!=null and packageLength!=''">FpackageLength=#{packageLength},</if>
+			<if test="packageWidth!=null and packageWidth!=''">FpackageWidth=#{packageWidth},</if>
+			<if test="packageVolume!=null and packageVolume!=''">FpackageVolume=#{packageVolume},</if>
+			<if test="packageWeight!=null and packageWeight!=''">FpackageWeight=#{packageWeight},</if>
+			<if test="packageHeight!=null and packageHeight!=''">FpackageHeight=#{packageHeight},</if>
+			<if test="createDate!=null and createDate!=''">FcreateDate=#{createDate},</if>
+			
+			<if test="templateURL!=null and templateURL!=''">FtemplateURL=#{templateURL},</if>
+			<if test="routeCode!=null and routeCode!=''">FrouteCode=#{routeCode},</if>
+			<if test="sortationName!=null and sortationName!=''">FsortationName=#{sortationName},</if>
+			<if test="consolidationName!=null and consolidationName!=''">FconsolidationName=#{consolidationName},</if>
+			<if test="consolidationCode!=null and consolidationCode!=''">FconsolidationCode=#{consolidationCode},</if>
+			<if test="batchCode!=null and batchCode!=''">FbatchCode=#{batchCode},</if>
+			<if test="orderFlag!=null and orderFlag!=''">ForderFlag=#{orderFlag},</if>
+			<if test="items!=null and items!=''">Fitems=#{items},</if>
+			<if test="orderStatus!=null and orderStatus!=''">ForderStatus=#{orderStatus},</if>
+			<if test="displayCode!=null and displayCode!=''">FdisplayCode=#{displayCode},</if>
+			
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteTmsOrderById" parameterType="string">
+		delete from t_xinyu_tmsOrder where fid=#{id}
+	</delete>
+
+</mapper>

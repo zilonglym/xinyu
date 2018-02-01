@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.order.child.WmsStockInCaseInfoDao">
+	<resultMap id="WmsStockInCaseInfoResult" type="com.xinyu.model.order.child.WmsStockInCaseInfo" >
+	<result property="id" column="FID" />
+	<result property="cu" column="FCU" />
+	<result property="stockInOrder.id" column="FKstockInOrderID" />
+	<result property="caseNumber" column="FcaseNumber" />
+	<result property="caseSequence" column="FcaseSequence" />
+	<result property="palletNumebr" column="FpalletNumebr" />
+	<result property="containerNumber" column="FcontainerNumber" />
+	<result property="weight" column="Fweight" />
+	<result property="volume" column="Fvolume" />
+	<result property="length" column="Flength" />
+	<result property="width" column="Fwidth" />
+	<result property="height" column="Fheight" />
+</resultMap>
+	<select id="getWmsStockInCaseInfoById" parameterType="string"  resultMap="WmsStockInCaseInfoResult" >
+		 SELECT T.* 
+			FROM T_xinyu_WmsStockInCaseInfo T where T.FID=#{id}
+	</select>
+	
+	<select id="getWmsStockInCaseInfoByList" parameterType="map"  resultMap="WmsStockInCaseInfoResult" >
+		 SELECT T.* 
+			FROM T_xinyu_WmsStockInCaseInfo T 
+			<where>
+			    1  =  1
+			    <if test="stockInOrderId!=null  and  stockInOrderId!=''">
+			       and  FKstockInOrderID =  #{stockInOrderId}
+			    </if>
+			</where>
+	</select>
+	
+<insert id="insertWmsStockInCaseInfo" parameterType="com.xinyu.model.order.child.WmsStockInCaseInfo" >
+insert into T_xinyu_WmsStockInCaseInfo(FID,fcu,FKstockInOrderID,FcaseNumber,FcaseSequence,FpalletNumebr,FcontainerNumber,Fweight,Fvolume,Flength,Fwidth,Fheight)
+VALUES(#{id},#{cu},#{stockInOrder.id},#{caseNumber},#{caseSequence},#{palletNumebr},#{containerNumber},#{weight},#{volume},#{length},#{width},#{height})
+</insert>
+
+<update id="updateWmsStockInCaseInfo" parameterType="com.xinyu.model.order.child.WmsStockInCaseInfo" >
+	update T_xinyu_WmsStockInCaseInfo
+	<set>
+		<if test="cu!=null and cu!=''">FCU=#{cu},</if>
+		<if test="stockInOrder!=null and stockInOrder!=''">FKstockInOrderID=#{stockInOrder.id},</if>
+		<if test="caseNumber!=null and caseNumber!=''">FcaseNumber=#{caseNumber},</if>
+		<if test="caseSequence!=null and caseSequence!=''">FcaseSequence=#{caseSequence},</if>
+		<if test="palletNumebr!=null and palletNumebr!=''">FpalletNumebr=#{palletNumebr},</if>
+		<if test="containerNumber!=null and containerNumber!=''">FcontainerNumber=#{containerNumber},</if>
+		<if test="weight!=null and weight!=''">Fweight=#{weight},</if>
+		<if test="volume!=null and volume!=''">Fvolume=#{volume},</if>
+		<if test="length!=null and length!=''">Flength=#{length},</if>
+		<if test="width!=null and width!=''">Fwidth=#{width},</if>
+		<if test="height!=null and height!=''">Fheight=#{height},</if>
+	</set>
+where fid=#{id}
+</update>
+
+<delete id="deleteWmsStockInCaseInfoById"  parameterType="string"  >
+	delete  from T_xinyu_WmsStockInCaseInfo where fid=#{id}
+</delete>
+</mapper> 

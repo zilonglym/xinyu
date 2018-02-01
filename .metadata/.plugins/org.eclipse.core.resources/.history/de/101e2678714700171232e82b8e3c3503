@@ -1,0 +1,204 @@
+package com.xinyu.service.caoniao;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.sun.swing.internal.plaf.metal.resources.metal_zh_TW;
+import com.taobao.pac.sdk.cp.PacClient;
+import com.taobao.pac.sdk.cp.SendSysParams;
+import com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_CONFIRM.ConsignItemInventory;
+import com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_CONFIRM.ConsignOrderItem;
+import com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_CONFIRM.ConsignTmsItem;
+import com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_CONFIRM.ConsignTmsOrder;
+import com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_CONFIRM.WmsConsignOrderConfirmCallbackRequest;
+import com.taobao.pac.sdk.cp.dataobject.response.WMS_CONSIGN_ORDER_CONFIRM.WmsConsignOrderConfirmResponse;
+import com.xinyu.model.base.Item;
+import com.xinyu.model.system.Account;
+import com.xinyu.model.trade.ShipOrder;
+import com.xinyu.model.trade.ShipOrderOperator;
+import com.xinyu.model.trade.WmsConsignOrderItem;
+import com.xinyu.service.common.Constants;
+import com.xinyu.service.system.ItemService;
+import com.xinyu.service.trade.ShipOrderOperatorService;
+import com.xinyu.service.trade.ShipOrderService;
+import com.xinyu.service.trade.WmsConsignOrderItemService;
+import com.xinyu.service.util.CaiNiaoPacClient;
+
+@Component
+public class WmsConsignOrderConfirmService {
+
+	public static final Logger logger = Logger.getLogger(WmsConsignOrderConfirmService.class);
+	@Autowired
+	private ShipOrderService orderService;
+	@Autowired
+	private ShipOrderOperatorService shipOrderOperatorService;
+	@Autowired
+	private WmsConsignOrderItemService orderItemService;
+	@Autowired
+	private ItemService itemService;
+	
+	/**
+	 * 订单发货确认
+	 * @param request
+	 * @param params
+	 * @return
+	 */
+	public Map<String,Object> submitConsignOrderConfirm(String orderId){
+		WmsConsignOrderConfirmCallbackRequest request=new WmsConsignOrderConfirmCallbackRequest();
+		SendSysParams params=new SendSysParams();
+//		params.setFromCode("227856_rCodeRS");
+		params.setFromCode(Constants.cainiao_fromCode);
+		this.buidlConsignOrderCallBack(orderId, request, params);
+		WmsConsignOrderConfirmResponse response =CaiNiaoPacClient.getClient().send(request, params);
+		Map<String,Object> resultMap=new HashMap<String, Object>();
+		if(response.isSuccess()){
+			logger.debug("success:"+response.getErrorCode());
+			//发货确认成功，生成操作日志
+			ShipOrderOperator operator = new ShipOrderOperator();
+			operator.generateId();
+			operator.setCu("");
+			Account account = new Account();
+			account.setId("cainiao");
+			operator.setDescription("菜鸟发货确认！");
+			operator.setAccount(account);
+			operator.setOperatorDate(new Date());
+			operator.setNewValue(orderId);
+			ShipOrder shipOrder = this.orderService.findShipOrderById(orderId);
+			operator.setShipOrder(shipOrder);
+			this.shipOrderOperatorService.saveShipOrderOperator(operator);
+			resultMap.put("ret", 1);
+		}else{
+			logger.debug("失败:"+response.getErrorCode()+"|"+response.getErrorMsg());
+			resultMap.put("ret", 0);
+			resultMap.put("msg", response.getErrorMsg());
+		}
+		return resultMap;
+	}
+	/**
+	 * 组建发货确认请求对象
+	 * @param request
+	 * @param params
+	 */
+	private void buidlConsignOrderCallBack(String orderId,WmsConsignOrderConfirmCallbackRequest request,SendSysParams params){
+		request.setOrderConfirmTime(new Date());
+		ShipOrder order=this.orderService.findShipOrderById(orderId);
+		request.setOrderCode(order.getOrderCode());
+		request.setOrderType(order.getOrderType());
+//		request.setOutBizCode(order.getou);
+		request.setTimeZone(order.getTimeZone());
+		/**
+		 * 订单商品信息
+		 */
+//		request.setOrderItems(null);
+		
+		/**
+		 * 运单信息
+		 */
+//		request.setTmsOrders(tmsOrders);
+		/**
+		 * 发票信息
+		 */
+//		request.setInvoinceConfirms(invoinceConfirms);
+		buildTmOrdersAndOrderItems(order, request);
+		
+	}
+	/**
+	 * 构建订单商品明细与订单发货信息
+	 * @param order
+	 * @param request
+	 */
+	private void buildTmOrdersAndOrderItems(ShipOrder order,WmsConsignOrderConfirmCallbackRequest request){
+		Map<String,Object> params=new HashMap<String, Object>();
+		params.put("orderId", order.getId());
+		List<ConsignOrderItem> orderItemList=new ArrayList<ConsignOrderItem>();
+
+		List<ConsignTmsOrder> tmsOrderList=new ArrayList<ConsignTmsOrder>();
+
+		List<ConsignTmsItem> tmsItemList=new ArrayList<ConsignTmsItem>();
+		int index=0,flag=0;
+		int packageWeight=0;
+		int packageLength=0,packageHeight=0,packageWidth=0,packageVolume=0;
+		List<WmsConsignOrderItem> itemList=this.orderItemService.getWmsConsignOrderItemByList(params);
+		for(int i=0;itemList!=null && i<itemList.size();i++){
+			WmsConsignOrderItem item=itemList.get(i);
+			Item itemObj=this.itemService.getItem(item.getItem().getId());
+			ConsignOrderItem orderItem=new ConsignOrderItem();
+			ConsignTmsItem tmsItem=new ConsignTmsItem();
+			orderItem.setOrderItemId(item.getOrderItemId());
+			List<ConsignItemInventory> inventoryItems=new ArrayList<ConsignItemInventory>();
+			ConsignItemInventory inventory=new ConsignItemInventory();
+			inventory.setInventoryType(item.getInventoryType());
+			inventory.setQuantity(new Long(item.getItemQuantity()).intValue());
+			inventory.setBatchCode(item.getBatchCode());
+			inventoryItems.add(inventory);
+
+			tmsItem.setBatchCode(item.getBatchCode());
+			tmsItem.setItemCode(item.getItemCode());
+			tmsItem.setItemQuantity(new Long(item.getItemQuantity()).intValue());
+			tmsItem.setOrderItemId(item.getOrderItemId());
+			/**
+			 * 统计整个包裹的重量
+			 */
+			if(item.getItemOutQuantity()!=null && (item.getItemOutQuantity()>0 || index==1)){
+				packageWeight+=(itemObj.getWmsGrossWeight()*item.getItemBatchQuantity());
+				packageHeight+=(itemObj.getWmsHeight()*item.getItemBatchQuantity());
+				packageLength+=(itemObj.getWmsLength()*item.getItemBatchQuantity());
+				packageWidth+=(itemObj.getWmsWidth()*item.getItemBatchQuantity());
+				packageVolume+=(itemObj.getWmsVolume()*item.getItemBatchQuantity());
+				index=1;
+				if(item.getItemQuantity()==item.getItemOutQuantity()){
+					flag++;
+				}
+			}else{
+				packageWeight+=(itemObj.getWmsGrossWeight()*item.getItemQuantity());
+				packageHeight+=(itemObj.getWmsHeight()*item.getItemQuantity());
+				packageLength+=(itemObj.getWmsLength()*item.getItemQuantity());
+				packageWidth+=(itemObj.getWmsWidth()*item.getItemQuantity());
+				packageVolume+=(itemObj.getWmsVolume()*item.getItemQuantity());
+				
+			}
+			
+			
+			tmsItem.setItemId(itemObj.getItemId());
+			tmsItem.setItemCode(itemObj.getItemCode());
+			orderItem.setItemCode(itemObj.getItemCode());
+			orderItem.setItems(inventoryItems);
+			orderItemList.add(orderItem);
+			tmsItemList.add(tmsItem);
+		}
+		/**
+		 * 发货运单信息
+		 */
+		if(flag==itemList.size()){
+			request.setConfirmType(0);
+		}else{
+			request.setConfirmType(index);
+		}
+		
+		ConsignTmsOrder tmsOrder=new ConsignTmsOrder();
+		tmsOrder.setTmsItems(tmsItemList);
+		tmsOrder.setTmsCode(order.getTmsServiceCode());//快递公司名称编码
+		tmsOrder.setTmsOrderCode(order.getTmsOrderCode());
+		tmsOrder.setPackageCode(order.getId());
+		tmsOrder.setPackageHeight(packageHeight);
+		tmsOrder.setPackageLength(packageLength);
+		tmsOrder.setPackageWidth(packageWidth);
+		tmsOrder.setPackageVolume(Long.valueOf(packageVolume));
+		tmsOrder.setPackageWeight(packageWeight);
+		tmsOrder.setPackageHeight(new Double(packageWeight).intValue());
+		tmsOrderList.add(tmsOrder);
+		request.setOrderItems(orderItemList);
+		request.setOutBizCode(order.getTmsOrderCode());
+		request.setTmsOrders(tmsOrderList);
+	}
+	
+	
+	
+}

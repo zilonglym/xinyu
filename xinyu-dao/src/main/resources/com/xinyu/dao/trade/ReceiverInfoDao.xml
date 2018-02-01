@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.receiverInfoDao">
+	<resultMap id="ReceiverInfoResult" type="com.xinyu.model.base.ReceiverInfo">
+		<result property="id" column="FID" />
+		<result property="receiverZipCode" column="FreceiverZipCode" />
+		<result property="receiverCountry" column="FreceiverCountry" />
+		<result property="receiverProvince" column="FreceiverProvince" />
+		<result property="receiverCity" column="FreceiverCity" />
+		<result property="receiverArea" column="FreceiverArea" />
+		<result property="receiveTown" column="FreceiveTown" />
+		<result property="receiverDivisionId" column="FreceiverDivisionId" />
+		<result property="receiverAddress" column="FreceiverAddress" />
+		<result property="receiverName" column="FreceiverName" />
+		<result property="receiverNick" column="FreceiverNick" />
+		<result property="receiverMobile" column="FreceiverMobile" />
+		<result property="receiverPhone" column="FreceiverPhone" />
+		<result property="receiverEmail" column="FreceiverEmail" />
+	</resultMap>
+	<select id="getReceiverInfoById" parameterType="string"
+		resultMap="ReceiverInfoResult">
+		SELECT T.*
+		FROM T_xinyu_ReceiverInfo T where T.FID=#{id}
+	</select>
+	
+	<select id="getOldReceiverInfoById" parameterType="string"
+		resultMap="ReceiverInfoResult">
+		SELECT T.*
+		FROM T_xinyu_ReceiverInfo_1109 T where T.FID=#{id}
+	</select>
+	
+	<select id="getReceiverInfoByList" parameterType="map"
+		resultMap="ReceiverInfoResult">
+		SELECT T.*
+		FROM T_xinyu_ReceiverInfo T 
+		<where>
+		    1=1
+		</where>
+	</select>
+	<insert id="insertReceiverInfo" parameterType="com.xinyu.model.base.ReceiverInfo">
+		insert into
+		T_xinyu_ReceiverInfo(FID,FreceiverZipCode,FreceiverCountry,FreceiverProvince,FreceiverCity,FreceiverArea,FreceiveTown,FreceiverDivisionId,FreceiverAddress,FreceiverName,FreceiverNick,FreceiverMobile,FreceiverPhone,FreceiverEmail)
+		VALUES(#{id},#{receiverZipCode,jdbcType=VARCHAR},#{receiverCountry,jdbcType=VARCHAR},#{receiverProvince,jdbcType=VARCHAR},#{receiverCity,jdbcType=VARCHAR},#{receiverArea,jdbcType=VARCHAR},#{receiveTown,jdbcType=VARCHAR},#{receiverDivisionId,jdbcType=VARCHAR},#{receiverAddress,jdbcType=VARCHAR},#{receiverName,jdbcType=VARCHAR},#{receiverNick,jdbcType=VARCHAR},#{receiverMobile,jdbcType=VARCHAR},#{receiverPhone,jdbcType=VARCHAR},#{receiverEmail,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateReceiverInfo" parameterType="com.xinyu.model.base.ReceiverInfo">
+		update T_xinyu_ReceiverInfo
+		<set>
+			<if test="receiverZipCode!=null and receiverZipCode!=''">FreceiverZipCode=#{receiverZipCode},</if>
+			<if test="receiverCountry!=null and receiverCountry!=''">FreceiverCountry=#{receiverCountry},</if>
+			<if test="receiverProvince!=null and receiverProvince!=''">FreceiverProvince=#{receiverProvince},</if>
+			<if test="receiverCity!=null and receiverCity!=''">FreceiverCity=#{receiverCity},</if>
+			<if test="receiverArea!=null and receiverArea!=''">FreceiverArea=#{receiverArea},</if>
+			<if test="receiveTown!=null and receiveTown!=''">FreceiveTown=#{receiveTown},</if>
+			<if test="receiverDivisionId!=null and receiverDivisionId!=''">FreceiverDivisionId=#{receiverDivisionId},</if>
+			<if test="receiverAddress!=null and receiverAddress!=''">FreceiverAddress=#{receiverAddress},</if>
+			<if test="receiverName!=null and receiverName!=''">FreceiverName=#{receiverName},</if>
+			<if test="receiverNick!=null and receiverNick!=''">FreceiverNick=#{receiverNick},</if>
+			<if test="receiverMobile!=null and receiverMobile!=''">FreceiverMobile=#{receiverMobile},</if>
+			<if test="receiverPhone!=null and receiverPhone!=''">FreceiverPhone=#{receiverPhone},</if>
+			<if test="receiverEmail!=null and receiverEmail!=''">FreceiverEmail=#{receiverEmail},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteReceiverInfoById" parameterType="string">
+		delete from T_xinyu_ReceiverInfo where fid=#{id}
+	</delete>
+
+</mapper> 

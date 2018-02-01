@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/frame/draft76
+END
+BinaryFrame.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/frame/draft76/BinaryFrame.class
+END
+FrameBuilderDraft76.class
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/frame/draft76/FrameBuilderDraft76.class
+END
+TextFrame.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/frame/draft76/TextFrame.class
+END
+CloseFrame.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/frame/draft76/CloseFrame.class
+END
+FrameHeaderDraft76.class
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/frame/draft76/FrameHeaderDraft76.class
+END
+FrameDraft76.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/frame/draft76/FrameDraft76.class
+END

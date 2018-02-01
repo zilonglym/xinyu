@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;httpPost&apos; in &apos;com.graby.store.util.qm.HttpClientUtils.httpGet(...)&apos; to &apos;httpGet&apos;&#x0D;&#x0A;- Original project: &apos;store-core&apos;&#x0D;&#x0A;- Original element: &apos;com.graby.store.util.qm.HttpClientUtils.httpGet(String, String).httpPost&apos;&#x0D;&#x0A;- Renamed element: &apos;httpPost&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;httpPost&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/main\/java&lt;com.graby.store.util.qm{HttpClientUtils.java[HttpClientUtils~httpGet~QString;~QString;@httpPost!2937!2960!2945!2952!QHttpGet;!0!false" name="httpGet" references="true" stamp="1501818721184" version="1.0"/>
+</session>

@@ -1,0 +1,185 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin
+END
+signForm.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/signForm.jsp
+END
+tradeSplited.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/tradeSplited.jsp
+END
+shipAuditOrder.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/shipAuditOrder.jsp
+END
+tradeAudit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/tradeAudit.jsp
+END
+tradeUnfinishs.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/tradeUnfinishs.jsp
+END
+shopInventory.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/shopInventory.jsp
+END
+tradeSpecialAudit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/tradeSpecialAudit.jsp
+END
+signSuccess.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/signSuccess.jsp
+END
+tradeWaitsDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/tradeWaitsDetail.jsp
+END
+sendOrderShips.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/sendOrderShips.jsp
+END
+sendOrderWaits.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/sendOrderWaits.jsp
+END
+empty.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/empty.jsp
+END
+reportShip.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/reportShip.jsp
+END
+shipAuditDone.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/shipAuditDone.jsp
+END
+reportShipItemDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/reportShipItemDetail.jsp
+END
+sendOrderGwaits.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/sendOrderGwaits.jsp
+END
+itemPositionDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/itemPositionDetail.jsp
+END
+tradeWaits.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/tradeWaits.jsp
+END
+signWaits.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/signWaits.jsp
+END
+success.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/success.jsp
+END
+sendOrderForm.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/sendOrderForm.jsp
+END
+tradeWaitSearch.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/tradeWaitSearch.jsp
+END
+shopInventoryDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/shopInventoryDetail.jsp
+END
+sendOrderPickings.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/sendOrderPickings.jsp
+END
+shipAuditForm.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/shipAuditForm.jsp
+END
+entryOnWay.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/entryOnWay.jsp
+END
+tradeMerge.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/tradeMerge.jsp
+END
+entryOperate.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/entryOperate.jsp
+END
+reportShipDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/reportShipDetail.jsp
+END
+itemPosition.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-admin/src/main/webapp/WEB-INF/views/admin/itemPosition.jsp
+END

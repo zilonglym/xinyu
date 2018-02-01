@@ -1,0 +1,35 @@
+<request>
+	<ownerUserId>2791382282</ownerUserId>
+	<itemId>556014953775</itemId>
+	<itemCode>HX0011</itemCode>
+	<storeCode>TZC001</storeCode>
+	<name>奥乐电油汀</name>
+	<barCode>HX0011</barCode>
+	<goodsNo>ALDYT0919</goodsNo>
+	<actionType>MODIFY</actionType>
+	<itemVersion>4</itemVersion>
+	<type>NORMAL</type>
+	<category>216</category>
+	<categoryName>电油汀</categoryName>
+	<brand>BD201609200008</brand>
+	<brandName>奥乐</brandName>
+	<specification>D13W</specification>
+	<grossWeight>16600</grossWeight>
+	<netWeight>16600</netWeight>
+	<isShelflife>false</isShelflife>
+	<isSnMgt>false</isSnMgt>
+	<isHygroscopic>false</isHygroscopic>
+	<isDanger>false</isDanger>
+	<isBatchMgt>false</isBatchMgt>
+	<snInMode>false</snInMode>
+	<snOutMode>false</snOutMode>
+	<isPoMgt>false</isPoMgt>
+	<isPrecious>false</isPrecious>
+	<firstState>false</firstState>
+	<isImported>false</isImported>
+	<isDrugs>false</isDrugs>
+	<tagPrice>0</tagPrice>
+	<isProduceCodeMgt>false</isProduceCodeMgt>
+	<extendFields />
+	<fifoMgt>false</fifoMgt>
+</request>

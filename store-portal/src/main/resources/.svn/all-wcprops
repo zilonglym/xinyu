@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/wlpost/!svn/ver/2851/trunk/store-portal/src/main/resources
+END
+spring-redis.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/wlpost/!svn/ver/2079/trunk/store-portal/src/main/resources/spring-redis.xml
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/wlpost/!svn/ver/2165/trunk/store-portal/src/main/resources/applicationContext.xml
+END
+applicationContext-shiro.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/1966/trunk/store-portal/src/main/resources/applicationContext-shiro.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/wlpost/!svn/ver/1966/trunk/store-portal/src/main/resources/log4j.properties
+END
+generatorConfig.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/wlpost/!svn/ver/3/trunk/store-portal/src/main/resources/generatorConfig.xml
+END
+applicationContext-rule.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/3/trunk/store-portal/src/main/resources/applicationContext-rule.xml
+END
+application.properties
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/wlpost/!svn/ver/1966/trunk/store-portal/src/main/resources/application.properties
+END

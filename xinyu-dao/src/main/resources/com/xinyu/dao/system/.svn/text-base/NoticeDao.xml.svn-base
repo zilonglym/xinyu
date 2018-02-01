@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.base.NoticeDao">
+	<resultMap id="NoticeResult" type="com.xinyu.model.system.Notice">
+		<result property="id" column="FID" />
+		<result property="msg" column="Fmsg" />
+		<result property="lastUpdate" column="FlastUpdateTime" />
+		<result property="account.id" column="FKAccountId" />
+		<result property="cu" column="Fcu" />
+	</resultMap>
+	<select id="findNoticeById" parameterType="string" resultMap="NoticeResult">
+		SELECT T.*
+		FROM t_xinyu_notice T 
+		where 1=1
+		<if test="id!=null and id!=''">
+			and T.FID=#{id}
+		</if>	
+	</select>
+
+	<insert id="insertNotice" parameterType="com.xinyu.model.system.Notice">
+		insert into
+		t_xinyu_notice(FID,Fmsg,FlastUpdateTime,FKAccountId,Fcu)
+		VALUES(#{id},#{msg,jdbcType=VARCHAR},#{lastUpdate,jdbcType=DATE},#{account.id,jdbcType=VARCHAR},#{cu,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateNotice" parameterType="com.xinyu.model.system.Notice">
+		update t_xinyu_notice
+		<set>
+			<if test="msg!=null and msg!=''">Fmsg=#{msg},</if>
+			<if test="lastUpdate!=null and lastUpdate!=''">FlastUpdateTime=#{lastUpdate},</if>
+			<if test="account!=null and account!=''">FKAccountId=#{account.id},</if>
+		</set>
+		where FID=#{id}
+	</update>
+	
+</mapper> 

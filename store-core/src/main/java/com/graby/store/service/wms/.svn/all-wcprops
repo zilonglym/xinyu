@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/wlpost/!svn/ver/2674/trunk/store-core/src/main/java/com/graby/store/service/wms
+END
+ProcessService.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/141/trunk/store-core/src/main/java/com/graby/store/service/wms/ProcessService.java
+END
+ShipOrderReturnService.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/2279/trunk/store-core/src/main/java/com/graby/store/service/wms/ShipOrderReturnService.java
+END
+ShipOrderService.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/2674/trunk/store-core/src/main/java/com/graby/store/service/wms/ShipOrderService.java
+END
+SystemItemService.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/141/trunk/store-core/src/main/java/com/graby/store/service/wms/SystemItemService.java
+END
+StorageService.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/141/trunk/store-core/src/main/java/com/graby/store/service/wms/StorageService.java
+END
+ShipOrderCancelService.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/1522/trunk/store-core/src/main/java/com/graby/store/service/wms/ShipOrderCancelService.java
+END
+ExpressService.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/service/wms/ExpressService.java
+END
+ShipOrderPackageService.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/141/trunk/store-core/src/main/java/com/graby/store/service/wms/ShipOrderPackageService.java
+END

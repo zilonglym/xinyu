@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinyu.check.dao.SystemItemDao">
+	<resultMap id="SystemItemResult" type="com.xinyu.check.model.SystemItem">
+			<result property="id" column="id" />
+			<result property="value" column="value" />
+			<result property="description" column="description" />
+			<result property="type" column="type" />
+			<result property="parentId" column="parentId" />
+			<result property="seq" column="seq" />
+		</resultMap>
+	
+	<select id="findSystemItemById" parameterType="string" resultMap="SystemItemResult">
+		SELECT T.*
+		FROM sc_system_item T where T.ID=#{id}
+	</select>
+	
+	<select id="findSystemItemByList" parameterType="map" resultMap="SystemItemResult">
+		SELECT T.*
+		FROM sc_system_item T 
+		where 1=1 
+		<if test="type!=null and type!=''">
+			and T.type=#{type}
+		</if>
+		<if test="value!=null and value!=''">
+			and T.value=#{value}
+		</if>
+		<if test="q!=null and q!=''">
+			and T.value like "%"#{q}"%" or T.description like "%"#{q}"%" or T.type like "%"#{q}"%"
+		</if>
+	</select>
+	
+	
+
+</mapper> 

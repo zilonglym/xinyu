@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud
+END
+commit.sh
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/commit.sh
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/.project
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/.gitignore
+END
+sync-server.sh
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/sync-server.sh
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/pom.xml
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/wlpost/!svn/ver/2495/trunk/store-core/src/main/java/com/graby/store/entity/enums
+END
+StorageStatusEnums.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/157/trunk/store-core/src/main/java/com/graby/store/entity/enums/StorageStatusEnums.java
+END
+StoreModelEnums.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/entity/enums/StoreModelEnums.java
+END
+OrderStatusEnums.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/2234/trunk/store-core/src/main/java/com/graby/store/entity/enums/OrderStatusEnums.java
+END
+StoreSystemItemEnums.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/8/trunk/store-core/src/main/java/com/graby/store/entity/enums/StoreSystemItemEnums.java
+END
+StoreMenuModelEnums.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/2495/trunk/store-core/src/main/java/com/graby/store/entity/enums/StoreMenuModelEnums.java
+END
+OperatorModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/2234/trunk/store-core/src/main/java/com/graby/store/entity/enums/OperatorModel.java
+END

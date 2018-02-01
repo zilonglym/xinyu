@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/wlpost/!svn/ver/2839/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/system
+END
+AuditAreaDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/1812/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/system/AuditAreaDao.xml
+END
+NoticeDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/2296/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/system/NoticeDao.xml
+END
+SystemItemDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/2489/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/system/SystemItemDao.xml
+END
+PersonDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/2839/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/system/PersonDao.xml
+END

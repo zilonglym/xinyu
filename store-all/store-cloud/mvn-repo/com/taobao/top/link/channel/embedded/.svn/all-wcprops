@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/channel/embedded
+END
+EmbeddedWebSocketClientChannel$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/channel/embedded/EmbeddedWebSocketClientChannel$1.class
+END
+EmbeddedWebSocketHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/channel/embedded/EmbeddedWebSocketHandler.class
+END
+EmbeddedWebSocketClient.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/channel/embedded/EmbeddedWebSocketClient.class
+END
+EmbeddedClientChannelPooledSelector.class
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/channel/embedded/EmbeddedClientChannelPooledSelector.class
+END
+EmbeddedClientChannelPooledSelector$EmbeddedChannelPool.class
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/channel/embedded/EmbeddedClientChannelPooledSelector$EmbeddedChannelPool.class
+END
+EmbeddedWebSocketClientChannel.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/channel/embedded/EmbeddedWebSocketClientChannel.class
+END
+EmbeddedClientChannelSharedSelector.class
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/channel/embedded/EmbeddedClientChannelSharedSelector.class
+END

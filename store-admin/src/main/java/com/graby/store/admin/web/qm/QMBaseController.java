@@ -1,0 +1,251 @@
+package com.graby.store.admin.web.qm;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.graby.store.admin.task.ObjectTranscoder;
+import com.graby.store.admin.util.IRedisProxy;
+import com.graby.store.admin.util.qm.XmlUtil;
+import com.graby.store.entity.Centro;
+import com.graby.store.entity.Item;
+import com.graby.store.entity.ShipOrder;
+import com.graby.store.entity.ShipOrderDetail;
+import com.graby.store.entity.ShipOrderPackageItem;
+import com.graby.store.entity.User;
+import com.graby.store.entity.enums.qm.XmlEnum;
+import com.graby.store.remote.CentroRemote;
+import com.graby.store.remote.ItemRemote;
+import com.graby.store.remote.ShipOrderPackageRemote;
+import com.graby.store.remote.ShipOrderRemote;
+import com.graby.store.remote.UserRemote;
+import com.graby.store.service.qm.QmMethodInterface;
+/**
+ * 公共类
+ * @author yangin
+ *
+ */
+
+@Controller
+public class QMBaseController {
+	public static final Logger logger = Logger.getLogger(QMBaseController.class);
+	@Autowired
+	private ShipOrderRemote shipOrderRemote;
+	
+	@Autowired
+	private CentroRemote  centroRemote;
+	
+	@Autowired
+	private UserRemote userRemote;
+	
+	@Autowired
+	private ShipOrderPackageRemote packageRemote;
+	
+	@Autowired
+	private ItemRemote itemRemote;
+	@Autowired
+	private IRedisProxy redisProxy;
+	/***
+	 * 当前登陆用户
+	 * @return
+	 */
+	public User getCurrentUser(){
+		User user=new User();
+		user.setId(Long.valueOf("1"));
+		return user;
+	}
+	
+	/**
+	 * 取当前仓库
+	 * @return
+	 */
+	public Centro getCurrentCentro(){
+		Centro centro=new Centro();
+		centro.setId(Long.valueOf("1"));
+		return centro;
+	}
+	
+	/**
+	 * 重新组合单据的明细信息
+	 * @param shipOrder
+	 */
+	public void buildOrderDetailInfo(ShipOrder shipOrder){
+		Map<String,Object> params=new HashMap<String, Object>();
+		params.put("orderNo", shipOrder.getOrderno());
+		List<ShipOrder> orderList=this.shipOrderRemote.selectShipOrderByList(params);
+		/**
+		 * 先把shipOrder的明细放入map ,key为itemId
+		 */
+		Map<String,Object> detailMap=new HashMap<String, Object>();
+		for(int i=0;i<shipOrder.getDetails().size() && shipOrder.getDetails()!=null; i++){
+			ShipOrderDetail detail=shipOrder.getDetails().get(i);
+			if(detailMap.get(detail.getItem().getId().toString())!=null){
+				ShipOrderDetail obj=(ShipOrderDetail) detailMap.get(detail.getItem().getId().toString());
+				obj.setNum(obj.getNum()+detail.getNum());
+			}else{
+				detailMap.put(shipOrder.getDetails().get(i).getItem().getId().toString(), shipOrder.getDetails().get(i));
+			}
+		}
+		for(int i=0;i<orderList.size() && orderList!=null;i++){
+			ShipOrder order=orderList.get(i);
+			if(order.getId().intValue()==shipOrder.getId().intValue()){
+				continue;
+			}
+			//查询订单的明细，组合
+			List<ShipOrderDetail> detailList=this.shipOrderRemote.getShipOrderDetailByOrderId(order.getId());
+			for(int j=0;detailList!=null && j<detailList.size();j++){
+				ShipOrderDetail detail=detailList.get(j);
+				if(detailMap.get(detail.getItem().getId().toString())!=null){
+					//数量组合
+					ShipOrderDetail obj=(ShipOrderDetail) detailMap.get(detail.getItem().getId().toString());
+					obj.setNum(obj.getNum()+detail.getNum());
+				}else{
+					//商品组合
+					detailMap.put(detail.getItem().getId().toString(),detail);
+				}
+			}
+		}
+		/**
+		 * 回归订单组合
+		 */
+		shipOrder.getDetails().clear();//清除订单明细的所有数据
+		for(Map.Entry<String, Object> entry : detailMap.entrySet()){
+			ShipOrderDetail detail=(ShipOrderDetail) entry.getValue();
+			shipOrder.getDetails().add(detail);
+		}
+	}
+	
+	/**
+	 * 保存缓存信息
+	 * @param key
+	 * @param value
+	 */
+	public void saveMemcached(String key,Map<String,String> value){
+		logger.error("订单缓存保存:"+key);
+		this.redisProxy.set(key.getBytes(), ObjectTranscoder.serialize(value));
+	}
+	/**
+	 * 发货确认
+	 * @param orderMap
+	 * @param shipOrder
+	 * @return
+	 */
+	public String buildDeliverOrderInfo(Map<String,Object> orderMap,ShipOrder shipOrder,User user){
+		orderMap.put("deliveryOrderCode", shipOrder.getOrderno());
+		orderMap.put("deliveryOrderId", shipOrder.getId());
+		orderMap.put("orderType", shipOrder.getOrderType());
+		orderMap.put("outBizCode", shipOrder.getOrderno()+"-"+shipOrder.getId());
+		orderMap.put("confirmType", 0);
+		orderMap.put("operateTime", shipOrder.getOperateTime());
+		orderMap.put("warehouseCode",QmMethodInterface.warehouseCode);
+		List<ShipOrderPackageItem> packageLists=new ArrayList<ShipOrderPackageItem>();
+		//发票信息
+			if (shipOrder.getInvoiceAmount() != null) {
+				Map<String, Object> invoice = new HashMap<String, Object>();
+				invoice.put("header", shipOrder.getInvoiceHeader());
+				invoice.put("amount", Double.valueOf(shipOrder.getInvoiceAmount()));
+				invoice.put("content", shipOrder.getInvoiceContent() + " ");
+				List<Map<String, Object>> mapList = new ArrayList<Map<String, Object>>();
+				mapList.add(invoice);
+				Map<String, Object> invoices = new HashMap<String, Object>();
+				invoices.put("invoice", invoice);
+				orderMap.put("invoices", invoices);
+			}
+		Map<String,Object> resultMap=new HashMap<String,Object>();
+		resultMap.put("deliveryOrder", orderMap);
+		//resultMap.put("confirmType", 0);
+		Map<String,Object> packagesMap=new HashMap<String,Object>();
+		
+		List<Map<String,Object>> packageList=new ArrayList<Map<String,Object>>();
+		Map<String,Object> packageMap=new HashMap<String,Object>();
+		//List<Map<String,Object>> packagesItemList=new ArrayList<Map<String,Object>>();
+		packageList.add(packageMap);
+		packagesMap.put("package", packageList);
+		resultMap.put("packages", packagesMap);
+		packageMap.put("logisticsCode", shipOrder.getExpressCompany());
+		//packageMap.put("logisticsName", shipOrder.getExpressCompanyName());
+		packageMap.put("expressCode", shipOrder.getExpressOrderno());
+		
+		packageMap.put("invoiceNo", "");
+		Map<String,Object> extendProps=new HashMap<String, Object>();
+		extendProps.put("source", "zc");//表示来源仓库为中仓"zc"
+		packageMap.put("extendProps", extendProps);
+		
+		Map<String,Object> itemsMap=new HashMap<String,Object>();
+		Map<String,Object> packItemsMap=new HashMap<String,Object>();
+		
+		List<Map<String,Object>> itemsList=new ArrayList<Map<String,Object>>();
+		List<Map<String,Object>> packItemsList=new ArrayList<Map<String,Object>>();
+		List<Map<String,Object>> orderLineList=new ArrayList<Map<String,Object>>();
+		packageMap.put("items", packItemsMap);
+		itemsMap.put("item", itemsList);
+		packItemsMap.put("item", packItemsList);
+		List<ShipOrderDetail> detailList=null;
+		if(shipOrder!=null && shipOrder.getSourcePlatformCode().indexOf("split")<0){
+			Map<String,Object> params=new HashMap<String, Object>();
+			params.put("shipOrderId", shipOrder.getId());
+			detailList=this.shipOrderRemote.shipOrderDetailbyList(params);
+		}else{
+			detailList=shipOrder.getDetails();
+		}
+		Item itemObj=null;
+		double weight=0;
+		for(int i=0;i<detailList.size();i++){
+			ShipOrderDetail detail=detailList.get(i);
+			itemObj=this.itemRemote.getItem(detail.getItem().getId());
+			String num=String.valueOf(detail.getNum());
+			if(num.length()==0 || num.equals("0")){
+				continue;
+			}
+			Map<String,Object> item=new HashMap<String,Object>();
+			Map<String,Object> packItem=new HashMap<String,Object>();
+			Map<String,Object> orderLineMap=new HashMap<String, Object>();
+			item.put("itemCode", itemObj.getCode());
+			item.put("quantity", Integer.valueOf(num));
+			item.put("actualQty", Integer.valueOf(num));
+			item.put("planQty", Integer.valueOf(num));
+			item.put("itemId", itemObj.getId());
+			item.put("ownerCode", user.getOwnerCode());	
+			
+			orderLineMap.put("itemCode", itemObj.getCode());
+			orderLineMap.put("quantity", Integer.valueOf(num));
+			orderLineMap.put("actualQty", Integer.valueOf(num));
+			orderLineMap.put("planQty", Integer.valueOf(num));
+			orderLineMap.put("itemId", itemObj.getId());
+			orderLineMap.put("ownerCode", user.getOwnerCode());
+			orderLineMap.put("orderLineNo", detail.getOrderLineNo());
+			
+			
+			packItem.put("itemCode", itemObj.getCode());
+			packItem.put("quantity", Integer.valueOf(num));
+			packItem.put("actualQty", Integer.valueOf(num));
+			packItem.put("planQty", Integer.valueOf(num));
+			packItem.put("itemId", itemObj.getId());
+			
+			weight+=itemObj.getWeight()==null?0:itemObj.getWeight();
+			itemsList.add(item);
+			orderLineList.add(orderLineMap);
+			packItemsList.add(packItem);
+			//packageList.add(item);
+			ShipOrderPackageItem packageItem=new ShipOrderPackageItem();
+			packageItem.setCreateTime(new Date());
+			packageItem.setItemId(itemObj.getId().intValue());
+			packageItem.setQuantity(Integer.valueOf(num));
+		//	packageItem.setDetailId(Integer.valueOf(detailAry[i]));
+			packageLists.add(packageItem);
+		}
+		packageMap.put("weight",weight);
+		Map<String,Object> orderLineMap=new HashMap<String,Object>();
+		
+		orderLineMap.put("orderLine", orderLineList);
+		resultMap.put("orderLines", orderLineMap);
+		String xmlStr = XmlUtil.converterPayPalm(resultMap, XmlEnum.REQUEST);
+		return xmlStr;
+	}
+}

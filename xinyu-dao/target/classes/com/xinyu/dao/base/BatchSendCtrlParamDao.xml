@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.dao.base.BatchSendCtrlParamDao">
+	<resultMap id="BatchSendCtrlParamResult" type="com.xinyu.model.base.BatchSendCtrlParam" >
+	<result property="id" column="FID" />
+	<result property="cu" column="FCU" />
+	<result property="totalOrderItemCount" column="FtotalOrderItemCount" />
+	<result property="distributeType" column="FdistributeType" />
+</resultMap>
+	<select id="getBatchSendCtrlParamById" parameterType="string"  resultMap="BatchSendCtrlParamResult" >
+		 SELECT T.* 
+			FROM T_xinyu_BatchSendCtrlParam T where T.FID=#{id}
+	</select>
+<insert id="insertBatchSendCtrlParam" parameterType="com.xinyu.model.base.BatchSendCtrlParam" >
+insert into T_xinyu_BatchSendCtrlParam(FID,FCU,FtotalOrderItemCount,FdistributeType)
+VALUES(#{id},#{cu,jdbcType=VARCHAR},#{totalOrderItemCount,jdbcType=INTEGER},#{distributeType,jdbcType=INTEGER})
+</insert>
+
+<update id="updateBatchSendCtrlParam" parameterType="com.xinyu.model.base.BatchSendCtrlParam" >
+	update T_xinyu_BatchSendCtrlParam
+	<set>
+		<if test="cu!=null and cu!=''">FCU=#{cu},</if>
+		<if test="totalOrderItemCount!=null and totalOrderItemCount!=''">FtotalOrderItemCount=#{totalOrderItemCount},</if>
+		<if test="distributeType!=null and distributeType!=''">FdistributeType=#{distributeType},</if>
+	</set>
+where fid=#{id}
+</update>
+
+<delete id="deleteBatchSendCtrlParamById"  parameterType="string"  >
+	delete  from T_xinyu_BatchSendCtrlParam where fid=#{id}
+</delete>
+
+</mapper>

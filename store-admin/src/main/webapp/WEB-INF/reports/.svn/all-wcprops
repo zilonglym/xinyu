@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/wlpost/!svn/ver/498/trunk/store-admin/src/main/webapp/WEB-INF/reports
+END
+settlement.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/settlement.jrxml
+END
+finace.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/finace.jrxml
+END
+profits.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/profits.jrxml
+END
+pick.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/pick.jrxml
+END
+checkOutByCompany.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/checkOutByCompany.jrxml
+END
+batchPick.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/batchPick.jrxml
+END
+express.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/express.jrxml
+END
+minPick.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/387/trunk/store-admin/src/main/webapp/WEB-INF/reports/minPick.jrxml
+END
+checkInventory.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/checkInventory.jrxml
+END
+inventoryRecord.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/inventoryRecord.jrxml
+END
+monthProfits.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/monthProfits.jrxml
+END
+summary.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/summary.jrxml
+END
+ship.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/wlpost/!svn/ver/498/trunk/store-admin/src/main/webapp/WEB-INF/reports/ship.jrxml
+END
+storage.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/storage.jrxml
+END
+checkOut.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/140/trunk/store-admin/src/main/webapp/WEB-INF/reports/checkOut.jrxml
+END
+pickDetail.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/pickDetail.jrxml
+END
+minPickDetail.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/387/trunk/store-admin/src/main/webapp/WEB-INF/reports/minPickDetail.jrxml
+END
+companyProfits.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/companyProfits.jrxml
+END
+batchPick_xls.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/batchPick_xls.jrxml
+END
+checkOutByItem.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/checkOutByItem.jrxml
+END
+checkOutByTrade.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/checkOutByTrade.jrxml
+END
+stockTaking.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/reports/stockTaking.jrxml
+END

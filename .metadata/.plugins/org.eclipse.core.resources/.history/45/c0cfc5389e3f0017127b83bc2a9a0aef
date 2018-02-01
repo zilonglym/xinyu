@@ -1,0 +1,60 @@
+package com.xinyu.service.caoniao;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.taobao.pac.sdk.cp.ReceiveListener;
+import com.taobao.pac.sdk.cp.ReceiveSysParams;
+import com.taobao.pac.sdk.cp.dataobject.request.WMS_ORDER_CANCEL_NOTIFY.WmsOrderCancelNotifyRequest;
+import com.taobao.pac.sdk.cp.dataobject.response.WMS_ORDER_CANCEL_NOTIFY.WmsOrderCancelNotifyResponse;
+import com.xinyu.model.order.enums.OrderTypeEnum;
+import com.xinyu.service.trade.ShipOrderService;
+
+/**
+ * 单据取消接品
+ * @author yangmin
+ * 2017年5月1日
+ *
+ */
+@Component
+public class WmsOrderCancelNotifyCpImpl  implements ReceiveListener<WmsOrderCancelNotifyRequest, WmsOrderCancelNotifyResponse>{
+
+	public static final Logger logger = Logger.getLogger(WmsOrderCancelNotifyCpImpl.class);
+	
+	@Autowired
+	private ShipOrderService orderService;
+	@Override
+	public WmsOrderCancelNotifyResponse execute(ReceiveSysParams params, WmsOrderCancelNotifyRequest request) {
+		logger.debug("单据取消接口!");;
+		WmsOrderCancelNotifyResponse response=new WmsOrderCancelNotifyResponse();
+		try{
+			this.orderCancel(request);
+			response.setSuccess(true);
+		}catch(Exception  e){
+			String msg=e.getMessage();
+			response.setSuccess(false);
+			response.setErrorMsg(msg);
+			e.printStackTrace();
+		}
+		
+		return response;
+	}
+
+	/**
+	 * 单据取消业务处理
+	 * @param request
+	 */
+	private void orderCancel(WmsOrderCancelNotifyRequest request){
+		String orderCode=request.getOrderCode();
+		String orderType=request.getOrderType();
+		OrderTypeEnum ordertype=OrderTypeEnum.getOrderTypeEnum(orderType);
+		
+		if(OrderTypeEnum.SHIPORDER.equals(ordertype)){
+			String userId=request.getOwnerUserId();
+			this.orderService.orderCancel(orderCode, userId, orderType);
+		}else{
+			
+		}
+	}
+}

@@ -1,0 +1,472 @@
+package com.graby.store.portal.web;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.bouncycastle.jce.spec.ElGamalKeySpec;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.graby.store.base.GroupMap;
+import com.graby.store.entity.Item;
+import com.graby.store.entity.ShipOrder;
+import com.graby.store.entity.Trade;
+import com.graby.store.entity.TradeMapping;
+import com.graby.store.entity.TradeOrder;
+import com.graby.store.service.item.ItemService;
+import com.graby.store.service.trade.TradeService;
+import com.graby.store.service.wms.ExpressService;
+import com.graby.store.service.wms.ShipOrderService;
+import com.graby.store.web.auth.ShiroContextUtils;
+import com.graby.store.web.top.TopWmsApi;
+import com.graby.store.web.top.TradeTrace;
+import com.taobao.api.ApiException;
+import com.taobao.api.domain.Refund;
+
+/**
+ * 用户交易
+ * 
+ * @author huabiao.mahb
+ */
+@Controller
+@RequestMapping(value = "/trade")
+public class TradeController {
+
+	@Autowired
+	private TradeService tradeService;
+
+	@Autowired
+	private ShipOrderService shipOrderService;
+
+	@Autowired
+	private ExpressService expressService;
+	
+	@Autowired
+	private TopWmsApi topWmsApi;
+	
+	@Autowired
+	private ItemService itemService;
+
+	/**
+	 * 活动专场 用于大批量团购
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/special")
+	public String special() {
+		return "trade/special";
+	}
+
+	@RequestMapping(value = "/special/fetch/ajax")
+	public String specialResult(@RequestParam(value = "preday") int preday, Model model) throws Exception {
+		GroupMap<String, Long> results = tradeService.fetchWaitSendTopTradeTotalResults(preday);
+		model.addAttribute("related", results.getList("related"));
+		List<Long> unRelated = results.getList("unrelated");
+		model.addAttribute("unrelated", unRelated == null ? new ArrayList<Long>() : unRelated);
+		return "trade/specialFetch";
+	}
+
+//	/**
+//	 * 查询所有等待买家发货交易订单（新版）
+//	 * 
+//	 * useable : 可发送的<br>
+//	 * related : 已由物流通处理的<br>
+//	 * failed : 未关联或库存不足的<br>
+//	 * 
+//	 * @return
+//	 * @throws Exception
+//	 */
+//	@RequestMapping(value = "/waits/fetch")
+//	public String fetch(@RequestParam(value = "preday") int preday, Model model) throws Exception {
+//
+//		/* -1 查询最近一周， 其他指定天数 */
+//		GroupMap<String, Trade> tradeMap = preday == -1 ? tradeService.fetchWaitSendTopTrades(0, 1, 2, 3, 4)
+//				: tradeService.fetchWaitSendTopTrades(preday);
+//		System.err.println(tradeMap);
+//		model.addAttribute("useable", tradeMap.getList("useable"));
+//		model.addAttribute("related", tradeMap.getList("related"));
+//		model.addAttribute("failed", tradeMap.getList("failed"));
+//		model.addAttribute("refund", tradeMap.getList("refund"));
+//		return "trade/waitsFetch";
+//	}
+
+	/**
+	 * 待打印订单（电子面单）
+	 * 
+	 * @return
+	 * @throws ApiException
+	 */
+	@RequestMapping(value = "/waits/wms")
+	public String waitsWms(Model model) {
+		String wmsSessionKey = ShiroContextUtils.getWmsSessionKey();
+		if (wmsSessionKey == null) {
+			return "redirect:" + topWmsApi.getAuthurl();
+		}
+		// 如果已登录 wsm app session
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("userId", ShiroContextUtils.getCurrentUser().getUserid());
+		List<Trade> trades = tradeService.findWaitAuditTradesBy(params);
+		model.addAttribute("trades", trades);
+		Map<String, String> expressMap = expressService.getExpressWmsMap();
+		model.addAttribute("expressCompanys", expressMap);
+		return "trade/tradeWaitsWms";
+	}
+
+	/**
+	 * 退款列表
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/refunds")
+	public String refunds(Model model) throws Exception {
+		List<Refund> refunds = tradeService.fetchRefunds();
+		List<RefundEntry> entrys = new ArrayList<RefundEntry>();
+		if (CollectionUtils.isNotEmpty(refunds)) {
+			for (Refund refund : refunds) {
+				TradeMapping mapping = tradeService.getRelatedMapping(refund.getTid());
+				entrys.add(new RefundEntry(refund, mapping));
+			}
+		}
+		model.addAttribute("refunds", entrys);
+		return "trade/refunds";
+	}
+
+	@RequestMapping(value = "/delete/{tradeId}")
+	public String delete(@PathVariable("tradeId") Long tradeId) {
+		tradeService.deleteTrade(tradeId,-1);
+		return "redirect:/trade/refunds";
+	}
+
+	public class RefundEntry {
+		public RefundEntry(Refund refund, TradeMapping mapping) {
+			this.refund = refund;
+			this.mapping = mapping;
+		}
+
+		private Refund refund;
+		private TradeMapping mapping;
+
+		public Refund getRefund() {
+			return refund;
+		}
+
+		public TradeMapping getMapping() {
+			return mapping;
+		}
+
+		public void setRefund(Refund refund) {
+			this.refund = refund;
+		}
+
+		public void setMapping(TradeMapping mapping) {
+			this.mapping = mapping;
+		}
+	}
+
+	/**
+	 * 当前用户仓库已接收订单列表
+	 * 
+	 * @return
+	 * @throws ApiException
+	 */
+	@RequestMapping(value = "/search")
+	public String search() {
+		return "trade/search";
+	}
+
+	@RequestMapping(value = "/search/ajax")
+	public String search(@RequestParam(value = "q", defaultValue = "") String q, Model model) {
+		List<ShipOrder> orders = shipOrderService.findSendOrderByQ(q);
+		List<Entry> entrys = new ArrayList<Entry>();
+		for (ShipOrder shipOrder : orders) {
+			Entry entry = new Entry();
+			Trade tarde = tradeService.getTrade(shipOrder.getTradeId());
+			entry.setOrder(shipOrder);
+			entry.setTrade(tarde);
+			entrys.add(entry);
+		}
+		model.addAttribute("entrys", entrys);
+		return "trade/searchResult";
+	}
+
+	/**
+	 * 物流信息追踪
+	 * 
+	 * @param status
+	 * @param page
+	 * @param model
+	 * @return
+	 * @throws ApiException
+	 */
+	@RequestMapping(value = "/traces", method = RequestMethod.GET)
+	public String trace(@RequestParam(value = "page", defaultValue = "1") int page, Model model) throws ApiException {
+		Page<TradeTrace> trades = tradeService.findUserTradeTraces(ShiroContextUtils.getUserid(), page, 50);
+		model.addAttribute("traces", trades);
+		return "trade/tradeTraces";
+	}
+
+	@RequestMapping(value = "/close")
+	public String close(@RequestParam(value = "tradeIds") Long[] tradeIds) throws ApiException {
+		tradeService.closeTrades(tradeIds);
+		return "redirect:/trade/traces";
+	}
+
+	@RequestMapping(value = "/test")
+	public String test(Model model) {
+		int len = 10000;
+		String[] ii = new String[len];
+		for (int i = 0; i < len; i++) {
+			ii[i] = Long.valueOf("92108892868727") + i + "";
+		}
+		model.addAttribute("array", ii);
+		return "trade/test";
+	}
+
+	public class Entry {
+		private Trade trade;
+		private ShipOrder order;
+
+		public Trade getTrade() {
+			return trade;
+		}
+
+		public ShipOrder getOrder() {
+			return order;
+		}
+
+		public void setTrade(Trade trade) {
+			this.trade = trade;
+		}
+
+		public void setOrder(ShipOrder order) {
+			this.order = order;
+		}
+	}
+
+	// /**
+	// * 根据淘宝交易ID批量创建系统交易订单
+	// * 库存记账: 可销售->冻结
+	// * @param tids
+	// * @return
+	// * @throws NumberFormatException
+	// * @throws ApiException
+	// */
+	// @RequestMapping(value = "/send", method = RequestMethod.POST)
+	// public String send(@RequestParam(value = "tids") String[] tids) throws
+	// NumberFormatException, ApiException {
+	// tradeService.createTradesFromTop(tids);
+	// return "redirect:/trade/waits";
+	// }
+	// /**
+	// * 商铺方通知用户签收
+	// * 库存记账: 冻结->已销售
+	// * @param tid
+	// * @param redirectAttributes
+	// * @return
+	// * @throws ApiException
+	// */
+	// @RequestMapping(value = "/notify", method = RequestMethod.POST)
+	// public String notifyUser(@RequestParam(value = "ids", defaultValue = "")
+	// Long[] tradeIds,
+	// RedirectAttributes redirectAttributes) throws ApiException {
+	// shipOrderService.batchNotifyUserSign(tradeIds);
+	// return "redirect:/trade/notifys";
+	// }
+	
+	/**
+	 * 批量查询淘宝交易订单（多条）
+	 * 
+	 * @return
+	 * @throws ApiException
+	 */
+	@RequestMapping(value = "/waits")
+	public String waits() {
+		//return "trade/waits";
+		return "trade/tradeWaits";
+	}
+	
+	@RequestMapping(value = "/waits/listData")
+	@ResponseBody
+	public Map<String,Object> getTrade(
+			@RequestParam(defaultValue="1") int page,
+			@RequestParam(defaultValue="100") int rows,
+			HttpServletRequest request) throws Exception{
+			if (rows!=100) {
+//				System.err.println(rows);
+				rows=100;
+			}
+//			System.err.println(rows);
+			int preday=Integer.parseInt(request.getParameter("preday"));
+			String status=request.getParameter("status");
+			System.err.println("preday:"+preday+" status:"+status);
+			/* -1 查询最近一周， 其他指定天数 */
+			GroupMap<String, Trade> tradeMap = preday == -1 ? tradeService.fetchWaitSendTopTrades(0, 1, 2, 3, 4)
+					: tradeService.fetchWaitSendTopTrades(preday);
+			Map<String,Object> resultMap=new HashMap<String, Object>();
+			if (tradeMap.getList(status)!=null) {
+				List<Trade> trades=tradeMap.getList(status);
+	 			List<Map<String, Object>> resultList=new ArrayList<Map<String,Object>>();
+	 			for(Trade trade:trades){
+	 				Map<String, Object> map=new HashMap<String, Object>();
+	 				map.put("tid", trade.getTid());
+	 				SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	 				map.put("payTime",format.format(trade.getPayTime()));
+	 				map.put("status",trade.getStatus());
+	 				map.put("description",status);
+	 				map.put("type",trade.getType());
+	 				map.put("shippingType",trade.getShippingType());
+	 				map.put("lgAgingType",trade.getLgAgingType()+trade.getLgAging());
+	 				map.put("buyerNick",trade.getBuyerNick());
+	 				map.put("receiverName",trade.getReceiverName());
+	 				map.put("phone",trade.getReceiverMobile()+","+trade.getReceiverPhone());
+					map.put("address",trade.getReceiverState()+trade.getReceiverCity()+trade.getReceiverDistrict()+trade.getReceiverAddress());
+					String items=null;
+					for(TradeOrder order:trade.getOrders()){
+						String title=order.getTitle();
+						String sku=order.getSkuPropertiesName();
+						long stockNum=order.getStockNum();
+						if (stockNum==-1) {
+							String stock="未关联";
+							items=items+title+(sku==null?"":sku)+"("+stock+")\n";
+						}else if (stockNum==0) {
+							String stock="无库存";
+							items=items+title+(sku==null?"":sku)+"("+stock+")\n";
+						}else {
+							items=items+title+(sku==null?"":sku)+"("+stockNum+")\n";
+						}
+					}
+					map.put("items",items);
+					map.put("remark","卖家："+trade.getSellerMemo()+"\n"+" 买家："+trade.getBuyerMemo()+trade.getBuyerMessage());
+					resultList.add(map);
+				}
+				resultMap.put("page",page);
+				resultMap.put("rows",resultList);
+				resultMap.put("total",resultList.size());
+				System.err.println("map:"+resultMap);
+			}else {
+				System.err.println("tradeMap数据为空！！！！");
+			}
+			return resultMap;
+	}
+	
+	/**
+	 * 当前用户仓库已接收订单列表
+	 * 
+	 * @return
+	 * @throws ApiException
+	 */
+	@RequestMapping(value = "/received")
+	public String received(Model model){
+		return "trade/tradeReceived";
+	}
+	
+	@RequestMapping(value = "/received/listData")
+	@ResponseBody
+	public Map<String, Object> ListData(@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "rows", defaultValue = "100") int rows,
+			ModelMap model,HttpServletRequest request) throws ApiException {
+		if(rows!=100){
+			rows  =  100;
+		}
+		String status=request.getParameter("status");
+		String q=request.getParameter("q");
+		Map<String,Object> retMap=new HashMap<String, Object>();
+		Page<Trade> trades = tradeService.findUserTrades(ShiroContextUtils.getUserid(), status, page, rows);
+		List<Map<String,Object>> resultList=new ArrayList<Map<String,Object>>();
+		for(Trade trade:trades){
+			Map<String, Object> map=new HashMap<String, Object>();
+			map.put("tid", trade.getTid());
+			SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			map.put("payTime",format.format(trade.getPayTime()));
+			map.put("status",trade.getStatus());
+			map.put("description",status);
+			map.put("shippingType",trade.getShippingType());
+			map.put("lgAgingType",trade.getLgAgingType()+trade.getLgAging());
+			map.put("buyerNick",trade.getBuyerNick());
+			map.put("receiverName",trade.getReceiverName());
+			map.put("phone",trade.getReceiverMobile()+","+trade.getReceiverPhone());
+			map.put("address",trade.getReceiverState()+trade.getReceiverCity()+trade.getReceiverDistrict()+trade.getReceiverAddress());
+			String items=null;
+			for(TradeOrder order:trade.getOrders()){
+				String title=order.getTitle();
+				String sku=order.getSkuPropertiesName();
+				items=items+title+(sku==null?"":sku)+";";
+			}
+			map.put("items",items);
+			map.put("remark","卖家："+trade.getSellerMemo()+" 买家："+trade.getBuyerMemo()+trade.getBuyerMessage());
+			resultList.add(map);
+		}
+		retMap.put("rows", resultList);
+		retMap.put("page", page);
+		retMap.put("total", trades.getTotalElements());
+		return retMap;
+	}
+	
+	/**
+	 * 等待用户签收列表
+	 * 
+	 * @return
+	 * @throws ApiException
+	 */
+	@RequestMapping(value = "/notifys")
+	public String notifyTrades(Model model) throws ApiException {
+//		Page<Trade> trades = tradeService.findUserTrades(ShiroContextUtils.getUserid(),
+//				Trade.Status.TRADE_WAIT_EXPRESS_NOFITY, page, 15);
+//		model.addAttribute("trades", trades);
+//		return "trade/tradeNotifys";
+		return "trade/notifys";
+	}
+	
+	@RequestMapping(value = "/notifys/listData")
+	@ResponseBody
+	public Map<String, Object> ListData(@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "rows", defaultValue = "100") int rows,HttpServletRequest request,
+			ModelMap model)throws ApiException {
+		if (rows!=100) {
+			rows=100;
+		}
+		Map<String, Object> retMap=new HashMap<String, Object>();
+		Page<Trade> trades = tradeService.findUserTrades(ShiroContextUtils.getUserid(),
+				Trade.Status.TRADE_WAIT_EXPRESS_NOFITY, page, rows);
+		List<Map<String, Object>> resultList=new ArrayList<Map<String,Object>>();
+		for(Trade trade:trades){
+			Map<String, Object> map=new HashMap<String, Object>();
+			map.put("id",trade.getId());
+			SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			map.put("payTime",sf.format(trade.getPayTime()));
+			map.put("shippingType",trade.getShippingType());
+			map.put("tradeFrom",trade.getTradeFrom());
+			map.put("buyerNick",(trade.getBuyerNick()==null)?"":trade.getBuyerNick());
+			map.put("receiverName",trade.getReceiverName());
+			map.put("phone",((trade.getReceiverPhone()==null)?"":trade.getReceiverPhone())+","+((trade.getReceiverMobile()==null)?"":trade.getReceiverMobile()));
+			map.put("address",trade.getReceiverState()+trade.getReceiverCity()+trade.getReceiverDistrict()+trade.getReceiverAddress());
+			String items=null;
+			for(TradeOrder order:trade.getOrders()){
+				Item item=this.itemService.getItem(order.getItem().getId());
+				items=items+item.getTitle()+((item.getSku()==null)?"":item.getSku())+"("+order.getNum()+")";
+			}
+			map.put("items",items);
+			resultList.add(map);
+		}
+		System.err.println(trades.getTotalElements());
+		retMap.put("rows", resultList);
+		retMap.put("page", page);
+		retMap.put("total", trades.getTotalElements());
+		return retMap;
+	}
+}

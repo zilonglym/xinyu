@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/wlpost/!svn/ver/2739/trunk/store-admin/src/main/webapp/WEB-INF
+END
+decorators.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/wlpost/!svn/ver/2545/trunk/store-admin/src/main/webapp/WEB-INF/decorators.xml
+END
+spring-mvc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/wlpost/!svn/ver/2081/trunk/store-admin/src/main/webapp/WEB-INF/spring-mvc.xml
+END
+spring-redis.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/wlpost/!svn/ver/2081/trunk/store-admin/src/main/webapp/WEB-INF/spring-redis.xml
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/web.xml
+END
+jasper-views.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/jasper-views.xml
+END

@@ -1,0 +1,70 @@
+package com.xinyu.check.controller;
+
+import java.util.Map;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.xinyu.check.util.MemcachedManager;
+import com.xinyu.check.util.ObjectTranscoder;
+import com.xinyu.check.util.RedisUtil;
+
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.ShardedJedis;
+import redis.clients.jedis.ShardedJedisPool;
+
+@Controller
+@RequestMapping(value="redis")
+public class RedisController extends BaseController{
+	
+	@Autowired
+	private ShardedJedisPool shardedJedisPool;
+	
+	@RequestMapping(value="index")
+	public void springT(){
+		ShardedJedis jedis = shardedJedisPool.getResource();
+		jedis.set("name", "test");
+		
+		System.err.println(jedis.get("name"));
+	}
+	
+	
+	public static void main(String[] args) {
+		//{zpIndex=120, zcIndex=1, 2902082140620=1, 6940971207081=1}
+		String orderCode="70368508196999";
+		String keyValue="20170920Check_out_db"+orderCode+"*";
+		 String historyKey="20170920Check_out_history_db"+orderCode+"*";
+		 String str="8856||1||ZP";
+		 String[] ary=str.split("\\|\\|");
+		 String itemKey="Item"+ary[0];
+		 System.err.println(itemKey);
+		//连接本地的 Redis 服务
+        Jedis jedis = RedisUtil.getJedis();
+        System.out.println("连接成功");
+        //查看服务是否运行
+        System.out.println("服务正在运行: "+jedis.ping());
+       Set<String> keys=jedis.keys(keyValue);
+       System.err.println(keys);
+//       System.err.println(keys.size());
+       
+       Set<String> historyKeys=jedis.keys(historyKey);
+      System.err.println(historyKeys);
+      Map<String,String> map=(Map<String, String>) ObjectTranscoder.deserialize(jedis.get(keyValue.getBytes()));
+       System.err.println(map);
+       
+       Map<String,String> itemMap=(Map<String, String>) ObjectTranscoder.deserialize(jedis.get(itemKey.getBytes()));
+       System.err.println(itemMap);
+       orderInfo(orderCode);
+	}
+	
+	private static  void  orderInfo(String orderCode){
+		System.err.println("-------------");
+		MemcachedManager manager=new MemcachedManager();
+		Map<String,Object> map=(Map<String, Object>) manager.get(orderCode);
+		System.err.println(map);
+	}
+
+	
+}

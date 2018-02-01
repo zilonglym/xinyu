@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.graby.store.dao.mybatis.TradeDao">
+
+	<!-- 悲观锁 -->
+	<select id="getTrade" parameterType="long"  resultMap="TradeEntity">
+		SELECT *
+		FROM sc_trade	where id=#{0} for update
+	</select>
+	
+	<!-- ============= 结果集定义 start ============= -->
+	
+	<resultMap id="TradeEntity" type="Trade">
+		<result property="id" column="id"/>
+		<result property="tradeFrom" column="trade_from"/>
+		<result property="shippingType" column="shipping_type"/>
+		<result property="payTime" column="pay_time"/>
+		<result property="status" column="status"/>
+		<result property="centro.id" column="centro_id"/>
+		<result property="lgAgingType" column="lg_aging_type"/>
+		<result property="lgAging" column="lg_aging"/>
+		<result property="user.id" column="user_id"/>
+		<result property="buyerArea" column="buyer_area"/>
+		<result property="buyerMemo" column="buyer_memo"/>
+		<result property="buyerNick" column="buyer_nick"/>
+		<result property="buyerMessage" column="buyer_message"/>
+		<result property="buyerEmail" column="buyer_email"/>
+		<result property="buyerAlipayNo" column="buyer_alipay_no"/>
+		<result property="hasBuyerMessage" column="has_buyer_message"/>
+		<result property="sellerPhone" column="seller_phone"/>
+		<result property="sellerMobile" column="seller_mobile"/>
+		<result property="sellerMemo" column="seller_memo"/>
+		<result property="receiverAddress" column="receiver_address"/>
+		<result property="receiverName" column="receiver_name"/>
+		<result property="receiverPhone" column="receiver_phone"/>		
+		<result property="receiverCity" column="receiver_city"/>
+		<result property="receiverDistrict" column="receiver_district"/>
+		<result property="receiverMobile" column="receiver_mobile"/>		
+		<result property="receiverState" column="receiver_state"/>
+		<result property="receiverZip" column="receiver_zip"/>
+		<collection property="orders" column="id" javaType="ArrayList" ofType="TradeOrder" select="fetchTradeOrders"/>  
+	</resultMap>	
+	
+	<select id="fetchTradeOrders" parameterType="long" resultType="TradeOrder">
+		SELECT
+		  id,adjust_fee as "adjustFee",buyer_nick as "buyerNick",
+		  discount_fee as "discountFee",num,num_iid as "numIid",
+		  order_from as "orderFrom",pic_path as "picPath",sku_id as "skuId",
+		  sku_properties_name as "skuPropertiesName",
+		  timeout_action_time as "timeoutActionTime",
+		  title,total_fee as "totalFee",
+		  item_id as "item.id",trade_id as "tradeId"
+		FROM sc_trade_order where trade_id=#{id}
+	</select>
+
+
+	<!-- ============= 结果集定义 END ============= -->
+	
+	<!-- 关联淘宝交易ID和系统交易ID -->
+	<insert id="createTradeMapping" useGeneratedKeys="true" keyColumn="id">
+		insert into sc_trade_mapping (tid, trade_id, status)
+		values (#{tid}, #{tradeId}, 'TRADE_WAIT_CENTRO_AUDIT')
+	</insert>
+	
+	<update id="updateTradeMappingStatus"> 
+        update sc_trade_mapping set status=#{1}
+        where trade_id=#{0}
+    </update>  
+	
+	
+	<!-- 获取淘宝交易关联的系统交易ID -->
+	<select id="getRelatedTradeId" resultType="long">
+		select trade_id  from sc_trade_mapping
+		 where tid=#{0}
+	</select>
+	
+	<!-- 获取淘宝交易关联的系统交易ID -->
+	<select id="getRelatedMapping" resultType="TradeMapping">
+		select tid as "tid", trade_id as "tradeId", status from sc_trade_mapping
+		 where tid=#{0}
+	</select>
+	
+	<!-- 取第一个tid -->
+	<select id="getRelatedTid" resultType="long">
+		select tid  from sc_trade_mapping
+		 where trade_id=#{0}
+	</select>
+		
+	<!-- BUG TODO : GROUP_CONCAT(c.title ,'')  AS itemTitles  		
+		LEFT JOIN sc_trade_order c ON c.trade_id = a.id
+	 -->
+	<select id="findWaitAuditTrades" resultType="Trade">
+		SELECT 
+			a.id AS "id" , b.shop_name AS "user.shopName", 
+			buyer_area AS "buyerArea" ,buyer_memo AS "buyerMemo" ,receiver_address AS "receiverAddress" ,pay_time AS "payTime" ,
+			trade_from AS "tradeFrom" ,a.buyer_nick AS "buyerNick" ,receiver_name AS "receiverName" ,
+			receiver_phone AS "receiverPhone" ,shipping_type AS "shippingType" ,receiver_district AS "receiverDistrict" ,STATUS AS "status" ,
+			receiver_mobile AS "receiverMobile" ,buyer_email AS "buyerEmail" ,receiver_city AS "receiverCity" ,
+			has_buyer_message AS "hasBuyerMessage" ,centro_id AS "centro.id" ,lg_aging_type AS "lgAgingType" ,
+			receiver_zip AS "receiverZip" ,lg_aging AS "lgAging" ,user_id AS "user.id" ,buyer_alipay_no AS "buyerAlipayNo" ,
+			receiver_state AS "receiverState"
+		FROM sc_trade a  
+			LEFT JOIN sc_user b ON b.id = a.user_id 
+		WHERE a.status='TRADE_WAIT_CENTRO_AUDIT' limit 500
+	</select>
+	
+	<select id="findWaitAuditTradesBy" parameterType="map" resultType="Trade">
+		SELECT 
+			a.id AS "id" , b.shop_name AS "user.shopName", 
+			buyer_area AS "buyerArea" ,buyer_memo AS "buyerMemo" ,receiver_address AS "receiverAddress" ,pay_time AS "payTime" ,
+			trade_from AS "tradeFrom" ,a.buyer_nick AS "buyerNick" ,receiver_name AS "receiverName" ,
+			receiver_phone AS "receiverPhone" ,shipping_type AS "shippingType" ,receiver_district AS "receiverDistrict" ,STATUS AS "status" ,
+			receiver_mobile AS "receiverMobile" ,buyer_email AS "buyerEmail" ,receiver_city AS "receiverCity" ,
+			centro_id AS "centro.id" ,lg_aging_type AS "lgAgingType" ,
+			has_buyer_message AS "hasBuyerMessage" , buyer_message as "buyerMessage", buyer_memo as "buyerMemo", seller_memo as "sellerMemo",
+			receiver_zip AS "receiverZip" ,lg_aging AS "lgAging" ,user_id AS "user.id" ,buyer_alipay_no AS "buyerAlipayNo" ,
+			receiver_state AS "receiverState", merge_hash as "mergeHash",
+			GROUP_CONCAT(d.title, "|") as "itemTitles"
+		FROM sc_trade a  
+			LEFT JOIN sc_user b ON b.id = a.user_id 
+			LEFT JOIN sc_trade_order c on c.trade_id = a.id 
+			LEFT JOIN sc_item d on d.id = c.item_id
+		WHERE a.status='TRADE_WAIT_CENTRO_AUDIT' 
+		<if test="userId != null and userId != 0 ">  
+           and a.user_id= #{userId}  
+        </if>  
+		<if test="receiverState != null">  
+           and a.receiver_state= #{receiverState}  
+        </if> 
+		<if test="receiverCity != null">  
+           and a.receiver_city= #{receiverCity}  
+        </if>
+        <if test="itemTitle != null">  
+           and d.title like #{itemTitle}  
+        </if>
+        <if test="hash != null">  
+           and a.merge_hash=#{hash}  
+        </if>        
+        group by a.id
+		limit 500
+	</select>
+
+	<!-- 查询被拆分的订单 -->
+	<select id="findSplitedTrades"  resultType="map">
+		SELECT 
+			a.id AS "id" , b.shop_name AS "user.shopName", 
+			buyer_area AS "buyerArea" ,buyer_memo AS "buyerMemo" ,receiver_address AS "receiverAddress" ,pay_time AS "payTime" ,
+			trade_from AS "tradeFrom" ,a.buyer_nick AS "buyerNick" ,receiver_name AS "receiverName" ,
+			receiver_phone AS "receiverPhone" ,shipping_type AS "shippingType" ,receiver_district AS "receiverDistrict" ,STATUS AS "status" ,
+			receiver_mobile AS "receiverMobile" ,buyer_email AS "buyerEmail" ,receiver_city AS "receiverCity" ,
+			has_buyer_message AS "hasBuyerMessage" ,centro_id AS "centro.id" ,lg_aging_type AS "lgAgingType" ,
+			receiver_zip AS "receiverZip" ,lg_aging AS "lgAging" ,user_id AS "user.id" ,buyer_alipay_no AS "buyerAlipayNo" ,
+			receiver_state AS "receiverState", merge_hash as "mergeHash",
+			GROUP_CONCAT(d.title, "|") as "itemTitles"
+		FROM sc_trade a 
+			LEFT JOIN sc_user b ON b.id = a.user_id
+			LEFT JOIN sc_trade_order c on c.trade_id = a.id 
+			LEFT JOIN sc_item d on d.id = c.item_id
+		WHERE `merge_hash` is not null
+		group by a.id
+		ORDER BY a.`trade_from`
+	</select>
+	
+	
+	<select id="findWaitAuditCitys" resultType="map">
+		SELECT 
+			receiver_city AS "receiverCity",
+			receiver_state AS "receiverState"
+		FROM sc_trade a
+		WHERE a.status='TRADE_WAIT_CENTRO_AUDIT' 
+	</select>	
+	
+	<select id="findWaitAuditTradeIds" resultType="long">
+		SELECT id
+		FROM sc_trade a  
+		WHERE a.status='TRADE_WAIT_CENTRO_AUDIT' and a.centro_id=#{0}
+	</select>
+	
+	<update id="updateTradeStatus"> 
+        update sc_trade set status=#{1}
+        where id=#{0}
+    </update>
+    
+    <update id="updateTradeMergeHash"> 
+        update sc_trade set merge_hash=#{1}
+        where id=#{0}
+    </update>    
+    
+    <select id="getTotalResults" resultType="long">
+		select count(1) from sc_trade where user_id=#{0} and status like #{1}
+	</select>
+	
+    <select id="getTrades" resultType="Trade">
+	SELECT 
+		a.id AS "id" , b.shop_name AS "user.shopName", 
+		buyer_area AS "buyerArea" ,buyer_memo AS "buyerMemo" ,receiver_address AS "receiverAddress" ,pay_time AS "payTime" ,
+		trade_from AS "tradeFrom" ,a.buyer_nick AS "buyerNick" ,receiver_name AS "receiverName" ,
+		receiver_phone AS "receiverPhone" ,shipping_type AS "shippingType" ,receiver_district AS "receiverDistrict" ,STATUS AS "status" ,
+		receiver_mobile AS "receiverMobile" ,buyer_email AS "buyerEmail" ,receiver_city AS "receiverCity" ,
+		has_buyer_message AS "hasBuyerMessage" ,centro_id AS "centro.id" ,lg_aging_type AS "lgAgingType" ,
+		receiver_zip AS "receiverZip" ,lg_aging AS "lgAging" ,user_id AS "user.id" ,buyer_alipay_no AS "buyerAlipayNo" ,
+		receiver_state AS "receiverState"
+	FROM sc_trade a  
+		LEFT JOIN sc_user b ON b.id = a.user_id 
+	WHERE a.centro_id=1 and a.user_id=#{0} and a.status like #{1} limit #{2},#{3}
+	</select>	
+	
+	<!-- 查询未关闭订单 -->
+	<select id="findUnfinishedTrades" resultType="Trade">
+		SELECT 
+			a.id AS "id" , b.shop_name AS "user.shopName", 
+			buyer_area AS "buyerArea" ,buyer_memo AS "buyerMemo" ,receiver_address AS "receiverAddress" ,pay_time AS "payTime" ,
+			trade_from AS "tradeFrom" ,a.buyer_nick AS "buyerNick" ,receiver_name AS "receiverName" ,
+			receiver_phone AS "receiverPhone" ,shipping_type AS "shippingType" ,receiver_district AS "receiverDistrict" ,STATUS AS "status" ,
+			receiver_mobile AS "receiverMobile" ,buyer_email AS "buyerEmail" ,receiver_city AS "receiverCity" ,
+			has_buyer_message AS "hasBuyerMessage" ,centro_id AS "centro.id" ,lg_aging_type AS "lgAgingType" ,
+			receiver_zip AS "receiverZip" ,lg_aging AS "lgAging" ,user_id AS "user.id" ,buyer_alipay_no AS "buyerAlipayNo" ,
+			receiver_state AS "receiverState"
+		FROM sc_trade a  
+			LEFT JOIN sc_user b ON b.id = a.user_id 
+		WHERE  a.centro_id=1 and a.status='TRADE_WAIT_EXPRESS_SHIP' LIMIT #{0},#{1}
+	</select>
+	<select id="countUnfinishedTrades" resultType="long">
+		SELECT 
+			count(1)
+		FROM sc_trade a  
+			LEFT JOIN sc_user b ON b.id = a.user_id 
+		WHERE  a.centro_id=1 and a.status='TRADE_WAIT_EXPRESS_SHIP'
+	</select>	
+	
+	
+	<!-- 删除交易 -->
+	<delete id="deleteShipOrderDetail" parameterType="long">
+	   	DELETE FROM sc_ship_order_detail
+		WHERE order_id in (SELECT id FROM sc_ship_order WHERE trade_id=#{0})
+	</delete>
+	<delete id="deleteShipOrder" parameterType="long">
+	   DELETE FROM sc_ship_order WHERE trade_id=#{0}
+	</delete>
+	<delete id="deleteTradeMapping" parameterType="long">
+	   DELETE FROM sc_trade_mapping WHERE trade_id=#{0}
+	</delete>
+	<delete id="deleteTradeOrder" parameterType="long">
+	  DELETE FROM sc_trade_order WHERE trade_id=#{0}
+	</delete>	
+	<delete id="deleteTrade" parameterType="long">
+	   DELETE FROM sc_trade WHERE id=#{0}
+	</delete>
+
+</mapper> 

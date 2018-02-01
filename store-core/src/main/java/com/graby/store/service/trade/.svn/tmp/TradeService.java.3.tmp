@@ -1,0 +1,1227 @@
+package com.graby.store.service.trade;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.graby.store.base.GroupMap;
+import com.graby.store.base.MemcachedManager;
+import com.graby.store.base.MessageContextHelper;
+import com.graby.store.base.StoreConstants;
+import com.graby.store.dao.jpa.TradeJpaDao;
+import com.graby.store.dao.jpa.TradeOrderJpaDao;
+import com.graby.store.dao.mybatis.ShipOrderDao;
+import com.graby.store.dao.mybatis.TradeDao;
+import com.graby.store.entity.Item;
+import com.graby.store.entity.ShipOrder;
+import com.graby.store.entity.ShipOrder.EntryOrderStatus;
+import com.graby.store.entity.ShipOrderDetail;
+import com.graby.store.entity.SystemItem;
+import com.graby.store.entity.SystemOperatorRecord;
+import com.graby.store.entity.Trade;
+import com.graby.store.entity.Trade.SourceFlag;
+import com.graby.store.entity.TradeMapping;
+import com.graby.store.entity.TradeOrder;
+import com.graby.store.entity.enums.OperatorModel;
+import com.graby.store.service.base.SystemOperatorRecordService;
+import com.graby.store.service.inventory.Accounts;
+import com.graby.store.service.inventory.InventoryService;
+import com.graby.store.service.inventory.QmInventoryService;
+import com.graby.store.service.item.ItemService;
+import com.graby.store.service.wms.ShipOrderService;
+import com.graby.store.service.wms.SystemItemService;
+import com.graby.store.util.DateUtils;
+import com.graby.store.util.EncryptUtil;
+import com.graby.store.web.top.TopApi;
+import com.graby.store.web.top.TradeAdapter;
+import com.graby.store.web.top.TradeTrace;
+import com.taobao.api.ApiException;
+import com.taobao.api.domain.Refund;
+
+@Component
+@Transactional
+public class TradeService {
+	
+	public static final Logger logger = Logger.getLogger(TradeService.class);
+	
+	// 是否合并淘宝订单
+	@Value("${trade.combine}")
+	private  boolean combine;
+	
+	@Autowired
+	private TradeJpaDao tradeJpaDao;
+	
+	@Autowired
+	private ShipOrderDao shipOrderDao;
+	
+	@Autowired
+	private TradeOrderJpaDao tradeOrderJpaDao;
+
+	@Autowired
+	private TradeDao tradeDao;
+	
+	@Autowired
+	private ShipOrderService shipOrderService;
+	
+	@Autowired
+	private TopApi topApi;
+	
+	@Autowired
+	private TradeAdapter tradeAdapter;
+	
+	@Autowired
+	private ItemService itemServie;
+	
+	@Autowired
+	private InventoryService inventoryService;	
+	
+	@Autowired
+	private QmInventoryService qmInventoryService;
+	@Autowired
+	private SystemOperatorRecordService systemService;
+	@Autowired
+	private SystemItemService systemItemService;
+	/**
+	 * 系统变量,存放审单时的设置
+	 */
+	private Map<String,SystemItem> auditMap;
+	
+	
+	
+	/**
+	 * 获得订单信息
+	 * @param ids
+	 * @return
+	 */
+	public List<Trade> findTradeListByLgAging(String[] ids){
+		List<Trade> tradeList = tradeDao.findTradeListByLgAging(ids);
+		for(Trade trade :tradeList ){
+			 List<TradeOrder> orders = trade.getOrders();
+			 for(TradeOrder order  : orders){
+				 Item  item  = itemServie.getItem(order.getItem().getId());
+				 order.setItem(item);
+			 }
+			 
+		 }
+		return tradeList;
+	}
+	
+	/**
+	 * 订单反审
+	 * @param tradeId
+	 * @param centroId
+	 * @param userId
+	 * @return
+	 */
+	public Map<String,Object>  reSetAudit(Long  tradeId,Long centroId,Long  userId,Long operator){
+		
+		ShipOrder shipOrder = shipOrderDao.getSendShipOrderByTradeId(tradeId);
+		
+		String orderStatus = shipOrder.getStatus();
+		
+		Map<String,Object> params = new HashMap<String, Object>();
+		String expressOrderno = shipOrder.getExpressOrderno();
+		params.put("id", shipOrder.getId());
+		params.put("status", ShipOrder.EntryOrderStatus.ENTRY_WAIT_SELLER_SEND);
+		//还原出库单状态
+		shipOrderDao.updateShipOrderStatusSetOrdernoIsNull(params);
+		logger.debug("reSetAudit:"+params);
+		/**
+		 * 写操作记录，订单返审
+		 */
+		SystemOperatorRecord record=new SystemOperatorRecord();
+		record.setDescription("订单反审:"+shipOrder.getId()+"["+shipOrder.getExpressOrderno()+"]["+shipOrder.getReceiverMobile()+"]");
+		record.setOperatorModel(OperatorModel.TRADE_CANCEL);
+		record.setOperator(operator.intValue());
+		record.setUser(userId.intValue());
+		record.setTime(new Date());
+		this.systemService.insert(record);
+		System.err.println("reSetAudit:"+params);
+		if(shipOrder!=null && shipOrder.getSource()!=null && shipOrder.getSource().equals(Trade.SourceFlag.SourceFlag_QM)){
+			// 还原订单状态
+			if (shipOrder.getExpressOrderno()==null) {
+				tradeDao.updateTradeStatus(tradeId, Trade.Status.TRADE_WAIT_CENTRO_AUDIT);
+			}else {	
+				Trade trade = this.tradeDao.getTrade(tradeId);
+				String newOtherOrderNo = String.valueOf(trade.getOtherOrderNo())+"0";
+				tradeDao.updateTradeStatusAndOtherNo(tradeId, Trade.Status.TRADE_WAIT_CENTRO_AUDIT,Long.parseLong(newOtherOrderNo));
+			}
+		}else{
+			tradeDao.updateTradeStatus(tradeId, Trade.Status.TRADE_WAIT_CENTRO_AUDIT);
+		}
+		
+		
+		//订单 库存重置
+		params.clear();
+		params.put("orderId", shipOrder.getId());
+		List<ShipOrderDetail> detailList = shipOrderDao.getShipOrderDetailList(params);
+		
+		for(int i = 0,  size  = detailList.size();i<size;i++   ){
+			ShipOrderDetail detail = detailList.get(i);
+			Long  itemId  = detail.getItem().getId();
+			
+			params.clear();
+			params.put("itemId", detail.getItem().getId());
+			params.put("orderNo", expressOrderno);
+			Long existOrderNo = qmInventoryService.existOrderNo(params);
+			if(existOrderNo>0){//清空订单库存记录    否则无法扫描出库
+				qmInventoryService.deleteOrderNo(params);
+				if ("WMS_FINISH".equals(orderStatus)) {
+					this.inventoryService.updateUserNum(centroId, itemId, Accounts.CODE_SALEABLE, detail.getNum());
+				}
+//				qmInventoryService.addInventory(centroId,userId, itemId, detail.getNum(), Accounts.CODE_SALEABLE, "订单反审入库", "订单编号:"+expressOrderno+";ID:"+tradeId);
+			}
+		}
+		Map<String,Object>   retMap = new HashMap<String,Object>();
+		retMap.put("code", "200");
+		return   retMap;
+	}
+	
+	
+	/* ====================== 交易相关查询 ======================= */
+	
+	private List<Long> fetchTopTradeIds(String status, int ...preDays) throws ApiException {
+		List<Long> total = new ArrayList<Long>();
+		for (int preday : preDays) {
+			Calendar cal = Calendar.getInstance();
+			cal.add(Calendar.DATE, -preday);
+			Date day = cal.getTime();
+			Date start =  DateUtils.getMoning(day);
+			Date end = preday == 0 ? day : DateUtils.getEnd(day);
+			total.addAll(topApi.getTids(status, start, end));
+		}
+		return total;
+	}
+	
+	/**
+	 * 查询淘宝交易并分组
+	 * @param preDays
+	 * @return
+	 * @throws ApiException
+	 */
+	public GroupMap<String, Long> fetchWaitSendTopTradeTotalResults(int ...preDays) throws ApiException {
+		GroupMap<String, Long> results = new GroupMap<String, Long>();
+		List<Long> tids = fetchTopTradeIds(TopApi.TradeStatus.TRADE_WAIT_SELLER_SEND_GOODS, preDays);
+		for (Long tid : tids) {
+			Long tradeId = tradeDao.getRelatedTradeId(tid);
+			results.put(tradeId == null ? "unrelated" : "related", tid);
+		}
+		return results;
+	}
+	
+	/**
+	 * 查询淘宝交易
+	 * @param status 状态
+	 * @param preDays 前几天
+	 * @return
+	 * @throws Exception
+	 */
+	private List<com.taobao.api.domain.Trade> fetchTopTrades(String status, int... preDays) throws Exception {
+		List<com.taobao.api.domain.Trade> trades = new ArrayList<com.taobao.api.domain.Trade>();
+		for (int preday : preDays) {
+			Calendar cal = Calendar.getInstance();
+			cal.add(Calendar.DATE, -preday);
+			Date day = cal.getTime();
+			Date start =  DateUtils.getMoning(day);
+			Date end = preday == 0 ? day : DateUtils.getEnd(day);
+			List<com.taobao.api.domain.Trade> result = topApi.getTrades(status, start, end);
+			trades.addAll(result);
+		}
+		return trades;
+	}
+	
+	/**
+	 * 查询最近几天的交易待发货订单
+	 * @param preDays
+	 * @return
+	 * @throws Exception 
+	 */
+	public GroupMap<String, Trade> fetchWaitSendTopTrades(int... preDays) throws Exception {
+		List<com.taobao.api.domain.Trade> trades = fetchTopTrades(TopApi.TradeStatus.TRADE_WAIT_SELLER_SEND_GOODS, preDays);
+		return groupAdapter(trades);
+	}
+	
+	
+	/**
+	 * 查询最近几天的交易待发货订单
+	 * @param preDays
+	 * @return
+	 * @throws Exception 
+	 */
+	public GroupMap<String, Trade> fetchWaitSendTopTradesByTime(Date start,Date end) throws Exception {
+		List<com.taobao.api.domain.Trade> trades = topApi.getTrades(TopApi.TradeStatus.TRADE_WAIT_SELLER_SEND_GOODS, start, end);
+		return groupAdapter(trades);
+	}
+	
+	/**
+	 * 查询最近7天退款单 
+	 * @return
+	 * @throws Exception 
+	 */
+	public List<Refund> fetchRefunds() throws Exception {
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE, -7);
+		Date day = cal.getTime();
+		Date start =  DateUtils.getMoning(day);
+		Date end  = DateUtils.getEnd(new Date());
+		return topApi.getRefunds(start, end);
+	}
+
+	/**
+	 * 分组交易
+	 * @param trades
+	 * @return
+	 * @throws ApiException
+	 */
+	private GroupMap<String, Trade> groupAdapter(List<com.taobao.api.domain.Trade> trades) throws ApiException {
+		GroupMap<String, Trade> groupResults = new GroupMap<String, Trade>(); 
+		logger.debug("----同步订单开始------");
+		for (com.taobao.api.domain.Trade topTrade : trades) {
+			Trade trade = tradeAdapter.adapter(topTrade);
+			// 是否已关联
+			Long tid = topTrade.getTid();
+			logger.debug("getRelatedMapping:::"+tid);
+			TradeMapping mapping = getRelatedMapping(tid);
+			
+			if (mapping != null) {
+				trade.setTag(mapping.getStatus());
+				groupResults.put("related", trade);
+			} else {
+				
+				// 是否退款（子订单都需要退款）
+				if (trade.isNeedRefund()) {
+					groupResults.put("refund", trade);
+					continue;
+				}
+				
+				// 根据库存查看订单是否可发送
+				boolean useable = true;
+				for (TradeOrder order : trade.getOrders()) {
+					Long numIid = order.getNumIid();
+					Long skuId = order.getSkuId();
+					logger.debug("----numIid:------"+numIid);
+					logger.debug("----skuId:------" +skuId);
+					// 是否已关联
+					Long itemId = itemServie.getRelatedItemId(numIid ,skuId);
+					if (itemId == null) {
+						logger.debug("----商品关联失败------");
+						// 未关联
+						order.setStockNum(-1);
+						useable = false;
+					} else {
+						Item item = itemServie.getItem(itemId);
+						order.setItem(item);
+//						long stockNum = inventoryService.getValue(1L, itemId, Accounts.CODE_SALEABLE);
+//						order.setStockNum(stockNum);
+//						// 库存数量
+//						if (stockNum <= 0) {
+//							useable = false;
+//						}
+					}
+				}
+				groupResults.put(useable? "useable" : "failed", trade);
+			}
+		}
+		logger.debug("----同步订单结束------");
+		return groupResults;
+	}
+	
+	/**
+	 * 查询淘宝交易ID是否已存在系统交易ID
+	 * @param tid 淘宝交易ID
+	 * @return 系统交易ID
+	 */
+	public Long getRelatedTradeId(Long tid) {
+		return tradeDao.getRelatedTradeId(tid);
+	}
+	
+	/**
+	 * 根据淘宝交易ID获取系统Mapping
+	 * @param tid
+	 * @return
+	 */
+	public TradeMapping getRelatedMapping(Long tid) {
+		return tradeDao.getRelatedMapping(tid);
+	}
+	
+	/**
+	 * 根据系统交易ID查询淘宝交易ID
+	 * @param tid
+	 * @return
+	 */
+	public List<Long> getRelatedTid(Long tradeId) {
+		return tradeDao.getRelatedTid(tradeId);
+	}	
+
+	/**
+	 * 查询最近200条待处理系统订单(等待物流通审核)
+	 * @return
+	 */
+	public List<Trade> findWaitAuditTrades() {
+		return tradeDao.findWaitAuditTrades();
+	}
+	
+	/**
+	 * 查询最近200条待处理系统订单(等待物流通审核)
+	 * @return
+	 */
+	public List<Trade> findWaitAuditTradesBy(Map<String, Object> params) {
+		logger.debug("findWaitAuditTradesBy:"+params);
+		System.err.println("findWaitAuditTradesBy:"+params);
+		return tradeDao.findWaitAuditTradesBy(params);
+	}
+	
+	/**
+	 * 查询可合并订单
+	 * @param map
+	 * @return
+	 */
+	public List<Trade> findSplitedTrades(Map<String,Object> params) {
+		List<Trade> result = tradeDao.findSplitedTrades(params);
+		return result;
+	}
+	
+	/**
+	 * 查询待处理订单城市列表
+	 * @return
+	 */
+	public List<Map<String,String>> findWaitAuditCitys(Map<String,Object> params) {
+		return tradeDao.findWaitAuditCitys(params);
+	}
+	
+	/**
+	 * 查询用户交易订单 
+	 * @param userId 用户ID
+	 * @return
+	 */
+	public Page<Trade> findUserTrades(Long userId, String status, long pageNo, long pageSize) {
+		pageNo--;
+		long start = pageNo*pageSize;
+		long offset = pageSize;
+		List<Trade> trades = tradeDao.getTrades(userId, "%"+status+"%", start, offset);
+		long total = tradeDao.getTotalResults(userId, status);
+		PageRequest pageable = new PageRequest((int)pageNo, (int)pageSize);
+		Page<Trade> page = new PageImpl<Trade>(trades, pageable, total);
+		return page;
+	}
+	
+	
+	/**
+	 * 查询用户交易订单 
+	 * @param userId 用户ID
+	 * @param
+	 * @return
+	 */
+	public Page<Trade> getTradesTBnumber(Long userId, String tbnumber, long pageNo, long pageSize) {
+		pageNo--;
+		long start = pageNo*pageSize;
+		long offset = pageSize;
+		List<Trade> trades = tradeDao.getTradesTBnumber(userId, "%"+tbnumber+"%", start, offset);
+		long total = tradeDao.getTotalResultsTBnumber(userId, tbnumber);
+		PageRequest pageable = new PageRequest((int)pageNo, (int)pageSize);
+		Page<Trade> page = new PageImpl<Trade>(trades, pageable, total);
+		return page;
+	}
+	
+	/**
+	 * 查询订单物流信息（已发货）
+	 * @param userId 用户ID
+	 * @return
+	 * @throws ApiException 
+	 */
+	public Page<TradeTrace> findUserTradeTraces(Long userId, long pageNo, long pageSize) throws ApiException {
+		pageNo--;
+		long start = pageNo*pageSize;
+		long offset = pageSize;
+		List<Trade> trades = tradeDao.getTrades(userId, Trade.Status.TRADE_WAIT_BUYER_RECEIVED, start, offset);
+		List<TradeTrace> traces = new ArrayList<TradeTrace>();		
+		for (Trade trade : trades) {
+			TradeTrace tradeTrace = topApi.getTradeTrace(trade);
+			
+			ShipOrder order = shipOrderService.getSendShipOrderByTradeId(trade.getId());
+			tradeTrace.setExpressCompany(order.getExpressCompany());
+			tradeTrace.setExpressOrderno(order.getExpressOrderno());
+			traces.add(tradeTrace);
+		}
+		
+		
+		long total = tradeDao.getTotalResults(userId, Trade.Status.TRADE_WAIT_BUYER_RECEIVED);
+		PageRequest pageable = new PageRequest((int)pageNo, (int)pageSize);
+		Page<TradeTrace> page = new PageImpl<TradeTrace>(traces, pageable, total);
+		return page;
+	}
+	
+	/**
+	 * 获取系统交易订单
+	 * @param id
+	 * @return
+	 */
+	public Trade getTrade(Long id) {
+		return tradeDao.getTrade(id);
+	}
+	
+	/* ====================== 交易处理======================= */
+	
+	/**
+	 * 根据淘宝交易ID批量创建系统交易
+	 * 合并收货方相同的订单。
+	 * 1000条限制，后续待接口无限制放开。
+	 * @param tids
+	 * @throws NumberFormatException
+	 * @throws ApiException
+	 */
+	
+	public  void createTradesFromTop(String[] tids) throws NumberFormatException, ApiException {
+		if (tids == null || tids.length == 0) {
+			return ;
+		}
+		
+		// 根据详细地址分组，重复的可合并
+		GroupMap<String, com.taobao.api.domain.Trade> tradeGroup = new GroupMap<String, com.taobao.api.domain.Trade>();
+		int count = 1;
+		for (String tid : tids) {
+			try {
+				TradeMapping tradeMapping = tradeDao.getRelatedMapping(Long.valueOf(tid));
+				if (tradeMapping != null) {
+					MessageContextHelper.append("淘宝订单重复推送：" + tid);
+				} else {
+					com.taobao.api.domain.Trade topTrade = topApi.getFullinfoTrade(Long.valueOf(tid));
+					tradeGroup.put(hashTrade(topTrade), topTrade);
+					if (count++ >= 1000) {
+						break;
+					}
+				}
+			} catch (Exception e) {
+				MessageContextHelper.append("TID:"+tid+" 创建失败：" + e.getMessage());
+			}
+		}
+		int success = 0;
+		Set<String> keys = tradeGroup.getKeySet();
+		for (String key : keys) {
+			List<com.taobao.api.domain.Trade> topTrades = tradeGroup.getList(key);
+			// 是否合并订单
+			if (topTrades.size()>1 && combine) {
+				Long[] tidArray = new Long[topTrades.size()];
+				tidArray[0] = topTrades.get(0).getTid();
+				// 第一个订单
+				Trade trade = tradeAdapter.adapter(topTrades.get(0));
+				// 合并其他订单
+				for (int i = 1; i < topTrades.size(); i++) {
+					Trade anotherTrade = tradeAdapter.adapter(topTrades.get(i));
+					// 合并订单明细
+					trade.getOrders().addAll(anotherTrade.getOrders());
+					// 合并备注及留言
+					if (StringUtils.isNotBlank(anotherTrade.getSellerMemo())) {
+						trade.setSellerMemo(trade.getSellerMemo() + "," + anotherTrade.getSellerMemo());
+					}
+					if (StringUtils.isNotBlank(anotherTrade.getBuyerMessage())) {
+						trade.setBuyerMessage(trade.getBuyerMessage() + "," + anotherTrade.getBuyerMessage());
+					}
+					if (StringUtils.isNotBlank(anotherTrade.getBuyerMemo())) {
+						trade.setBuyerMemo(trade.getBuyerMemo() + "," + anotherTrade.getBuyerMemo());
+					}
+					tidArray[i] = topTrades.get(i).getTid();
+				}
+				trade.setTradeFrom(StringUtils.join(tidArray, ","));
+				createTrade(trade, null);
+				for (Long tid : tidArray) {
+					mappingTrade(tid, trade.getId());
+					success++;
+				}
+			} else {
+				for (com.taobao.api.domain.Trade topTrade : topTrades) {
+					Trade trade = tradeAdapter.adapter(topTrade);
+					createTrade(trade, topTrade.getTid());
+					success++;
+				}
+			}
+		}
+		MessageContextHelper.append("成功创建系统交易:" + success + "条");
+	}
+	
+	// 合并规则:详细地址+买家昵称
+	private String hashTrade(com.taobao.api.domain.Trade trade) {
+		StringBuffer buf = new StringBuffer();
+		buf.append(trade.getBuyerNick());
+		buf.append(trade.getReceiverState()).append(trade.getReceiverCity()).append(trade.getReceiverDistrict());
+		buf.append(trade.getReceiverAddress()).append(trade.getReceiverName()).append(trade.getReceiverMobile());
+		return EncryptUtil.md5(buf.toString());
+	}
+	
+	
+	/**
+	 * 创建系统交易.
+	 * TODO 都用mybatis
+	 * @param trade
+	 * @param tid TODO
+	 */
+	@Transactional(readOnly = false)
+	public Trade createTrade(Trade trade, Long tid) {
+		// 检查是否已关联 tip:支持淘宝单号对应多个系统订单（订单拆分）
+//		Long tradeId =getRelatedTradeId(tid);
+//		if (tradeId == null) {
+			// 状态等待物流通审核
+			trade.setOtherOrderNo(new Date().getTime());
+			trade.setStatus(Trade.Status.TRADE_WAIT_CENTRO_AUDIT);
+			tradeJpaDao.save(trade);
+			List<TradeOrder> orders = trade.getOrders();
+			if (CollectionUtils.isNotEmpty(orders)) {
+				for (TradeOrder tradeOrder : orders) {
+					// 退款的不创建
+					if (!tradeOrder.isHasRefund()) {
+						// 更新商品SKU
+						if(!trade.getTradeFrom().equals(Trade.SourceFlag.SourceFlag_QM)){
+							itemServie.updateSku(tradeOrder.getItem().getId(), tradeOrder.getSkuPropertiesName());
+						}
+						tradeOrder.setTrade(trade);
+						tradeOrderJpaDao.save(tradeOrder);
+					}
+				}
+			}
+			// 创建关联关系
+			mappingTrade(tid, trade.getId());
+//		}
+		return trade;
+	}
+	
+	
+	/**
+	 * TODO 都用mybatis
+	 * @param trade
+	 * @param tid TODO
+	 */
+	@Transactional(readOnly = false)
+	public Trade createTradeERP(Trade trade, Long tid,String tbNumber) {
+		trade.setStatus(Trade.Status.TRADE_FINISHED);
+		trade.setTradeFrom(Trade.SourceFlag.SourceFlag_ERP+" | "+tbNumber);
+		tradeJpaDao.save(trade);
+		List<TradeOrder> orders = trade.getOrders();
+		if (CollectionUtils.isNotEmpty(orders)) {
+			for (TradeOrder tradeOrder : orders) {
+				// 退款的不创建
+				if (!tradeOrder.isHasRefund()) {
+					// 更新商品SKU
+					if (!trade.getTradeFrom().equals(
+							Trade.SourceFlag.SourceFlag_QM)) {
+						itemServie.updateSku(tradeOrder.getItem().getId(),
+								tradeOrder.getSkuPropertiesName());
+					}
+					tradeOrder.setTrade(trade);
+					tradeOrderJpaDao.save(tradeOrder);
+				}
+			}
+		}
+		mappingTrade(tid, trade.getId());
+		return trade;
+	}
+	
+	private void mappingTrade(Long tid, Long tradeId) {
+		if (tid != null) {
+			TradeMapping mapping = new TradeMapping(tid, tradeId);
+			tradeDao.createTradeMapping(mapping);
+		}
+	}
+	
+	/**
+	 * 订单审核
+	 * 根据交易订单创建出库单
+	 * 商品库存记账： 可销售->冻结
+	 * @param tradeId
+	 * @return
+	 * geneShipOrderFrom,cloneShipOrderInfo 这两个方法中都有对items的修改操作
+	 *
+	 */
+	public ShipOrder createSendShipOrderByTradeId(Long tradeId) {
+		Date date=new Date();
+		Long orderId = shipOrderService.getSendOrderIdByTradeId(tradeId);
+		ShipOrder order=null;
+		if (orderId != null) {
+			//throw new ServiceException("出货单订单已创建，不能重复提交。交易ID=" + tradeId);
+		}
+		Trade trade = getTrade(tradeId);
+		ShipOrder shipOrder = null;
+		try{
+			shipOrder=this.shipOrderDao.getSendShipOrderByTradeId(tradeId);
+			System.err.println("订单审核:"+trade+"|tradeId:"+tradeId+"tradeFrom"+trade.getTradeFrom());
+			//这个位置加入判断，判断当前的订单是不是邮奇门接口生成，如果是则不再生成发货出库单
+			if(shipOrder==null && trade.getTradeFrom()!=null && !trade.getTradeFrom().equals(SourceFlag.SourceFlag_QM)
+					&& !trade.getTradeFrom().equals(SourceFlag.SourceFlag_IMPORT)){
+				logger.debug("淘宝订单审核");
+				//非奇门,淘宝平台拉取订单审核
+				 shipOrder = geneShipOrderFrom(trade);
+				 shipOrder.setSource(Trade.SourceFlag.SourceFlag_STORE);
+				 shipOrderService.createSendShipOrder(shipOrder);
+				 updateTradeStatus(tradeId, Trade.Status.TRADE_WAIT_EXPRESS_SHIP);
+				 Long tt=new Date().getTime()-date.getTime();
+				 logger.debug("淘宝订单审核成功:"+shipOrder.getId()+",所花时间:"+tt);
+				//qmInventoryService.batchDelInventory(shipOrder, "出库", "审核出库");
+				return shipOrderService.getShipOrder(shipOrder.getId());
+			}else if(!trade.getTradeFrom().equals(Trade.SourceFlag.SourceFlag_QM) && !trade.getTradeFrom().equals(SourceFlag.SourceFlag_IMPORT)){
+				//导入数据的审核
+				if(shipOrder==null){
+					shipOrder=this.shipOrderService.getShipOrder(Long.valueOf(trade.getLgAging()));
+				}
+				logger.debug("订单审核!");
+				//更新订单关系
+				Map<String,Object> params=new HashMap<String, Object>();
+				params.put("id", shipOrder.getId());
+				params.put("trade_id", trade.getId());
+				//System.err.println("奇门订单审核:"+params);
+				this.shipOrderService.updateShipOrderTradeId(params);
+				//发货单 状态修改
+				params.clear();
+				params.put("status", EntryOrderStatus.ENTRY_WAIT_STORAGE_RECEIVED);
+				params.put("id", shipOrder.getId());
+				this.shipOrderService.updateShipOrderStatus(params);
+				order = updateShipOrderItemsAndWeight(tradeId, order, shipOrder);
+				updateTradeStatus(tradeId, Trade.Status.TRADE_WAIT_EXPRESS_SHIP);
+				Long tt=new Date().getTime()-date.getTime();
+				logger.debug("导入订单审核成功:"+shipOrder.getId()+",所花时间:"+tt);
+				return shipOrderService.getShipOrder(shipOrder.getId());
+			}else{
+				/**
+				 * 奇门的单据审核主要完成功能有
+				 * 1. 订单ID反写到发货单中
+				 * 2. 修改订单与发货单的状态为仓库已接收状态
+				 * 
+				 */
+				logger.debug("奇门订单审核id:");
+				if(shipOrder==null){
+				//奇门单据审核这里不需要生成新的单据
+					shipOrder=this.shipOrderService.getShipOrder(Long.valueOf(trade.getLgAging()));
+				}
+  				System.err.println("id:"+shipOrder.getId());
+ 				shipOrder.setTradeId(trade.getId());
+				/**
+				 * 更新订单与发货单的关联,主要把订单id写入发货单的trade_id字段中
+				 */
+				Map<String,Object> params=new HashMap<String, Object>();
+				params.put("id", shipOrder.getId());
+				params.put("trade_id", trade.getId());
+				this.shipOrderService.updateShipOrderTradeId(params);
+				//修改发货单与订单的状态为仓库已接收
+				params.clear();
+				params.put("status", EntryOrderStatus.ENTRY_WAIT_STORAGE_RECEIVED);
+				params.put("id", shipOrder.getId());
+				this.shipOrderService.updateShipOrderStatus(params);
+				order = updateShipOrderItemsAndWeight(tradeId, order, shipOrder);
+				updateTradeStatus(tradeId, Trade.Status.TRADE_WAIT_EXPRESS_SHIP);
+				/**
+				 * 订单 审核通过减少库存
+				 * 这里不要用order对象，order还没有保存没有ID，要使用shipOrder对象
+				 */
+				//qmInventoryService.batchDelInventory(shipOrder, "出库", "审核出库");
+				order=shipOrderService.getShipOrder(shipOrder.getId());
+				Long tt=new Date().getTime()-date.getTime();
+				logger.debug("奇门订单审核成功:"+shipOrder.getId()+",所花时间:"+tt);
+				return order;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+
+	/**
+	 * 更新发货单的商品详情与总重量信息
+	 * 2015-10-13，修改方法，不再复制单据，只保存itmes商品详情
+	 * 
+	 * @param tradeId
+	 * @param order
+	 * @param shipOrder
+	 * @return
+	 */
+	private ShipOrder updateShipOrderItemsAndWeight(Long tradeId, ShipOrder order, ShipOrder shipOrder) {
+		//生成一个出库单单据
+		try {
+			order=(ShipOrder) shipOrder.clone();
+			//修改出库单的状态数据
+			order.setId(null);
+			order.setType(ShipOrder.TYPE_DELIVER);
+			order.setStatus(ShipOrder.EntryOrderStatus.ENTRY_WAIT_STORAGE_RECEIVED);
+			order.setTradeId(tradeId);
+			//items修改
+			Map<String,Object> params=new HashMap<String,Object>();
+			params.put("orderId", shipOrder.getId());
+			List<ShipOrderDetail> detailList=this.shipOrderDao.getShipOrderDetailList(params);
+			List<ShipOrderDetail> itemList=new ArrayList<ShipOrderDetail>();
+			StringBuffer itemBuf=new StringBuffer();
+			int itemId=0;
+			double total=0;
+			double totalPrice=0;
+			int i=0;
+			for(ShipOrderDetail detail:detailList){
+				Item item=this.itemServie.getItem(detail.getItem().getId());
+				total+=item.getWeight()*detail.getNum();
+				itemId=itemId+item.getId().intValue();
+				//totalPrice=totalPrice+(Double.valueOf(detail.getActualPrice())*detail.getNum());
+				this.rebuildItems(itemBuf, item, detail,shipOrder,i);
+				i++;
+				ShipOrderDetail items=(ShipOrderDetail) detail.clone();
+				items.setId(null);
+				items.setOrder(null);
+				itemList.add(items);
+			}
+			order.setTotalWeight(total);
+			order.setDetails(itemList);
+			order.setItems(itemBuf.toString());;
+			shipOrder.setItems(itemBuf.toString());
+			shipOrder.setItemsId(Long.valueOf(itemId));
+			params.clear();
+			params.put("items", shipOrder.getItems());
+			params.put("id", shipOrder.getId());
+			params.put("itemid", itemId);
+			params.put("totalPrice", totalPrice);
+			/**
+			 * begin
+			 * 奇门订单审核不在保存新的单据，只更新商品名称数据
+			 */
+			if(order!=null && order.getSource()!=null &&  !order.getSource().equals(Trade.SourceFlag.SourceFlag_IMPORT)){
+				logger.debug("更新拆单后订单总重量OOOOOO：id:"+shipOrder.getId()+"|"+total+"tradeId:"+tradeId);
+				this.shipOrderDao.updateShipOrderWeight(shipOrder.getId(), total);
+				this.shipOrderDao.updateShipOrderitems(params);
+			}else if(order.getSource().equals(Trade.SourceFlag.SourceFlag_STORE) && (order.getSourcePlatformCode().equals(ShipOrder.SplitStatus.split_detail) 
+					|| order.getSourcePlatformCode().equals(ShipOrder.SplitStatus.split))){
+				//淘宝拆份的子订单重新审核也需要更新状态
+				logger.debug("更新拆单后订单总重量：id:"+shipOrder.getId()+"|"+total+"tradeId:"+tradeId);
+				this.tradeDao.updateTradeWeight(tradeId, total);
+				this.shipOrderDao.updateShipOrderWeight(shipOrder.getId(), total);
+				this.shipOrderDao.updateShipOrderitems(params);
+			}else{
+				logger.debug("更新拆单后订单总重量xxxx：id:"+shipOrder.getId()+"|"+total+"tradeId:"+tradeId);
+				this.tradeDao.updateTradeWeight(tradeId, total);
+				this.shipOrderDao.updateShipOrderWeight(shipOrder.getId(), total);
+			}
+			//this.shipOrderService.createSendShipOrder(order);
+			/**
+			 * end 2015-10-13
+			 */
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return order;
+	}
+	
+	/**
+	 * 根据交易订单创建所有出库单
+	 */
+	public void createAllSendShipOrder(Long centroId) {
+		List<Long> tradeIds = tradeDao.findWaitAuditTradeIds(centroId);
+		if (CollectionUtils.isNotEmpty(tradeIds)) {
+			for (Long tradeId : tradeIds) {
+				createSendShipOrderByTradeId(tradeId);
+			}
+		}
+	}
+	
+	/**
+	 * 更新订单
+	 * @param tradeId
+	 * @param status
+	 */
+	public void updateTradeStatus(Long tradeId, String status) {
+		tradeDao.updateTradeStatus(tradeId, status);
+		tradeDao.updateTradeMappingStatus(tradeId, status);
+	}
+	
+	public void updateTradeWeight(Long tradeId, Double weight) {
+		tradeDao.updateTradeWeight(tradeId, weight);
+	}
+	
+	
+	/**
+	 * 根据交易订单创建出货单
+	 * @param trade
+	 * @return
+	 */
+	private ShipOrder geneShipOrderFrom(com.graby.store.entity.Trade trade) {
+		ShipOrder shipOrder = new ShipOrder();
+		shipOrder.setCentroId(trade.getCentro().getId());
+		shipOrder.setTradeId(trade.getId());
+		// 商铺用户名为发货人
+		shipOrder.setOriginPersion(trade.getUser().getUsername());
+		shipOrder.setOriginPhone(trade.getSellerPhone());
+		
+		// 收货方信息
+		shipOrder.setReceiverAddress(trade.getReceiverAddress());
+		shipOrder.setReceiverCity(trade.getReceiverCity());
+		shipOrder.setReceiverDistrict(trade.getReceiverDistrict());
+		shipOrder.setReceiverMobile(trade.getReceiverMobile());
+		shipOrder.setReceiverName(trade.getReceiverName());
+		shipOrder.setReceiverPhone(trade.getReceiverPhone());
+		shipOrder.setReceiverState(trade.getReceiverState());
+		shipOrder.setReceiverZip(trade.getReceiverZip());
+		
+		// 淘宝卖家买家相关信息
+		shipOrder.setBuyerNick(trade.getBuyerNick());
+		shipOrder.setBuyerMemo(trade.getBuyerMemo());
+		shipOrder.setBuyerMessage(trade.getBuyerMessage());
+		shipOrder.setSellerMemo(trade.getSellerMemo());
+		shipOrder.setSellerMobile(trade.getSellerMobile());
+		shipOrder.setSellerPhone(trade.getSellerPhone());
+		shipOrder.setRemark(trade.getTradeFrom());
+		
+		// 商铺用户为创建人
+		shipOrder.setCreateDate(trade.getPayTime());
+		shipOrder.setCreateUser(trade.getUser());
+		shipOrder.setOtherOrderNo(trade.getOtherOrderNo());
+		// 发货明细
+		StringBuffer itemBuf=new StringBuffer();
+		int itemId=0,i=0;
+		double total=0;
+		double totalPrice=0;
+		for (TradeOrder tOrder : trade.getOrders()) {
+			ShipOrderDetail detail = new ShipOrderDetail();
+			Item item=this.itemServie.getItem(tOrder.getItem().getId());
+			itemId=itemId+item.getId().intValue();
+			total+=item.getWeight()*detail.getNum();
+			//totalPrice=totalPrice+(Double.valueOf(detail.getActualPrice())*detail.getNum());
+			//if(trade.getUser()!=null && (trade.getUser().getId().intValue()==51 || trade.getUser().getId().intValue()==52 || trade.getUser().getId().intValue()==53)){
+			detail.setItem(tOrder.getItem());
+			detail.setNum(tOrder.getNum());
+			detail.setSkuPropertiesName(tOrder.getSkuPropertiesName());
+			this.rebuildItems(itemBuf, item,detail,shipOrder,i);
+			i++;
+			shipOrder.getDetails().add(detail);
+		}
+		if(total>0){
+//			itemBuf.append("【").append(total).append("KG】 |");
+			shipOrder.setTotalWeight(total);
+		}
+		shipOrder.setInvoiceAmount(String.valueOf(totalPrice));
+		shipOrder.setItems(itemBuf.toString());
+		shipOrder.setItemsId(Long.valueOf(itemId));
+		return shipOrder;
+	}
+	
+	
+	public Page<Trade> findUnfinishedTrades(int pageNo, int pageSize,Map<String,Object> params) {
+		pageNo--;
+		int start = pageNo*pageSize;
+		int offset = pageSize;
+		params.put("start", start);
+		params.put("offset",offset);
+		List<Trade> trades =  tradeDao.findUnfinishedTrades(params);
+		long count = tradeDao.countUnfinishedTrades();
+		PageRequest pageable = new PageRequest(pageNo, pageSize);
+		Page<Trade> page = new PageImpl<Trade>(trades, pageable, count);
+		return page;
+	}
+	
+	public void closeTrades(Long[] tradeIds) throws ApiException {
+		if (tradeIds == null || tradeIds.length == 0) {
+			return;
+		}
+		for (Long tradeId : tradeIds) {
+			closeTrade(tradeId);
+		}
+	}
+	
+	public void closeTrade(Long tradeId) {
+		shipOrderService.closeOrderByTradeId(tradeId);
+	}
+	
+	
+	/**
+	 * 删除交易订单
+	 * TODO 不允许删除
+	 * @param tradeId
+	 */
+	@Transactional(readOnly = false)
+	public void deleteTrade(Long tradeId,int userId) {
+		logger.debug("奇门订单删除操作开始！tradeId："+tradeId);
+		long start = System.currentTimeMillis();
+		try{
+			
+			SystemOperatorRecord record=new SystemOperatorRecord();
+			
+			/**
+			 * 删除单据，加入库存
+			 */
+			ShipOrder order=this.shipOrderService.getSendShipOrderByTradeId(tradeId);
+			
+			List<ShipOrderDetail> detailList = order.getDetails();
+			/**
+			 * 订单删除
+			 * userNum返回库存
+			 * */
+			if(order.getSource().equals(Trade.SourceFlag.SourceFlag_QM)){
+				for(int i=0;detailList!=null && i<detailList.size();i++){
+					logger.debug("奇门订单删除,库存修改开始！itemId:"+detailList.get(i).getItem().getId());
+					ShipOrderDetail detail=detailList.get(i);
+					String  uid = String.valueOf(order.getCreateUser().getId());
+					this.qmInventoryService.addInventory(1L, Long.parseLong(uid), detail.getItem().getId(), detail.getNum(), Accounts.CODE_SALEABLE, "订单删除", String.valueOf(order.getId()));
+					this.inventoryService.updateUserNum(1L, detail.getItem().getId(), Accounts.CODE_SALEABLE, -detail.getNum());
+				}
+				
+			}
+		//	qmInventoryService.batchAddInventory(order, "入库", "取消审核入库");
+			StringBuffer buffer=new StringBuffer();
+			buffer.append("订单删除:[tradeId").append(tradeId).append("]收货人姓名电话[").append(order.getReceiverName()).append(order.getReceiverMobile())
+			.append("][运单号").append(order.getExpressOrderno()).append("]");
+			record.setUser(order.getCreateUser().getId().intValue());
+			record.setOperator(userId);
+		/*	*/
+			tradeDao.deleteShipOrderDetail(tradeId);
+			tradeDao.deleteShipOrder(tradeId);
+			tradeDao.deleteTradeMapping(tradeId);
+			tradeDao.deleteTradeOrder(tradeId);
+			tradeDao.deleteTrade(tradeId);
+			
+			record.setOperatorModel(OperatorModel.TRADE_DEL);
+		
+			record.setDescription(buffer.toString());
+			record.setTime(new Date());
+			
+			this.systemService.insert(record);
+			
+			long end = System.currentTimeMillis();
+			logger.debug("奇门订单删除操作结束！tradeId："+tradeId+" 耗时："+(end-start));
+		}catch(Exception e){
+			e.printStackTrace();
+			System.err.println("订单删除异常:"+e.getMessage());
+		}
+	}
+	
+	/**
+	 * 作废订单 
+	 * @param tradeId
+	 */
+	@Transactional(readOnly = false)
+	public void invalidTrade(long tradeId,Long userId){
+		System.err.println("订单作废操作开始！！");
+		/**
+		 * 1.修改订单删除功能为UPDATE
+		 * 2.判断当前单据是不是奇门单据，如果是则判断单据状态。如果是未出库单据，则更新占用库存。
+		 */
+		ShipOrder order=this.shipOrderService.getSendShipOrderByTradeId(tradeId);
+		String  orderState  = order.getStatus();
+		List<ShipOrderDetail> detailList=this.shipOrderService.getShipOrderDetailByOrderId(order.getId());
+		Map<String,Object> params=new HashMap<String, Object>();
+		params.put("id", order.getId());
+		params.put("status", ShipOrder.EntryOrderStatus.WMS_DELETED);
+		this.shipOrderService.updateShipOrderStatus(params);
+		this.tradeDao.updateTradeStatus(tradeId, Trade.Status.TRADE_WMS_DELETED);
+		Map<String,Object> memcachedMap=new HashMap<String, Object>();
+		if(order.getSource().equals(Trade.SourceFlag.SourceFlag_QM)){
+			/**
+			 * 订单作废
+			 * 订单已发货：直接返回库存
+			 * 其他状态：有userNum返回库存
+			 * */
+			if("WMS_FINISH".equals(orderState)){
+				for(int i=0;detailList!=null && i<detailList.size();i++){
+					ShipOrderDetail detail=detailList.get(i);
+					this.qmInventoryService.addInventory(1L, order.getCreateUser().getId(), detail.getItem().getId(), detail.getNum(), Accounts.CODE_SALEABLE, "订单作废", order.getExpressOrderno());
+				}
+			}else{
+				for(int i=0;detailList!=null && i<detailList.size();i++){
+					ShipOrderDetail detail=detailList.get(i);
+					this.qmInventoryService.addInventory(1L, order.getCreateUser().getId(), detail.getItem().getId(), detail.getNum(), Accounts.CODE_SALEABLE, "订单作废", String.valueOf(order.getId()));
+					this.inventoryService.updateUserNum(1L, detail.getItem().getId(), Accounts.CODE_SALEABLE, -detail.getNum());
+				}
+			}
+			
+		}
+		/**
+		 * 写缓存
+		 */
+		if(order!=null && StringUtils.isNotEmpty(order.getExpressOrderno())){
+			for(int i=0;detailList!=null && i<detailList.size();i++){
+				ShipOrderDetail detail=detailList.get(i);
+				Item item=this.itemServie.getItem(detail.getItem().getId());
+				memcachedMap.put(item.getBarCode(), detail.getNum());
+			}
+			MemcachedManager.add(StoreConstants.memcached_return+order.getExpressOrderno(), memcachedMap);
+		}
+		//写操作记录
+		SystemOperatorRecord record=new SystemOperatorRecord();
+		record.setOperator(userId.intValue());
+		record.setDescription("订单作废"+order.getId() +"|"+order.getReceiverName()+"|"+order.getReceiverMobile()+"|"+order.getExpressOrderno());
+		record.setTime(new Date());
+		record.setUser(order.getCreateUser().getId().intValue());
+		record.setOperatorModel(OperatorModel.TRADE_INVALID);
+		this.systemService.insert(record);
+		System.err.println("订单作废操作结束！！");
+	}
+	
+	public void reset(long tradeId) {
+		tradeDao.deleteShipOrderDetail(tradeId);
+		tradeDao.deleteShipOrder(tradeId);
+		tradeDao.deleteTradeMapping(tradeId);
+		updateTradeStatus(tradeId, Trade.Status.TRADE_WAIT_CENTRO_AUDIT);
+	}
+	
+	/**
+	 * 交易订单拆分
+	 * @param tradeId
+	 * @param orderId
+	 */
+	public void splitTrade(Long tradeId, Long orderId) {
+		Trade trade = getTrade(tradeId);
+		StringBuffer buf = new StringBuffer();
+		// 设置订单拆分编码
+		buf.append(trade.getBuyerNick()).append(trade.getReceiverState()).append(trade.getReceiverCity());
+		buf.append(trade.getReceiverDistrict() == null ? "": trade.getReceiverDistrict());
+		buf.append(trade.getReceiverMobile()).append(trade.getReceiverName());
+		String mergehash = EncryptUtil.md5(buf.toString());
+		tradeDao.updateTradeMergeHash(trade.getId(), mergehash);
+		
+		// 拆分订单
+		Long tid = trade.getTid();
+		List<TradeOrder> splited = new ArrayList<TradeOrder>();
+		List<TradeOrder> orders = trade.getOrders();
+		for (TradeOrder order : orders) {
+			if (order.getId().equals(orderId)) {
+				splited.add(order);
+				break;
+			}
+		}
+		trade.setId(null);
+		trade.setOrders(splited);
+		trade.setMergeHash(mergehash);
+		this.createTrade(trade, tid);
+	}
+	
+	public void mergeTrade(Long[] tradeIds) {
+		Trade main = getTrade(tradeIds[0]);
+		Long tid = main.getTid();
+		for (int i = 1; i < tradeIds.length; i++) {
+			Trade sub = getTrade(tradeIds[i]);
+			main.getOrders().addAll(sub.getOrders());
+		}
+		for (Long tradeId : tradeIds) {
+			this.deleteTrade(tradeId,0);
+		}
+		main.setId(null);
+		this.createTrade(main, tid);
+	}
+
+	public List<TradeOrder> fetchTradeOrders(Long id) {		
+		return tradeDao.fetchTradeOrders(id);
+	}
+
+	public void updateTrade(Map<String, Object> params) {
+		tradeDao.updateTrade(params);
+	}
+
+	public List<Trade> findTradesBy(Map<String, Object> params, int page, int rows) {
+		int start=(page-1)*rows;
+		int offset=rows;
+		params.put("start", start);
+		params.put("offset",offset);
+		List<Trade> trades=this.tradeDao.findTradesBy(params);
+		return trades;
+	}
+
+	public int getTotalResult(Map<String, Object> params) {
+		return this.tradeDao.getTotalResult(params);
+	}
+
+	public int findSplitedTradesCount(Map<String, Object> params) {
+		return this.tradeDao.findSplitedTradesCount(params);
+	}
+
+	public List<Trade> findSplitedTradesByPage(Map<String, Object> params, int page, int rows) {
+		int start=(page-1)*rows;
+		int offset=rows;
+		params.put("start", start);
+		params.put("offset",offset);
+		List<Trade> trades=this.tradeDao.findSplitedTradesByPage(params);
+		return trades;
+	}
+
+	public List<Trade> findWaitAuditTradesByPages(Map<String, Object> params, int page, int rows) {
+		int start=(page-1)*rows;
+		int offset=rows;
+		params.put("start", start);
+		params.put("offset",offset);
+		List<Trade> trades=this.tradeDao.findWaitAuditTradesByPages(params);
+		return trades;
+	}
+	
+	/**
+	 * 根据订单ID，取订单商品详情
+	 * @param tradeId
+	 * @return
+	 */
+	public String getItemsByTrade(int tradeId){
+		return this.tradeDao.getItemsByTrade(tradeId);
+	}
+
+
+	/**
+	 * 获取未审核订单数量按商家分类统计
+	 * @return list
+	 * */
+	public List<Map<String, Object>> getWaitAuditTradesTotal() {
+		return this.tradeDao.getWaitAuditTradesTotal();
+	}
+
+	private void rebuildItems(StringBuffer itemBuf,Item item,ShipOrderDetail tOrder,ShipOrder order,int i){
+		initAuditMap();
+		logger.debug("rebuildItems:item"+item+"i"+i);
+		SystemItem auditCode=auditMap.get("audit_code");
+		SystemItem auditSku=auditMap.get("audit_sku");
+		SystemItem auditRemark=auditMap.get("audit_remark");
+		if(auditRemark.getValue().indexOf(String.valueOf(item.getUserid()))>=0 && i==0){
+			logger.debug("留言处理!x"+order.getBuyerMessage()+"|"+order.getSellerMessage());
+			itemBuf.append("买家留言:").append(StringUtils.isNotBlank(order.getBuyerMessage()) && order.getBuyerMessage().length()>20?order.getBuyerMessage().substring(0, 20):order.getBuyerMessage());
+			itemBuf.append("卖家留言:").append(StringUtils.isNotBlank(order.getSellerMessage()) && order.getSellerMessage().length()>20?order.getSellerMessage().substring(0, 20):order.getSellerMessage().replaceAll("\n", ""))
+			.append("\\r\\n");
+		}
+		int k=0;
+		logger.debug("CODE处理"+auditCode.getValue()+"auditSku"+auditSku.getValue()+"auditRemark"+auditRemark.getValue()+"userId"+item.getUserid());
+		if(auditCode.getValue().indexOf(String.valueOf(item.getUserid()))>=0){
+			logger.debug("CODE处理");
+			itemBuf.append(item.getCode()).append(StringUtils.isNotBlank(item.getSku())?item.getSku():"");
+			k=1;
+		}
+		
+		if(auditSku.getValue().indexOf(String.valueOf(item.getUserid()))!=-1){
+			logger.debug("sku处理");
+			itemBuf.append(item.getSku()==null?"":item.getSku());
+			k=1;
+		}
+		if(k==0){
+			logger.debug("其它处理标题");
+			itemBuf.append(item.getTitle()).append(StringUtils.isNotBlank(item.getSku())?item.getSku():"");
+		}
+			//itemBuf.append(item.getTitle()).append(item.getSku()==null?"":item.getSku()).append("(").append(tOrder.getNum()).append("件) | ");
+		itemBuf.append("(").append(tOrder.getNum()).append("件) | ");
+		logger.debug("items:"+itemBuf);
+	}
+	
+	public void initAuditMap(){
+		if(auditMap==null){
+			auditMap=new HashMap<String, SystemItem>();
+			List<SystemItem> audit_code=this.systemItemService.findSystemItemByType("AUDIT_CODE");
+			auditMap.put("audit_code", audit_code.get(0));
+			List<SystemItem> audit_sku=this.systemItemService.findSystemItemByType("AUDIT_SKU");
+			auditMap.put("audit_sku", audit_sku.get(0));
+			List<SystemItem> auditRemark=this.systemItemService.findSystemItemByType("AUDIT_REMARK");
+			auditMap.put("audit_remark", auditRemark.get(0));
+		}
+	}
+
+	public List<Trade> findWaitAuditTradesByLgAging(Map<String, Object> params) {
+		return this.tradeDao.findWaitAuditTradesByLgAging(params);
+	}
+}

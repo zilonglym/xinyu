@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;demo.xml&apos; to &apos;demo.xml&apos;&#x0D;&#x0A;- Original project: &apos;xinyu-service&apos;&#x0D;&#x0A;- Destination element: &apos;demo.xml&apos;&#x0D;&#x0A;- Original element: &apos;demo.xml&apos;" description="Copy file" element1="src/main/java/com/xinyu/service/caoniao/demo.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1496393608278" target="/xinyu-service/src/main/java/com/xinyu/service/caoniao/demo.xml" units="0" version="1.0"/>
+</session>

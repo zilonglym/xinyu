@@ -1,0 +1,621 @@
+package com.graby.store.admin.web.shiporder;
+
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.graby.store.admin.util.BaseResource;
+import com.graby.store.admin.web.BaseController;
+import com.graby.store.entity.ShipOrder;
+import com.graby.store.entity.ShipOrderReturn;
+import com.graby.store.entity.SystemItem;
+import com.graby.store.entity.Trade;
+import com.graby.store.entity.User;
+import com.graby.store.entity.enums.OrderStatusEnums;
+import com.graby.store.entity.enums.StoreSystemItemEnums;
+import com.graby.store.remote.AuthRemote;
+import com.graby.store.remote.ExpressPriceRemote;
+import com.graby.store.remote.ShipOrderRemote;
+import com.graby.store.remote.ShipOrderReturnRemote;
+import com.graby.store.remote.TradeRemote;
+import com.graby.store.remote.UserRemote;
+import com.graby.store.web.auth.ShiroContextUtils;
+
+/**
+ * 订单控制类
+ * @author yangmin
+ *
+ */
+@Controller
+public class TradeController extends BaseController {
+
+	
+	@Autowired
+	private AuthRemote authRemote;
+	@Autowired
+	private ShipOrderRemote shipOrderRemote;
+	@Autowired
+	private UserRemote userRemote;
+	@Autowired
+	private TradeRemote tradeRemote;
+	@Autowired
+	private ExpressPriceRemote  expressPriceRemote;
+	
+	@Autowired
+	private ShipOrderReturnRemote returnRemote;
+	
+	public static String sessionKey="";
+	/**
+	 * 订单管理
+	 * @param request
+	 * @param model
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	@RequestMapping(value="wayBill/list")
+	public String toShipOrderList(HttpServletRequest request,ModelMap model,@RequestParam(value = "page", defaultValue = "1") int pageNum,
+			@RequestParam(value = "pageSize", defaultValue = "50") int pageSize){
+		String userId=request.getParameter("userId");
+		String q=request.getParameter("q");	
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("type", StoreSystemItemEnums.SESSIONKEY.getKey());
+		List<SystemItem> itemList=this.authRemote.getSystemItemList(params);
+		if(itemList==null || itemList.size()==0){
+			//跳转到登陆淘宝授权帐号，回转页面URL就是此方法URL
+			return "";
+		}
+		SystemItem item=itemList.get(0);
+		sessionKey=item.getValue();
+		params.clear();
+        User user=BaseResource.getCurrentUser();
+		List<User> userList=this.userRemote.findAll(String.valueOf(user.getId()));
+		model.put("users", userList);
+		
+		params.clear();
+		params.put("type", StoreSystemItemEnums.WAYBILL.getKey());
+		List<SystemItem> list=this.authRemote.getSystemItemList(params);
+		model.put("itemList", list);
+		model.put("userId", userId);
+		model.put("q", q);
+		return "shipOrder/ShipOrderListList";
+	}
+	
+	
+	
+	/**
+	 * 取数
+	 * @return
+	 */
+	@RequestMapping(value="wayBill/listData")
+	@ResponseBody
+	public Map<String,Object> listData(HttpServletRequest request,ModelMap model,@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "rows", defaultValue = "100") int rows){
+		Map<String,Object> resultMap=new HashMap<String, Object>();
+		String userId=request.getParameter("userId");
+		String q=request.getParameter("q");	
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("type", StoreSystemItemEnums.SESSIONKEY.getKey());
+		List<SystemItem> itemList=this.authRemote.getSystemItemList(params);
+		if(itemList==null || itemList.size()==0){
+			//跳转到登陆淘宝授权帐号，回转页面URL就是此方法URL
+			return null;
+		}
+		SystemItem item=itemList.get(0);
+		sessionKey=item.getValue();
+		params.clear();
+		params.put("cuid", BaseResource.getCurrentCentroId());
+		params.put("userId", userId);
+		params.put("q", q);
+		if(rows==10){
+			rows=100;
+		}
+	    Page<ShipOrder> orders=shipOrderRemote.findSendOrderList(page,rows,params);
+        resultMap.put("rows", buildOrderListData(orders.getContent()));
+        resultMap.put("total", orders.getTotalElements());
+        resultMap.put("userId", userId);
+        resultMap.put("q", q);
+		return resultMap;
+	}
+	
+	
+	
+	/**
+	 * 订单管理
+	 * @param request
+	 * @param model
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	@RequestMapping(value="wayBill/listPrint")
+	public String toShipOrderListPrint(HttpServletRequest request,ModelMap model,@RequestParam(value = "page", defaultValue = "1") int pageNum,
+			@RequestParam(value = "pageSize", defaultValue = "50") int pageSize){
+		String userId=request.getParameter("userId");
+		String q=request.getParameter("q");	
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("type", StoreSystemItemEnums.SESSIONKEY.getKey());
+		List<SystemItem> itemList=this.authRemote.getSystemItemList(params);
+		if(itemList==null || itemList.size()==0){
+			//跳转到登陆淘宝授权帐号，回转页面URL就是此方法URL
+			return "";
+		}
+		SystemItem item=itemList.get(0);
+		sessionKey=item.getValue();
+		params.clear();
+        User user=BaseResource.getCurrentUser();
+		List<User> userList=this.userRemote.findAll(String.valueOf(user.getId()));
+		model.put("users", userList);
+		
+		params.clear();
+		params.put("type", StoreSystemItemEnums.WAYBILL.getKey());
+		List<SystemItem> list=this.authRemote.getSystemItemList(params);
+		model.put("itemList", list);
+		model.put("userId", userId);
+		model.put("q", q);
+		return "shipOrder/ShipOrderListWaitsPrint";
+	}
+	
+	
+	
+	/**
+	 * 订单打印取数
+	 * @return
+	 */
+	@RequestMapping(value="wayBill/listPrintData")
+	@ResponseBody
+	public Map<String,Object> listPrintData(HttpServletRequest request,ModelMap model,@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "rows", defaultValue = "100") int rows){
+		Map<String,Object> resultMap=new HashMap<String, Object>();
+		String userId=request.getParameter("userId");
+ 		String code=request.getParameter("code");
+ 		String beigainTime=request.getParameter("beigainTime");
+ 		String lastTime=request.getParameter("lastTime");
+ 		String q=request.getParameter("q");
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("type", StoreSystemItemEnums.SESSIONKEY.getKey());
+		List<SystemItem> itemList=this.authRemote.getSystemItemList(params);
+		if(itemList==null || itemList.size()==0){
+			//跳转到登陆淘宝授权帐号，回转页面URL就是此方法URL
+			return null;
+		}
+		SystemItem item=itemList.get(0);
+		sessionKey=item.getValue();
+		params.clear();
+		params.put("cuid", BaseResource.getCurrentCentroId());
+		params.put("userId", userId);
+		params.put("q", q);
+		if(rows==10){
+			rows=100;
+		}
+		params.put("status", OrderStatusEnums.WMS_GETNO);
+	    Page<ShipOrder> orders=shipOrderRemote.findSendOrderList(page,rows,params);
+	    List<Map<String, Object>> resultList=new ArrayList<Map<String,Object>>();
+ 		for(ShipOrder order:orders){
+ 			Map<String,Object> orderMap=new HashMap<String,Object>();
+ 			orderMap.put("id",order.getId());
+ 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+ 			orderMap.put("createDate",format.format(order.getCreateDate()));
+ 			orderMap.put("code",order.getTradeBatch());
+ 			User user=this.userRemote.getUser(order.getCreateUser().getId());
+ 			orderMap.put("userName",user.getShopName());
+ 			orderMap.put("tradeId",order.getTradeId());
+ 			orderMap.put("tradeBatchId",order.getTradeBatchId());
+ 			orderMap.put("items",order.getItems());
+ 			orderMap.put("receiverName",order.getReceiverName());
+ 			orderMap.put("receiverPhone",((order.getReceiverMobile()==null)?"":order.getReceiverMobile())+","+((order.getReceiverPhone()==null)?"":order.getReceiverPhone()));
+ 			orderMap.put("address",order.getReceiverState()+order.getReceiverCity()+order.getReceiverDistrict()+order.getReceiverAddress());
+ 			orderMap.put("expressName",order.getExpressCompany()); 								
+ 			orderMap.put("sellerMessage",((order.getSellerMemo()==null)?"":order.getSellerMemo())+((order.getSellerMessage()==null)?"":order.getSellerMessage())); 								
+ 			orderMap.put("buyerMessage",((order.getBuyerMemo()==null)?"":order.getBuyerMemo())+((order.getBuyerMessage()==null)?"":order.getBuyerMessage())); 								
+ 			DecimalFormat df=new DecimalFormat("######0.00"); 
+			orderMap.put("weight",(order.getTotalWeight()!=null)?df.format(order.getTotalWeight()):0.00);
+ 			resultList.add(orderMap);
+ 			//System.err.println(orderMap);
+ 		}
+ 		resultMap.put("total",orders.getTotalElements());
+ 		resultMap.put("page",page);
+ 		resultMap.put("rows",resultList);
+		return resultMap;
+	}
+	
+	
+	/**
+	 * 封存的老数据处理
+	 */
+	@RequestMapping(value="wayBill/oldList")
+	public String toShipOrderOldList(HttpServletRequest request,ModelMap model,@RequestParam(value = "page", defaultValue = "1") int pageNum,
+			@RequestParam(value = "pageSize", defaultValue = "50") int pageSize){
+		String userId=request.getParameter("userId");
+		String q=request.getParameter("q");	
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("type", StoreSystemItemEnums.SESSIONKEY.getKey());
+		List<SystemItem> itemList=this.authRemote.getSystemItemList(params);
+		if(itemList==null || itemList.size()==0){
+			//跳转到登陆淘宝授权帐号，回转页面URL就是此方法URL
+			return "";
+		}
+		SystemItem item=itemList.get(0);
+		sessionKey=item.getValue();
+		params.clear();
+        User user=BaseResource.getCurrentUser();
+		List<User> userList=this.userRemote.findAll(String.valueOf(user.getId()));
+		model.put("users", userList);
+		
+		params.clear();
+		params.put("type", StoreSystemItemEnums.WAYBILL.getKey());
+		List<SystemItem> list=this.authRemote.getSystemItemList(params);
+		model.put("itemList", list);
+		model.put("userId", userId);
+		model.put("q", q);
+		return "shipOrder/ShipOrderOldList";
+	}
+	
+	
+	
+	/**
+	 * 取数
+	 * @return
+	 */
+	@RequestMapping(value="wayBill/oldListData")
+	@ResponseBody
+	public Map<String,Object> oldListData(HttpServletRequest request,ModelMap model,@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "rows", defaultValue = "100") int rows){
+		Map<String,Object> resultMap=new HashMap<String, Object>();
+		String userId=request.getParameter("userId");
+		String q=request.getParameter("q");	
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("type", StoreSystemItemEnums.SESSIONKEY.getKey());
+		List<SystemItem> itemList=this.authRemote.getSystemItemList(params);
+		if(itemList==null || itemList.size()==0){
+			//跳转到登陆淘宝授权帐号，回转页面URL就是此方法URL
+			return null;
+		}
+		SystemItem item=itemList.get(0);
+		sessionKey=item.getValue();
+		params.clear();
+		params.put("cuid", BaseResource.getCurrentCentroId());
+		params.put("userId", userId);
+		params.put("q", q);
+		if(rows==10){
+			rows=100;
+		}
+		params.put("history", "index");//用来判断是否查询历史数据
+	    Page<ShipOrder> orders=shipOrderRemote.findSendOrderList(page,rows,params);
+        resultMap.put("rows", buildOrderListData(orders.getContent()));
+        resultMap.put("total", orders.getTotalElements());
+        resultMap.put("userId", userId);
+        resultMap.put("q", q);
+		return resultMap;
+	}
+	
+	
+	
+	
+	
+	
+	/**
+	 * 添加一个退货
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="wayBill/addReturn")
+	@ResponseBody
+	public Map<String,Object> addReturn(){
+		String id=this.getString("id");
+		Map<String,Object> resultMap=new HashMap<String, Object>();
+		ShipOrder order=this.shipOrderRemote.getSendShipOrderByTradeId(Long.valueOf(id));
+		String msg="";
+		if(order!=null){
+			//判断是否有快递单号
+			if(order.getExpressOrderno()!=null){
+				//判断是否有过退货，如果有过则不能再退
+				Map<String,Object> params=new HashMap<String, Object>();
+				params.put("expressOrderno", order.getExpressOrderno());
+				List<ShipOrderReturn> list=this.returnRemote.findShipOrderByexpress(params);
+				if(list==null || list.size()==0){
+					ShipOrderReturn returnOrder=new ShipOrderReturn();
+					returnOrder.setCreateDate(new Date());
+					returnOrder.setExpressOrderno(order.getExpressOrderno());
+					returnOrder.setOrderId(String.valueOf(order.getId()));
+					returnOrder.setUserId(String.valueOf(order.getCreateUser().getId()));
+					this.returnRemote.save(returnOrder);
+					
+					resultMap.put("ret", 1);
+					resultMap.put("msg", "订单退货成功!");
+				}else{
+					resultMap.put("ret", 0);
+					resultMap.put("msg", "订单不能重复退货!");
+				}
+			}else{
+				resultMap.put("ret",0);
+				resultMap.put("msg", "此订单没有快递,不能退货!");
+			}
+		}else{
+			resultMap.put("ret", 0);
+			resultMap.put("msg", "此订单不存在!");
+		}
+		return resultMap;
+	}
+	/**
+	 * 重构组建List数据
+	 * @param list
+	 * @return
+	 */
+	private List<Map<String,Object>> buildOrderListData(List<ShipOrder> list){
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		List<Map<String,Object>> resultList=new ArrayList<Map<String,Object>>();
+		for(int i=0;list!=null && i<list.size();i++){
+			Map<String,Object> map=new HashMap<String, Object>();
+			ShipOrder order=list.get(i);
+ 			User user=this.userRemote.getUser(order.getCreateUser().getId());
+ 			order.setCreateUser(user);
+			map.put("seq", i+1);
+			map.put("createDate", sdf.format(order.getCreateDate()));
+			map.put("shopName", order.getCreateUser().getShopName());
+			map.put("items", order.getItems());
+			map.put("phone",((order.getReceiverMobile()==null)?"":order.getReceiverMobile())+","+((order.getReceiverPhone()==null)?"":order.getReceiverPhone()));
+			map.put("addressInfo",order.getReceiverState()+order.getReceiverCity()
+			+order.getReceiverDistrict()+order.getReceiverAddress());
+			map.put("buyerNick",order.getBuyerNick());
+			map.put("receiverName",order.getReceiverName());
+			map.put("expressCompany", order.getExpressCompany());
+			map.put("expressOrderno", order.getExpressOrderno());
+			map.put("remark", "买家备注："+(order.getBuyerMemo()==null?" ":order.getBuyerMemo())+(order.getBuyerMessage()==null?" ":order.getBuyerMessage())+"卖家备注："+(order.getSellerMemo()==null?" ":order.getSellerMemo())+(order.getSellerMessage()==null?" ":order.getSellerMessage())+"留言："+(order.getRemark()==null?" ":order.getRemark()));
+			map.put("operator", order.getTradeId());
+			map.put("status", order.getStatus());
+			map.put("printBatch", order.getPrintBatch());
+			resultList.add(map);
+		}
+		return resultList;
+	}
+	/**
+	 * 单个订单数据删除
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="waybill/deleteTrade")
+	@ResponseBody
+	public Map<String,Object> deleteTradeData(HttpServletRequest request){
+		Map<String,Object> resultMap=new HashMap<String, Object>();
+		String tradeId=request.getParameter("id");
+		/**
+		 * 单个订单 数据删除,需要删除shipOrderDetail,shipOrder,trade,tradeOrder
+		 */
+		System.err.println("订单删除:tradeId="+tradeId);
+		try{
+			int userId=BaseResource.getCurrentUser().getId().intValue();
+			this.tradeRemote.deleteTrade(Long.valueOf(tradeId),userId);
+			resultMap.put("ret", 1);
+		}catch(Exception e){
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+			resultMap.put("ret", 0);
+		}
+		return resultMap;
+	}
+	
+	
+	
+	/**
+	 * 订单数据删除(批量)
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="waybill/batchDeleteTrade")
+	@ResponseBody
+	public Map<String,Object> batchDeleteTrade(HttpServletRequest request){
+		Map<String,Object> resultMap=new HashMap<String, Object>();
+		String ids=request.getParameter("ids");
+		/**
+		 * 单个订单 数据删除,需要删除shipOrderDetail,shipOrder,trade,tradeOrder
+		 */
+		String[] ary=ids.split(",");
+		try{
+			int userId=BaseResource.getCurrentUser().getId().intValue();
+			for(int i=0;i<ary.length;i++){
+				this.tradeRemote.deleteTrade(Long.valueOf(ary[i]),userId);
+			}
+			resultMap.put("ret", 1);
+		}catch(Exception e){
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+			resultMap.put("ret", 0);
+		}
+		return resultMap;
+	}
+	
+	/**
+	 * 订单作废
+	 * 订单不做删除操作，打上删除标记。如果是奇门的单据则需要对此单的商品库存做已占用数量的恢复操作
+	 * @return
+	 */
+	@RequestMapping(value="trade/invalidTrade")
+	@ResponseBody
+	public Map<String,Object> invalidTrade(){
+		Map<String,Object> resultMap=new HashMap<String, Object>();
+		String tradeId=this.getString("id");
+		try{
+			/**
+			 * modify 2017-08-17
+			 * @author fufangjue
+			 * 订单已作废不可再次操作
+			 * */
+			ShipOrder shipOrder = this.shipOrderRemote.getSendShipOrderByTradeId(Long.valueOf(tradeId));
+			String status = shipOrder.getStatus();
+			logger.debug("订单状态status:"+status);
+			if("WMS_DELETED".equals(status)){
+				resultMap.put("msg","订单已作废，不可重复操作！");
+			}else {
+				this.tradeRemote.invalidTrade(Long.valueOf(tradeId),BaseResource.getCurrentUser().getId());
+				resultMap.put("msg","订单已作废成功！");
+			}
+			
+			resultMap.put("ret", 1);
+		}catch(Exception e){
+			e.printStackTrace();
+			resultMap.put("ret", 0);
+			resultMap.put("msg", e.getMessage());
+		}
+		System.err.println("resultMap:"+resultMap);
+		return resultMap;
+	}
+	/**
+	 * 订单管理页面修改快递
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="waybill/updateExpress")
+	@ResponseBody
+	public Map<String,Object> updateExpress(HttpServletRequest request){
+		Map<String,Object> resultMap=new HashMap<String, Object>();
+		String tradeId=request.getParameter("tradeId");
+		String expressCompany=request.getParameter("expressCompany");
+		ShipOrder shipOrder=this.shipOrderRemote.getSendShipOrderByTradeId(Long.valueOf(tradeId));
+		if(shipOrder==null || shipOrder.getExpressCompany()==null){
+			resultMap.put("ret", 0);
+			resultMap.put("msg", "该订单没有设置快递，请先审核!");
+		}else if(shipOrder!=null && shipOrder.getExpressOrderno()!=null && shipOrder.getExpressOrderno().length()>0){
+			resultMap.put("ret", 0);
+			resultMap.put("msg", "该订单已打印，要修改快递请先取消！");
+		}else{
+			this.shipOrderRemote.chooseExpress(shipOrder.getId(), expressCompany);
+			resultMap.put("ret", 1);
+		}
+		return resultMap;
+	}
+	
+	/**
+	 * 订单管理页面修改备注
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="waybill/tof7Remark")
+	public String toAddRemark(HttpServletRequest request,ModelMap model){
+		String id = request.getParameter("tradeId");
+		ShipOrder shipOrder=this.shipOrderRemote.getSendShipOrderByTradeId(Long.valueOf(id));
+		model.put("shipOrder", shipOrder);
+		return "shipOrder/ShipOrderf7Remark";
+	}
+	
+	@RequestMapping(value="waybill/submitRemark")
+	@ResponseBody
+	public Map<String, Object> updateRemark(HttpServletRequest request) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		String orderId = request.getParameter("orderId");
+		String remark = request.getParameter("remark");
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("orderId", orderId);
+		params.put("remark", remark);
+		this.shipOrderRemote.updateRemark(params);
+		resultMap.put("ret", 1);
+		return resultMap;
+	}
+	
+	@RequestMapping(value="NoEXISTS/list")
+	public String toShipOrderNoEXISTSList(HttpServletRequest request,ModelMap model,@RequestParam(value = "page", defaultValue = "1") int pageNum,
+			@RequestParam(value = "pageSize", defaultValue = "500") int pageSize){
+		String userId=request.getParameter("userId");
+		List<User> userList=this.userRemote.findAll(null);
+		model.put("users", userList);
+		model.put("userId", userId);
+		return "shipOrder/ShipOrderNoEXISTSList";
+	}
+	
+	/**
+	 * 取数
+	 * @return
+	 * @throws ParseException 
+	 */
+	@RequestMapping(value="NoEXISTS/listData")
+	@ResponseBody
+	public Map<String,Object> NoEXISTS(HttpServletRequest request,ModelMap model,@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "rows", defaultValue = "500") int rows) throws ParseException{
+		Map<String,Object> resultMap=new HashMap<String, Object>();
+		String userId=request.getParameter("userId");
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.clear();
+		params.put("userId", userId);
+		if(rows==10){
+			rows=100;
+		}
+		SimpleDateFormat dateFm = new SimpleDateFormat("yyyy-MM-dd");
+		String  startDate   = request.getParameter("startDate");
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(dateFm.parse(startDate));
+		startDate  =dateFm.format(cal.getTime());
+		params.put("startDate", startDate);
+//		String startDate = dateFm.format(cal.getTime());
+		cal.add(Calendar.DATE, 1);
+		String endDate = dateFm.format(cal.getTime());
+		System.out.println("startDate:"+startDate);
+		System.out.println("endDate:"+endDate);
+		System.out.println("userId:"+userId);
+		
+		params.put("endDate", endDate);
+		
+		
+		
+	    List<ShipOrder> orders=shipOrderRemote.selectShipOrderNotEXISTS(params);
+        resultMap.put("rows", buildOrderListData(orders));
+        resultMap.put("total", orders.size());
+        resultMap.put("userId", userId);
+		return resultMap;
+	}
+	
+	
+	@RequestMapping(value = "/notifys/listData")
+	@ResponseBody
+	public Map<String, Object> ListData(@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "rows", defaultValue = "100") int rows,HttpServletRequest request,
+			ModelMap model)throws Exception {
+		if (rows!=100) {
+			rows=100;
+		}
+		Map<String, Object> retMap=new HashMap<String, Object>();
+		long userId=52;
+		logger.debug("通知用户签收:userId"+userId);
+		Page<Trade> trades = tradeRemote.findUserTrades(userId,
+				Trade.Status.TRADE_WAIT_EXPRESS_NOFITY, page, rows);
+		logger.debug("通知用户签收列表查询完成，数据:"+trades.getTotalPages());
+		List<Map<String, Object>> resultList=new ArrayList<Map<String,Object>>();
+		for(Trade trade:trades){
+			Map<String, Object> map=new HashMap<String, Object>();
+			map.put("tid",trade.getId());
+			SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			map.put("payTime",sf.format(trade.getPayTime()));
+			map.put("shippingType",trade.getShippingType());
+			map.put("tradeFrom",trade.getTradeFrom());
+			map.put("buyerNick",(trade.getBuyerNick()==null)?"":trade.getBuyerNick());
+			map.put("receiverName",trade.getReceiverName());
+			map.put("phone",((trade.getReceiverPhone()==null)?"":trade.getReceiverPhone())+","+((trade.getReceiverMobile()==null)?"":trade.getReceiverMobile()));
+			map.put("address",trade.getReceiverState()+trade.getReceiverCity()+trade.getReceiverDistrict()+trade.getReceiverAddress());
+			ShipOrder order=this.shipOrderRemote.getSendShipOrderByTradeId(trade.getId());
+			map.put("items", order!=null?order.getItems():"");
+			map.put("company", order!=null?order.getExpressCompany():"");
+			map.put("orderno", order!=null ?order.getExpressOrderno():"");
+			resultList.add(map);
+		}
+		logger.debug("通知用户签收列表重构完成，数据:"+resultList.size());
+		retMap.put("rows", resultList);
+		retMap.put("page", page);
+		retMap.put("total", trades.getTotalElements());
+		return retMap;
+	}
+}

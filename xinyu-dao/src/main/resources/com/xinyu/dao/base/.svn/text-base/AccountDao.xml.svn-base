@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.dao.base.AccountDao">
+	<resultMap id="AccountResult" type="com.xinyu.model.system.Account">
+		<result property="id" column="FID" />
+		<result property="cu" column="Fcu" />
+		<result property="userName" column="FuserName" />
+		<result property="password" column="Fpassword" />
+		<result property="shortName" column="FshortName" />
+		<result property="mobile" column="Fmobile" />
+		<result property="phone" column="Fphone" />
+		<result property="email" column="Femail" />
+		<result property="createTime" column="FcreateTime" />
+		
+	</resultMap>
+	<select id="findAcountById" parameterType="string" resultMap="AccountResult">
+		SELECT T.*
+		FROM t_xinyu_account T where T.FID=#{id}
+	</select>
+
+	<select id="findAccountsByList" parameterType="map" resultMap="AccountResult">
+		SELECT T.*
+		FROM t_xinyu_account T where 1=1
+		<if test="userName!=null and userName!=''">and FuserName=#{userName}</if>
+		<if test="password!=null and password!=''">and Fpassword=#{password}</if>
+		<if test="shortName!=null and shortName!=''">and FshortName=#{shortName}</if>
+		<if test="mobile!=null and mobile!=''">and Fmobile=#{mobile}</if>
+		<if test="phone!=null and phone!=''">and Fphone=#{phone}</if>
+		<if test="searchText!=null and searchText!=''">
+			and (FuserName like "%"#searchText{}"%" or FshortName like "%"#searchText{}"%" or Fmobile like "%"#searchText{}"%" or Fphone like "%"#searchText{}"%" or Femail like "%"#searchText{}"%")
+		</if>
+		<if test="pageSize!=null and pageSize!=''">
+			limit #{pageNum},#{pageSize}    
+		</if>
+	</select>
+	
+	<select id="getTotal" parameterType="map" resultType="int">
+		SELECT count(1)
+		FROM t_xinyu_account T where 1=1
+		<if test="userName!=null and userName!=''">and FuserName=#{userName}</if>
+		<if test="password!=null and password!=''">and Fpassword=#{password}</if>
+		<if test="shortName!=null and shortName!=''">and FshortName=#{shortName}</if>
+		<if test="mobile!=null and mobile!=''">and Fmobile=#{mobile}</if>
+		<if test="phone!=null and phone!=''">and Fphone=#{phone}</if>
+		<if test="searchText!=null and searchText!=''">
+			and (FuserName like "%"#searchText{}"%" or FshortName like "%"#searchText{}"%" or Fmobile like "%"#searchText{}"%" or Fphone like "%"#searchText{}"%" or Femail like "%"#searchText{}"%")
+		</if>
+	</select>
+	
+	<insert id="insertAccout" parameterType="com.xinyu.model.system.Account">
+		insert into
+		t_xinyu_account(FID,fcu,FuserName,Fpassword,FshortName,Fmobile,Fphone,Femail,FcreateTime)
+		VALUES(#{id},#{cu},#{userName,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{shortName,jdbcType=VARCHAR},#{mobile,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{createTime})
+	</insert>
+
+	<update id="updateAccount" parameterType="com.xinyu.model.system.Account">
+		update t_xinyu_account
+		<set>
+			<if test="userName!=null and userName!=''">FuserName=#{userName},</if>
+			<if test="password!=null and password!=''">Fpassword=#{password},</if>
+			<if test="shortName!=null and shortName!=''">FshortName=#{shortName},</if>
+			<if test="mobile!=null and mobile!=''">Fmobile=#{mobile},</if>
+			<if test="phone!=null and phone!=''">Fphone=#{phone},</if>
+			<if test="email!=null and email!=''">Femail=#{email},</if>
+			<if test="createTime!=null and createTime!=''">FcreateTime=#{createTime},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteAccountById" parameterType="string">
+		delete from t_xinyu_account where fid=#{id}
+	</delete>
+
+</mapper>

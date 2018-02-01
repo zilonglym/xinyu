@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/picking
+END
+pickingAdd.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/picking/pickingAdd.jsp
+END
+pickingList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/picking/pickingList.jsp
+END

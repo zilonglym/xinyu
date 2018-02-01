@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.base.SnSampleRuleDao">
+	<resultMap id="SampleRuleResult" type="com.xinyu.model.base.SampleRule">
+		<result property="id" column="FID" />
+		<result property="ruleDesc" column="FruleDesc" />
+		<result property="ruleRegularExpression" column="FruleRegularExpression" />
+		<result property="ruleImgUrl" column="FruleImgUrl" />
+		<result property="ruleSample" column="FruleSample" />
+		<result property="snSample.id" column="fksnSampleId"/>
+	</resultMap>
+	<select id="getSampleRuleByList" parameterType="map" resultMap="SampleRuleResult">
+		SELECT T.*
+		FROM T_xinyu_SampleRule T 
+		<where>
+		    1=1
+		    <if test="snSampleId!=null and snSampleId!=''">
+		        and fksnSampleId=#{snSampleId}
+		    </if>
+		</where>
+	</select>
+	<insert id="insertSampleRule" parameterType="com.xinyu.model.base.SampleRule">
+		insert into
+		T_xinyu_SampleRule(FID,FruleDesc,FruleRegularExpression,FruleImgUrl,FruleSample,fksnSampleId)
+		VALUES(#{id},#{ruleDesc,jdbcType=VARCHAR},#{ruleRegularExpression,jdbcType=VARCHAR},
+		#{ruleImgUrl,jdbcType=VARCHAR},#{ruleSample,jdbcType=VARCHAR},#{snSample.id,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateSampleRule" parameterType="com.xinyu.model.base.SampleRule">
+		update T_xinyu_SampleRule
+		<set>
+			<if test="ruleDesc!=null and ruleDesc!=''">FruleDesc=#{ruleDesc},</if>
+			<if test="ruleRegularExpression!=null and ruleRegularExpression!=''">FruleRegularExpression=#{ruleRegularExpression},</if>
+			<if test="ruleImgUrl!=null and ruleImgUrl!=''">FruleImgUrl=#{ruleImgUrl},</if>
+			<if test="ruleSample!=null and ruleSample!=''">FruleSample=#{ruleSample},</if>
+			<if test="snSample.id!=null and snSample.id!=''">fksnSampleId=#{snSample.id},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteSampleRuleById" parameterType="string">
+		delete from T_xinyu_SampleRule where fid=#{id}
+	</delete>
+
+</mapper> 

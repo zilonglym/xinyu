@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote
+END
+AuthRemoteImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/AuthRemoteImpl.java
+END
+ExpressRemote.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/ExpressRemote.java
+END
+CentroRemote.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/CentroRemote.java
+END
+InventoryRemote.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/InventoryRemote.java
+END
+ReportRemoteImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/ReportRemoteImpl.java
+END
+ItemRemote.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/ItemRemote.java
+END
+ShipOrderRemote.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/ShipOrderRemote.java
+END
+TradeRemote.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/TradeRemote.java
+END
+UserRemoteImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/UserRemoteImpl.java
+END
+AuthRemote.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/AuthRemote.java
+END
+ReportRemote.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/ReportRemote.java
+END
+ExpressRemoteImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/ExpressRemoteImpl.java
+END
+CentroRemoteImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/CentroRemoteImpl.java
+END
+UserRemote.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/UserRemote.java
+END
+InventoryRemoteImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/InventoryRemoteImpl.java
+END
+ItemRemoteImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/ItemRemoteImpl.java
+END
+TradeRemoteImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/TradeRemoteImpl.java
+END
+ShipOrderRemoteImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/remote/ShipOrderRemoteImpl.java
+END

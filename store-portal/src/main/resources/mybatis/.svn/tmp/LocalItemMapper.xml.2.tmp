@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.graby.store.dao.mybatis.LocalItemDao">
+    
+	<resultMap id="localItemEntity" type="com.graby.store.entity.local.LocalItem">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="sku" column="sku" />
+		<result property="itemType" column="item_type" />
+		<result property="source" column="source" />
+		<result property="barCode" column="bar_code" />
+		<result property="shopId" column="shop_id" />
+		<result property="shopName" column="shop_name" />
+		<result property="num" column="num" />
+	</resultMap>
+	
+	<select id="getLocalItemById"  resultMap="localItemEntity">
+	   select a.* 
+	   from sc_local_item a 
+	   where a.id = #{0}
+	</select>
+
+	
+	<insert id="save" parameterType="LocalItem" useGeneratedKeys="true" keyProperty="id">
+		insert into sc_local_item(name,sku,item_type,source,bar_code,shop_id,shop_name,num) 
+		values (#{name},#{sku},#{itemType},#{source},#{barCode},#{shopId},#{shopName},#{num})
+	</insert>
+	
+	<select id="getLocalItemList" parameterType="map" resultMap="localItemEntity">
+	    select a.*
+	    from sc_local_item a
+	   <where> 
+	        1 = 1
+	   		 <if test="id!=null and id!=''">
+		    	and a.id = #{id}
+			</if>
+			 <if test="name!=null and name!=''">
+		   	 	and a.name = #{name}
+			</if>
+			 <if test="barCode!=null and barCode!=''">
+	   			and a.bar_code = #{barCode}
+	   		</if>
+	   		<if test="source!=null and source!=''">
+	   			and a.source = #{source}
+	  		 </if>
+	   		<if test="shopId!=null and shopId!=''">
+	   			and a.shop_id = #{shopId}
+	   		</if>
+	   		<if test="shopName!=null and shopName!=''">
+	   			and a.shop_Name = #{shopName}
+	   		</if>
+	   		<if test="searchText!=null and searchText!=''">
+	   		    and (
+	   		    	a.name like "%"#{searchText}"%"
+	   		    )
+	   		</if>
+		</where>
+		<if test="start!=null and offset!=null">
+			limit #{start},#{offset}
+		</if>	
+	</select>
+	
+	<select id="getLocalItemCount" parameterType="map" resultType="int">
+	    select count(1)
+	    from sc_local_item a
+	   <where> 
+	        1 = 1
+	   		 <if test="id!=null and id!=''">
+		    	and a.id = #{id}
+			</if>
+			 <if test="name!=null and name!=''">
+		   	 	and a.name = #{name}
+			</if>
+			 <if test="barCode!=null and barCode!=''">
+	   			and a.bar_code = #{barCode}
+	   		</if>
+	   		<if test="source!=null and source!=''">
+	   			and a.source = #{source}
+	  		 </if>
+	   		<if test="shopId!=null and shopId!=''">
+	   			and a.shop_id = #{shopId}
+	   		</if>
+	   		<if test="shopName!=null and shopName!=''">
+	   			and a.shop_Name = #{shopName}
+	   		</if>
+	   		<if test="searchText!=null and searchText!=''">
+	   		    and (
+	   		    	a.name like "%"#{searchText}"%"
+	   		    	or a.bar_code like "%"#{searchText}"%"
+	   		    )
+	   		</if>
+	   		<if test="sku!=null and sku!=''">
+	   			and a.sku = #{sku}
+	   		</if>
+		</where>	
+	</select>
+	
+	<update id="updateLocalItem">
+	    update sc_local_item  
+	    <set>
+			<if test="name!=null and name!=''">
+				name=#{name},
+			</if>
+			<if test="sku!=null and sku!=''">
+				sku=#{sku},
+			</if>
+			<if test="itemType!=null and itemType!=''">
+				item_type=#{itemType},
+			</if>
+			<if test="source!=null and source!=''">
+				source=#{source},
+			</if>
+			<if test="barCode!=null and barCode!=''">
+				bar_code=#{barCode},
+			</if>
+			<if test="shopId!=null and shopId!=''">
+				shop_id=#{shopId},
+			</if>
+			<if test="shopName!=null and shopName!=''">
+				shop_Name=#{shopName},
+			</if>
+			<if test="num!=null and num!=''">
+				num=#{num},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from sc_local_item where id=#{id}
+	</delete>
+</mapper> 

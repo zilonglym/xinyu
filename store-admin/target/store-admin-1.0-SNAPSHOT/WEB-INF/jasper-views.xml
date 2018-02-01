@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<!--org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView  -->
+	<!--org.springframework.web.servlet.view.jasperreports.JasperReportsXlsView  -->
+	
+	<bean id="pickReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/pick.jrxml"/>
+		<property name="subReportUrls">
+		    <map>
+		    	<!-- 主报表jrxml中用该变量声明子报表，不用路径。 -->
+		        <entry key="detailsSubReport" value="/WEB-INF/reports/pickDetail.jrxml"/>
+		    </map>
+		</property>
+	</bean>
+	
+	<!-- 分拣单 -->
+	<bean id="minPickReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/minPick.jrxml"/>
+		<property name="subReportUrls">
+		    <map>
+		        <entry key="detailsSubReport" value="/WEB-INF/reports/minPickDetail.jrxml"/>
+		    </map>
+		</property>
+	</bean>
+	
+	<!-- 批量拣货 -->
+	<bean id="batchPickReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/batchPick_xls.jrxml"/>
+	</bean>	
+	
+	<!-- 发货记录 -->
+	<bean id="shipReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/ship.jrxml"/>
+	</bean>	
+	
+	<!-- 库存盘点单 -->
+	<bean id="inventoryReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/stockTaking.jrxml"/>
+	</bean>	
+	
+	<!-- 发货汇总单 -->
+	<bean id="summaryReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/summary.jrxml"/>
+	</bean>	
+	
+	<!-- 出入库单 -->
+	<bean id="storageReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/storage.jrxml"/>
+	</bean>	
+	
+	<!-- 盘点单 -->
+	<bean id="checkInventoryReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/checkInventory.jrxml"/>
+	</bean>	
+	
+	<!-- 运费单 -->
+	<bean id="finaceReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/finace.jrxml"/>
+	</bean>
+	
+	<!-- 物流统计单 -->
+	<bean id="expressReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/express.jrxml"/>
+	</bean>	
+	
+	<!-- 商家利润单-->
+	<bean id="profitsReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/profits.jrxml"/>
+	</bean>	
+	
+	<!-- 物流利润单 -->
+	<bean id="companyProfitsReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/companyProfits.jrxml"/>
+	</bean>	
+	
+	<!-- 账务结算单 -->
+	<bean id="settlementReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/settlement.jrxml"/>
+	</bean>	
+	
+	<!-- 公司月利润单 -->
+	<bean id="monthProfitsReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/monthProfits.jrxml"/>
+	</bean>	
+	
+	<!-- 扫描出库明细单 -->
+	<bean id="checkOutReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/checkOut.jrxml"/>
+	</bean>	
+	
+	<!-- 扫描出库汇总单（快递） -->
+	<bean id="checkOutByCompanyReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/checkOutByCompany.jrxml"/>
+	</bean>	
+	
+	<!-- 扫描出库汇总单（商品） -->
+	<bean id="checkOutByItemReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/checkOutByItem.jrxml"/>
+	</bean>	
+	
+	<!--未出库的订单报表-->
+	<bean id="checkOutByTradeReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/checkOutByTrade.jrxml"/>
+	</bean>	
+	
+	<!-- 出入库统计单 -->
+	<bean id="inventoryRecordReport" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="WEB-INF/reports/inventoryRecord.jrxml"/>
+	</bean>	
+	
+</beans>

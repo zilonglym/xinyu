@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/util/json
+END
+JSONReader.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/util/json/JSONReader.class
+END
+ExceptionErrorListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/util/json/ExceptionErrorListener.class
+END
+StdoutStreamErrorListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/util/json/StdoutStreamErrorListener.class
+END
+JSONValidatingReader.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/util/json/JSONValidatingReader.class
+END
+JSONValidator.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/util/json/JSONValidator.class
+END
+JSONWriter.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/util/json/JSONWriter.class
+END
+BufferErrorListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/util/json/BufferErrorListener.class
+END
+JSONErrorListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/util/json/JSONErrorListener.class
+END
+JSONValidatingWriter.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/util/json/JSONValidatingWriter.class
+END

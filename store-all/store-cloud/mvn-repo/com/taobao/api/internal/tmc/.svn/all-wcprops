@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc
+END
+MessageFields.class
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/MessageFields.class
+END
+DuplicateRemoverTmcHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/DuplicateRemoverTmcHandler.class
+END
+TmcClient$InnerClient.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/TmcClient$InnerClient.class
+END
+MixClient$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/MixClient$1.class
+END
+TmcHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/TmcHandler.class
+END
+TmcClient.class
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/TmcClient.class
+END
+MessageHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/MessageHandler.class
+END
+Message.class
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/Message.class
+END
+DuplicateRemoverTmcHandler$MsgScheduleTask.class
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/DuplicateRemoverTmcHandler$MsgScheduleTask.class
+END
+MessageStatus.class
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/MessageStatus.class
+END
+KeySelector.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/KeySelector.class
+END
+MessageKind.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/MessageKind.class
+END
+MixClient.class
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/MixClient.class
+END
+TmcIdentity.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/TmcIdentity.class
+END
+DuplicateRemoverTmcHandler$MsgKeySelector.class
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/DuplicateRemoverTmcHandler$MsgKeySelector.class
+END
+MixClient$ServerIdentity.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/MixClient$ServerIdentity.class
+END
+DuplicateRemoverTmcHandler$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/DuplicateRemoverTmcHandler$1.class
+END
+TmcHandler$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/TmcHandler$1.class
+END
+TmcClient$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/internal/tmc/TmcClient$1.class
+END

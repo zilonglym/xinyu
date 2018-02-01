@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="D:\java_dir\jdk" version="1.7.0_13">
+<bootpath>
+<entry path="D:\java_dir\jdk\jre\lib\resources.jar"/>
+<entry path="D:\java_dir\jdk\jre\lib\rt.jar"/>
+<entry path="D:\java_dir\jdk\jre\lib\sunrsasign.jar"/>
+<entry path="D:\java_dir\jdk\jre\lib\jsse.jar"/>
+<entry path="D:\java_dir\jdk\jre\lib\jce.jar"/>
+<entry path="D:\java_dir\jdk\jre\lib\charsets.jar"/>
+<entry path="D:\java_dir\jdk\jre\lib\jfr.jar"/>
+<entry path="D:\java_dir\jdk\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="D:\java_dir\jdk\jre\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="D:\java_dir\jdk\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="D:\java_dir" version="1.7.0_13">
+<bootpath>
+<entry path="D:\java_dir\jre\lib\resources.jar"/>
+<entry path="D:\java_dir\jre\lib\rt.jar"/>
+<entry path="D:\java_dir\jre\lib\sunrsasign.jar"/>
+<entry path="D:\java_dir\jre\lib\jsse.jar"/>
+<entry path="D:\java_dir\jre\lib\jce.jar"/>
+<entry path="D:\java_dir\jre\lib\charsets.jar"/>
+<entry path="D:\java_dir\jre\lib\jfr.jar"/>
+<entry path="D:\java_dir\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="D:\java_dir\jre\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="D:\java_dir\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="D:\java_dir\jre" version="1.7.0_13">
+<bootpath>
+<entry path="D:\java_dir\jre\lib\resources.jar"/>
+<entry path="D:\java_dir\jre\lib\rt.jar"/>
+<entry path="D:\java_dir\jre\lib\sunrsasign.jar"/>
+<entry path="D:\java_dir\jre\lib\jsse.jar"/>
+<entry path="D:\java_dir\jre\lib\jce.jar"/>
+<entry path="D:\java_dir\jre\lib\charsets.jar"/>
+<entry path="D:\java_dir\jre\lib\jfr.jar"/>
+<entry path="D:\java_dir\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="D:\java_dir\jre\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="D:\java_dir\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

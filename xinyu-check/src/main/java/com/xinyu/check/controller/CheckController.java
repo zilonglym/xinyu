@@ -1,0 +1,679 @@
+package com.xinyu.check.controller;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.xinyu.check.model.Person;
+import com.xinyu.check.model.StoreSystemItemEnums;
+import com.xinyu.check.model.SystemItem;
+import com.xinyu.check.service.CheckService;
+import com.xinyu.check.service.IRedisProxy;
+import com.xinyu.check.service.PersonService;
+import com.xinyu.check.service.SystemItemService;
+import com.xinyu.check.util.Digests;
+import com.xinyu.check.util.Encodes;
+import com.xinyu.check.util.MemcachedManagerDemo;
+import com.xinyu.check.util.ObjectTranscoder;
+
+/**
+ * 验货控制Controller
+ * 
+ * @author yangmin 2017年7月6日
+ *
+ */
+@RequestMapping(value = "/check")
+@Controller
+public class CheckController extends BaseController {
+	public static final Logger logger = Logger.getLogger(CheckController.class);
+
+	@Autowired
+	private PersonService personService;;
+	@Autowired
+	private SystemItemService systemItemService;
+	@Autowired
+	private CheckService checkService;
+	@Autowired
+	private IRedisProxy jedisProxy;
+
+	private Map<String, String> cpMap = null;
+
+	private List<String> sysItemList; // 是否开启检验
+
+	public final static String memcached_return = "Return";
+
+	public final static String memcached_checkOut = "CheckOut";// 验货记录
+	public final static String CHECK_OUT_DB = "Check_out_db";// 持久化标识
+	public final static String CHECK_NO_ORDER="CHECK_NO_ORDER";//订单不存在
+	
+	public final static String memcached_success_CheckOut_record = "success_record";//验货成功的记录，用于判断是否重复验货
+	
+	public final static String memcached_success_CheckOut = "success";
+	public final static String memcached_fail_CheckOut = "fail";
+	public final static String memcached_chongfu_CheckOut = "chongfu";
+	public final static String memcached_return_CheckOut = "return";
+
+	public final static String memcached_item = "Item";
+	public final static String memcached_user = "User";
+
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+	SimpleDateFormat ssdf = new SimpleDateFormat("yyyyMMdd");
+	/**
+	 * checkout用于验货的存放时间
+	 */
+	public final static int redis_time_checkOut = 1000 * 60 * 60 * 24 * 10;
+
+	/** 失败。 */
+	public static final String FAIL_TRADE = "FAIL_TRADE";
+
+	/** 失败。 */
+	public static final String SUCCESS_TRADE = "SUCCESS_TRADE";
+
+	/**
+	 * 登录
+	 * 
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
+	@RequestMapping(value = "submitLogin")
+	@ResponseBody
+	public Map<String, Object> getUsers(@RequestParam(value = "userName", defaultValue = "") String userName,
+			@RequestParam(value = "password", defaultValue = "") String password) {
+		logger.error("登录判断开始!");
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("userName", userName);
+		List<Person> list = this.personService.findPersonByList(params);
+		Person person = list != null && list.size() > 0 ? list.get(0) : null;
+		if (person == null) {
+			resultMap.put("code", "500");
+			return resultMap;
+		}
+		String pwd = person.getPassword();
+		person.setPassword(password);
+		entryptPassword(person, person.getSalt());
+		logger.error(pwd + "||" + person.getPassword());
+		if (pwd.equals(person.getPassword())) {
+			resultMap.put("code", "200");
+			resultMap.put("person", person);
+		} else {
+			resultMap.put("code", "500");
+		}
+		return resultMap;
+	}
+
+	/**
+	 * 刷新快递
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "refreshCpCode")
+	@ResponseBody
+	public Map<String, Object> refreshCpCode() {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		this.initCpMap();
+		resultMap.put("msg", "快递公司刷新成功!");
+		return resultMap;
+	}
+
+	/**
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "getItemInfoBybarCode", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> barCode(@RequestParam(value = "barCode", defaultValue = "0") String barCode, Model model)
+			throws Exception {
+
+		return this.checkService.getItemInfoBybarCode(barCode);
+	}
+
+	/**
+	 * 取快递公司
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "getExpressCompany")
+	@ResponseBody
+	public Map<String, Object> getExpressCompany() {
+		String expressNo = this.getString("orderCode");
+
+		if (cpMap == null) {
+			initCpMap();
+		}
+		String cp = cpMap.get(expressNo.substring(0, 4));
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+
+		SystemItem item = new SystemItem();
+		item.setId("");
+		if (cp == null) {
+			item.setDescription("");
+			resultMap.put("code", 500);
+		} else {
+			item.setDescription(cp);
+			resultMap.put("code", 200);
+		}
+		resultMap.put("item", item);
+		// if(cp==null){
+		// resultMap.put("code", 404);
+		// }
+		return resultMap;
+	}
+
+	/**
+	 * 商品条码取数据
+	 * 
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "getItemInfoBybarCodes", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> barCodes(@RequestParam(value = "barCode", defaultValue = "0") String barCode,
+			Model model) throws Exception {
+
+		return this.checkService.getItemInfoBybarCodes(barCode);
+	}
+
+	/**
+	 * 订单出库检验信息 使用缓存memcached
+	 * 
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "orderCheck")
+	@ResponseBody
+	public Map<String, Object> check_memcached(@RequestParam(value = "orderCode", defaultValue = "0") String orderCode,
+			@RequestParam(value = "barCode", defaultValue = "0") String barCode,
+			@RequestParam(value = "stock", defaultValue = "0") String stock,
+			@RequestParam(value = "cp", defaultValue = "0") String cp,
+			@RequestParam(value = "userId", defaultValue = "0") String userId,
+			@RequestParam(value = "source", defaultValue = "0") String source,
+			@RequestParam(value = "persinId", defaultValue = "0") String persinId, Model model) throws Exception {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		Date date = new Date();
+//		MemcachedManager manager = new MemcachedManager();
+		// Map<String,Object> orderInfo=null;
+		if (cpMap == null) {
+			logger.error("取系统变量快递公司单号:");
+			initCpMap();
+			logger.error("取快递公司完毕:" + (new Date().getTime() - date.getTime()));
+		}
+		Map<String, String> orderMap = null;
+		/**
+		 * 统计处理
+		 */
+		String key = ssdf.format(new Date());
+		/**
+		 * 累加器
+		 */
+		String successKey = key + memcached_success_CheckOut;
+		String failKey = key + memcached_success_CheckOut;
+		String chongfuKey = key + memcached_success_CheckOut;
+		String returnKey = key + memcached_success_CheckOut;
+		int chongfuIndex=0, returnIndex=0, failIndex=0, successIndex=0;
+	/*	if (jedisProxy.exists(successKey)) {
+			successIndex = Integer.valueOf(jedisProxy.get(successKey));
+		} else {
+			successIndex = 0;
+			jedisProxy.set(successKey, String.valueOf(successIndex));
+		}
+		if (jedisProxy.exists(failKey)) {
+			failIndex = Integer.valueOf(jedisProxy.get(failKey));
+		} else {
+			failIndex = 0;
+			jedisProxy.set(successKey, String.valueOf(failIndex));
+		}
+		if (jedisProxy.exists(chongfuKey)) {
+			chongfuIndex = Integer.valueOf(jedisProxy.get(chongfuKey));
+		} else {
+			chongfuIndex = 0;
+			jedisProxy.set(successKey, String.valueOf(chongfuIndex));
+		}
+
+		if (jedisProxy.exists(returnKey)) {
+			returnIndex = Integer.valueOf(jedisProxy.get(returnKey));
+		} else {
+			returnIndex = 0;
+			jedisProxy.set(successKey, String.valueOf(returnIndex));
+		}
+*/
+		/**
+		 * memcached_fail_CheckOut 判断条码,如果快递条码不在查询出来的快递中间，则两才交换位置
+		 */
+		String tempOrderCode = orderCode.substring(0, 4);
+		if (cpMap.get(tempOrderCode) == null) {
+			String temp = orderCode;
+			orderCode = barCode;
+			barCode = temp;
+		}
+		if (cp == null || cp.equals("0") || cp.length() == 0) {
+			cp = cpMap.get(orderCode.substring(0, 4));
+		}
+
+		if ("0".equals(persinId)) {
+			Map<String, Object> retMap = new HashMap<String, Object>();
+			retMap.put("code", "400");
+			retMap.put("msg", " 无法获得操作人员信息,请重新登录 ");
+			return retMap;
+		}
+
+		Map<String, String> memcachedMap = null;
+		// 保存验货记录
+		Map<String, String> checkOut =  new HashMap<String, String>();
+		
+		// 判断单据是否退货
+//		String returnMap = (String) manager.get(memcached_return + orderCode);
+		String returnMap=this.jedisProxy.get(memcached_return + orderCode);
+		if (StringUtils.isNotEmpty(returnMap)) {
+			memcachedMap = new HashMap<String, String>();
+			memcachedMap.put("status", FAIL_TRADE);
+			memcachedMap.put("msg", "此订单已退货！");
+			resultMap.put("code", "406");
+			resultMap.put("msg", "此订单已退货！");
+			checkOut.put(memcached_return_CheckOut + orderCode, orderCode + "--" + barCode);
+
+			returnIndex++;
+//			manager.put(memcached_return_CheckOut + "-" + key, returnIndex);
+//			manager.put(memcached_checkOut + orderCode, checkOut, memcached_time_checkOut);
+			saveCheckOutRecord(key, orderCode, checkOut, source);
+		}
+
+		if (memcachedMap == null) {
+			// 判断订单是否已成功出库
+			/**
+			 * 自动扫描第一次通过后，手动扫描不让他过 source==1 为机器验货 source==0 为人工验货
+			 */
+//			String checkOutKeys = "*" + memcached_checkOut + orderCode + "*";
+//			Set<String> keySet = this.jedisProxy.keys(checkOutKeys);
+			String checkOutKey=memcached_success_CheckOut_record+orderCode;
+//			Map<String,String> recordMap=(Map<String, String>) ObjectTranscoder.deserialize(this.jedisProxy.get(checkOutKey.getBytes()));
+//			if (keySet != null && keySet.size() > 0) {
+				/**
+				 * 判断是否有成功扫描记录,手工扫描和人工扫描是分开存放的。
+				 */
+//				String checkOutKey = keySet.iterator().next();
+//				Map<String, String> checkMap = (Map<String, String>) ObjectTranscoder.deserialize(this.jedisProxy.get(checkOutKey.getBytes()));
+//				String autoMap = checkMap.get(this.memcached_success_CheckOut + orderCode + "1");
+//				String pMap = checkMap.get(this.memcached_success_CheckOut + orderCode + "2");
+//				if (StringUtils.isNotBlank(autoMap) || StringUtils.isNotBlank(pMap)) {
+				if(this.jedisProxy.exists(checkOutKey)){
+					memcachedMap = new HashMap<String, String>();
+					memcachedMap.put("status", FAIL_TRADE);
+					memcachedMap.put("msg", "重复扫描！【" + orderCode + "】");
+					resultMap.put("code", "405");
+					resultMap.put("msg", "重复扫描！【" + orderCode + "】");
+					checkOut.put(memcached_chongfu_CheckOut + orderCode, orderCode + "--" + barCode);
+					chongfuIndex++;
+//					manager.put(memcached_checkOut + orderCode + source, checkOut, memcached_time_checkOut);
+					saveCheckOutRecord(key, orderCode, checkOut, source);
+				}
+//			}
+		}
+		if (memcachedMap == null) {
+			// 1.判断订单信息
+//			orderMap = (Map<String, String>) manager.get(orderCode);
+			orderMap=(Map<String, String>) ObjectTranscoder.deserialize(this.jedisProxy.get(orderCode.getBytes()));
+			if (orderMap==null) {
+				memcachedMap = new HashMap<String, String>();
+				memcachedMap.put("status", FAIL_TRADE);
+				memcachedMap.put("msg", "单号对应的订单不存在！【" + orderCode + "】");
+				// 订单不存在
+				resultMap.put("code", "404");
+				resultMap.put("msg", "单号对应的订单不存在！【" + orderCode + "】");
+				failIndex++;
+				checkOut.put(memcached_fail_CheckOut + orderCode, orderCode + "--" + barCode);
+//				manager.put(memcached_checkOut + orderCode, checkOut, memcached_time_checkOut);
+				this.jedisProxy.set(CHECK_NO_ORDER+orderCode, orderCode);
+				saveCheckOutRecord(key, orderCode, checkOut, source);
+			} else {
+				memcachedMap = new HashMap<String, String>();
+				// 校验商品是否存确
+				String itemInfo = "";
+				Object obj = orderMap.get(barCode);
+				if (obj instanceof java.lang.Long) {
+					Long item = (Long) obj;
+					itemInfo = String.valueOf(item);
+				} else {
+					itemInfo = (String) obj;
+				}
+				int zcIndex = 1, zpIndex = 1;
+				if (orderMap.get("zcIndex") != null) {
+					Object oo = orderMap.get("zcIndex");
+					if (oo instanceof java.lang.String) {
+						zcIndex = Integer.valueOf((String) orderMap.get("zcIndex"));
+					} else {
+						zcIndex = (Integer) oo;
+					}
+				}
+				if (orderMap.get("zpIndex") != null) {
+
+					Object oo = orderMap.get("zcIndex");
+					if (oo instanceof java.lang.String) {
+						zpIndex = Integer.valueOf((String) orderMap.get("zpIndex"));
+					} else {
+						zpIndex = (Integer) oo;
+					}
+				}
+				if (StringUtils.isNotBlank(itemInfo)) {
+					if (zcIndex > 1 && source.equals("1")) {
+						memcachedMap.put("status", FAIL_TRADE);
+						memcachedMap.put("msg", "验货失败！商品与订单信息不匹配！");
+						resultMap.put("code", "500");
+						resultMap.put("msg", "验货失败！商品与订单信息不匹配！");
+						failIndex++;
+//						manager.put(memcached_fail_CheckOut + "-" + key, failIndex);
+						checkOut.put(memcached_fail_CheckOut + orderCode, orderCode + "--" + barCode);
+//						manager.put(memcached_checkOut + orderCode, checkOut, memcached_time_checkOut);
+						saveCheckOutRecord(key, orderCode, checkOut, source);
+					} else { //
+						memcachedMap.put("status", SUCCESS_TRADE);
+						memcachedMap.put("msg", "订单校验成功！");
+						resultMap.put("code", "200");
+						resultMap.put("msg", "订单校验成功！");
+						successIndex++;
+//						manager.put(memcached_success_CheckOut + "-" + key, successIndex);
+						checkOut.put(memcached_success_CheckOut + orderCode + source,orderCode + "--" + barCode + "--" + source);
+//						manager.put(memcached_checkOut + orderCode, checkOut, memcached_time_checkOut);
+						saveCheckOutRecord(key, orderCode, checkOut, source);
+						saveSuccessRecord(orderCode, checkOut);
+					}
+				} else {
+					String orderInfo = (String) orderMap.get("orderInfo");
+					int orderInfoIndex = 0;
+					if (orderMap.get("orderInfo") != null) {
+						orderInfoIndex = orderInfo.length();
+					}
+					/**
+					 * 如果订单的产品数量为0，赠品数量大于0，则让他们通过
+					 */
+					if (zcIndex == 0 && zpIndex > 0) {
+						memcachedMap.put("status", SUCCESS_TRADE);
+						memcachedMap.put("msg", "订单校验成功！");
+						resultMap.put("code", "200");
+						resultMap.put("msg", "订单校验成功！");
+						successIndex++;
+//						manager.put(memcached_success_CheckOut + "-" + key, successIndex);
+						checkOut.put(memcached_success_CheckOut + orderCode + source,orderCode + "--" + barCode + "--" + source);
+//						manager.put(memcached_checkOut + orderCode, checkOut, memcached_time_checkOut);
+						saveCheckOutRecord(key, orderCode, checkOut, source);
+						saveSuccessRecord(orderCode, checkOut);
+					} else {
+						memcachedMap.put("status", FAIL_TRADE);
+						memcachedMap.put("msg", "验货失败！商品与订单信息不匹配！");
+						resultMap.put("code", "500");
+						resultMap.put("msg", "验货失败！商品与订单信息不匹配！");
+						failIndex++;
+						checkOut.put(memcached_fail_CheckOut + orderCode, orderCode + "--" + barCode);
+//						manager.put(memcached_checkOut + orderCode, checkOut, memcached_time_checkOut);
+						saveCheckOutRecord(key, orderCode, checkOut, source);
+					}
+				}
+			}
+		}
+		/**
+		 * 在缓存中，写入数据库的记录与判断是否重复发货的记录分开存放。 验货的数据只存放基本的判断数据， 写入数据库的存放详细的验货对像
+		 * 这里还有数据的清除问题没有处理 验货记录的数据清除没有做。还有就是拦截数据的清除也没有
+		 */
+		jedisProxy.set(successKey, String.valueOf(successIndex));
+		jedisProxy.set(failKey, String.valueOf(failIndex));
+		jedisProxy.set(chongfuKey, String.valueOf(chongfuIndex));
+		jedisProxy.set(returnKey, String.valueOf(returnIndex));
+		memcachedMap.put("accountId", persinId);
+		saveCheckOutRecord(orderCode, barCode, stock, cp, source, persinId, resultMap, date, orderMap, key,
+				chongfuIndex, returnIndex, failIndex, successIndex, memcachedMap);
+
+		return resultMap;
+
+	}
+
+	/**
+	 * 保存checkOut记录
+	 * 
+	 * @param orderCode
+	 * @param barCode
+	 * @param stock
+	 * @param cp
+	 * @param source
+	 * @param persinId
+	 * @param resultMap
+	 * @param date
+	 * @param manager
+	 * @param orderMap
+	 * @param key
+	 * @param chongfuIndex
+	 * @param returnIndex
+	 * @param failIndex
+	 * @param successIndex
+	 * @param memcachedMap
+	 */
+	private void saveCheckOutRecord(String orderCode, String barCode, String stock, String cp, String source,
+			String persinId, Map<String, Object> resultMap, Date date,
+			Map<String, String> orderMap, String key, int chongfuIndex, int returnIndex, int failIndex,
+			int successIndex, Map<String, String> memcachedMap) {
+		// 保存操作记录
+		if (orderMap != null && orderMap.get(barCode) != null) {
+			String items = orderMap.get(barCode);
+			String[] ary = items.split("\\|\\|");
+			String orderInfo = orderMap.get("orderInfo");
+			String[] orderAry = orderInfo.split("\\|\\|");
+			String itemKey = memcached_item + ary[0];
+			Map<String, String> itemMap = (Map<String, String>) ObjectTranscoder
+					.deserialize(this.jedisProxy.get(itemKey.getBytes()));
+			logger.error("Redis:" + items + "][" + orderInfo + "]" + itemMap);
+			logger.error("itemKey:" + itemKey + "[ary:]" + ary[0] + "[order:]" + orderAry[0]);
+//			if (itemMap == null) {
+//				itemMap = (Map<String, String>) manager.get(barCode);
+//			}
+			memcachedMap.put("date", sdf.format(new Date()));
+			memcachedMap.put("stock", stock);
+			memcachedMap.put("personId", persinId);
+			memcachedMap.put("orderCode", orderCode);
+			memcachedMap.put("barCode", barCode);
+			memcachedMap.put("cpCode", cp == null ? "" : cp);
+			memcachedMap.put("source", source);
+			memcachedMap.put("orderId", orderAry[0]);
+			memcachedMap.put("orderDate", orderMap.get("orderDate"));
+			memcachedMap.put("totalWeight", orderMap.get("totalWeight"));
+			memcachedMap.put("state", orderMap.get("state"));
+			memcachedMap.put("user", orderMap.get("user"));
+			memcachedMap.put("itemName", itemMap != null ? itemMap.get("title") : "");
+			memcachedMap.put("itemId", ary[0]);
+			resultMap.put("itemName", itemMap != null ? itemMap.get("title") : "");
+			// logger.error(memcachedMap);
+		} else {
+//			Map<String, Object> item = (Map<String, Object>) manager.get(memcached_item + barCode);
+			Map<String, Object> item =null;
+			memcachedMap.put("date", sdf.format(new Date()));
+			memcachedMap.put("stock", stock);
+			memcachedMap.put("personId", persinId);
+			memcachedMap.put("orderCode", orderCode);
+			memcachedMap.put("barCode", barCode);
+			memcachedMap.put("cpCode", cp == null ? "" : cp);
+			memcachedMap.put("source", source);
+			memcachedMap.put("orderId", "");
+			if (item != null) {
+				resultMap.put("itemName", item.get("title"));
+				memcachedMap.put("itemName", String.valueOf(item.get("title")));
+				memcachedMap.put("itemId", String.valueOf(item.get("id")));
+				memcachedMap.put("weight", String.valueOf(item.get("weight")));
+			} else {
+				memcachedMap.put("itemName", "nan");
+				resultMap.put("itemName", "");
+				memcachedMap.put("itemId", "");
+				memcachedMap.put("weight", "0");
+			}
+		}
+		String msg = (String) memcachedMap.get("msg");
+		if (source.equals("1")) {
+			msg = "机器验货:" + msg;
+		} else {
+			msg = "人工验货:" + msg;
+		}
+		memcachedMap.put("msg", msg);
+		logger.error(memcachedMap);
+		String keyValue = key + CHECK_OUT_DB + orderCode + UUID.randomUUID();
+		this.jedisProxy.set(keyValue.getBytes(), ObjectTranscoder.serialize(memcachedMap));
+//		manager.put(memcached_checkOut, checkOutList);
+		resultMap.put("orderCode", orderCode);
+		resultMap.put("barCode", barCode);
+		resultMap.put("successIndex", successIndex);
+		resultMap.put("failIndex", failIndex);
+		resultMap.put("chongfuIndex", chongfuIndex);
+		resultMap.put("returnIndex", returnIndex);
+		logger.error(resultMap);
+		Long time = new Date().getTime() - date.getTime();
+		if (time > 100) {
+			if (source.equals("1")) {
+				logger.error("超时 机器验货时间:" + time + resultMap);
+			} else {
+				logger.error("超时 人工验货时间:" + time + resultMap);
+			}
+
+		} else {
+			if (source.equals("1")) {
+				logger.error("机器验货时间:" + time + resultMap);
+			} else {
+				logger.error("人工验货时间:" + time + resultMap);
+			}
+
+		}
+	}
+
+	/**
+	 * 保存验货记录
+	 * 
+	 * @param key
+	 * @param orderCode
+	 * @param checkOut
+	 * @param jedis
+	 */
+	private void saveCheckOutRecord(String key, String orderCode, Map<String, String> checkOut, String source) {
+		String kk = key + memcached_checkOut + orderCode + source;
+		if (this.jedisProxy.exists(kk)) {
+			kk = kk + "@@" + UUID.randomUUID().toString();
+			jedisProxy.set(kk.getBytes(), ObjectTranscoder.serialize(checkOut));
+		} else {
+			jedisProxy.set(kk.getBytes(), ObjectTranscoder.serialize(checkOut));
+		}
+	}
+	/**
+	 * 保存验货成功的记录，用于判断是否重复验货
+	 * @param orderCode
+	 * @param map
+	 */
+	private void saveSuccessRecord(String orderCode,Map<String,String> map){
+		String key=memcached_success_CheckOut_record+orderCode;
+		this.jedisProxy.set(key.getBytes(), ObjectTranscoder.serialize(map));
+	}
+
+	/**
+	 * 取每日订单出库校验统计
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "getCheckTradeInfo")
+	@ResponseBody
+	public Map<String, Object> getCheckTradeInfo() {
+		Date date = new Date();
+		Map<String, Object> params = new HashMap<String, Object>();
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat dateFm = new SimpleDateFormat("yyyy-MM-dd");
+		String startDate = dateFm.format(cal.getTime());
+		cal.add(Calendar.DATE, 1);
+		String endDate = dateFm.format(cal.getTime());
+		params.put("startDate", startDate);
+		params.put("endDate", endDate);
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("importTrade", this.checkService.getCountByDate(params));// 导入订单数
+		resultMap.put("checkTrade", this.checkService.getCheckSuccessCountByDate(params));// 已校验订单数
+		resultMap.put("successTrade", this.checkService.getSuccessCountByDate(params));// 成功订单数
+		resultMap.put("failTrade", this.checkService.getCheckFailCountByDate(params));// 失败订单数
+		logger.error("定时器取数所花时间:" + (new Date().getTime() - date.getTime()));
+		return resultMap;
+	}
+
+	/**
+	 * 刷新订单校验商家信息
+	 * 
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "reLoadSystem", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> reLoadSystem(Model model) throws Exception {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("type", StoreSystemItemEnums.CHECK_TRADE.getKey());
+		List<SystemItem> sysItem = this.systemItemService.findSystemItemByList(params);
+		sysItemList = new ArrayList<String>();
+		for (int i = 0, size = sysItem.size(); i < size; i++) {
+			sysItemList.add(sysItem.get(i).getValue());
+		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sysItemList", sysItemList);
+		return map;
+	}
+
+	/**
+	 * 初始化验货配置
+	 */
+	private void initCpMap() {
+		cpMap = new HashMap<String, String>();
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("type", StoreSystemItemEnums.CHECK_COMP.getKey());
+		List<SystemItem> systemItem = this.systemItemService.findSystemItemByList(params);
+		for (int i = 0; systemItem != null && i < systemItem.size(); i++) {
+			SystemItem item = systemItem.get(i);
+			String valueStr = item.getValue();
+			String[] ary = valueStr.split(",");
+			for (int j = 0; ary != null && j < ary.length; j++) {
+				cpMap.put(ary[j], item.getDescription());
+			}
+		}
+	}
+
+	/**
+	 * 初始化订单验货配置
+	 * 
+	 * @param params
+	 */
+	private void initSystemCheckTrade() {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("type", StoreSystemItemEnums.CHECK_TRADE.getKey());
+		sysItemList = new ArrayList<String>();
+		List<SystemItem> sysItem = systemItemService.findSystemItemByList(params);
+		for (int i = 0, size = sysItem.size(); i < size; i++) {
+			sysItemList.add(sysItem.get(i).getValue());
+		}
+	}
+
+	/**
+	 * 密码加密
+	 */
+	public void entryptPassword(Person person, String salt) {
+		person.setSalt(salt);
+		byte[] hashPassword = Digests.sha1(person.getPassword().getBytes(), Encodes.decodeHex(salt), 1024);
+		person.setPassword(Encodes.encodeHex(hashPassword));
+	}
+}

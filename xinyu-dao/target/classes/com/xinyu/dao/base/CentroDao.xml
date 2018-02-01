@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.dao.base.CentroDao">
+	<resultMap id="CentroResult" type="com.xinyu.model.base.Centro">
+		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
+		<result property="name" column="Fname" />
+		<result property="person" column="Fperson" />
+		<result property="mobile" column="Fmobile" />
+		<result property="phone" column="Fphone" />
+		<result property="address" column="Faddress" />
+		<result property="code" column="Fcode" />
+		<result property="sfAddress" column="FsfAddress" />
+		<result property="remark" column="Fremark" />
+		<result property="province" column="Fprovince" />
+		<result property="city" column="Fcity" />
+		<result property="area" column="Farea" />
+		<result property="storeCode" column="FStoreCode" />
+	</resultMap>
+	<select id="getCentroById" parameterType="string" resultMap="CentroResult">
+		SELECT T.*
+		FROM T_xinyu_Centro T where T.FID=#{id}
+	</select>
+	
+	<select id="getCentroByList" parameterType="map" resultMap="CentroResult">
+		SELECT T.*
+		FROM T_xinyu_Centro T 
+		<where>
+		    1=1
+		    <if test="storeCode!=null and storeCode!=''">
+		        and FstoreCode=#{storeCode}
+		    </if>
+		</where>
+	</select>
+	<insert id="insertCentro" parameterType="com.xinyu.model.base.Centro">
+		insert into
+		T_xinyu_Centro(FID,FCU,Fname,Fperson,Fmobile,Fphone,Faddress,Fcode,FsfAddress,Fremark,Fprovince,Fcity,Farea,FstoreCode)
+		VALUES(#{id},#{cu},#{name},#{person},#{mobile},#{phone},#{address},#{code},#{sfAddress},#{remark},#{province},#{city},#{area},#{storeCode})
+	</insert>
+
+	<update id="updateCentro" parameterType="com.xinyu.model.base.Centro">
+		update T_xinyu_Centro
+		<set>
+			<if test="cu!=null and cu!=''">FCU=#{cu},</if>
+			<if test="name!=null and name!=''">Fname=#{name},</if>
+			<if test="person!=null and person!=''">Fperson=#{person},</if>
+			<if test="mobile!=null and mobile!=''">Fmobile=#{mobile},</if>
+			<if test="phone!=null and phone!=''">Fphone=#{phone},</if>
+			<if test="address!=null and address!=''">Faddress=#{address},</if>
+			<if test="code!=null and code!=''">Fcode=#{code},</if>
+			<if test="sfAddress!=null and sfAddress!=''">FsfAddress=#{sfAddress},</if>
+			<if test="remark!=null and remark!=''">Fremark=#{remark},</if>
+			<if test="province!=null and province!=''">Fprovince=#{province},</if>
+			<if test="city!=null and city!=''">Fcity=#{city},</if>
+			<if test="area!=null and area!=''">Farea=#{area},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteCentroById" parameterType="string">
+		delete from T_xinyu_Centro where fid=#{id}
+	</delete>
+</mapper>

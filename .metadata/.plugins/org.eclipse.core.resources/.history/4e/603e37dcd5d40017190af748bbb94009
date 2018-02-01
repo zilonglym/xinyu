@@ -1,0 +1,7 @@
+package com.xinyu.model.trade;
+
+import com.xinyu.model.common.Entity;
+
+public class ShipOrderReport extends Entity {
+
+}

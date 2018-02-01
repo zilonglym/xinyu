@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/wlpost/!svn/ver/1737/trunk/store-core/src/main/java/com/graby/store/service/store
+END
+ItemServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/service/store/ItemServiceImpl.java
+END
+UserServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/service/store/UserServiceImpl.java
+END
+SyncTopServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/service/store/SyncTopServiceImpl.java
+END
+SyncTopTradeServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/service/store/SyncTopTradeServiceImpl.java
+END
+UserShopService.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/141/trunk/store-core/src/main/java/com/graby/store/service/store/UserShopService.java
+END
+StorageLocationService.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/1737/trunk/store-core/src/main/java/com/graby/store/service/store/StorageLocationService.java
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/wlpost/!svn/ver/1777/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/impl
+END
+ItemDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/impl/ItemDaoImpl.java
+END
+ShipOrderDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/1777/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/impl/ShipOrderDaoImpl.java
+END
+SystemItemDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/impl/SystemItemDaoImpl.java
+END
+CheckOutDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/impl/CheckOutDaoImpl.java
+END
+PersonDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/impl/PersonDaoImpl.java
+END

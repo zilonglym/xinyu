@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade
+END
+searchResult.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade/searchResult.jsp
+END
+search.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade/search.jsp
+END
+received.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade/received.jsp
+END
+refunds.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade/refunds.jsp
+END
+waits.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade/waits.jsp
+END
+specialFetch.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade/specialFetch.jsp
+END
+tradeNotifys.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade/tradeNotifys.jsp
+END
+tradeWaitsWms.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade/tradeWaitsWms.jsp
+END
+test.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade/test.jsp
+END
+special.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade/special.jsp
+END
+tradeTraces.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade/tradeTraces.jsp
+END
+waitsFetch.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/trade/waitsFetch.jsp
+END

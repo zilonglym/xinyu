@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.graby.store.dao.mybatis.UserDao">
+
+	<select id="findUserByUsername" parameterType="String" resultType="User">
+		select id, username, password, salt, roles,code, shop_name as shopName,centro_Id as centroId,tb_user_id as tbUserId,owner_code as ownercode from sc_user
+		where username=#{username}
+	</select>
+	
+	<select id="findUserByShopName" parameterType="String" resultType="User">
+		select id, username, password, salt, roles,code, shop_name as shopName,centro_Id as centroId,tb_user_id as tbUserId ,owner_code as ownercode
+		from sc_user
+		where shop_name=#{shopName}
+	</select>
+	
+	<select id="get" parameterType="int" resultType="User">
+		select id, username, roles, code,shop_name as shopName, description,centro_Id as centroId,tb_user_id as tbUserId,owner_code as ownercode,shortName
+		from sc_user
+		where id=#{id}
+	</select>
+
+	<!-- 插入用户： 1.由数据库生成id并赋值到user对象 -->
+	<insert id="save" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+		insert into sc_user (
+		username, password, salt, roles, shop_name, description,code,centro_Id,tb_user_id)
+		values (
+		#{username}, #{password}, #{salt}, #{roles}, #{shopName}, #{description},#{code},#{centroId},#{tbUserId})
+	</insert>
+
+   <update id="updateDesc"> 
+        update sc_user set description=#{1}  
+        where id=#{0}
+    </update>		
+	
+	 <update id="updateUserCentro" parameterType="User"> 
+        update sc_user set centro_Id=#{centroId}  
+        where id=#{id}
+    </update>		
+	 <update id="updateUserTbUserId" parameterType="User"> 
+        update sc_user set tb_user_id=#{tbUserId}  
+        where id=#{id}
+    </update>	
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="int">
+	     delete from sc_user where id=#{id}
+	</delete>
+
+	<select id="findAll" parameterType="String" resultType="User">
+		SELECT id, username,code, shop_name AS shopName FROM sc_user a WHERE a.roles != 'admin' order by seq
+	</select>
+	<select id="getUserByCode" parameterType="String" resultType="User">
+		SELECT id, username,code, shop_name AS shopName 
+		FROM sc_user a WHERE a.code=#{code}
+	</select>	
+	
+	<select id="getUserByOwnerCode" parameterType="String" resultType="User">
+		SELECT id, username,code, shop_name AS shopName 
+		FROM sc_user a WHERE a.ownercode=#{ownercode}
+	</select>	
+	<select id="findUsers" resultType="User">
+		select s.shop_name as "shopName",s.* from sc_user s 
+		where s.shop_name is not null and s.username is not null  order by seq
+	</select>
+	
+</mapper> 

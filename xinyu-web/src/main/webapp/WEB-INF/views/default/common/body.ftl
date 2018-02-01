@@ -1,0 +1,31 @@
+<div id="tt"  class="easyui-tabs" style="width:100%;height:100%">
+		<div title="首页" data-options="tools:'#p-tools'" style="padding:10px">
+			<h1>湖南中仓网络科技有限公司</h1>
+			<div style="float:left;width:49%;">
+				<#if orders??>
+					<#list orders as order>
+						<div>
+							<h2><span style="color:red;">${order.userName!''}</span>未审核订单<span style="color:red;">${order.num!0}</span>单！
+							<span style="color:red;"><a style="cursor:hand" onclick="addPanel('${ctx}/shipOrder/waits/search?userId=${order.userId}','订单审核','ab6ad1c6-3a73-440c-b2de-e07d73aa14d2')">由此进入</a></span>
+							</h2>
+						</div>
+					</#list>
+				</#if>
+			</div>
+			<div style="float:left;width:49%;border:5px double #E0E0E0;">
+				<#if roles.name=='管理员'>
+					<h1 style="text-align:center;"><span style="color:red;font-size:55px;"><a onclick="addNotice()">公告</a></span></h1>
+				<#else>
+					<h1 style="text-align:center;"><span style="color:red;font-size:55px;">公告</span></h1>
+				</#if>
+				<#if notice??>
+					<h2>${notice.msg}</h2>	
+				<#else>
+					<h2 style="text-align:center;">暂无信息</h2>
+				</#if>	
+			</div>
+		</div>
+	</div>
+	<div id="p-tools">		
+		<a href="javascript:void(0)" class="icon-mini-refresh" onclick="window.location.reload();"></a>
+	</div>

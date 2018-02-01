@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.order.StockOutOrderDao">
+    
+	<resultMap id="StockOutOrderResult" type="com.xinyu.model.order.StockOutOrder" >
+	<result property="id" column="FID" />
+	<result property="user.id" column="FKuserID" />
+	<result property="ownerUserName" column="FownerUserName" />
+	<result property="storeCode" column="FstoreCode" />
+	<result property="orderCode" column="ForderCode" />
+	<result property="erpOrderCode" column="FerpOrderCode" />
+	<result property="orderType" column="ForderType" />
+	<result property="outboundTypeDesc" column="FoutboundTypeDesc" />
+	<result property="orderFlag" column="ForderFlag" />
+	<result property="orderCreateTime" column="ForderCreateTime" />
+	<result property="sendTime" column="FsendTime" />
+	<result property="tmsServiceCode" column="FtmsServiceCode" />
+	<result property="tmsServiceName" column="FtmsServiceName" />
+	<result property="supplierCode" column="FsupplierCode" />
+	<result property="supplierName" column="FsupplierName" />
+	<result property="transportMode" column="FtransportMode" />
+	<result property="pickCompany" column="FpickCompany" />
+	<result property="pickName" column="FpickName" />
+	<result property="pickTel" column="FpickTel" />
+	<result property="pickCall" column="FpickCall" />
+	<result property="carriersName" column="FcarriersName" />
+	<result property="pickId" column="FpickId" />
+	<result property="carNo" column="FcarNo" />
+	<result property="batchSendCtrlParam.id" column="FKbatchSendCtrlParamID" />
+	<result property="receiverInfo.id" column="FKreceiverInfoID" />
+	<result property="senderInfo.id" column="FKsenderInfoID" />
+	<result property="timeZone" column="FtimeZone" />
+	<result property="currency" column="Fcurrency" />
+	<result property="driverInfo.id" column="FKdriverInfoID" />
+	<result property="remark" column="Fremark" />
+	<result property="state" column="Fstate" />
+	</resultMap>
+	
+	<select id="getStockOutOrderById" parameterType="string"  resultMap="StockOutOrderResult" >
+		 SELECT T.* 
+		 FROM T_xinyu_StockOutOrder T 
+		 where T.FID = #{id};
+	</select>
+	
+	<select id="findStockOutOrderByParam" parameterType="map"  resultMap="StockOutOrderResult" >
+		 SELECT T.* 
+		 FROM T_xinyu_StockOutOrder T 
+		 where 1=1
+		 <if test="orderCode!=null and orderCode!=''">
+		 	and T.ForderCode=#{orderCode}
+		 </if>
+		 <if test="userId!=null and userId!=''">
+		 	and T.FKuserID=#{userId}
+		 </if>
+		 <if test="orderType!=null and orderType!=''">
+		 	and T.ForderType=#{orderType}
+		 </if>
+		 <if test="orderCode!=null and orderCode!=''">
+		 	limit 0,1
+		</if>
+	</select>
+	
+	<select id="isExitsByMap" parameterType="map"  resultType="int" >
+		 SELECT count(1) c 
+			FROM T_xinyu_StockOutOrder T 
+		where T.ForderCode=#{orderCode}
+	</select>
+	
+	<select id="findStockOutOrderByList" parameterType="map"  resultMap="StockOutOrderResult" >
+		 SELECT T.* 
+		 FROM T_xinyu_StockOutOrder T where 1=1
+		<if test="userId!=null and userId!=''">and FKuserID=#{userId}</if>
+		<if test="ownerUserName!=null and ownerUserName!=''">and FownerUserName=#{ownerUserName}</if>
+		<if test="storeCode!=null and storeCode!=''">and FstoreCode=#{storeCode}</if>
+		<if test="orderCode!=null and orderCode!=''">and ForderCode=#{orderCode}</if>
+		<if test="erpOrderCode!=null and erpOrderCode!=''">and FerpOrderCode=#{erpOrderCode}</if>
+		<if test="orderType!=null and orderType!=''">and ForderType=#{orderType}</if>
+		<if test="tmsServiceCode!=null and tmsServiceCode!=''">and FtmsServiceCode=#{tmsServiceCode}</if>
+		<if test="tmsServiceName!=null and tmsServiceName!=''">and FtmsServiceName=#{tmsServiceName}</if>
+		<if test="supplierCode!=null and supplierCode!=''">and FsupplierCode=#{supplierCode}</if>
+		<if test="supplierName!=null and supplierName!=''">and FsupplierName=#{supplierName}</if>
+		<if test="pickCompany!=null and pickCompany!=''">and FpickCompany=#{pickCompany}</if>
+		<if test="pickName!=null and pickName!=''">and FpickName=#{pickName}</if>
+		<if test="pickTel!=null and pickTel!=''">and FpickTel=#{pickTel}</if>
+		<if test="pickCall!=null and pickCall!=''">and FpickCall=#{pickCall}</if>
+		<if test="carriersName!=null and carriersName!=''">and FcarriersName=#{carriersName}</if>
+		<if test="pickId!=null and pickId!=''">and FpickId=#{pickId}</if>
+		<if test="carNo!=null and carNo!=''">and FcarNo=#{carNo}</if>
+		<if test="remark!=null and remark!=''">and Fremark=#{remark}</if>
+		<if test="status!=null and status!=''">and Fstate=#{status}</if>
+		<if test="searchText!=null and searchText!=''">
+			and (ForderCode like "%"#{searchText}"%" or FerpOrderCode like "%"#{searchText}"%" or FpickName like "%"#{searchText}"%")
+		</if>
+		order by ForderCreateTime desc
+		<if test="pageSize!=null and pageSize!=''">
+			limit #{pageNum},#{pageSize}    
+		</if>
+	</select>
+	
+	
+	<select id="getTotal" parameterType="map"  resultType="int" >
+		 SELECT count(1) 
+		 FROM T_xinyu_StockOutOrder T where 1=1
+		<if test="userId!=null and userId!=''">and FKuserID=#{userId}</if>
+		<if test="ownerUserName!=null and ownerUserName!=''">and FownerUserName=#{ownerUserName}</if>
+		<if test="storeCode!=null and storeCode!=''">and FstoreCode=#{storeCode}</if>
+		<if test="orderCode!=null and orderCode!=''">and ForderCode=#{orderCode}</if>
+		<if test="erpOrderCode!=null and erpOrderCode!=''">and FerpOrderCode=#{erpOrderCode}</if>
+		<if test="orderType!=null and orderType!=''">and ForderType=#{orderType}</if>
+		<if test="tmsServiceCode!=null and tmsServiceCode!=''">and FtmsServiceCode=#{tmsServiceCode}</if>
+		<if test="tmsServiceName!=null and tmsServiceName!=''">and FtmsServiceName=#{tmsServiceName}</if>
+		<if test="supplierCode!=null and supplierCode!=''">and FsupplierCode=#{supplierCode}</if>
+		<if test="supplierName!=null and supplierName!=''">and FsupplierName=#{supplierName}</if>
+		<if test="pickCompany!=null and pickCompany!=''">and FpickCompany=#{pickCompany}</if>
+		<if test="pickName!=null and pickName!=''">and FpickName=#{pickName}</if>
+		<if test="pickTel!=null and pickTel!=''">and FpickTel=#{pickTel}</if>
+		<if test="pickCall!=null and pickCall!=''">and FpickCall=#{pickCall}</if>
+		<if test="carriersName!=null and carriersName!=''">and FcarriersName=#{carriersName}</if>
+		<if test="pickId!=null and pickId!=''">and FpickId=#{pickId}</if>
+		<if test="carNo!=null and carNo!=''">and FcarNo=#{carNo}</if>
+		<if test="remark!=null and remark!=''">and Fremark=#{remark}</if>
+		<if test="status!=null and status!=''">and Fstate=#{status}</if>
+		<if test="searchText!=null and searchText!=''">
+			and (ForderCode like "%"#{searchText}"%" or FerpOrderCode like "%"#{searchText}"%" or FpickName like "%"#{searchText}"%")
+		</if>
+		order by ForderCreateTime desc
+	</select>
+	
+<insert id="insertStockOutOrder" parameterType="com.xinyu.model.order.StockOutOrder" >
+insert into T_xinyu_StockOutOrder(Fstate,FID,FKuserID,FownerUserName,FstoreCode,ForderCode,FerpOrderCode,ForderType,FoutboundTypeDesc,ForderFlag,ForderCreateTime,FsendTime,FtmsServiceCode,FtmsServiceName,FsupplierCode,FsupplierName,FtransportMode,FpickCompany,FpickName,FpickTel,FpickCall,FcarriersName,FpickId,FcarNo,FKbatchSendCtrlParamID,FKreceiverInfoID,FKsenderInfoID,FtimeZone,Fcurrency,FKdriverInfoID,Fremark)
+VALUES(#{state,jdbcType=VARCHAR},#{id},#{user.id,jdbcType=VARCHAR},#{ownerUserName,jdbcType=VARCHAR},#{storeCode,jdbcType=VARCHAR},#{orderCode,jdbcType=VARCHAR},#{erpOrderCode,jdbcType=VARCHAR},#{orderType,jdbcType=VARCHAR},#{outboundTypeDesc,jdbcType=VARCHAR},#{orderFlag,jdbcType=VARCHAR},#{orderCreateTime},#{sendTime},#{tmsServiceCode,jdbcType=VARCHAR},#{tmsServiceName,jdbcType=VARCHAR},#{supplierCode,jdbcType=VARCHAR},#{supplierName,jdbcType=VARCHAR},#{transportMode,jdbcType=VARCHAR},#{pickCompany,jdbcType=VARCHAR},#{pickName,jdbcType=VARCHAR},#{pickTel,jdbcType=VARCHAR},#{pickCall,jdbcType=VARCHAR},#{carriersName,jdbcType=VARCHAR},#{pickId,jdbcType=VARCHAR},#{carNo,jdbcType=VARCHAR},#{batchSendCtrlParam.id,jdbcType=VARCHAR},#{receiverInfo.id,jdbcType=VARCHAR},#{senderInfo.id,jdbcType=VARCHAR},#{timeZone,jdbcType=VARCHAR},#{currency,jdbcType=VARCHAR},#{driverInfo.id,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR})
+</insert>
+
+<update id="updateStockOutOrder" parameterType="com.xinyu.model.order.StockOutOrder" >
+	update T_xinyu_StockOutOrder
+	<set>
+		<if test="user!=null and user!=''">FKuserID=#{user.id},</if>
+		<if test="ownerUserName!=null and ownerUserName!=''">FownerUserName=#{ownerUserName},</if>
+		<if test="storeCode!=null and storeCode!=''">FstoreCode=#{storeCode},</if>
+		<if test="orderCode!=null and orderCode!=''">ForderCode=#{orderCode},</if>
+		<if test="erpOrderCode!=null and erpOrderCode!=''">FerpOrderCode=#{erpOrderCode},</if>
+		<if test="orderType!=null and orderType!=''">ForderType=#{orderType},</if>
+		<if test="outboundTypeDesc!=null and outboundTypeDesc!=''">FoutboundTypeDesc=#{outboundTypeDesc},</if>
+		<if test="orderFlag!=null and orderFlag!=''">ForderFlag=#{orderFlag},</if>
+		<if test="orderCreateTime!=null and orderCreateTime!=''">ForderCreateTime=#{orderCreateTime},</if>
+		<if test="sendTime!=null and sendTime!=''">FsendTime=#{sendTime},</if>
+		<if test="tmsServiceCode!=null and tmsServiceCode!=''">FtmsServiceCode=#{tmsServiceCode},</if>
+		<if test="tmsServiceName!=null and tmsServiceName!=''">FtmsServiceName=#{tmsServiceName},</if>
+		<if test="supplierCode!=null and supplierCode!=''">FsupplierCode=#{supplierCode},</if>
+		<if test="supplierName!=null and supplierName!=''">FsupplierName=#{supplierName},</if>
+		<if test="transportMode!=null and transportMode!=''">FtransportMode=#{transportMode},</if>
+		<if test="pickCompany!=null and pickCompany!=''">FpickCompany=#{pickCompany},</if>
+		<if test="pickName!=null and pickName!=''">FpickName=#{pickName},</if>
+		<if test="pickTel!=null and pickTel!=''">FpickTel=#{pickTel},</if>
+		<if test="pickCall!=null and pickCall!=''">FpickCall=#{pickCall},</if>
+		<if test="carriersName!=null and carriersName!=''">FcarriersName=#{carriersName},</if>
+		<if test="pickId!=null and pickId!=''">FpickId=#{pickId},</if>
+		<if test="carNo!=null and carNo!=''">FcarNo=#{carNo},</if>
+		<if test="batchSendCtrlParam!=null and batchSendCtrlParam!=''">FKbatchSendCtrlParamID=#{batchSendCtrlParam.id},</if>
+		<if test="receiverInfo!=null and receiverInfo!=''">FKreceiverInfoID=#{receiverInfo.id},</if>
+		<if test="senderInfo!=null and senderInfo!=''">FKsenderInfoID=#{senderInfo.id},</if>
+		<if test="timeZone!=null and timeZone!=''">FtimeZone=#{timeZone},</if>
+		<if test="currency!=null and currency!=''">Fcurrency=#{currency},</if>
+		<if test="driverInfo!=null and driverInfo!=''">FKdriverInfoID=#{driverInfo.id},</if>
+		<if test="remark!=null and remark!=''">Fremark=#{remark},</if>
+		<if test="state!=null and state!=''">Fstate=#{state},</if>
+	</set>
+where fid=#{id}
+</update>
+
+<delete id="deleteStockOutOrderById"  parameterType="string"  >
+	delete  from T_xinyu_StockOutOrder where fid=#{id}
+</delete>
+
+
+</mapper> 

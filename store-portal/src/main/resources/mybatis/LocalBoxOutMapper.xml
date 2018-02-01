@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.graby.store.dao.mybatis.LocalBoxOutDao">
+    
+	<resultMap id="localBoxOutEntity" type="com.graby.store.entity.local.LocalBoxOut">
+		<result property="id" column="id" />
+		<result property="row" column="row" />
+		<result property="boxOut" column="box_out" />
+		<result property="floor" column="floor" />
+		<result property="state" column="state" />
+	</resultMap>
+	
+	<select id="getRows"  resultType="map">
+	   	select row  as row  from sc_local_boxout  t    GROUP BY  row   order by  row 
+	</select>
+
+	
+	<insert id="save" parameterType="LocalBoxOut" useGeneratedKeys="true" keyProperty="id">
+		insert into sc_local_boxout(
+		row, box_out, floor,state)
+		values (
+		#{row},#{boxOut}, #{floor},#{state})
+	</insert>
+	
+	<select id="getLocalBoxOut" parameterType="map" resultType="LocalBoxOut">
+	    select id,row,box_out as boxOut, floor,state from sc_local_boxout  t
+	   <where> 
+	        1 = 1
+	    <if test="row!=null and row!=''">
+		    and t.row = #{row}
+		</if>
+		 <if test="id!=null and id!=''">
+		    and t.id = #{id}
+		</if>
+	    
+		</where>
+		order  by row, floor   asc 
+	</select>
+	
+	
+	
+	
+	
+	
+	<update id="updateLocalBoxOut">
+	    update  sc_local_boxout  
+	    <set>
+			<if test="state!=null and state!=''">
+				state=#{state},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+</mapper> 

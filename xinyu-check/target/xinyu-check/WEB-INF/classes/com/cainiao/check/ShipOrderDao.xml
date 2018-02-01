@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.shipOrderDao">
+	<resultMap id="ShipOrderEntity" type="com.xinyu.check.model.ShipOrder">
+		<result property="id" column="id" />
+		<result property="centroId" column="centro_id" />
+		<result property="createDate" column="create_date" />
+		<result property="expressCompany" column="express_company"
+			jdbcType="VARCHAR" />
+		<result property="expressOrderno" column="express_orderno" />
+		<result property="fetchDate" column="fetch_date" />
+		<result property="lastUpdateDate" column="last_update_date" />
+		<result property="orderno" column="orderno" />
+		<result property="originPersion" column="origin_persion" />
+		<result property="originPhone" column="origin_phone" />
+		<result property="receiverAddress" column="receiver_address" />
+		<result property="receiverCity" column="receiver_city" />
+		<result property="receiverDistrict" column="receiver_district" />
+		<result property="receiverMobile" column="receiver_mobile" />
+		<result property="receiverName" column="receiver_name" />
+		<result property="receiverPhone" column="receiver_phone" />
+		<result property="receiverState" column="receiver_state" />
+		<result property="receiverZip" column="receiver_zip" />
+		<result property="receiverPhone" column="receiver_phone" />
+		<result property="buyerNick" column="buyer_nick" />
+		<result property="buyerMessage" column="buyer_message" />
+		<result property="buyerMemo" column="buyer_memo" />
+		<result property="sellerPhone" column="seller_phone" />
+		<result property="sellerMobile" column="seller_mobile" />
+		<result property="sellerMemo" column="seller_memo" />
+		<result property="sellerMessage" column="seller_message" />
+		<result property="remark" column="remark" />
+		<result property="status" column="status" />
+		<result property="totalnum" column="totalnum" />
+		<result property="tradeId" column="trade_id" />
+		<result property="totalWeight" column="total_weight" />
+		<result property="totalPrice" column="total_price" />
+		<result property="items" column="items" />
+		<result property="type" column="type" />
+		<result property="printBatch" column="print_batch" />
+		<result property="routeCode" column="route_code" />
+		<result property="templateURL" column="templateURL" />
+		<result property="createUser.id" column="create_userid" />
+		<result property="lastUpdateUser.id" column="last_update_userid" />
+		<result column="order_type" property="orderType" jdbcType="VARCHAR" />
+		<result column="express_code" property="expressCode" jdbcType="VARCHAR" />
+		<result column="insurance_amount" property="insuranceAmount"
+			jdbcType="VARCHAR" />
+		<result column="insurance_flag" property="insuranceFlag"
+			jdbcType="VARCHAR" />
+		<result column="insurance_type" property="insuranceType"
+			jdbcType="VARCHAR" />
+		<result column="invoice_amount" property="invoiceAmount"
+			jdbcType="VARCHAR" />
+		<result column="invoice_content" property="invoiceContent"
+			jdbcType="VARCHAR" />
+		<result column="invoice_flag" property="invoiceFlag" jdbcType="VARCHAR" />
+		<result column="invoice_header" property="invoiceHeader"
+			jdbcType="VARCHAR" />
+		<result column="invoice_type" property="invoiceType" jdbcType="VARCHAR" />
+		<result column="logistics_area_code" property="logisticsAreaCode"
+			jdbcType="VARCHAR" />
+		<result column="logistics_code" property="logisticsCode"
+			jdbcType="VARCHAR" />
+		<result column="logistics_name" property="logisticsName"
+			jdbcType="VARCHAR" />
+		<result column="operate_time" property="operateTime" jdbcType="VARCHAR" />
+		<result column="operator_code" property="operatorCode"
+			jdbcType="VARCHAR" />
+		<result column="operator_name" property="operatorName"
+			jdbcType="VARCHAR" />
+		<result column="orderFlag" property="orderFlag" jdbcType="VARCHAR" />
+		<result column="order_type" property="orderType" jdbcType="VARCHAR" />
+		<result column="pay_no" property="payNo" jdbcType="VARCHAR" />
+		<result column="pay_time" property="payTime" jdbcType="VARCHAR" />
+		<result column="picker_car_no" property="pickerCarNo" jdbcType="VARCHAR" />
+		<result column="source" property="source" jdbcType="VARCHAR" />
+		<result column="cancelStatus" property="cancelStatus" />
+		<result column="trade_batch" property="tradeBatch" jdbcType="VARCHAR" />
+		<result column="source_platform_code" property="sourcePlatformCode"
+			jdbcType="VARCHAR" />
+		<result column="other_order_no" property="otherOrderNo" />
+		<result column="templateURL" property="templateURL" />
+		<result column="route_code" property="routeCode" />
+	</resultMap>
+
+
+	<resultMap id="ShipOrderReturn" type="com.xinyu.check.model.ShipOrderReturn">
+		<result property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="expressOrderno" column="express_orderno" />
+		<result property="orderId" column="order_id" />
+		<result property="createDate" column="create_date" />
+	</resultMap>
+	<!-- 查询用户出货单 -->
+	<select id="getShipOrderById" parameterType="string" resultMap="ShipOrderEntity">
+		select
+		b.shop_name as "createUser.shopName",
+		a.*
+		from sc_ship_order a
+		LEFT JOIN
+		sc_user b ON a.create_userid = b.id
+		where a.id=#{0}
+	</select>
+
+	<select id="findShipOrderByList" parameterType="map" resultMap="ShipOrderEntity">
+		select * from sc_ship_order t
+		<where>
+			1=1
+			<if test="orderCode!=null and code!=''">
+				and express_orderno=#{orderCode}
+			</if>
+		</where>
+	</select>
+	
+	
+	<resultMap id="ShipOrderDetailEntity" type="com.xinyu.check.model.ShipOrderDetail">
+		<result property="id" column="id" />
+		<result property="item.id" column="item_id" />
+		<result property="order.id" column="order_id" />
+		<result property="num" column="num" />
+		<result property="skuPropertiesName" column="skuPropertiesName" />
+		<result property="orderLineNo" column="order_line_no" />
+		<result property="ownerCode" column="ownerCode" />
+		<result property="inventoryType" column="inventoryType" />
+		<result property="tradeOrderNo" column="trade_order_no" />
+		<result property="subTradeOrderNo" column="subTradeOrderNo" />
+		<result property="actualPrice" column="actualPrice" />
+		<result property="actualnum" column="actualnum" />
+	</resultMap>
+
+
+	<select id="getShipOrderDetailByOrderId" resultMap="ShipOrderDetailEntity"
+		parameterType="map">
+		select * from sc_ship_order_detail t
+		where
+		t.order_id=#{orderId}
+	</select>
+
+	<select id="getShipOrderByexpress" parameterType="map"
+		resultMap="ShipOrderReturn">
+		SELECT * from sc_shiporder_return
+		where 1=1
+		<if test="expressOrderno!=null and expressOrderno!=''">
+			and express_orderno = #{expressOrderno}
+		</if>
+		<if test="orderId!=null and orderId!=''">
+			and order_id=#{orderId}
+		</if>
+	</select>
+	
+	
+	<select id="getCountByDate" resultType="long" parameterType="map">
+	  <![CDATA[
+		select count(1) from sc_ship_order t where t.create_date>=date_format(#{startDate},'%Y-%m-%d %H:%i')  and t.create_date>=date_format(#{endDate},'%Y-%m-%d %H:%i')
+		]]>
+	</select>
+	<select id="getSuccessCountByDate" resultType="long"
+		parameterType="map">
+	  <![CDATA[
+		select  count(1) from sc_ship_order t where  t.create_date >= date_format(#{startDate},'%Y-%m-%d %H:%i') and  t.create_date < date_format(#{endDate},'%Y-%m-%d %H:%i')
+		 and 
+		EXISTS (select 1 from sc_check_out c where  c.status like  'SUCCESS%' and c.order_code = t.express_orderno and c.create_date >= date_format(#{startDate},'%Y-%m-%d %H:%i') and c.create_date < date_format(#{endDate},'%Y-%m-%d %H:%i')) 
+	]]>
+	</select>
+
+	<select id="getCheckSuccessCountByDate" resultType="long"
+		parameterType="map">
+		 <![CDATA[
+		select count(1) from sc_check_out t  where status like  'SUCCESS%'   and  t.create_date >= date_format(#{startDate},'%Y-%m-%d %H:%i') and  t.create_date < date_format(#{endDate},'%Y-%m-%d %H:%i')
+		]]>
+	</select>
+	<select id="getCheckFailCountByDate" resultType="long"
+		parameterType="map">
+		 <![CDATA[
+		select count(1) from sc_check_out t  where status  like  'FAIL%'   and  t.create_date >= date_format(#{startDate},'%Y-%m-%d %H:%i') and  t.create_date < date_format(#{endDate},'%Y-%m-%d %H:%i')
+	]]>
+	</select>
+</mapper> 

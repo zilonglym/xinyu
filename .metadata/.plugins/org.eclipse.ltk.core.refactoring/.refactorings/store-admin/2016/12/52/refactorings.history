@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;AdminCheckController.java&apos; to &apos;store-portal/src/main/java/com.graby.store.portal.web&apos;&#x0D;&#x0A;- Original project: &apos;store-admin&apos;&#x0D;&#x0A;- Destination element: &apos;store-portal/src/main/java/com.graby.store.portal.web&apos;&#x0D;&#x0A;- Original element: &apos;com.graby.store.admin.web.others.AdminCheckController.java&apos;" description="Copy compilation unit" destination="=store-portal/src\/main\/java&lt;com.graby.store.portal.web" element1="/src\/main\/java&lt;com.graby.store.admin.web.others{AdminCheckController.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1482369041759" units="1" version="1.0"/>
+</session>

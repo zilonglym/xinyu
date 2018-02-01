@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">中仓货位</string>
+    <string name="cangku_bt">查询</string>
+    <string name="shop_type">输入型号</string>
+</resources>

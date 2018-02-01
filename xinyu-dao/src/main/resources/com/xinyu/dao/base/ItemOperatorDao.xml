@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.base.ItemOperatorDao">
+	<resultMap id="ItemOperatorResult" type="com.xinyu.model.base.ItemOperator" >
+		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
+		<result property="item.id" column="FKitemID" />
+		<result property="operatorDate" column="FoperatorDate" />
+		<result property="account.id" column="FKaccountID" />
+		<result property="operatorModel" column="FoperatorModel" />
+		<result property="oldValue" column="FoldValue" />
+		<result property="newValue" column="FnewValue" />
+		<result property="description" column="Fdescription" />
+	</resultMap>
+	<select id="getItemOperatorById" parameterType="string"  resultMap="ItemOperatorResult" >
+		 SELECT T.* 
+			FROM T_xinyu_ItemOperator T where T.FID=#{id}
+	</select>
+	
+	<select id="getItemOperatorByList" parameterType="map"  resultMap="ItemOperatorResult" >
+		 SELECT T.* 
+			FROM T_xinyu_ItemOperator T where 1=1
+			<if test="cu!=null and cu!=''">and t.FCU=#{cu}</if>
+			<if test="itemId!=null and itemId!=''">and t.FKitemID=#{itemId}</if>
+			<if test="accountId!=null and accountId!=''">and t.FKaccountID=#{accountId}</if>
+			<if test="operatorModel!=null and operatorModel!=''">and t.FoperatorModel=#{operatorModel}</if>
+			<if test="oldValue!=null and oldValue!=''">and t.FoldValue=#{oldValue}</if>
+			<if test="newValue!=null and newValue!=''">and t.FnewValue=#{newValue}</if>
+			<if test="description!=null and description!=''">and t.Fdescription=#{description}</if>
+			<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and t.`FoperatorDate` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+			and t.`FoperatorDate` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+    	</if> 
+    	<if test="pageSize!=null and pageSize!=''">
+			limit #{pageNum},#{pageSize}    
+		</if>
+	</select>
+	
+	<select id="getTotal" parameterType="map"  resultType="int" >
+		 SELECT count(1)
+			FROM T_xinyu_ItemOperator T where 1=1
+			<if test="cu!=null and cu!=''">and t.FCU=#{cu}</if>
+			<if test="itemId!=null and itemId!=''">and t.FKitemID=#{itemId}</if>
+			<if test="accountId!=null and accountId!=''">and t.FKaccountID=#{accountId}</if>
+			<if test="operatorModel!=null and operatorModel!=''">and t.FoperatorModel=#{operatorModel}</if>
+			<if test="oldValue!=null and oldValue!=''">and t.FoldValue=#{oldValue}</if>
+			<if test="newValue!=null and newValue!=''">and t.FnewValue=#{newValue}</if>
+			<if test="description!=null and description!=''">and t.Fdescription=#{description}</if>
+			<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and t.`FoperatorDate` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+			and t.`FoperatorDate` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+    	</if> 
+	</select>
+	
+	<insert id="insertItemOperator" parameterType="com.xinyu.model.base.ItemOperator" >
+		insert into T_xinyu_ItemOperator(FID,FCU,FKitemID,FoperatorDate,FKaccountID,FoperatorModel,FoldValue,FnewValue,Fdescription)
+		VALUES(#{id,jdbcType=VARCHAR},#{cu,jdbcType=VARCHAR},#{item.id,jdbcType=VARCHAR},
+		#{operatorDate,jdbcType=VARCHAR},#{account.id,jdbcType=VARCHAR},#{operatorModel,jdbcType=VARCHAR},
+		#{oldValue,jdbcType=VARCHAR},#{newValue,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateItemOperator" parameterType="com.xinyu.model.base.ItemOperator" >
+		update T_xinyu_ItemOperator
+		<set>
+			<if test="cu!=null and cu!=''">FCU=#{cu},</if>
+			<if test="item!=null and item!=''">FKitemID=#{item.id},</if>
+			<if test="operatorDate!=null and operatorDate!=''">FoperatorDate=#{operatorDate},</if>
+			<if test="account!=null and account!=''">FKaccountID=#{account.id},</if>
+			<if test="operatorModel!=null and operatorModel!=''">FoperatorModel=#{operatorModel},</if>
+			<if test="oldValue!=null and oldValue!=''">FoldValue=#{oldValue},</if>
+			<if test="newValue!=null and newValue!=''">FnewValue=#{newValue},</if>
+			<if test="description!=null and description!=''">Fdescription=#{description},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteItemOperatorById"  parameterType="string"  >
+		delete  from T_xinyu_ItemOperator where fid=#{id}
+	</delete>
+	
+</mapper> 

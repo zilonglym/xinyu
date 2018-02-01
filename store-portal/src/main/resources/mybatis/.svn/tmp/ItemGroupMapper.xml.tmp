@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.graby.store.dao.mybatis.ItemGroupDao">
+	
+	<resultMap id="ItemGroupResult" type="com.graby.store.entity.ItemGroup" >
+		<result property="id" column="id" />
+		<result property="cu" column="cu" />
+		<result property="name" column="name" />
+		<result property="barCode" column="bar_code" />
+		<result property="user.id" column="user_id" />
+		<result property="laterDate" column="later_date" />
+		<result property="state" column="state" />
+		<result property="remark" column="remark" />
+		<result property="priority" column="priority" />
+	</resultMap>
+	
+	<select id="getItemGroupById" parameterType="string"  resultMap="ItemGroupResult" >
+		 SELECT T.* 
+			FROM sc_ItemGroup T where T.id=#{id}
+	</select>
+	
+	<select id="getItemGroupByName" parameterType="string"  resultMap="ItemGroupResult" >
+		 SELECT T.* 
+			FROM sc_ItemGroup T where T.name=#{name}
+	</select>
+	
+	<select id="getItemGroupListByParams" parameterType="map"  resultMap="ItemGroupResult" >
+		select i.*
+			from sc_ItemGroup i
+		left join (
+			select d.itemgroup_id as "itemGroupID",group_concat(t.title SEPARATOR ";") as "itemName"
+		    from sc_itemgroupdetail d 
+			left join sc_item t on d.item_id = t.id
+			group by d.itemgroup_id 
+		)a on a.itemGroupID = i.id
+		where 1=1
+		<if test="userId!=null and userId!=''">
+			and i.user_id=#{userId}
+		</if>
+		<if test="searchText!=null and searchText!=''">
+			and (i.name like "%"#{searchText}"%" or a.itemName like "%"#{searchText}"%")
+		</if>
+	</select>
+	
+	<select id="getToTal" parameterType="map"  resultType="int" >
+		select count(1)
+			from sc_itemgroup i
+		left join (
+			select d.itemgroup_id as "itemGroupID",group_concat(t.title SEPARATOR ";") as "itemName"
+		    from sc_itemgroupdetail d 
+			left join sc_item t on d.item_id = t.id
+			group by d.itemgroup_id 
+		)a on a.itemGroupID = i.id
+		where 1=1
+		<if test="userId!=null and userId!=''">
+			and i.user_id=#{userId}
+		</if>
+		<if test="name!=null and name!=''">
+			and i.name=#{name}
+		</if>
+		<if test="searchText!=null and searchText!=''">
+			and (i.name like "%"#{searchText}"%" or a.itemName like "%"#{searchText}"%")
+		</if>
+	</select>
+	
+	
+	<insert id="insertItemGroup" parameterType="com.graby.store.entity.ItemGroup" >
+		insert into sc_ItemGroup(id,cu,name,bar_code,user_id,later_date,state,remark,priority)
+		VALUES(#{id},#{cu},#{name},#{barCode},#{user.id},#{laterDate},#{state},#{remark},#{priority})
+	</insert>
+
+	<update id="updateItemGroup" parameterType="com.graby.store.entity.ItemGroup" >
+		update sc_ItemGroup
+		<set>
+			<if test="cu!=null and cu!=''">cu=#{cu},</if>
+			<if test="name!=null and name!=''">name=#{name},</if>
+			<if test="barCode!=null and barCode!=''">bar_code=#{barCode},</if>
+			<if test="user!=null and user!=''">user_id=#{user.id},</if>
+			<if test="laterDate!=null and laterDate!=''">later_date=#{laterDate},</if>
+			<if test="state!=null and state!=''">state=#{state},</if>
+			<if test="remark!=null and remark!=''">remark=#{remark},</if>
+			<if test="priority!=null and priority!=''">priority=#{priority},</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<update id="updateState" parameterType="map" >
+		update sc_ItemGroup
+		set state=#{state},later_date=now()
+		where id=#{id}
+	</update>
+
+	<delete id="deleteItemGroupById"  parameterType="string"  >
+		delete  from sc_ItemGroup where id=#{id}
+	</delete>
+	
+	<resultMap id="ItemGroupDetailResult" type="com.graby.store.entity.ItemGroupDetail" >
+		<result property="id" column="id" />
+		<result property="cu" column="cu" />
+		<result property="itemGroup.id" column="itemgroup_id" />
+		<result property="item.id" column="item_id" />
+		<result property="num" column="num" />
+	</resultMap>
+	<select id="getItemGroupDetailById" parameterType="string"  resultMap="ItemGroupDetailResult" >
+		 SELECT T.* 
+			FROM sc_ItemGroupDetail T where T.id=#{id}
+	</select>
+	
+	<select id="getDetailsByList" parameterType="map"  resultMap="ItemGroupDetailResult" >
+		 SELECT T.* 
+			FROM sc_ItemGroupDetail T 
+			where 1=1
+		<if test="itemGroupId!=null and itemGroupId!=''">
+			and T.itemgroup_id=#{itemGroupId}
+		</if>
+	</select>
+	<insert id="insertItemGroupDetail" parameterType="com.graby.store.entity.ItemGroupDetail" >
+		insert into sc_ItemGroupDetail(cu,itemgroup_id,item_id,num)
+		VALUES(#{cu},#{itemGroup.id},#{item.id},#{num})
+	</insert>
+
+	<update id="updateItemGroupDetail" parameterType="com.graby.store.entity.ItemGroupDetail" >
+		update sc_ItemGroupDetail
+		<set>
+			<if test="cu!=null and cu!=''">cu=#{cu},</if>
+			<if test="itemGroup!=null and itemGroup!=''">itemgroup_id=#{itemGroup.id},</if>
+			<if test="item!=null and item!=''">item_id=#{item.id},</if>
+			<if test="num!=null and num!=''">num=#{num},</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<delete id="deleteDetails"  parameterType="string"  >
+		delete from sc_ItemGroupDetail where itemgroup_id=#{id}
+	</delete>
+	
+	
+	<select id="getItemGroupByOrder" parameterType="map"  resultMap="ItemGroupResult" >
+		select t1.* from  sc_itemgroup   t    
+		INNER   JOIN sc_itemgroupdetail 
+		  
+		t1 ON     t.id  =  t1.itemgroup_id 
+	 where   1=1	
+		<if test="userId!=null and userId!=''">
+			and t.user_id=#{userId}
+		</if> 
+		and 
+		 <foreach collection="itemList"  item="mapStr" separator=" or " open="(" close=")">
+		     	 <![CDATA[
+					  (t1.item_id =  #{mapStr.itemId}  and  t1.fnum  <=#{mapStr.num} )   
+			 ]]>
+        </foreach>        
+		 GROUP BY t.FID
+	</select>
+	
+</mapper>

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/service/base
+END
+UserService.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/service/base/UserService.java
+END
+AuthService.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/service/base/AuthService.java
+END
+CentroService.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-core/src/main/java/com/graby/store/service/base/CentroService.java
+END

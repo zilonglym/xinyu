@@ -1,0 +1,15 @@
+
+# ----------------------------
+#   DEV 
+# ----------------------------
+remote.host.url=http://localhost:8080/
+
+# ----------------------------
+#   TEST  
+# ----------------------------
+test.remote.host.url=http://www.wlpost.com/
+
+# ----------------------------
+#   ONLINE
+# ----------------------------
+online.remote.host.url=http://www.wlpost.com/

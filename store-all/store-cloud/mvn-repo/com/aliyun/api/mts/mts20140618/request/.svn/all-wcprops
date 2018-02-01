@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request
+END
+CancelTranscodeJobRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/CancelTranscodeJobRequest.class
+END
+QueryMediaBucketRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/QueryMediaBucketRequest.class
+END
+QueryVideoListByIdsRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/QueryVideoListByIdsRequest.class
+END
+QueryVideoByIdRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/QueryVideoByIdRequest.class
+END
+GetSnapshotByIdRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/GetSnapshotByIdRequest.class
+END
+SearchVideoListRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/SearchVideoListRequest.class
+END
+DeleteVideoRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/DeleteVideoRequest.class
+END
+QueryTranscodeOutputRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/QueryTranscodeOutputRequest.class
+END
+UpdateVideoRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/UpdateVideoRequest.class
+END
+QueryTranscodeSupportedTemplatesRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/QueryTranscodeSupportedTemplatesRequest.class
+END
+AddVideoRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/AddVideoRequest.class
+END
+QueryTranscodeJobListRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/QueryTranscodeJobListRequest.class
+END
+CreateTranscodeJobRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/request/CreateTranscodeJobRequest.class
+END

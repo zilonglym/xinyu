@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.dao.WmsConsignOrderPackageRequirementDao">
+	<resultMap id="WmsConsignOrderPackageRequirementResult"
+		type="com.xinyu.model.base.WmsConsignOrderPackageRequirement">
+		<result property="id" column="FID" />
+		<result property="materialTypes" column="FmaterialTypes" />
+		<result property="materialClass" column="FmaterialClass" />
+		<result property="materialGroup" column="FmaterialGroup" />
+		<result property="priority" column="Fpriority" />
+		<result property="order.id" column="FKorderID" />
+	</resultMap>
+	<select id="getWmsConsignOrderPackageRequirementById"
+		parameterType="string" resultMap="WmsConsignOrderPackageRequirementResult">
+		SELECT T.*
+		FROM T_xinyu_WmsConsignOrderPackageRequirement T where T.FID=#{id}
+	</select>
+	<insert id="insertWmsConsignOrderPackageRequirement"
+		parameterType="com.xinyu.model.base.WmsConsignOrderPackageRequirement">
+		insert into
+		T_xinyu_WmsConsignOrderPackageRequirement(FID,FmaterialTypes,FmaterialClass,FmaterialGroup,Fpriority,FKorderID)
+		VALUES(#{id},#{materialTypes,jdbcType=VARCHAR},#{materialClass,jdbcType=VARCHAR},#{materialGroup,jdbcType=VARCHAR},#{priority,jdbcType=VARCHAR},#{order.id,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateWmsConsignOrderPackageRequirement"
+		parameterType="com.xinyu.model.base.WmsConsignOrderPackageRequirement">
+		update T_xinyu_WmsConsignOrderPackageRequirement
+		<set>
+			<if test="materialTypes!=null and materialTypes!=''">FmaterialTypes=#{materialTypes},</if>
+			<if test="materialClass!=null and materialClass!=''">FmaterialClass=#{materialClass},</if>
+			<if test="materialGroup!=null and materialGroup!=''">FmaterialGroup=#{materialGroup},</if>
+			<if test="priority!=null and priority!=''">Fpriority=#{priority},</if>
+			<if test="order!=null and order!=''">FKorderID=#{order.id},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteWmsConsignOrderPackageRequirementById"
+		parameterType="string">
+		delete from T_xinyu_WmsConsignOrderPackageRequirement where fid=#{id}
+	</delete>
+
+</mapper>

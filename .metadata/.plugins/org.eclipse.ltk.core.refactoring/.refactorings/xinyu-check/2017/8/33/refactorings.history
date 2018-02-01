@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;map&apos; in &apos;com.xinyu.check.controller.CheckController.check(...)&apos; to &apos;resultMap&apos;&#x0D;&#x0A;- Original project: &apos;xinyu-check&apos;&#x0D;&#x0A;- Original element: &apos;com.xinyu.check.controller.CheckController.check(String, String, String, String, String, String, Model).map&apos;&#x0D;&#x0A;- Renamed element: &apos;map&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;map&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/main\/java&lt;com.xinyu.check.controller{CheckController.java[CheckController~check~QString;~QString;~QString;~QString;~QString;~QString;~QModel;@map!6549!6602!6569!6571!QMap\&lt;QString;QObject;&gt;;!0!false" name="resultMap" references="true" stamp="1502873681437" version="1.0"/>
+</session>

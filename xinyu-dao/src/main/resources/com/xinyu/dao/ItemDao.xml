@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.base.ItemDao">
+	<resultMap id="ItemResult" type="com.xinyu.model.base.Item">
+		<result property="id" column="FID" />
+		<result property="itemId" column="FitemId" />
+		<result property="itemCode" column="FitemCode" />
+		<result property="barCode" column="FbarCode" />
+		<result property="name" column="Fname" />
+		<result property="user.id" column="FKuserID" />
+		<result property="itemVersion" column="FitemVersion" />
+		<result property="type" column="Ftype" />
+		<result property="category" column="Fcategory" />
+		<result property="categoryName" column="FcategoryName" />
+		<result property="brand" column="Fbrand" />
+		<result property="brandName" column="FbrandName" />
+		<result property="specification" column="Fspecification" />
+		<result property="color" column="Fcolor" />
+		<result property="size" column="Fsize" />
+		<result property="unit" column="Funit" />
+		<result property="grossWeight" column="FgrossWeight" />
+		<result property="wmsGrossWeight" column="FwmsGrossWeight" />
+		<result property="netWeight" column="FnetWeight" />
+		<result property="length" column="Flength" />
+		<result property="wmsLength" column="FwmsLength" />
+		<result property="width" column="Fwidth" />
+		<result property="wmsWidth" column="FwmsWidth" />
+		<result property="height" column="Fheight" />
+		<result property="wmsHeight" column="FwmsHeight" />
+		<result property="volume" column="Fvolume" />
+		<result property="wmsVolume" column="FwmsVolume" />
+		<result property="cartonWeight" column="FcartonWeight" />
+		<result property="cartonLength" column="FcartonLength" />
+		<result property="cartonWidth" column="FcartonWidth" />
+		<result property="cartonHeight" column="FcartonHeight" />
+		<result property="cartonVolume" column="FcartonVolume" />
+		<result property="pcs" column="Fpcs" />
+		<result property="isShelflife" column="FisShelflife" />
+		<result property="lifecycle" column="Flifecycle" />
+		<result property="rejectLifecycle" column="FrejectLifecycle" />
+		<result property="lockupLifecycle" column="FlockupLifecycle" />
+		<result property="adventLifecycle" column="FadventLifecycle" />
+		<result property="isSnMgt" column="FisSnMgt" />
+		<result property="snMode" column="FsnMode" />
+		<result property="isHygroscopic" column="FisHygroscopic" />
+		<result property="isDanger" column="FisDanger" />
+		<result property="isPoMgt" column="FisPoMgt" />
+		<result property="isProduceCodeMgt" column="FisProduceCodeMgt" />
+		<result property="isPrecious" column="FisPrecious" />
+		<result property="temperatureRequirement" column="FtemperatureRequirement" />
+		<result property="dosageForms" column="FdosageForms" />
+		<result property="producingArea" column="FproducingArea" />
+		<result property="manufacturer" column="Fmanufacturer" />
+		<result property="classification" column="Fclassification" />
+		<result property="firstState" column="FfirstState" />
+		<result property="isImported" column="FisImported" />
+		<result property="isDrugs" column="FisDrugs" />
+		<result property="approvalNumber" column="FapprovalNumber" />
+		<result property="includeBattery" column="FincludeBattery" />
+		<result property="packageUnit" column="FpackageUnit" />
+		<result property="extendFields.id" column="FKextendFieldsID" />
+		<result property="createTime" column="fcreateTime"/>
+		<result property="systemSource" column="fsystemSource" />
+		<result property="status" column="fstatus" />
+		<result property="itemType" column="FitemType" />
+		<result property="shortName" column="FshortName" />
+		<result property="goodsNo" column="FgoodsNo" />
+	</resultMap>
+	<select id="getItemById" parameterType="string" resultMap="ItemResult">
+		SELECT T.*
+		FROM t_xinyu_item T where T.FID=#{id}
+	</select>
+
+	<select id="findStoreItemById" parameterType="string" resultType="map">
+		SELECT t.id as "itemId",t.code as "itemCode",t.title as "itemName",t.bar_code as "barCode",t.sku as "itemSku",t.userid as "userId" 
+		FROM store.sc_item t where t.id=#{id}
+	</select>
+	
+	<select id="getStoreItemList" parameterType="map" resultType="map">
+		SELECT t.id as "id",t.code as "itemCode",t.title as "name",t.bar_code as "barCode",t.sku as "specification",t.userid as "userId" 
+		FROM store.sc_item t 
+		where t.type="ZC"
+		<if test="userId!=null and userId!=''">
+			and t.userid = #{userId}
+		</if>
+		<if test="q!=null and q!=''">
+			and (t.title like "%"#{q}"%" or t.code like "%"#{q}"%" or t.bar_code like "%"#{q}"%")
+		</if>
+		<if test="pageSize!=null and pageSize!=''">
+			limit #{pageNum},#{pageSize}    
+		</if>
+	</select>
+	
+	<select id="getStoreTotal" parameterType="string" resultType="int">
+		SELECT count(1)
+		FROM store.sc_item T 
+		where t.type="ZC"
+		<if test="userId!=null and userId!=''">
+			and t.userid = #{userId}
+		</if>
+		<if test="q!=null and q!=''">
+			and (t.title like "%"#{q}"%" or t.code like "%"#{q}"%" or t.bar_code like "%"#{q}"%")
+		</if>
+	</select>
+
+	<insert id="insertItem" parameterType="com.xinyu.model.base.Item">
+		insert into
+		t_xinyu_item(FSTATUS,FID,FitemId,FitemCode,FbarCode,Fname,FKuserID,FitemVersion,Ftype,Fcategory,FcategoryName,Fbrand,FbrandName,Fspecification,
+		Fcolor,Fsize,Funit,FgrossWeight,FwmsGrossWeight,FnetWeight,Flength,FwmsLength,Fwidth,FwmsWidth,Fheight,FwmsHeight,Fvolume,FwmsVolume,FcartonWeight,
+		FcartonLength,FcartonWidth,FcartonHeight,FcartonVolume,Fpcs,FisShelflife,Flifecycle,FrejectLifecycle,FlockupLifecycle,FadventLifecycle,FisSnMgt,FsnMode,
+		FisHygroscopic,FisDanger,FisPoMgt,FisProduceCodeMgt,FisPrecious,FtemperatureRequirement,FdosageForms,FproducingArea,Fmanufacturer,Fclassification,FfirstState,
+		FisImported,FisDrugs,FapprovalNumber,FincludeBattery,FpackageUnit,FKextendFieldsID,fcreateTime,fsystemSource,FgoodsNo)
+		VALUES(#{status},#{id},#{itemId,jdbcType=VARCHAR},#{itemCode,jdbcType=VARCHAR},#{barCode,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{user.id,jdbcType=VARCHAR},
+		#{itemVersion,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{category,jdbcType=VARCHAR},#{categoryName,jdbcType=VARCHAR},#{brand,jdbcType=VARCHAR},
+		#{brandName,jdbcType=VARCHAR},#{specification,jdbcType=VARCHAR},#{color,jdbcType=VARCHAR},#{size,jdbcType=VARCHAR},#{unit,jdbcType=VARCHAR},
+		#{grossWeight,jdbcType=VARCHAR},#{wmsGrossWeight,jdbcType=VARCHAR},#{netWeight,jdbcType=VARCHAR},#{length,jdbcType=VARCHAR},#{wmsLength,jdbcType=VARCHAR},
+		#{width,jdbcType=VARCHAR},#{wmsWidth,jdbcType=VARCHAR},#{height,jdbcType=VARCHAR},#{wmsHeight,jdbcType=VARCHAR},#{volume,jdbcType=VARCHAR},
+		#{wmsVolume,jdbcType=VARCHAR},#{cartonWeight,jdbcType=VARCHAR},#{cartonLength,jdbcType=VARCHAR},#{cartonWidth,jdbcType=VARCHAR},#{cartonHeight,jdbcType=VARCHAR},
+		#{cartonVolume,jdbcType=VARCHAR},#{pcs,jdbcType=VARCHAR},#{isShelflife,jdbcType=VARCHAR},#{lifecycle,jdbcType=INTEGER},#{rejectLifecycle,jdbcType=INTEGER},
+		#{lockupLifecycle,jdbcType=INTEGER},#{adventLifecycle,jdbcType=INTEGER},#{isSnMgt,jdbcType=VARCHAR},#{snMode,jdbcType=VARCHAR},#{isHygroscopic,jdbcType=VARCHAR},
+		#{isDanger,jdbcType=VARCHAR},#{isPoMgt,jdbcType=VARCHAR},#{isProduceCodeMgt,jdbcType=VARCHAR},#{isPrecious,jdbcType=VARCHAR},#{temperatureRequirement,jdbcType=VARCHAR},
+		#{dosageForms,jdbcType=VARCHAR},#{producingArea,jdbcType=VARCHAR},#{manufacturer,jdbcType=VARCHAR},#{classification,jdbcType=VARCHAR},#{firstState,jdbcType=VARCHAR},
+		#{isImported,jdbcType=VARCHAR},#{isDrugs,jdbcType=VARCHAR},#{approvalNumber,jdbcType=VARCHAR},#{includeBattery,jdbcType=VARCHAR},#{packageUnit,jdbcType=VARCHAR},
+		#{extendFields.id,jdbcType=VARCHAR},#{createTime},#{systemSource},#{goodsNo})
+	</insert>
+	
+	
+	<update id="updateItemStatus" parameterType="map">
+	    update t_xinyu_item
+	   	set
+	        FSTATUS=#{status}
+	   
+	    where fid=#{id}
+	 </update>
+	 
+	 <update id="updateItemType" parameterType="map">
+	    update t_xinyu_item
+	   	set
+	        FitemType=#{itemType}
+	   
+	    where fid=#{id}
+	 </update>
+
+	<update id="updateItem" parameterType="com.xinyu.model.base.Item">
+		update t_xinyu_item
+		<set>
+			<if test="itemId!=null and itemId!=''">FitemId=#{itemId},</if>
+			<if test="itemCode!=null and itemCode!=''">FitemCode=#{itemCode},</if>
+			<if test="barCode!=null and barCode!=''">FbarCode=#{barCode},</if>
+			<if test="name!=null and name!=''">Fname=#{name},</if>
+			<if test="user!=null and user.id!=''">FKuserID=#{user.id},</if>
+			<if test="itemVersion!=null and itemVersion!=''">FitemVersion=#{itemVersion},</if>
+			<if test="type!=null and type!=''">Ftype=#{type},</if>
+			<if test="category!=null and category!=''">Fcategory=#{category},</if>
+			<if test="categoryName!=null and categoryName!=''">FcategoryName=#{categoryName},</if>
+			<if test="brand!=null and brand!=''">Fbrand=#{brand},</if>
+			<if test="brandName!=null and brandName!=''">FbrandName=#{brandName},</if>
+			<if test="specification!=null and specification!=''">Fspecification=#{specification},</if>
+			<if test="color!=null and color!=''">Fcolor=#{color},</if>
+			<if test="size!=null and size!=''">Fsize=#{size},</if>
+			<if test="unit!=null and unit!=''">Funit=#{unit},</if>
+			<if test="grossWeight!=null and grossWeight!=''">FgrossWeight=#{grossWeight},</if>
+			<if test="wmsGrossWeight!=null and wmsGrossWeight!=''">FwmsGrossWeight=#{wmsGrossWeight},</if>
+			<if test="netWeight!=null and netWeight!=''">FnetWeight=#{netWeight},</if>
+			<if test="length!=null and length!=''">Flength=#{length},</if>
+			<if test="wmsLength!=null and wmsLength!=''">FwmsLength=#{wmsLength},</if>
+			<if test="width!=null and width!=''">Fwidth=#{width},</if>
+			<if test="wmsWidth!=null and wmsWidth!=''">FwmsWidth=#{wmsWidth},</if>
+			<if test="height!=null and height!=''">Fheight=#{height},</if>
+			<if test="wmsHeight!=null and wmsHeight!=''">FwmsHeight=#{wmsHeight},</if>
+			<if test="volume!=null and volume!=''">Fvolume=#{volume},</if>
+			<if test="wmsVolume!=null and wmsVolume!=''">FwmsVolume=#{wmsVolume},</if>
+			<if test="cartonWeight!=null and cartonWeight!=''">FcartonWeight=#{cartonWeight},</if>
+			<if test="cartonLength!=null and cartonLength!=''">FcartonLength=#{cartonLength},</if>
+			<if test="cartonWidth!=null and cartonWidth!=''">FcartonWidth=#{cartonWidth},</if>
+			<if test="cartonHeight!=null and cartonHeight!=''">FcartonHeight=#{cartonHeight},</if>
+			<if test="cartonVolume!=null and cartonVolume!=''">FcartonVolume=#{cartonVolume},</if>
+			<if test="pcs!=null and pcs!=''">Fpcs=#{pcs},</if>
+			<if test="isShelflife!=null and isShelflife!=''">FisShelflife=#{isShelflife},</if>
+			<if test="lifecycle!=null and lifecycle!=''">Flifecycle=#{lifecycle},</if>
+			<if test="rejectLifecycle!=null and rejectLifecycle!=''">FrejectLifecycle=#{rejectLifecycle},</if>
+			<if test="lockupLifecycle!=null and lockupLifecycle!=''">FlockupLifecycle=#{lockupLifecycle},</if>
+			<if test="adventLifecycle!=null and adventLifecycle!=''">FadventLifecycle=#{adventLifecycle},</if>
+			<if test="isSnMgt!=null and isSnMgt!=''">FisSnMgt=#{isSnMgt},</if>
+			<if test="snMode!=null and snMode!=''">FsnMode=#{snMode},</if>
+			<if test="isHygroscopic!=null and isHygroscopic!=''">FisHygroscopic=#{isHygroscopic},</if>
+			<if test="isDanger!=null and isDanger!=''">FisDanger=#{isDanger},</if>
+			<if test="isPoMgt!=null and isPoMgt!=''">FisPoMgt=#{isPoMgt},</if>
+			<if test="isProduceCodeMgt!=null and isProduceCodeMgt!=''">FisProduceCodeMgt=#{isProduceCodeMgt},</if>
+			<if test="isPrecious!=null and isPrecious!=''">FisPrecious=#{isPrecious},</if>
+			<if test="temperatureRequirement!=null and temperatureRequirement!=''">FtemperatureRequirement=#{temperatureRequirement},</if>
+			<if test="dosageForms!=null and dosageForms!=''">FdosageForms=#{dosageForms},</if>
+			<if test="producingArea!=null and producingArea!=''">FproducingArea=#{producingArea},</if>
+			<if test="manufacturer!=null and manufacturer!=''">Fmanufacturer=#{manufacturer},</if>
+			<if test="classification!=null and classification!=''">Fclassification=#{classification},</if>
+			<if test="firstState!=null and firstState!=''">FfirstState=#{firstState},</if>
+			<if test="isImported!=null and isImported!=''">FisImported=#{isImported},</if>
+			<if test="isDrugs!=null and isDrugs!=''">FisDrugs=#{isDrugs},</if>
+			<if test="approvalNumber!=null and approvalNumber!=''">FapprovalNumber=#{approvalNumber},</if>
+			<if test="includeBattery!=null and includeBattery!=''">FincludeBattery=#{includeBattery},</if>
+			<if test="packageUnit!=null and packageUnit!=''">FpackageUnit=#{packageUnit},</if>
+			<if test="extendFields!=null and extendFields!=''">FKextendFieldsID=#{extendFields.id},</if>
+			<if test="goodsNo!=null and goodsNo!=''">FgoodsNo=#{goodsNo},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteItemById" parameterType="string">
+		delete from t_xinyu_item where fid=#{id}
+	</delete>
+
+	
+	
+	<select id="getItemByList" parameterType="map" resultMap="ItemResult">
+		SELECT T.*
+		FROM t_xinyu_item T
+		<where>
+			1=1
+			<if test="itemId!=null and itemId!=''">
+				and T.FitemId=#{itemId}
+			</if>
+			<if test="userId!=null and userId!=''">
+				and T.FKuserID=#{userId}
+			</if>
+			<if test="itemName!=null and itemName!=''">
+				and T.Fname=#{itemName}
+			</if>
+			<if test="itemCode!=null and itemCode!=''">
+				and T.FitemCode=#{itemCode}
+			</if>
+			<if test="barCode!=null and barCode!=''">
+				and T.FbarCode=#{barCode}
+			</if>
+			<if test="searchText!=null and searchText!=''">
+				and (T.FitemCode like "%"#{searchText}"%" or T.FbarCode like "%"#{searchText}"%" or T.Fname like "%"#{searchText}"%" or T.Fspecification like "%"#{searchText}"%")
+			</if>
+		</where>
+		<if test="pageSize!=null and pageSize!=''">
+			limit #{pageNum},#{pageSize}    
+		</if>
+	</select>
+	
+	<select id="getTotal" parameterType="map" resultType="int">
+		SELECT count(1)
+		FROM t_xinyu_item T
+		<where>
+			1=1
+			<if test="itemId!=null and itemId!=''">
+				and FitemId=#{itemId}
+			</if>
+			<if test="userId!=null and userId!=''">
+				and FKuserID=#{userId}
+			</if>
+			<if test="itemName!=null and itemName!=''">
+				and Fname=#{itemName}
+			</if>
+			<if test="itemCode!=null and itemCode!=''">
+				and FitemCode=#{itemCode}
+			</if>
+			<if test="barCode!=null and barCode!=''">
+				and FbarCode=#{barCode}
+			</if>
+			<if test="searchText!=null and searchText!=''">
+				and (FitemCode like "%"#{searchText}"%" or FbarCode like "%"#{searchText}"%" or Fname like "%"#{searchText}"%" or T.Fspecification like "%"#{searchText}"%")
+			</if>
+		</where>
+	</select>
+</mapper> 

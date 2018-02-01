@@ -1,0 +1,595 @@
+package com.xinyu.service.waybill.impl;
+
+import java.io.IOException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.http.Consts;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.ParseException;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.PoolingClientConnectionManager;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.apache.log4j.Logger;
+import org.dom4j.DocumentException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.xinyu.dao.base.CentroDao;
+import com.xinyu.dao.base.ItemDao;
+import com.xinyu.dao.base.SenderInfoDao;
+import com.xinyu.dao.base.SystemItemDao;
+import com.xinyu.dao.base.UserDao;
+import com.xinyu.dao.trade.ReceiverInfoDao;
+import com.xinyu.dao.trade.ShipOrderOperatorDao;
+import com.xinyu.dao.trade.TmsOrderDao;
+import com.xinyu.dao.trade.WmsConsignOrderItemDao;
+import com.xinyu.model.base.Centro;
+import com.xinyu.model.base.Item;
+import com.xinyu.model.base.ReceiverInfo;
+import com.xinyu.model.base.SenderInfo;
+import com.xinyu.model.base.User;
+import com.xinyu.model.common.SessionUser;
+import com.xinyu.model.system.Account;
+import com.xinyu.model.system.SystemItem;
+import com.xinyu.model.system.enums.OperatorModel;
+import com.xinyu.model.system.enums.OrderStatusEnum;
+import com.xinyu.model.trade.ShipOrder;
+import com.xinyu.model.trade.ShipOrderOperator;
+import com.xinyu.model.trade.TmsOrder;
+import com.xinyu.model.trade.TmsOrderItem;
+import com.xinyu.model.trade.WmsConsignOrderItem;
+import com.xinyu.service.common.BaseServiceImpl;
+import com.xinyu.service.trade.ShipOrderService;
+import com.xinyu.service.util.AddressUtil;
+import com.xinyu.service.util.Util;
+import com.xinyu.service.util.XmlUtil;
+import com.xinyu.service.waybill.SFWayBillService;
+
+/**
+ * 顺丰打印服务接口
+ * */
+@Service("SFWayBillServiceImpl")
+public class SFWayBillServiceImpl extends BaseServiceImpl implements SFWayBillService{
+
+	public static final Logger logger = Logger.getLogger(SFWayBillServiceImpl.class);
+	
+	private static String order_service_url="http://bsp-oisp.sf-express.com/bsp-oisp/sfexpressService";//下订单
+	
+	private static String checkword = "B65oS5ljKgGlVfS7VwJeLGtPc6WPulME";//"PAYHZH    Hi9go87nCbFEuRWC";  RccCt43AVd8ESfuk
+	
+	private static String check_no="7310524035";
+//	private static String check_no="7312005783"; //2017-06-18修改
+	
+	private static  int port = 9443;
+	
+	private Map<String, Object> templateMap = null;
+	
+	@Autowired
+	private UserDao userDao;
+	@Autowired
+	private ItemDao itemDao;
+	@Autowired
+	private SystemItemDao systemItemDao;
+	@Autowired
+	private ReceiverInfoDao receiverInfoDao;
+	@Autowired
+	private SenderInfoDao senderInfoDao;
+	@Autowired
+	private ShipOrderService shipOrderService;
+	@Autowired
+	private WmsConsignOrderItemDao orderItemDao;
+	@Autowired
+	private CentroDao centroDao;
+	@Autowired
+	private ShipOrderOperatorDao operatorDao;
+	@Autowired
+	private TmsOrderDao tmsOrderDao;
+	
+	/**
+	 * 获取顺丰单号
+	 * @param ids
+	 * @param batchCode
+	 * @return map
+	 * @throws Exception 
+	 * */
+	@Transactional
+	public Map<String, Object> getSFBillNo(String[] ids, String batchCode) throws Exception {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		Map<String, String> map = new HashMap<String, String>();
+		for (int i = 0; i < ids.length; i++) {
+			TmsOrder tmsOrder=this.tmsOrderDao.getTmsOrderById(ids[i]);
+			ShipOrder order = this.shipOrderService.findShipOrderById(tmsOrder.getOrder().getId());
+			tmsOrder.setOrder(order);
+			/**
+			 * 如果该单据已经有运单号了。则认为此批单据都是有运单号的。这里视为订单重打。不再取数
+			 * 如果订单的状态不为审单状态，则不允许取快递单号
+			 */
+			if (order != null && tmsOrder.getOrderStatus() != null && !tmsOrder.getOrderStatus().equals(OrderStatusEnum.WMS_AUDIT)) {
+				continue;
+			}
+			Map<String,Object> params=new HashMap<String, Object>();
+			params.put("tmsOrderId", ids[i]);
+//			List<WmsConsignOrderItem> orderList=this.orderItemDao.getWmsConsignOrderItemByList(params);
+//			List<TmsOrderItem> orderItemList=this.tmsOrderDao.getTmsOrderItemByList(params);
+//			order.getOrderItemList().addAll(orderList);
+//			order.setOrderItemList(orderItemList);
+			map = billSfGet(tmsOrder, batchCode);
+			if (map == null || !map.get("code").equals("200")) {
+				/**
+				 * 如果单据取号不成功，则中断这批操作。并返回
+				 */
+
+				try {
+					throw new Exception("");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		resultMap.put("code", 200);
+		return resultMap;
+	}
+
+	/**
+	 * <pre>
+	 * 顺丰电子面单下单
+	 * service  OrderService
+	 * &#64;throws IOException 
+	 * &#64;throws ClientProtocolException
+	 * </pre>
+	 * @throws IOException 
+	 * @throws ParseException 
+	 */
+	public Map<String, String> billSfGet(TmsOrder tmsOrder, String batchCode) throws Exception {
+	
+		ShipOrder shipOrder=tmsOrder.getOrder();
+		
+		User user = this.userDao.getUserById(shipOrder.getUser().getId());
+
+		String items = this.shipOrderService.bulidItemsData(shipOrder);
+
+		ReceiverInfo receiverInfo = this.receiverInfoDao.getReceiverInfoById(shipOrder.getReceiverInfo().getId());
+		Centro centro = this.centroDao.getCentroById(shipOrder.getCu());
+		// _SYSTEM 默认值
+		// "<Request service='OrderService' lang='zh-CN'>"+
+		// "<Head>7310524035</Head>"+
+		// "<Body>"+
+		StringBuffer xmlStr = new StringBuffer("<Request service='OrderService' lang='zh-CN'>");
+
+		xmlStr.append("<Head>" + check_no + "</Head>");
+		xmlStr.append("<Body>");
+
+		// xmlStr.append("<Order orderid ='000003'");
+		xmlStr.append("<Order orderid ='");
+		xmlStr.append(tmsOrder.getId()).append("'");
+		// " j_company='华为'" 寄件方公司名称
+		xmlStr.append(" j_company='星宇物流'");
+		; // 必填
+			// " j_contact='任先生' j_tel='010-1111112' j_mobile='13800138000'"+
+		xmlStr.append(" j_contact='").append(user.getSubscriberName()).append("'"); // 必填
+
+		xmlStr.append(" j_tel='").append(user.getSubscriberMobile()).append("'"); // 必填
+																					// _SYSTEM
+		xmlStr.append(" j_mobile='").append("13337223310").append("'");
+		// xmlStr.append("
+		// j_tel='").append(trade.getSellerPhone()!=null?trade.getSellerPhone():"").append("'");
+		// //必填 _SYSTEM
+		// xmlStr.append("
+		// j_mobile='").append(trade.getSellerMobile()!=null?trade.getSellerMobile():"").append("'");
+
+		// " j_province='北京' j_city='北京' j_county='朝阳区'"+
+		// " j_address='北京市朝阳区科学园科健路338号'"+
+		xmlStr.append(" j_province='").append(centro.getProvince()).append("'");
+		xmlStr.append(" j_city='").append(centro.getCity()).append("'");
+		xmlStr.append(" j_county='").append(centro.getArea()).append("'");
+		xmlStr.append(" j_address='").append(centro.getSfAddress().replaceAll("&", "")).append("'");
+
+		// " d_company='顺丰速运'"+
+		xmlStr.append(" d_company='无'");
+		// " d_contact='西门俊宇' d_tel='无' d_mobile='17002930913'"+
+		xmlStr.append(" d_contact='").append(AddressUtil.sfFormat(receiverInfo.getReceiverName())).append("'");
+		xmlStr.append(" d_tel='").append(receiverInfo.getReceiverPhone() != null ? receiverInfo.getReceiverPhone()
+				: receiverInfo.getReceiverMobile()).append("'");
+		xmlStr.append(" d_mobile='").append(StringUtils.isNotBlank(receiverInfo.getReceiverMobile())
+				? receiverInfo.getReceiverMobile() : receiverInfo.getReceiverPhone()).append("'");
+
+		// " d_province='广东省' d_city='深圳市' d_county='福田区'"+
+		// " d_address='广东省深圳市福田区新洲十一街万基商务大厦10楼'"+
+		xmlStr.append(" d_province='").append(receiverInfo.getReceiverProvince()).append("'");
+		xmlStr.append(" d_city='").append(receiverInfo.getReceiverCity()).append("'");
+		xmlStr.append(" d_county='").append(receiverInfo.getReceiverArea()).append("'");
+		xmlStr.append(" d_address='").append(AddressUtil.sfFormat(receiverInfo.getReceiverAddress())).append("'");
+
+		// 3.顺丰电商特惠 28 电商专配 38 云仓隔日,2顺丰特惠
+		xmlStr.append(" express_type='2'");
+
+		// " pay_method ='2' custid ='7551878519'"+
+		xmlStr.append(" custid='7312005783'");
+		// " parcel_quantity ='1' cargo_total_weight ='2.35' sendstarttime
+		// ='2015-01-16 10:26:43'"+
+		// " order_source ='西门府' remark =''>"+
+		// 1 .寄放付 、 2. 收方付
+		xmlStr.append(" pay_method='1'  parcel_quantity='1'");
+		xmlStr.append(" cargo_total_weight='").append("totalWeight").append("'>");
+//		List<WmsConsignOrderItem> orders = shipOrder.getOrderItemList();
+		Map<String,Object> itemParams=new HashMap<String, Object>();
+		itemParams.put("tmsOrderId", tmsOrder.getId());
+		List<TmsOrderItem> orderItems=this.tmsOrderDao.getTmsOrderItemByList(itemParams);
+		double totalWeight = 0f;
+		if (orderItems != null) {
+			for (int i = 0, size = orderItems.size(); i < size; i++) {
+				TmsOrderItem orderItem = orderItems.get(i);
+				Item item = this.itemDao.getItem(orderItem.getItem().getId());
+				if (item != null) {
+					totalWeight += item.getWmsGrossWeight() * orderItem.getItemQuantity();
+				} else {
+					totalWeight += 0f;
+				}
+				xmlStr.append("<Cargo name='" + item.getName() + "' > </Cargo>");
+			}
+		}
+		int k = xmlStr.indexOf("totalWeight");
+		xmlStr.replace(k, k + 11, (totalWeight / 1000) + "");
+		xmlStr.append("</Order>");
+		xmlStr.append("</Body></Request>");
+		logger.error("顺丰参数:" + xmlStr);
+		HttpResponse response = null;
+		response = getHttpResponse(xmlStr.toString());
+		Map<String, String> retMap = new HashMap<String, String>();
+		if (response.getStatusLine().getStatusCode() == 200) {
+			Map<String, Object> dom2Map = new HashMap<String, Object>();
+			String domStr = EntityUtils.toString(response.getEntity());
+			System.out.println("顺丰返回:" + domStr);
+			dom2Map = XmlUtil.Dom2Map(domStr);
+			String headDom = "" + dom2Map.get("Head");
+			if ("OK".equals(headDom)) { // 返回成功
+				Map<String, Object> bodyDom = (Map<String, Object>) dom2Map.get("Body");
+				if (bodyDom.get("mailno") == null) {
+					Map<String, Object> reBodyDom = new HashMap<String, Object>();
+					reBodyDom = reBillSfSearch(shipOrder);
+					
+					if (reBodyDom != null) {
+						bodyDom = reBodyDom;
+					}
+				}
+				String orderid = bodyDom.get("orderid") != null ? "" + bodyDom.get("orderid") : null; // 客户订单ID
+				String mailno = bodyDom.get("mailno") != null ? "" + bodyDom.get("mailno") : null; // 顺丰订单号
+				String origincode = bodyDom.get("origincode") != null ? "" + bodyDom.get("origincode") : null;
+				; // 寄件人区域
+				String destcode = bodyDom.get("destcode") != null ? "" + bodyDom.get("destcode") : null;
+				; // 目的区域编码
+//				System.err.println("bodyDom:"+bodyDom);
+				retMap = new HashMap<String, String>();
+				// 更新出库单状态
+				List<Map<String, String>> paramMapList = new ArrayList<Map<String, String>>();
+				Map<String, String> paramMap = new HashMap<String, String>();
+				paramMap.put("id", "" + shipOrder.getId());
+				paramMap.put("expressCompany", "SF");
+				paramMap.put("expressOrderno", mailno);
+
+				paramMap.put("status", OrderStatusEnum.WMS_GETNO.getKey());
+				
+				if (this.templateMap == null) {
+					 this.refreshTemplate();
+				}
+				String templateUrl = (String) this.templateMap.get("SF");
+				paramMap.put("tmsId", tmsOrder.getId());
+				paramMap.put("templateURL", templateUrl);
+				logger.debug("SF-templateUrl:"+templateUrl);
+				paramMap.put("orderFlag", "SF"); // 大头
+				paramMap.put("sellerMobile", origincode); // 寄件人区域
+				paramMap.put("routeCode", destcode); // 目的区域编码
+				paramMap.put("consolidationCode", destcode); // 目的区域编码
+				paramMap.put("consolidationName", destcode); // 目的区域编码
+				paramMap.put("sortationName", destcode); // 目的区域编码
+				paramMap.put("batchCode", batchCode);
+				paramMap.put("weight", ""+totalWeight);
+				paramMapList.add(paramMap);
+				shipOrderService.setSendOrderExpressAndStatusById(paramMapList);
+				// 更新订单状态
+				retMap.put("flag", "成功");
+				retMap.put("orderNo", mailno);
+				retMap.put("code", "200");
+				
+				/**
+				 * 写操作记录
+				 */
+				ShipOrderOperator operator = new ShipOrderOperator();
+				operator.generateId();
+				operator.setAccount((Account) SessionUser.get());
+				operator.setShipOrder(shipOrder);
+				operator.setOperatorDate(new Date());
+				operator.setOperatorModel(OperatorModel.TRADE_GETNO);
+				operator.setOldValue(shipOrder.getTmsServiceCode()+"|"+shipOrder.getOrderCode());
+				operator.setNewValue(batchCode+"|"+shipOrder.getTmsServiceCode()+"|"+shipOrder.getTmsOrderCode());
+				operator.setDescription("面单打印："+shipOrder.getOrderCode()+"|"+shipOrder.getTmsServiceCode()+"|"+shipOrder.getTmsOrderCode());
+				this.operatorDao.saveShipOrderOperator(operator);
+				
+				
+			} else { // ERR
+				String err = "" + dom2Map.get("ERROR");
+				retMap.put("flag", "接口调用成功,接口数据异常");
+				retMap.put("error", err);
+				retMap.put("code", "502");
+
+			}
+		} else {
+			try {
+				EntityUtils.consume(response.getEntity());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				System.err.println(e.getMessage());
+				e.printStackTrace();
+			}
+			throw new RuntimeException("response status error: " + response.getStatusLine().getStatusCode());
+		}
+		return retMap;
+	}
+	
+	/**
+	 * 刷新TemplateUrl
+	 * */
+	private void refreshTemplate() {
+		if (this.templateMap == null) {
+			this.templateMap = new HashMap<String, Object>();
+		}
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("type", "isv_template");
+		List<SystemItem> sysItem = this.systemItemDao.findSystemItemByList(params);
+		for (int i = 0; i < sysItem.size(); i++) {
+			SystemItem obj = sysItem.get(i);
+			this.templateMap.put(obj.getDescription(), obj.getValue());
+		}
+	}
+
+	/**
+	 * <pre>
+	 * 顺丰电子面单确认 or 取消
+	 * service OrderConfirmService 
+	 * dealtype  1： 确认 2： 取消
+	 * @throws IOException
+	 * @throws ClientProtocolException
+	 * </pre>
+	 */
+	public Map<String,String> billSfConfirm(ShipOrder order,String dealtype) throws ClientProtocolException, IOException{
+		
+		if(dealtype==null  || "".equals(dealtype)){
+			dealtype  =  "1";
+		}
+		
+		User user = this.userDao.getUserById(order.getUser().getId());
+		Centro centro = this.centroDao.getCentroById(order.getCu());
+		
+		StringBuffer xmlStr = new StringBuffer("<Request service='OrderConfirmService' lang='zh-CN'>");
+		xmlStr.append("<Head>7310524035</Head>");
+		xmlStr.append("<Body>");
+		
+		
+	    xmlStr.append("<Order orderid ='");
+	    xmlStr.append(order.getId()).append("'");
+	    xmlStr.append(" mailno='").append(order.getTmsOrderCode()).append("'");
+	    xmlStr.append(" dealtype='").append(dealtype).append("'></OrderConfirm>");
+	    xmlStr.append("</Body></Request>");
+	    
+	    
+	    String xml  =  xmlStr.toString();
+		System.out.println("xml:"+xmlStr.toString());
+		String verifyCode=Util.md5EncryptAndBase64(xml + checkword);
+		
+		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+		nvps.add(new BasicNameValuePair("xml", xml));
+		nvps.add(new BasicNameValuePair("verifyCode", verifyCode));
+		
+		HttpClient httpclient=getHttpClient(port);
+		HttpPost httpPost = new HttpPost(order_service_url);
+		httpPost.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
+		HttpResponse response = httpclient.execute(httpPost);
+		
+		System.out.println(response.getEntity().toString());
+		
+		return null;
+	}
+	
+	/**
+	 * <pre>
+	 * 顺丰电子查询
+	 * service OrderSearchService 
+	 * @throws IOException
+	 * @throws ClientProtocolException
+	 * </pre>
+	 */
+	public Map<String,String> billSfSearch(ShipOrder order) throws ClientProtocolException, IOException{
+		
+		StringBuffer xmlStr = new StringBuffer("<Request service='OrderSearchService' lang='zh-CN'>");
+		xmlStr.append("<Head>7310524035</Head>");
+		xmlStr.append("<Body>");
+		
+		
+	    xmlStr.append("<Order orderid ='");
+	    xmlStr.append(order.getId()).append("'/>");
+	    xmlStr.append("</Body></Request>");
+	    
+	    HttpResponse response = getHttpResponse(xmlStr.toString());
+	    
+		Map<String,String>  retMap  =  null;
+		
+		if (response.getStatusLine().getStatusCode() == 200){
+			
+
+			String domStr=EntityUtils.toString(response.getEntity());
+			System.out.println(domStr);
+			Map<String, Object> dom2Map  = null;
+			try {
+				
+				dom2Map = XmlUtil.Dom2Map(domStr);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				System.err.println(e1.getMessage());
+				e1.printStackTrace();
+			} catch (DocumentException e1) {
+				// TODO Auto-generated catch block
+				System.err.println(e1.getMessage());
+				e1.printStackTrace();
+			}
+			String headDom =""+dom2Map.get("Head");
+			
+			if("OK".equals(headDom)){ //返回成功
+				
+				Map<String,Object> bodyDom = (Map<String,Object>)dom2Map.get("Body");
+				String orderid  = bodyDom.get("orderid")!=null?""+bodyDom.get("orderid"):null; //客户订单ID  
+				String mailno  =  bodyDom.get("mailno")!=null?""+bodyDom.get("mailno"):null;;   //顺丰订单号
+//				String origincode  =  bodyDom.get("origincode")!=null?""+bodyDom.get("origincode"):null;; //寄件人区域
+//				String destcode  =  bodyDom.get("destcode")!=null?""+bodyDom.get("destcode"):null;;  //目的区域编码
+
+				retMap = new HashMap<String, String>();
+
+				retMap.put("flag", "成功");
+				retMap.put("orderid", orderid);
+				retMap.put("orderNo", mailno);
+				retMap.put("code", "200");
+			}else{  //ERR
+				String  err  = ""+dom2Map.get("ERROR");
+				retMap.put("flag", "接口调用成功,接口数据异常");
+				retMap.put("error", err);
+				retMap.put("code", "502");
+				
+			}
+		} else {
+			EntityUtils.consume(response.getEntity());
+			throw new RuntimeException("response status error: " + response.getStatusLine().getStatusCode());
+		}
+		return retMap;
+	}
+	
+	/**
+	 * @param trade
+	 * @return
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 */
+	private Map<String, Object> reBillSfSearch(ShipOrder shipOrder) throws ClientProtocolException, IOException {
+
+		StringBuffer xmlStr = new StringBuffer("<Request service='OrderSearchService' lang='zh-CN'>");
+		xmlStr.append("<Head>7310524035</Head>");
+		xmlStr.append("<Body>");
+
+		xmlStr.append("<Order orderid ='");
+		xmlStr.append(shipOrder.getId()).append("'/>");
+		xmlStr.append("</Body></Request>");
+
+		HttpResponse response = getHttpResponse(xmlStr.toString());
+
+		Map<String, Object> retMap = null;
+
+		if (response.getStatusLine().getStatusCode() == 200) {
+
+			Map<String, Object> dom2Map = null;
+			try {
+				String domStr = EntityUtils.toString(response.getEntity());
+				System.out.println(domStr);
+				dom2Map = XmlUtil.Dom2Map(domStr);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				System.err.println(e1.getMessage());
+				e1.printStackTrace();
+			} catch (DocumentException e1) {
+				// TODO Auto-generated catch block
+				System.err.println(e1.getMessage());
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				System.err.println(e1.getMessage());
+				e1.printStackTrace();
+			}
+			String headDom = "" + dom2Map.get("Head");
+
+			if ("OK".equals(headDom)) { // 返回成功
+				Map<String, Object> bodyDom = (Map<String, Object>) dom2Map.get("Body");
+				return bodyDom;
+			} else { // ERR
+				String err = "" + dom2Map.get("ERROR");
+				retMap.put("flag", "接口调用成功,接口数据异常");
+				retMap.put("error", err);
+				retMap.put("code", "502");
+			}
+		} else {
+			try {
+				EntityUtils.consume(response.getEntity());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				System.err.println(e.getMessage());
+				e.printStackTrace();
+			}
+			throw new RuntimeException("response status error: " + response.getStatusLine().getStatusCode());
+		}
+		return retMap;
+	}
+	
+	private HttpResponse getHttpResponse(String xml) throws ClientProtocolException, IOException {
+		System.out.println("xml:"+xml);
+		String verifyCode=Util.md5EncryptAndBase64(xml + checkword);
+		
+		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+		nvps.add(new BasicNameValuePair("xml", xml));
+		nvps.add(new BasicNameValuePair("verifyCode", verifyCode));
+		
+		HttpClient httpclient=getHttpClient(port);
+		
+		HttpPost httpPost = new HttpPost(order_service_url);
+		
+		httpPost.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
+		
+		HttpResponse response = httpclient.execute(httpPost);
+		
+		return response;
+	}
+	
+	private static HttpClient getHttpClient(int port) {
+		PoolingClientConnectionManager pcm = new PoolingClientConnectionManager();
+		SSLContext ctx=null;
+		try{
+			ctx = SSLContext.getInstance("TLS");
+			X509TrustManager x509=new X509TrustManager(){
+				public void checkClientTrusted(X509Certificate[] xcs, String string)
+					throws CertificateException {
+				}
+				public void checkServerTrusted(X509Certificate[] xcs, String string)
+					throws CertificateException {
+				}
+				public X509Certificate[] getAcceptedIssuers(){
+					return null;
+				}
+			};
+			ctx.init(null, new TrustManager[]{x509}, null);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		SSLSocketFactory ssf = new SSLSocketFactory(ctx, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+		Scheme sch = new Scheme("https", port, ssf);
+		pcm.getSchemeRegistry().register(sch);
+		return new DefaultHttpClient(pcm);
+	}
+	
+}

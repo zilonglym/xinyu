@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/resources
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/resources/applicationContext.xml
+END
+applicationContext-shiro.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/resources/applicationContext-shiro.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/resources/log4j.properties
+END
+applicationContext-rule.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/resources/applicationContext-rule.xml
+END
+application.properties
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/resources/application.properties
+END

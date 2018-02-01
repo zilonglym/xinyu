@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/wlpost/!svn/ver/2172/trunk/xinyu-dao/src/main/java/com/xinyu/dao/common
+END
+DynamicDataSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/669/trunk/xinyu-dao/src/main/java/com/xinyu/dao/common/DynamicDataSource.java
+END
+BaseDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/2172/trunk/xinyu-dao/src/main/java/com/xinyu/dao/common/BaseDaoImpl.java
+END
+ContextHolder.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/669/trunk/xinyu-dao/src/main/java/com/xinyu/dao/common/ContextHolder.java
+END
+BaseDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/669/trunk/xinyu-dao/src/main/java/com/xinyu/dao/common/BaseDao.java
+END

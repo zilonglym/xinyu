@@ -1,0 +1,487 @@
+package com.xinyu.check.controller;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.xinyu.check.model.Person;
+import com.xinyu.check.model.StoreSystemItemEnums;
+import com.xinyu.check.model.SystemItem;
+import com.xinyu.check.service.CheckService;
+import com.xinyu.check.service.PersonService;
+import com.xinyu.check.service.SystemItemService;
+import com.xinyu.check.util.Digests;
+import com.xinyu.check.util.Encodes;
+import com.xinyu.check.util.MemcachedManager;
+
+import freemarker.template.SimpleDate;
+
+/**
+ * 验货控制Controller
+ * 
+ * @author yangmin 2017年7月6日
+ *
+ */
+@RequestMapping(value = "/check")
+@Controller
+public class CheckController extends BaseController {
+	public static final Logger logger = Logger.getLogger(CheckController.class);
+
+	@Autowired
+	private PersonService personService;;
+	@Autowired
+	private SystemItemService systemItemService;
+	@Autowired
+	private CheckService checkService;
+
+	private Map<String, String> cpMap = null;
+
+	private List<String> sysItemList; // 是否开启检验
+
+	public final static String memcached_return = "Return";
+
+	public final static String memcached_checkOut = "CheckOut";
+
+	public final static String memcached_success_CheckOut = "success";
+
+	public final static String memcached_fail_CheckOut = "fail";
+	public final static String memcached_chongfu_CheckOut = "chongfu";
+	public final static String memcached_return_CheckOut = "return";
+	
+	public final static String memcached_item="Item";
+	public final static String memcached_user="User";
+	
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	/**
+	 * checkout用于验货的存放时间
+	 */
+	public final static int memcached_time_checkOut=1000*60*60*24*7;
+	
+	
+	/** 失败。*/
+	public static final String FAIL_TRADE = "FAIL_TRADE";
+	
+	/** 失败。*/
+	public static final String SUCCESS_TRADE = "SUCCESS_TRADE";
+
+	/**
+	 * 登录
+	 * 
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
+	@RequestMapping(value = "submitLogin")
+	@ResponseBody
+	public Map<String, Object> getUsers(@RequestParam(value = "userName", defaultValue = "") String userName,
+			@RequestParam(value = "password", defaultValue = "") String password) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("userName", userName);
+		List<Person> list = this.personService.findPersonByList(params);
+		Person person = list != null ? list.get(0) : null;
+		if (person == null) {
+			resultMap.put("code", "500");
+			return resultMap;
+		}
+		String pwd = person.getPassword();
+		person.setPassword(password);
+		entryptPassword(person, person.getSalt());
+		logger.error(pwd + "||" + person.getPassword());
+		if (pwd.equals(person.getPassword())) {
+			resultMap.put("code", "200");
+			resultMap.put("person", person);
+		} else {
+			resultMap.put("code", "500");
+		}
+		return resultMap;
+	}
+
+	/**
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "getItemInfoBybarCode", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> barCode(@RequestParam(value = "barCode", defaultValue = "0") String barCode, Model model)
+			throws Exception {
+
+		return this.checkService.getItemInfoBybarCode(barCode);
+	}
+
+	/**
+	 * 取快递公司
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "getExpressCompany")
+	@ResponseBody
+	public Map<String, Object> getExpressCompany() {
+		String expressNo = this.getString("orderCode");
+
+		if (cpMap == null) {
+			initCpMap();
+		}
+		String cp = cpMap.get(expressNo.substring(0, 4));
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+
+		SystemItem item = new SystemItem();
+		item.setId("");
+		if (cp == null) {
+			item.setDescription("");
+			resultMap.put("code", 500);
+		} else {
+			item.setDescription(cp);
+			resultMap.put("code", 200);
+		}
+		resultMap.put("item", item);
+		// if(cp==null){
+		// resultMap.put("code", 404);
+		// }
+		return resultMap;
+	}
+
+	/**
+	 * 商品条码取数据
+	 * 
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "getItemInfoBybarCodes", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> barCodes(@RequestParam(value = "barCode", defaultValue = "0") String barCode,
+			Model model) throws Exception {
+
+		return this.checkService.getItemInfoBybarCodes(barCode);
+	}
+
+	/**
+	 * 订单出库检验信息
+	 * 
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "checkTrade_other")
+	@ResponseBody
+	public Map<String, Object> checkTrade_other(@RequestParam(value = "orderCode", defaultValue = "0") String orderCode,
+			@RequestParam(value = "barCode", defaultValue = "0") String barCode,
+			@RequestParam(value = "stock", defaultValue = "0") String stock,
+			@RequestParam(value = "cp", defaultValue = "0") String cp,
+			@RequestParam(value = "userId", defaultValue = "0") String userId,
+			@RequestParam(value = "persinId", defaultValue = "0") String persinId, Model model) throws Exception {
+
+		Date date = new Date();
+		if (cpMap == null) {
+			logger.error("取系统变量快递公司单号:");
+			initCpMap();
+			logger.error("取快递公司完毕:" + (new Date().getTime() - date.getTime()));
+		}
+		/**
+		 * 判断条码,如果快递条码不在查询出来的快递中间，则两才交换位置
+		 */
+		String tempOrderCode = orderCode.substring(0, 4);
+		if (cpMap.get(tempOrderCode) == null) {
+			String temp = orderCode;
+			orderCode = barCode;
+			barCode = temp;
+		}
+		if (cp == null || cp.equals("0") || cp.length() == 0) {
+			cp = cpMap.get(orderCode.substring(0, 4));
+		}
+
+		if ("0".equals(persinId)) {
+			Map<String, Object> retMap = new HashMap<String, Object>();
+			retMap.put("code", "400");
+			retMap.put("msg", " 无法获得操作人员信息,请重新登录 ");
+			return retMap;
+		}
+		Map<String, Object> map = this.checkService.checkTradenew(orderCode, barCode, stock, cp, userId, persinId,
+				sysItemList, "");
+		logger.error("验货结果:" + map);
+		long time = new Date().getTime() - date.getTime();
+		if (time > 300) {
+			logger.error("非正常验货时间:" + time + "[barCode:" + barCode + "|orderCode:" + orderCode + "]/n");
+		} else {
+			logger.error("验货时间:" + time + "[barCode:" + barCode + "|orderCode:" + orderCode + "]/n");
+		}
+		;
+		return map;
+	}
+
+	/**
+	 * 订单出库检验信息 使用缓存memcached
+	 * 
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "orderCheck")
+	@ResponseBody
+	public Map<String, Object> check_memcached(@RequestParam(value = "orderCode", defaultValue = "0") String orderCode,
+			@RequestParam(value = "barCode", defaultValue = "0") String barCode,
+			@RequestParam(value = "stock", defaultValue = "0") String stock,
+			@RequestParam(value = "cp", defaultValue = "0") String cp,
+			@RequestParam(value = "userId", defaultValue = "0") String userId,
+			@RequestParam(value="source",defaultValue="0") String source,
+			@RequestParam(value = "persinId", defaultValue = "0") String persinId, Model model) throws Exception {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		Date date = new Date();
+		if (cpMap == null) {
+			logger.error("取系统变量快递公司单号:");
+			initCpMap();
+			logger.error("取快递公司完毕:" + (new Date().getTime() - date.getTime()));
+		}
+		/**
+		 * 判断条码,如果快递条码不在查询出来的快递中间，则两才交换位置
+		 */
+		String tempOrderCode = orderCode.substring(0, 4);
+		if (cpMap.get(tempOrderCode) == null) {
+			String temp = orderCode;
+			orderCode = barCode;
+			barCode = temp;
+		}
+		if (cp == null || cp.equals("0") || cp.length() == 0) {
+			cp = cpMap.get(orderCode.substring(0, 4));
+		}
+
+		if ("0".equals(persinId)) {
+			Map<String, Object> retMap = new HashMap<String, Object>();
+			retMap.put("code", "400");
+			retMap.put("msg", " 无法获得操作人员信息,请重新登录 ");
+			return retMap;
+		}
+
+		Map<String, Object> memcachedMap = null;
+		// 保存验货记录
+		Map<String, Object> checkOut = (Map<String, Object>) MemcachedManager.get(memcached_checkOut + orderCode);
+		if(checkOut==null){
+			checkOut=new HashMap<String, Object>();
+		}
+		// 判断单据是否退货
+		String returnMap = (String) MemcachedManager.get(memcached_return + orderCode);
+		if (StringUtils.isNotEmpty(returnMap)) {
+			memcachedMap = new HashMap<String, Object>();
+			memcachedMap.put("status", FAIL_TRADE);
+			memcachedMap.put("msg", "此订单已退货！");
+			resultMap.put("code", "406");
+			resultMap.put("msg", "此订单已退货！");
+			checkOut.put(memcached_return_CheckOut+orderCode, orderCode);
+			MemcachedManager.put(memcached_checkOut+orderCode, checkOut,memcached_time_checkOut);
+		}
+
+		if (memcachedMap == null) {
+			// 判断订单是否已成功出库
+			Map<String, Object> checkMap = (Map<String, Object>) MemcachedManager.get(memcached_checkOut + orderCode);
+			if (checkMap != null) {
+				String obj = (String) checkMap.get(memcached_success_CheckOut + orderCode);
+				if (StringUtils.isNotEmpty(obj)) {
+					memcachedMap = new HashMap<String, Object>();
+					memcachedMap.put("status", FAIL_TRADE);
+					memcachedMap.put("msg", "重复扫描！【" + orderCode + "】");
+					resultMap.put("code", "405");
+					resultMap.put("msg", "重复扫描！【" + orderCode + "】");
+					
+					checkOut.put(memcached_chongfu_CheckOut+orderCode, orderCode);
+					MemcachedManager.put(memcached_checkOut+orderCode, checkOut,memcached_time_checkOut);
+				}
+			}
+
+		}
+		if (memcachedMap == null) {
+			// 1.判断订单信息
+			Map<String, Object> orderMap = (Map<String, Object>) MemcachedManager.get(orderCode);
+			if (orderMap == null) {
+				memcachedMap = new HashMap<String, Object>();
+				
+				memcachedMap.put("status", FAIL_TRADE);
+				memcachedMap.put("msg", "单号对应的订单不存在！【" + orderCode + "】");
+				
+				// 订单不存在
+				resultMap.put("code", "404");
+				resultMap.put("msg", "单号对应的订单不存在！【" + orderCode + "】");
+				
+				checkOut.put(memcached_fail_CheckOut+orderCode, orderCode);
+				MemcachedManager.put(memcached_checkOut+orderCode, checkOut,memcached_time_checkOut);
+				
+			} else {
+				memcachedMap = new HashMap<String, Object>();
+				// 校验商品是否存确
+				String itemInfo ="";
+				Object obj=orderMap.get(orderCode);
+				if(obj instanceof java.lang.Long){
+					Long item=(Long) obj;
+					itemInfo=String.valueOf(item);
+				}else{
+					itemInfo = (String) obj;
+				}
+				if (StringUtils.isNotBlank(itemInfo)) {
+					//
+					memcachedMap.put("status", SUCCESS_TRADE);
+					memcachedMap.put("msg", "订单校验成功！");
+					resultMap.put("code", "200");
+					resultMap.put("msg", "订单校验成功！");
+					checkOut.put(memcached_success_CheckOut+orderCode, orderCode);
+					MemcachedManager.put(memcached_checkOut+orderCode, checkOut,memcached_time_checkOut);
+					//验货成功，删除缓存数据
+					MemcachedManager.delete(orderCode);
+					
+					
+				} else {
+					memcachedMap.put("status", FAIL_TRADE);
+					memcachedMap.put("msg", "验货失败！商品与订单信息不匹配！");
+					resultMap.put("code", "500");
+					resultMap.put("msg", "验货失败！商品与订单信息不匹配！");
+					checkOut.put(memcached_fail_CheckOut+orderCode, orderCode);
+					MemcachedManager.put(memcached_checkOut+orderCode, checkOut,memcached_time_checkOut);
+				}
+			}
+		}
+		/**
+		 * 在缓存中，写入数据库的记录与判断是否重复发货的记录分开存放。 验货的数据只存放基本的判断数据， 写入数据库的存放详细的验货对像
+		 * 这里还有数据的清除问题没有处理
+		 * 验货记录的数据清除没有做。还有就是拦截数据的清除也没有
+		 */
+
+		// 保存操作记录
+		List<Map<String, Object>> checkOutList = (List<Map<String, Object>>) MemcachedManager.get(memcached_checkOut);
+		if(checkOutList==null){
+			checkOutList=new ArrayList<Map<String,Object>>();
+		}
+		Map<String,Object> item= (Map<String, Object>) MemcachedManager.get(memcached_item+barCode);
+		memcachedMap.put("date", sdf.format(new Date()));
+		memcachedMap.put("stock", stock);
+		memcachedMap.put("personId", persinId);
+		memcachedMap.put("orderCode", orderCode);
+		memcachedMap.put("barCode", barCode);
+		memcachedMap.put("cpCode", cp);
+		memcachedMap.put("source", source);
+		if(item!=null){
+			resultMap.put("itemName", item.get("title"));
+			memcachedMap.put("itemName", item.get("title"));
+		}else{
+			memcachedMap.put("itemName", "nan");
+			resultMap.put("itemName", "");
+		}
+		
+		checkOutList.add(memcachedMap);
+		MemcachedManager.put(memcached_checkOut, checkOutList);
+		resultMap.put("orderCode", orderCode);
+		resultMap.put("barCode", barCode);
+		logger.error(resultMap);
+		if(source.equals("1")){
+			logger.error("机器验货时间:"+(new Date().getTime()-date.getTime())+resultMap);
+		}else{
+			logger.error("人工验货时间:"+(new Date().getTime()-date.getTime())+resultMap);
+		}
+		
+		return resultMap;
+
+	}
+
+	/**
+	 * 取每日订单出库校验统计
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "getCheckTradeInfo")
+	@ResponseBody
+	public Map<String, Object> getCheckTradeInfo() {
+		Date date = new Date();
+		Map<String, Object> params = new HashMap<String, Object>();
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat dateFm = new SimpleDateFormat("yyyy-MM-dd");
+		String startDate = dateFm.format(cal.getTime());
+		cal.add(Calendar.DATE, 1);
+		String endDate = dateFm.format(cal.getTime());
+		params.put("startDate", startDate);
+		params.put("endDate", endDate);
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("importTrade", this.checkService.getCountByDate(params));// 导入订单数
+		resultMap.put("checkTrade", this.checkService.getCheckSuccessCountByDate(params));// 已校验订单数
+		resultMap.put("successTrade", this.checkService.getSuccessCountByDate(params));// 成功订单数
+		resultMap.put("failTrade", this.checkService.getCheckFailCountByDate(params));// 失败订单数
+		logger.error("定时器取数所花时间:" + (new Date().getTime() - date.getTime()));
+		return resultMap;
+	}
+
+	/**
+	 * 刷新订单校验商家信息
+	 * 
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "reLoadSystem", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> reLoadSystem(Model model) throws Exception {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("type", StoreSystemItemEnums.CHECK_TRADE.getKey());
+		List<SystemItem> sysItem = this.systemItemService.findSystemItemByList(params);
+		sysItemList = new ArrayList<String>();
+		for (int i = 0, size = sysItem.size(); i < size; i++) {
+			sysItemList.add(sysItem.get(i).getValue());
+		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sysItemList", sysItemList);
+		return map;
+	}
+
+	/**
+	 * 初始化验货配置
+	 */
+	private void initCpMap() {
+		cpMap = new HashMap<String, String>();
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("type", StoreSystemItemEnums.CHECK_COMP.getKey());
+		List<SystemItem> systemItem = this.systemItemService.findSystemItemByList(params);
+		for (int i = 0; systemItem != null && i < systemItem.size(); i++) {
+			SystemItem item = systemItem.get(i);
+			String valueStr = item.getValue();
+			String[] ary = valueStr.split(",");
+			for (int j = 0; ary != null && j < ary.length; j++) {
+				cpMap.put(ary[j], item.getDescription());
+			}
+		}
+	}
+
+	/**
+	 * 初始化订单验货配置
+	 * 
+	 * @param params
+	 */
+	private void initSystemCheckTrade() {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("type", StoreSystemItemEnums.CHECK_TRADE.getKey());
+		sysItemList = new ArrayList<String>();
+		List<SystemItem> sysItem = systemItemService.findSystemItemByList(params);
+		for (int i = 0, size = sysItem.size(); i < size; i++) {
+			sysItemList.add(sysItem.get(i).getValue());
+		}
+	}
+
+	/**
+	 * 密码加密
+	 */
+	public void entryptPassword(Person person, String salt) {
+		person.setSalt(salt);
+		byte[] hashPassword = Digests.sha1(person.getPassword().getBytes(), Encodes.decodeHex(salt), 1024);
+		person.setPassword(Encodes.encodeHex(hashPassword));
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.graby.store.admin.web.group.GroupController&apos; to &apos;MobileController&apos;&#x0D;&#x0A;- Original project: &apos;store-admin&apos;&#x0D;&#x0A;- Original element: &apos;com.graby.store.admin.web.group.GroupController&apos;&#x0D;&#x0A;- Renamed element: &apos;com.graby.store.admin.web.group.MobileController&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;GroupController&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;com.graby.store.admin.web.group{GroupController.java[GroupController" matchStrategy="1" name="MobileController" qualified="false" references="true" similarDeclarations="false" stamp="1504084762490" textual="false" version="1.0"/>
+</session>

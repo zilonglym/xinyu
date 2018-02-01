@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/alipay/api
+END
+AlipayConstants.class
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/alipay/api/AlipayConstants.class
+END
+AlipayClient.class
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/alipay/api/AlipayClient.class
+END
+AlipaySignature.class
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/alipay/api/AlipaySignature.class
+END
+DefaultAlipayClient.class
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/alipay/api/DefaultAlipayClient.class
+END
+AlipayApiException.class
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/alipay/api/AlipayApiException.class
+END
+StreamUtil.class
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/alipay/api/StreamUtil.class
+END
+StreamUtil$SynchronizedOutputStream.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/alipay/api/StreamUtil$SynchronizedOutputStream.class
+END

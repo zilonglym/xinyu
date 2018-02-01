@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/wlpost/!svn/ver/2743/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base
+END
+SenderInfoDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/1031/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/SenderInfoDao.xml
+END
+AccountDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/2140/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/AccountDao.xml
+END
+ItemGroupDetailDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/1723/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/ItemGroupDetailDao.xml
+END
+InvoiceItemDetailDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/806/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/InvoiceItemDetailDao.xml
+END
+BatchSendCtrlParamDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/1031/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/BatchSendCtrlParamDao.xml
+END
+AccountRolesDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/943/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/AccountRolesDao.xml
+END
+PackageInfoDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/1245/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/PackageInfoDao.xml
+END
+DriverInfoDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/1031/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/DriverInfoDao.xml
+END
+InvoiceInfoDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/806/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/InvoiceInfoDao.xml
+END
+PackageItemDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/1245/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/PackageItemDao.xml
+END
+ItemOperatorDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/2140/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/ItemOperatorDao.xml
+END
+ItemGroupDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/2500/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/ItemGroupDao.xml
+END
+AccountRoleRelationDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/1070/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/AccountRoleRelationDao.xml
+END
+userDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/wlpost/!svn/ver/2868/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/userDao.xml
+END
+WmsConsignOrderPackageRequirementDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/806/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/WmsConsignOrderPackageRequirementDao.xml
+END
+AccountMenuDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/1289/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/AccountMenuDao.xml
+END
+AccountRolesRowDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/994/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/AccountRolesRowDao.xml
+END
+AccountRelationDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/1091/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/AccountRelationDao.xml
+END
+CentroDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/1340/trunk/xinyu-dao/src/main/resources/com/xinyu/dao/base/CentroDao.xml
+END

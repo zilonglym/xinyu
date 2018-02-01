@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/wlpost/!svn/ver/2703/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item
+END
+itemf7barCode.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/748/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item/itemf7barCode.ftl
+END
+itemf7Title.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/748/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item/itemf7Title.ftl
+END
+itemf7Type.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/2703/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item/itemf7Type.ftl
+END
+itemf7packageWeight.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/1579/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item/itemf7packageWeight.ftl
+END
+itemGroupEdit.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/1797/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item/itemGroupEdit.ftl
+END
+itemf7Count.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/748/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item/itemf7Count.ftl
+END
+itemGroupAdd.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/1797/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item/itemGroupAdd.ftl
+END
+itemf7Code.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/748/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item/itemf7Code.ftl
+END
+itemAdd.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/748/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item/itemAdd.ftl
+END
+groupItemList.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/1797/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item/groupItemList.ftl
+END
+itemGroupList.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/1724/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item/itemGroupList.ftl
+END
+itemList.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/2138/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/item/itemList.ftl
+END

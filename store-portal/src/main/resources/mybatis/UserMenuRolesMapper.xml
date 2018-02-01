@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.graby.store.dao.mybatis.UserMenuRolesDao">
+
+	<select id="findMenuByUser" parameterType="String" resultType="UserMenu">
+		SELECT t.* from sc_user_roles r
+			inner join sc_user_menu t  on r.id=t.roles
+			inner JOIN sc_user_roles_row c on c.roles=r.id
+			where c.person=#{userId}
+			order by t.`menus`,  t.`sort` 
+	</select>
+	
+	<resultMap id="UserRolesRowEntity" type="com.graby.store.entity.UserRolesRow">
+		<result property="id" column="id" />
+		<result property="modelEnums" column="model_enums" />
+		<result property="person.id" column="person" />
+		<result property="remark" column="remark" />
+		<result property="store.id" column="store" />
+	</resultMap>
+	
+	<select id="findRowsByUser" parameterType="String" resultMap="UserRolesRowEntity">
+		SELECT r.* from sc_user_roles_row r
+			where r.person=#{userId}
+	</select>
+
+		
+	<insert id="save" parameterType="UserRolesRow" useGeneratedKeys="true" keyProperty="id">
+		insert into sc_user_roles_row (
+		person, store, remark, model_enums)
+		values (
+		#{person.id},#{store.id}, #{remark},#{modelEnums})
+	</insert>
+</mapper> 

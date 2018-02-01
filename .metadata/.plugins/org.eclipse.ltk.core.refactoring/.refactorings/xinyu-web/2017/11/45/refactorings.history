@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;order&apos; in &apos;com.xinyu.controller.trade.ShipOrderController.auditAreaYUNDA(...)&apos; to &apos;shipOrder&apos;&#x0D;&#x0A;- Original project: &apos;xinyu-web&apos;&#x0D;&#x0A;- Original element: &apos;com.xinyu.controller.trade.ShipOrderController.auditAreaYUNDA(String, String[]).order&apos;&#x0D;&#x0A;- Renamed element: &apos;order&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;order&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/main\/java&lt;com.xinyu.controller.trade{ShipOrderController.java[ShipOrderController~auditAreaYUNDA~QString;~\[QString;@order!41045!41069!41056!41060!QShipOrder;!0!false" name="shipOrder" references="true" stamp="1509935541809" version="1.0"/>
+</session>

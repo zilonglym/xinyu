@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.shipOrderStopDao">
+	<resultMap id="ShipOrderStopResult" type="com.xinyu.model.trade.ShipOrderStop">
+		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
+		<result property="createTime" column="FcreateTime" />
+		<result property="orderId" column="ForderId" />
+		<result property="description" column="Fdescription" />
+		<result property="userId" column="FuserId" />
+		<result property="expressOrderno" column="FexpressOrderno" />
+	</resultMap>
+	<select id="getShipOrderStopById" parameterType="string"
+		resultMap="ShipOrderStopResult">
+		SELECT T.*
+		FROM T_xinyu_ShipOrderStop T where T.FID=#{id}
+	</select>
+	
+	<select id="getShipOrderStopByList" parameterType="map"
+		resultMap="ShipOrderStopResult">
+		SELECT T.*
+		FROM T_xinyu_ShipOrderStop T 
+		<where>
+		    T.FexpressOrderno is not null
+		    <if test="orderId!=null and orderId!=''">
+		        and ForderId=#{orderId}
+		    </if>
+		     <if test="type!=null and type!=''">
+		        and Fdescription like "%"#{type}"%"
+		    </if>
+		     <if test="userId!=null and userId!=''">
+		        and FuserId=#{userId}
+		    </if>
+		    <if test="expressOrderno!=null and expressOrderno!=''">
+		        and FexpressOrderno=#{expressOrderno}
+		    </if>
+		    <if test="express!=null and express!=''">
+		        and FexpressOrderno is not null
+		    </if>
+		        
+		</where>
+		order by T.FcreateTime desc
+		<if test="pageSize!=null and pageSize!=''">
+			limit #{pageNum},#{pageSize}    
+		</if>
+	</select>
+	
+	<select id="getTotal" parameterType="map" resultType="int">
+		SELECT count(1)
+		FROM T_xinyu_ShipOrderStop T 
+		<where>
+		    T.FexpressOrderno is not null
+		     <if test="type!=null and type!=''">
+		        and Fdescription like "%"#{type}"%"
+		    </if>
+		    <if test="orderId!=null and orderId!=''">
+		        and ForderId=#{orderId}
+		    </if>
+		      <if test="userId!=null and userId!=''">
+		        and FuserId=#{userId}
+		    </if>
+		    <if test="expressOrderno!=null and expressOrderno!=''">
+		        and FexpressOrderno=#{expressOrderno}
+		    </if>
+		</where>
+	</select>
+	
+	<insert id="insertShipOrderStop" parameterType="com.xinyu.model.trade.ShipOrderStop">
+		insert into
+		T_xinyu_ShipOrderStop(FID,fcu,FcreateTime,ForderId,Fdescription,FuserId,FexpressOrderno)
+		VALUES(#{id},#{cu},#{createTime},#{orderId},#{description},#{userId},#{expressOrderno})
+	</insert>
+
+	<update id="updateShipOrderStop" parameterType="com.xinyu.model.trade.ShipOrderStop">
+		update T_xinyu_ShipOrderStop
+		<set>
+			<if test="cu!=null and cu!=''">FCU=#{cu},</if>
+			<if test="createTime!=null and createTime!=''">FcreateTime=#{createTime},</if>
+			<if test="orderId!=null and orderId!=''">ForderId=#{orderId},</if>
+			<if test="description!=null and description!=''">Fdescription=#{description},</if>
+			<if test="userId!=null and userId!=''">FuserId=#{userId},</if>
+			<if test="expressOrderno!=null and expressOrderno!=''">FexpressOrderno=#{expressOrderno},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteShipOrderStopById" parameterType="string">
+		delete from T_xinyu_ShipOrderStop where fid=#{id}
+	</delete>
+</mapper> 

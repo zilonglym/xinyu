@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.report.ReportDao">
+	<select id="findItemTotal" resultType="map">
+	select s.FKuserID as "userId",sum(o.FitemQuantity) as 'sum'
+		from t_xinyu_shiporder s 
+		inner join t_xinyu_wmsconsignorderitem o on s.fid = o.FKorderID
+	where (s.Fstatus='WMS_FINASH'||s.Fstatus='WMS_RETURN') and s.FtmsOrderCode is not null
+	<if test="userId!=null and userId!=''">
+		and s.FKuserID=#{userId}
+	</if>
+	<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and s.`FlastUpdateTime` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+			and s.`FlastUpdateTime` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+    </if> 
+	group by s.FKuserID
+	</select>
+	
+	<select id="findShipCount" resultType="map">
+	select s.FKuserID as 'userId',u.FsubscriberName as "userName",count(1) as 'num'
+	from t_xinyu_shiporder s 
+	inner join t_xinyu_user u on s.FKuserID = u.FID
+	where 1=1
+	<if test="userId!=null and userId!=''">
+		and s.FKuserID=#{userId}
+	</if>
+	<if test="status!=null and status!='' and status!='report'">
+		and s.Fstatus=#{status}
+	</if>
+	<if test="status=='report'">
+		and (s.Fstatus='WMS_FINASH'||s.Fstatus='WMS_RETURN') and s.FtmsOrderCode is not null
+	</if>
+	<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and s.`FlastUpdateTime` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+			and s.`FlastUpdateTime` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+    </if> 
+	group by s.FKuserID
+	</select>
+	
+	<select id="findItemCount" resultType="map">
+	select u.FsubscriberName as 'userName',o.FKitemID as 'itemId',o.FitemName as 'itemName',o.FitemCode as 'itemCode',sum(o.FitemQuantity) as 'sum'
+		from t_xinyu_shiporder s 
+		inner join t_xinyu_user u on s.FKuserID = u.fid
+		inner join t_xinyu_wmsconsignorderitem o on s.fid = o.FKorderID
+	where (s.Fstatus='WMS_FINASH'||s.Fstatus='WMS_RETURN') and s.FtmsOrderCode is not null
+	<if test="userId!=null and userId!=''">
+		and s.FKuserID=#{userId}
+	</if>
+	<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and s.`FlastUpdateTime` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+			and s.`FlastUpdateTime` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+    </if> 
+	group by o.FKitemID
+	order by o.FitemName
+	</select>
+</mapper> 

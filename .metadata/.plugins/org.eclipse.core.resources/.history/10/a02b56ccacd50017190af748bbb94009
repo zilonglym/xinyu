@@ -1,0 +1,56 @@
+package com.xinyu.controller.task;
+
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.xinyu.common.BaseController;
+import com.xinyu.service.system.CheckOutService;
+import com.xinyu.service.system.ItemService;
+import com.xinyu.service.trade.ShipOrderOperatorService;
+import com.xinyu.service.trade.ShipOrderService;
+
+/**
+ * 订单报表系统定时器
+ * @author yangmin
+ * 2017年11月30日
+ *
+ */
+@Lazy(value=false)
+@Controller
+@RequestMapping(value="shipOrderReportTask")
+public class ShipOrderReportTask extends BaseController {
+	private SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+	private SimpleDateFormat sdftt=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	
+	@Autowired
+	private ShipOrderService shipOrderService;
+	@Autowired
+	private ItemService itemService;
+	@Autowired
+	private ShipOrderOperatorService operatorService;
+	@Autowired
+	private CheckOutService checkOutService;
+	
+	/**
+	 * 订单操作时间处理
+	 */
+	public void shipOrderOperatorTime(){
+		/**
+		 * 1.查询要处理的订单并循环处理所有的订单
+		 * 2.查询操作记录得到发货时间
+		 * 3.查询验货记录得到验货时间
+		 * 4.计算时间的间隔
+		 */
+		
+		Map<String,Object> params=new HashMap<String, Object>();
+		
+		
+		
+	}
+}

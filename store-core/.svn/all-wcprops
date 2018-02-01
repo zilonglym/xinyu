@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/wlpost/!svn/ver/2805/trunk/store-core
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/wlpost/!svn/ver/3/trunk/store-core/.classpath
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/wlpost/!svn/ver/3/trunk/store-core/.project
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/wlpost/!svn/ver/2077/trunk/store-core/pom.xml
+END

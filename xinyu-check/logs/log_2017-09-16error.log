@@ -1,0 +1,14 @@
+2017-09-16 12:10:17  [ 24350336@qtp-2147551-0:609952 ] - [ ERROR ]  登录判断开始!
+2017-09-16 12:10:18  [ 24350336@qtp-2147551-0:610907 ] - [ ERROR ]  29ce6fb0a28dd61af6b1663c7f8f67e61679c3df||29ce6fb0a28dd61af6b1663c7f8f67e61679c3df
+2017-09-16 12:10:46  [ 24350336@qtp-2147551-0:638571 ] - [ ERROR ]  取系统变量快递公司单号:
+2017-09-16 12:10:46  [ 24350336@qtp-2147551-0:638628 ] - [ ERROR ]  取快递公司完毕:74
+2017-09-16 12:10:46  [ 24350336@qtp-2147551-0:638781 ] - [ ERROR ]  {itemName=nan, weight=0, status=FAIL_TRADE, orderCode=3956000000, date=2017-09-16 12:10:46, cpCode=YUNDA, itemId=, msg=人工验货:单号对应的订单不存在！【3956000000】, stock=1, source=2, personId=1, barCode=1212324232, orderId=}
+2017-09-16 12:10:46  [ 24350336@qtp-2147551-0:638834 ] - [ ERROR ]  {itemName=, returnIndex=0, orderCode=3956000000, barCode=1212324232, code=404, successIndex=0, msg=单号对应的订单不存在！【3956000000】, chongfuIndex=0, failIndex=1}
+2017-09-16 12:10:46  [ 24350336@qtp-2147551-0:638834 ] - [ ERROR ]  超时 人工验货时间:280{itemName=, returnIndex=0, orderCode=3956000000, barCode=1212324232, code=404, successIndex=0, msg=单号对应的订单不存在！【3956000000】, chongfuIndex=0, failIndex=1}
+2017-09-16 14:05:06  [ 3148348@qtp-7204367-0:11779 ] - [ ERROR ]  登录判断开始!
+2017-09-16 14:05:06  [ 3148348@qtp-7204367-0:12745 ] - [ ERROR ]  29ce6fb0a28dd61af6b1663c7f8f67e61679c3df||29ce6fb0a28dd61af6b1663c7f8f67e61679c3df
+2017-09-16 14:05:30  [ 3148348@qtp-7204367-0:36311 ] - [ ERROR ]  取系统变量快递公司单号:
+2017-09-16 14:05:30  [ 3148348@qtp-7204367-0:36369 ] - [ ERROR ]  取快递公司完毕:71
+2017-09-16 14:05:30  [ 3148348@qtp-7204367-0:36584 ] - [ ERROR ]  {itemName=nan, weight=0, status=SUCCESS_TRADE, orderCode=3932520637017, date=2017-09-16 14:05:30, cpCode=YUNDA, itemId=, msg=人工验货:订单校验成功！, stock=1, source=2, personId=1, barCode=6971129790025, orderId=}
+2017-09-16 14:05:30  [ 3148348@qtp-7204367-0:36721 ] - [ ERROR ]  {itemName=, returnIndex=4, orderCode=3932520637017, barCode=6971129790025, code=200, successIndex=5, msg=订单校验成功！, chongfuIndex=4, failIndex=4}
+2017-09-16 14:05:30  [ 3148348@qtp-7204367-0:36721 ] - [ ERROR ]  超时 人工验货时间:423{itemName=, returnIndex=4, orderCode=3932520637017, barCode=6971129790025, code=200, successIndex=5, msg=订单校验成功！, chongfuIndex=4, failIndex=4}

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api
+END
+AliyunAsyncHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/AliyunAsyncHandler.class
+END
+AliyunConstants.class
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/AliyunConstants.class
+END
+AliyunParser.class
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/AliyunParser.class
+END
+AliyunUploadRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/AliyunUploadRequest.class
+END
+AliyunClient.class
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/AliyunClient.class
+END
+AliyunResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/AliyunResponse.class
+END
+AliyunSignature.class
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/AliyunSignature.class
+END
+DefaultAliyunClient.class
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/DefaultAliyunClient.class
+END
+AliyunRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/AliyunRequest.class
+END
+DefaultAliyunClient$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/DefaultAliyunClient$1.class
+END

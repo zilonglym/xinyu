@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/entity/store
+END
+ShopTypeEnums.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/entity/store/ShopTypeEnums.java
+END
+UserShop.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/entity/store/UserShop.java
+END
+UserTypeEnums.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/entity/store/UserTypeEnums.java
+END
+StatusEnums.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/entity/store/StatusEnums.java
+END

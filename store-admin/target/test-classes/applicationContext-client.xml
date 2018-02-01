@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+	default-lazy-init="true">
+
+	<!-- http://localhost:8080 http://www.wlpost.com-->
+	<bean id="remoteClient" class="com.graby.store.base.remote.client.ClientFactoryBean" abstract="true">
+		<property name="type" value="httpinvoker"/>  
+	    <property name="hostUrl" value="http://localhost:8088"/>  
+	</bean>
+	
+	<bean id="centroRemote" parent="remoteClient">
+		<property name="serviceUrl" value="/centro.call"/>
+		<property name="serviceInterface" value="com.graby.store.remote.CentroRemote"/>
+	</bean>
+
+	<bean id="tradeRemote" parent="remoteClient">
+		<property name="serviceUrl" value="/trade.call"/>
+		<property name="serviceInterface" value="com.graby.store.remote.TradeRemote"/>
+	</bean>
+	
+	<bean id="shipOrderRemote" parent="remoteClient">
+		<property name="serviceUrl" value="/ship.call"/>
+		<property name="serviceInterface" value="com.graby.store.remote.ShipOrderRemote"/>
+	</bean>
+	
+	<bean id="expressRemote" parent="remoteClient">
+		<property name="serviceUrl" value="/express.call"/>
+		<property name="serviceInterface" value="com.graby.store.remote.ExpressRemote"/>
+	</bean>
+	
+	<bean id="qmSyncRemote" parent="remoteClient">
+		<property name="serviceUrl" value="/qmsync.call"/>
+		<property name="serviceInterface" value="com.graby.store.remote.QmSyncRemote"/>
+	</bean>
+	<bean id="processRemote" parent="remoteClient">
+		<property name="serviceUrl" value="process.call"/>
+		<property name="serviceInterface" value="com.graby.store.remote.ProcessRemote"/>
+	</bean>
+	
+	<bean id="packgeRemote" parent="remoteClient">
+		<property name="serviceUrl" value="order.call"/>
+		<property name="serviceInterface" value="com.graby.store.remote.ShipOrderPackageRemote"/>
+	</bean>
+	
+	<bean id="sysRemote" parent="remoteClient">
+		<property name="serviceUrl" value="sys.call"/>
+		<property name="serviceInterface" value="com.graby.store.remote.SystemItemRemote"/>
+	</bean>
+	
+	<bean id="batchRemote" parent="remoteClient">
+		<property name="serviceUrl" value="batch.call"/>
+		<property name="serviceInterface" value="com.graby.store.remote.TradeBatchRemote"/>
+	</bean>
+	
+	<bean id="personRemote" parent="remoteClient">
+		<property name="serviceUrl" value="tperson.call"/>
+		<property name="serviceInterface" value="com.graby.store.remote.PersonRemote"/>
+	</bean>
+	
+</beans>

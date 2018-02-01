@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-portal/src/main/webapp/WEB-INF/views/report
+END
+sellout.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-portal/src/main/webapp/WEB-INF/views/report/sellout.jsp
+END
+selloutDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-portal/src/main/webapp/WEB-INF/views/report/selloutDetail.jsp
+END
+ship.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-portal/src/main/webapp/WEB-INF/views/report/ship.jsp
+END

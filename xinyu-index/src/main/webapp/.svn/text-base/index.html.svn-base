@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
+<title>湖南中仓网络科技有限公司</title>
+<meta name="keywords" content="湖南中仓网络科技有限公司" />
+<meta name="description" content="" />
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<!--[if IE 6]>
+<script src='JsCss/iepng.js' type='text/javascript'></script>
+<script type='text/javascript'>
+   EvPNG.fix('*'); 
+</script>
+<![endif]-->
+</head>
+<script type="text/javascript" src="js/setimg.js"></script>
+<script type="text/javascript" src="js/jquery.js" ></script>
+<script type="text/javascript" src="js/scroll.js"></script> 
+<body>
+	<div id="header"></div>
+	<div class="Main"><img src="images/t_pic.gif" align="top" alt="" title="" /></div>
+	<div id="contact"></div>
+	<script type="text/javascript">
+		document.getElementById('Link1').className='Sy';
+	</script>
+	<div class="Main" >
+		<div class="I_about">
+			<h2 class="I_h2">
+				<div id="tab1">
+					<span class="on" id="T1">关于公司<b>ABOUT US</b></span>
+				</div>
+			</h2>
+			<div class="I_view">
+				<p></p>
+			</div>        
+            <img name="" src="" alt="">    
+		</div>
+		<div class="I_news">
+			<h2 class="I_h2">
+				<div id="tab1">
+					<span onmouseover="setTab(1,0)" class="on" id="T1">新闻中心<b>NEWS CENTER</b><a href="news.html" title="新闻中心"><img src="images/more.gif" alt="" title="" /></a></span>
+				</div>
+			</h2>
+			<div id="tablist1">
+				<ul>
+					<!--  <li><span class="Title"><a href="#" target="_blank"></a></span></li> -->  				
+				</ul>
+				<ul style="display:none;">
+					
+				</ul>
+			</div>
+		</div>
+		<div class="I_right">
+			<h2 class="I_h2">
+				<div id="tab1">
+					<span class="on" id="T1">核心服务<b>CORE SERVICE</b></span>
+				</div>
+			</h2>
+			<select class="Select" onchange="javascript:window.open(this.options[this.selectedIndex].value)">
+                <option value="#">友情链接</option>				
+                <option value="#">淘宝网</option>                 
+                <option value="#">京东网</option>                 
+                <option value="#">天猫网</option>                               
+			</select>	
+			<div class="Pic1"><a href="http://admin.wlpost.com/home" title=""><img src="images/login.gif" alt="" title="" /></a></div>
+			<div class="Pic1"><a href="https://fuwu.taobao.com/ser/detail.html?spm=0.0.0.0.EKS7lz&service_code=FW_GOODS-1974754" title=""><img src="images/order.gif" alt="" title="" /></a></div>
+
+		</div>
+    
+   		<div class="infiniteCarousel">
+    	
+            <div class="wrapper">
+                <ul>
+					
+                        <li><div onmouseover="this.className='on-div'" onmouseout="this.className=''"><table cellpadding="0" cellspacing="0"><tr><td width="137" height="100" valign="middle"><img src="images/cangchu.gif" width="217" height="117" alt="仓储服务" title="仓储服务"/></td></tr></table><a href="#" target="_blank" title="仓储服务"></a></div></li>
+                    
+                        <li><div onmouseover="this.className='on-div'" onmouseout="this.className=''"><table cellpadding="0" cellspacing="0"><tr><td width="137" height="100" valign="middle"><img src="images/zhuangxie.gif" width="217" height="117" alt="装卸服务" title="装卸服务"/></td></tr></table><a href="#" target="_blank" title="装卸服务"></a></div></li>
+                    
+                        <li><div onmouseover="this.className='on-div'" onmouseout="this.className=''"><table cellpadding="0" cellspacing="0"><tr><td width="137" height="100" valign="middle"><img src="images/baozhuang.gif" width="217" height="117" alt="包装服务" title="包装服务"/></td></tr></table><a href="#" target="_blank" title="包装服务"></a></div></li>
+                    
+                        <li><div onmouseover="this.className='on-div'" onmouseout="this.className=''"><table cellpadding="0" cellspacing="0"><tr><td width="137" height="100" valign="middle"><img src="images/fahuo.gif" width="217" height="117" alt="系统服务" title="系统服务"/></td></tr></table><a href="#" target="_blank" title="电商发货服务"></a></div></li>
+                        
+                        <li><div onmouseover="this.className='on-div'" onmouseout="this.className=''"><table cellpadding="0" cellspacing="0"><tr><td width="137" height="100" valign="middle"><img src="images/fahuo.gif" width="217" height="117" alt="系统服务" title="系统服务"/></td></tr></table><a href="#" target="_blank" title="电商发货服务"></a></div></li>
+                        
+                        <li><div onmouseover="this.className='on-div'" onmouseout="this.className=''"><table cellpadding="0" cellspacing="0"><tr><td width="137" height="100" valign="middle"><img src="images/fahuo.gif" width="217" height="117" alt="系统服务" title="系统服务"/></td></tr></table><a href="#" target="_blank" title="电商发货服务"></a></div></li>
+                    
+                </ul>
+            </div>
+            <div class="Infi_bg"></div>
+            <a id="prev" class="prev" href="javascript:;"></a>
+            <a id="next" class="prev" href="javascript:;"></a>
+        </div>
+    
+	</div>
+	<div id="footer"></div>
+</body>
+</html>
+<script type="text/javascript"> 
+$(function(){  
+	$('#header').load('header.html');  
+	$('#footer').load('footer.html');  
+	$('#contact').load('scrollsidebar.html');  
+});
+$(".infiniteCarousel").myScroll({
+    visible:5,
+    scroll:1,
+    auto:[true,2000],
+    speed:1000
+});
+</script>

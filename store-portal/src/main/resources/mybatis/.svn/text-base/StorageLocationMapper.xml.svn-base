@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+
+<mapper namespace="com.graby.store.dao.mybatis.StorageLocationDao">
+	<resultMap id="StorageLocationEntity" type="com.graby.store.entity.StorageLocation">
+		<result property="id" column="id" />
+	    <result property="HJ" column="HJ" />
+		<result property="WZ" column="WZ" />
+		<result property="BW" column="BW" />
+		<result property="CS" column="CS" />
+		<result property="name" column="Name" />
+		<result property="shop" column="Shop" />
+		<result property="type" column="Type" />
+		<result property="num" column="Num" />
+		<result property="lastUpdate" column="Date_cr" />
+	</resultMap>
+	
+	<update id="updateStorageLocationById"> 
+        update sc_storage_location
+        set HJ=#{HJ},WZ=#{WZ},BW=#{BW},CS=#{CS},Name=#{name},Shop=#{shop},
+        Type=#{type},Num=#{num},Date_cr=#{lastUpdate}
+        where id=#{id}
+    </update>
+    
+  	<insert id="saveStorageLocation" parameterType="com.graby.store.entity.StorageLocation">
+		insert  into sc_storage_location(HJ,WZ,BW,CS,Name,Shop,Type,Date_cr)
+		values(#{HJ},#{WZ},#{BW},#{CS},#{name},#{shop},#{type},#{lastUpdate})
+	</insert>
+    
+    <select id="findeStorageLocationByList" parameterType="map" resultMap="StorageLocationEntity">
+		select t.* from sc_storage_location t
+		where 1=1
+		<if test="id!=null and id!=0 and id!=''">
+			and	t.id=#{id}
+		</if>
+		<if test="shop!=null and shop!=''">
+			and t.Shop like "%"#{shop}"%"
+		</if>
+		<if test="type!=null and type!=''">
+			and t.Type like "%"#{type}"%"
+		</if>
+		order by t.Date_cr asc
+		<if test="start!=null and offset!=null">
+			limit #{start},#{offset}
+		</if>
+			
+	</select>
+	
+	 <select id="getTotal" parameterType="map" resultType="int">
+		select count(1) from sc_storage_location t
+		where 1=1
+		<if test="id!=null and id!=0 and id!=''">
+			and	t.id=#{id}
+		</if>
+		<if test="shop!=null and shop!=''">
+			and t.Shop like "%"#{shop}"%"
+		</if>
+		<if test="type!=null and type!=''">
+			and t.Type like "%"#{type}"%"
+		</if>
+	</select>
+	
+	<delete id="delete" parameterType="long">
+		delete from sc_storage_location where id=#{id}
+	</delete>
+	
+</mapper> 

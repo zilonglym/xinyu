@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.graby.store.dao.mybatis.PackageDao">
+
+		<resultMap id="packageMap" type="com.graby.store.entity.ShipOrderPackage">
+			<result property="id" column="id" />
+			<result property="orderId" column="order_id" />
+			<result property="logisticsCode" column="logisticsCode" />
+			<result property="logisticsName" column="logisticsName" />
+			<result property="expressCode" column="expressCode" />
+			<result property="packageCode" column="packageCode" />
+			<result property="invoiceNo" column="invoiceNo" />
+		</resultMap>
+
+		<resultMap id="pacckageItemMap" type="com.graby.store.entity.ShipOrderPackageItem">
+			<result property="id" column="id" />
+			<result property="packageId" column="package_id" />
+			<result property="itemId" column="item_id" />
+			<result property="quantity" column="quantity" />
+			<result property="detailId" column="detail_id" />
+		</resultMap>
+
+	<select id="findPackage"  resultMap="packageMap" parameterType="Integer">
+		select *
+		from sc_shiporder_package
+		where id=#{id}
+	</select>
+	
+	<select id="findPackageByOrderId"  resultMap="packageMap" parameterType="Integer">
+		select *
+		from sc_shiporder_package
+		where order_id=#{orderId}
+	</select>
+	
+	<select id="findPackageItem"  resultMap="pacckageItemMap" parameterType="Integer">
+		select *
+		from sc_shiporder_package_item
+		where package_id=#{packageId}
+	</select>
+	
+	<insert id="save" parameterType="com.graby.store.entity.ShipOrderPackage" >
+		insert into sc_shiporder_package(id,order_id,logisticsCode,logisticsName,expressCode,packageCode,invoiceNo)
+		values(#{id},#{orderId},#{logisticsCode},#{logisticsName},#{expressCode},#{packageCode},#{invoiceNo})
+	</insert>
+	
+	<insert id="saveItem" parameterType="com.graby.store.entity.ShipOrderPackageItem">
+	insert into sc_shiporder_package_item(id,package_id,item_id,quantity,createTime,detail_id)
+		values(#{id},#{packageId},#{itemId},#{quantity},#{createTime},#{detailId})
+	</insert>
+</mapper> 

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.base.AuditAreaDao">
+	<resultMap id="AuditAreaResult" type="com.xinyu.model.system.AuditArea" >
+		<result property="id" column="FID" />
+		<result property="code" column="Fcode" />
+		<result property="name" column="Fname" />
+		<result property="parentCode" column="FparentCode" />
+		<result property="level" column="Flevel" />
+		<result property="copmany" column="Fcopmany" />
+		<result property="end" column="Fend" />
+		<result property="msg" column="Fmsg" />
+	</resultMap>
+	<select id="getAuditAreaById" parameterType="string"  resultMap="AuditAreaResult" >
+		 SELECT T.* 
+			FROM T_xinyu_AuditArea T where T.FID=#{id}
+	</select>
+	
+	<select id="findAuditAreaByList" parameterType="map"  resultMap="AuditAreaResult" >
+		SELECT T.* 
+		FROM T_xinyu_AuditArea T where 1=1
+		<if test="code!=null and code!=''">and Fcode=#{code}</if>
+		<if test="name!=null and name!=''">and Fname=#{name}</if>
+		<if test="parentCode!=null and parentCode!=''">and FparentCode=#{parentCode}</if>
+		<if test="level!=null and level!=''">and Flevel=#{level}</if>
+		<if test="copmany!=null and copmany!=''">and Fcopmany=#{copmany}</if>
+		<if test="end!=null and end!=''">and Fend=#{end}</if>
+		<if test="msg!=null and msg!=''">and Fmsg=#{msg}</if>
+	</select>
+	
+	<insert id="insertAuditArea" parameterType="com.xinyu.model.system.AuditArea" >
+	insert into T_xinyu_AuditArea(Fcode,Fname,FparentCode,Flevel,Fcopmany,Fend,Fmsg)
+	VALUES(#{code,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{parentCode,jdbcType=VARCHAR},#{level,jdbcType=INTEGER},#{copmany,jdbcType=VARCHAR},#{end,jdbcType=VARCHAR},#{msg,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateAuditArea" parameterType="com.xinyu.model.system.AuditArea" >
+	update T_xinyu_AuditArea
+	<set>
+		<if test="code!=null and code!=''">Fcode=#{code},</if>
+		<if test="name!=null and name!=''">Fname=#{name},</if>
+		<if test="parentCode!=null and parentCode!=''">FparentCode=#{parentCode},</if>
+		<if test="level!=null and level!=''">Flevel=#{level},</if>
+		<if test="copmany!=null and copmany!=''">Fcopmany=#{copmany},</if>
+		<if test="end!=null and end!=''">Fend=#{end},</if>
+		<if test="msg!=null and msg!=''">Fmsg=#{msg},</if>
+	</set>
+	where fid=#{id}
+	</update>
+
+	<delete id="deleteAuditAreaById"  parameterType="string"  >
+	delete  from T_xinyu_AuditArea where fid=#{id}
+	</delete>
+</mapper>

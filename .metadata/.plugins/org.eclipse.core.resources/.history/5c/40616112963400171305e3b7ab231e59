@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>xinyu-service</artifactId>
+	<name>Archetype - xinyu-service</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<!-- http begin -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient-cache</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		<!-- http end -->
+		<!-- mvn install:install-file -Dfile=d:\lib\taobao-sdk.jar -DgroupId=com.taobao 
+			-DartifactId=cainiao -Dversion=1.1 -Dpackaging=jar -->
+		<dependency>
+			<groupId>com.taobao</groupId>
+			<artifactId>cainiao</artifactId>
+			<version>1.1</version>
+			<systemPath>d:/lib/TB1baYjPXXXXXXlXXXXh1lbFXXX.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<!-- <dependency> <groupId>com.taobao.partneraccesscenter</groupId> <artifactId>pac.client</artifactId> 
+			<version>3.0.5-daily-SNAPSHOT</version> </dependency> -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- dom4j -->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.xinyu</groupId>
+			<artifactId>xinyu-dao</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<!-- Top API -->
+		<dependency>
+			<groupId>com.taobao</groupId>
+			<artifactId>api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.taobao</groupId>
+			<artifactId>api.wms</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.xinyu</groupId>
+			<artifactId>xinyu-model</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+	</dependencies>
+	<parent>
+		<groupId>com.xinyu</groupId>
+		<artifactId>xinyu-parent</artifactId>
+		<version>0.0.1</version>
+		<relativePath>../xinyu-parent</relativePath>
+	</parent>
+</project>

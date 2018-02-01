@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.base.PersonDao">
+
+
+	<resultMap id="personEntity" type="com.xinyu.check.model.Person">
+		result property="id" column="FID" />
+		<result property="name" column="Fname" />
+		<result property="sex" column="Fsex" />
+		<result property="age" column="Fage" />
+		<result property="roles" column="Froles" />
+		<result property="phone" column="Fphone" />
+		<result property="idCard" column="FidCard" />
+		<result property="inputDate" column="FinputDate" />
+		<result property="centroId" column="FcentroId" />
+	</resultMap>
+
+	<select id="findPersonById" parameterType="string" resultMap="personEntity">
+		SELECT T.*
+		FROM t_xinyu_person T where T.FID=#{id}
+	</select>
+	<select id="findPersonByList" parameterType="map" resultMap="personEntity">
+		SELECT T.*
+		FROM t_xinyu_person T
+		where 1=1
+		<if test="name!=null and name!=''">and Fname=#{name}</if>
+		<if test="roles!=null and roles!=''">and Froles=#{roles}</if>
+		<if test="phone!=null and phone!=''">and Fphone=#{phone}</if>
+		<if test="idCard!=null and idCard!=''">and FidCard=#{idCard}</if>
+		<if test="centroId!=null and centroId!=''">and FcentroId=#{centroId}</if>
+		<if test="searchText!=null and searchText!=''">
+			and (Fname like "%"#{searchText}"%" or Fphone like
+			"%"#{searchText}"%")
+		</if>
+	</select>
+
+
+
+</mapper> 

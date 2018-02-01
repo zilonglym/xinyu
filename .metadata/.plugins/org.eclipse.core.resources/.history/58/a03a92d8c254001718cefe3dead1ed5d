@@ -1,0 +1,420 @@
+package com.xinyu.service.caoniao;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.taobao.pac.sdk.cp.ReceiveListener;
+import com.taobao.pac.sdk.cp.ReceiveSysParams;
+import com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.WmsConsignOrderNotifyRequest;
+import com.taobao.pac.sdk.cp.dataobject.response.WMS_CONSIGN_ORDER_NOTIFY.WmsConsignOrderNotifyResponse;
+import com.xinyu.model.base.Centro;
+import com.xinyu.model.base.DeliverRequirements;
+import com.xinyu.model.base.InvoiceInfo;
+import com.xinyu.model.base.InvoiceItemDetail;
+import com.xinyu.model.base.Item;
+import com.xinyu.model.base.ReceiverInfo;
+import com.xinyu.model.base.SenderInfo;
+import com.xinyu.model.base.User;
+import com.xinyu.model.base.WmsConsignOrderPackageRequirement;
+import com.xinyu.model.common.SessionUser;
+import com.xinyu.model.system.Account;
+import com.xinyu.model.system.enums.OrderStatusEnum;
+import com.xinyu.model.system.enums.SystemSourceEnums;
+import com.xinyu.model.trade.ShipOrder;
+import com.xinyu.model.trade.WmsConsignOrderItem;
+import com.xinyu.service.common.Constants;
+import com.xinyu.service.system.AccountService;
+import com.xinyu.service.system.CentroService;
+import com.xinyu.service.system.ItemService;
+import com.xinyu.service.system.UserService;
+import com.xinyu.service.trade.DeliverRequirementsService;
+import com.xinyu.service.trade.InvoiceInfoService;
+import com.xinyu.service.trade.SenderInfoService;
+import com.xinyu.service.trade.ShipOrderService;
+import com.xinyu.service.trade.WmsConsignOrderItemService;
+import com.xinyu.service.trade.WmsConsignOrderPackageRequirementService;
+import com.xinyu.service.util.XmlUtil;
+
+/**
+ * 销售订单发货通知接口（主动模式，WMS_CONSIGN_ORDER_NOTIFY，必选！）
+ * 
+ * @author yangmin 2017年4月26日
+ *
+ */
+@Component
+public class WmsConsignOrderNotifyCpImpl
+		implements ReceiveListener<WmsConsignOrderNotifyRequest, WmsConsignOrderNotifyResponse> {
+
+	public static final Logger logger = Logger.getLogger(WmsConsignOrderNotifyCpImpl.class);
+
+	@Autowired
+	private ItemService itemService;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private ShipOrderService shipOrderService;
+	@Autowired
+	private WmsConsignOrderItemService wmsConsignOrderItemService;
+	@Autowired
+	private AccountService accountService;
+	@Autowired
+	private CentroService centroService;
+	@Autowired
+	private DeliverRequirementsService deliverRequirementsService;
+	
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
+	private SimpleDateFormat sdfyy = new SimpleDateFormat("yyyy-MM-dd");
+
+	public WmsConsignOrderNotifyResponse execute(ReceiveSysParams params, WmsConsignOrderNotifyRequest request) {
+		// TODO Auto-generated method stub
+		logger.debug("销售订单发货业务逻辑开始处理!");
+		String content = params.getContent();
+		WmsConsignOrderNotifyResponse response = new WmsConsignOrderNotifyResponse();
+		try {
+			ShipOrder order = new ShipOrder();
+			order.generateId();
+			Map<String, Object> map = XmlUtil.Dom2Map(content);
+			
+			
+			buildOrderInfo(order, map, request);
+			response.setSuccess(true);// 业务成功
+		} catch (Exception e) {
+			response.setSuccess(false);
+			response.setErrorMsg(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return response;
+	}
+	
+	
+
+	/**
+	 * 构建订单发货数据
+	 * 
+	 * @param order
+	 * @param params
+	 * @throws Exception
+	 */
+	@Transactional
+	private void buildOrderInfo(ShipOrder order, Map<String, Object> params, WmsConsignOrderNotifyRequest request)
+			throws Exception {
+		String ownerUserId = request.getOwnerUserId();
+		Map<String, Object> p = new HashMap<String, Object>();
+		p.put("tbUserId", ownerUserId);
+		logger.debug(p);
+		User user = this.userService.getUserBySearch(p).get(0);
+		/**
+		 * 判断当前的订单是否存在数据库
+		 */
+		String orderCode=request.getOrderCode();
+		p.clear();
+		p.put("orderCode", orderCode);
+		p.put("", user.getId())
+		List<ShipOrder> orderList=this.shipOrderService.findShipOrderByList(p);
+		
+		order.setCreateTime(new Date());
+		order.setUser(user);
+		order.setStoreCode(request.getStoreCode());
+		order.setOrderCode(request.getOrderCode());
+		order.setOrderType(request.getOrderType());
+		order.setOrderSource(request.getOrderSource());
+		order.setOrderCreateTime(request.getOrderCreateTime());
+		order.setErpOrderCode(request.getErpOrderCode());
+		order.setShopId(request.getUserId());
+		order.setShopName(order.getShopName());
+		order.setStatus(OrderStatusEnum.WMS_ACCEPT);
+		order.setSystemSource(SystemSourceEnums.CAINIAO);
+		order.setOrderFlag(request.getOrderFlag());
+		order.setOrderSource(request.getOrderSource());
+		order.setOrderCreateTime(request.getOrderCreateTime());
+		order.setOtherOrderNo(String.valueOf(new Date().getTime()));
+		if(request.getOrderPayTime()!=null){
+			order.setOrderPayTime(request.getOrderPayTime());
+		}
+		if(request.getOrderExaminationTime()!=null){
+			order.setOrderExaminationTime(request.getOrderExaminationTime());
+		}
+		if(request.getOrderShopCreateTime()!=null){
+			order.setOrderShopCreateTime(request.getOrderShopCreateTime());
+		}
+		order.setOrderAmount(request.getOrderAmount());
+		order.setDiscountAmount(request.getDiscountAmount());
+		order.setArAmount(request.getArAmount());
+		order.setGotAmount(request.getGotAmount());
+		order.setPostfee(request.getPostfee());
+		order.setTmsServiceCode(request.getTmsServiceCode());
+		order.setTmsServiceName(request.getTmsServiceName());
+		order.setTmsOrderCode(request.getTmsOrderCode());
+		order.setPrevOrderCode(request.getPrevOrderCode());
+		order.setPrevErpOrderCode(request.getPrevErpOrderCode());
+		order.setTimeZone(request.getTimeZone());
+		order.setCurrency(request.getCurrency());
+		order.setRemark(request.getRemark());
+		order.setBuyerMessage(request.getBuyerMessage());
+		order.setSellerMessage(request.getSellerMessage());
+		order.setServiceFee(request.getServiceFee());
+		buildCuByStoreCode(order.getStoreCode());
+		this.buildDeliverRequirements(order, params, request);
+		this.buildReceiverInfo(order, params, request);
+		this.buildSenderInfo(order, params, request);
+		this.buildInvoiceInfo(order, params, request);
+		this.buildOrderItemInfo(order, params, request);
+		this.buildExtendFields(order, params, request);
+		this.buildPackageRequirements(order, params, request);
+		// 保存订单 发货信息
+		this.shipOrderService.insertShipOrder(order);
+	}
+
+	/**
+	 * 订单商品明细处理
+	 * 
+	 * @param order
+	 * @param object
+	 */
+	private void buildOrderItemInfo(ShipOrder order, Map<String, Object> params, WmsConsignOrderNotifyRequest request) {
+		List<com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.WmsConsignOrderItem> objList = request
+				.getOrderItemList();
+
+		List<WmsConsignOrderItem> itemList = new ArrayList<WmsConsignOrderItem>();
+		for (int i = 0; objList != null && i < objList.size(); i++) {
+			com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.WmsConsignOrderItem obj = objList.get(i);
+			Map<String,Object> pMap=new HashMap<String, Object>();
+			pMap.put("itemId", obj.getItemId());
+			pMap.put("userId", order.getUser().getId());
+			List<Item> itemMap=this.itemService.getItemByList(pMap);
+			WmsConsignOrderItem item = new WmsConsignOrderItem();
+			item.generateId();
+			item.setOrderItemId(obj.getOrderItemId());
+			item.setItem(itemMap!=null?itemMap.get(0):null);
+			item.setOrderSourceCode(obj.getOrderSourceCode());
+			item.setSubSourceCode(obj.getSubSourceCode());
+			item.setUserId(obj.getUserId());
+			item.setUsername(obj.getUserName());
+			item.setOwnerUserId(obj.getOwnerUserId());
+			item.setOwnerUserName(obj.getOwnerUserName());
+			item.setItemName(obj.getItemName());
+			item.setItemCode(obj.getItemCode());
+			item.setInventoryType(obj.getInventoryType());
+			item.setItemQuantity(obj.getItemQuantity());
+			item.setActualPrice(obj.getActualPrice());
+			item.setItemPrice(obj.getItemPrice());
+			item.setItemVersion(obj.getItemVersion());
+			// String extendFields=obj.getExtendFields();
+			// item.setRemark(extendFields);
+			item.setOrder(order);
+			itemList.add(item);
+		}
+		// 持久化数据
+		 this.wmsConsignOrderItemService.insertWmsConsignOrderItemList(itemList);
+	}
+
+	/**
+	 * 配送要求处理
+	 * 
+	 * @param order
+	 * @param obj
+	 * @throws Exception
+	 */
+	private void buildDeliverRequirements(ShipOrder order, Map<String, Object> params,
+			WmsConsignOrderNotifyRequest request) throws Exception {
+		com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.DeliverRequirements deliver = request
+				.getDeliverRequirements();
+		if(deliver==null){
+			return;
+		}
+		DeliverRequirements oo = new DeliverRequirements();
+		oo.generateId();
+		oo.setOrder(order);
+		oo.setDeliveryType(deliver.getDeliveryType());
+		oo.setScheduleArriveTime(deliver.getScheduleArriveTime());
+		oo.setScheduleType(deliver.getScheduleType());
+		if(deliver.getScheduleDay()!=null){
+			oo.setScheduleDay(sdfyy.parse(deliver.getScheduleDay()));
+			oo.setScheduleEnd(sdf.parse(deliver.getScheduleDay()+" "+deliver.getScheduleEnd()));
+			oo.setScheduleStart(sdf.parse(deliver.getScheduleDay()+" "+deliver.getScheduleStart()));
+		}
+		// 持久化信息
+		 this.deliverRequirementsService.saveDeliverRequirements(oo);
+	}
+
+	/**
+	 * 收件人信息处理
+	 * 
+	 * @param order
+	 * @param obj
+	 */
+	private void buildReceiverInfo(ShipOrder order, Map<String, Object> params, WmsConsignOrderNotifyRequest request) {
+		com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.ReceiverInfo obj = request.getReceiverInfo();
+		ReceiverInfo info = new ReceiverInfo();
+		order.setReceiverInfo(info);
+		info.generateId();
+		info.setReceiverZipCode(obj.getReceiverZipCode());
+		info.setReceiverAddress(obj.getReceiverAddress());
+		info.setReceiverArea(obj.getReceiverArea());
+		info.setReceiverCity(obj.getReceiverCity());
+		info.setReceiverCountry(obj.getReceiverCountry());
+		info.setReceiverDivisionId(obj.getReceiverDivisionId());
+		info.setReceiverEmail(obj.getReceiverEmail());
+		info.setReceiverMobile(obj.getReceiverMobile());
+		info.setReceiverName(obj.getReceiverName());
+		info.setReceiverNick(obj.getReceiverNick());
+		info.setReceiverPhone(obj.getReceiverPhone());
+		info.setReceiverProvince(obj.getReceiverProvince());
+		info.setReceiveTown(obj.getReceiveTown());
+		// 持久化对象
+		// this.receiverInfoService.saveReceiverInfo(info);
+	}
+
+	/**
+	 * 发货方信息处理
+	 * 
+	 * @param order
+	 * @param obj
+	 */
+	private void buildSenderInfo(ShipOrder order, Map<String, Object> params, WmsConsignOrderNotifyRequest request) {
+		com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.SenderInfo obj = request.getSenderInfo();
+		SenderInfo info = new SenderInfo();
+		info.generateId();
+		order.setSenderInfo(info);
+		info.setSenderAddress(obj.getSenderAddress());
+		info.setSenderArea(obj.getSenderArea());
+		info.setSenderCity(obj.getSenderCity());
+		info.setSenderCountry(obj.getSenderCountry());
+		info.setSenderDivisionId(obj.getSenderDivisionId());
+		info.setSenderEmail(obj.getSenderEmail());
+		info.setSenderMobile(obj.getSenderMobile());
+		info.setSenderName(obj.getSenderName());
+		info.setSenderPhone(obj.getSenderPhone());
+		info.setSenderProvince(obj.getSenderProvince());
+		info.setSenderTown(obj.getSenderTown());
+		info.setSenderZipCode(obj.getSenderZipCode());
+		/**
+		 * 持久化对象信息
+		 */
+		// this.senderInfoService.save(info);
+	}
+
+	/**
+	 * 发票信息处理。
+	 * 
+	 * @param order
+	 * @param obj
+	 */
+	private void buildInvoiceInfo(ShipOrder order, Map<String, Object> params, WmsConsignOrderNotifyRequest request) {
+
+		List<com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.InvoinceItem> invoiceList = request
+				.getInvoiceInfoList();
+		List<InvoiceInfo> resultList = new ArrayList<InvoiceInfo>();
+		for (int i = 0; invoiceList != null && i < invoiceList.size(); i++) {
+			com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.InvoinceItem invoice = invoiceList.get(i);
+			InvoiceInfo info = new InvoiceInfo();
+			info.generateId();
+			info.setBillType(invoice.getBillType());
+			info.setBillId(invoice.getBillId());
+			info.setBillTitle(invoice.getBillTitle());
+			info.setBillAccount(invoice.getBillAccount());
+			info.setBillContent(invoice.getBillContent());
+			info.setBuyerNo(invoice.getBuyerNo());
+			info.setBuyerAddrPhone(invoice.getBuyerAddrPhone());
+			info.setBuyerBankAccount(invoice.getBuyerBankAccount());
+			/**
+			 * 处理发票商品明细
+			 */
+			List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+			List<InvoiceItemDetail> detailList = new ArrayList<InvoiceItemDetail>();
+			List<com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.ItemDetail> itemList = invoice
+					.getDetailList();
+
+			for (int j = 0; itemList != null && j < itemList.size(); j++) {
+				com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.ItemDetail item = itemList.get(j);
+				InvoiceItemDetail detail = new InvoiceItemDetail();
+				detail.generateId();
+				detail.setInvoice(info);
+				detail.setItemName(item.getItemName());
+				detail.setUnit(item.getUnit());
+				detail.setPrice(item.getPrice());
+				detail.setQuantity(item.getQuantity());
+				detail.setAmount(item.getAmount());
+				detail.setSpecificModel(item.getSpecificModel());
+				detail.setTaxRate(item.getTaxRate());
+				detail.setTaxAmount(item.getTaxAmount());
+				detail.setTaxCode(item.getTaxCode());
+				detailList.add(detail);
+			}
+			info.setDetailList(detailList);
+			resultList.add(info);
+		}
+		order.setInvoiceInfoList(resultList);
+	}
+
+	/**
+	 * 包装要求信息处理
+	 * 
+	 * @param order
+	 * @param params
+	 */
+	private void buildPackageRequirements(ShipOrder order, Map<String, Object> params,
+			WmsConsignOrderNotifyRequest request) {
+		List<com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.WmsConsignOrderPackageRequirement> packageList = request
+				.getPackageRequirements();
+
+		List<WmsConsignOrderPackageRequirement> list = new ArrayList<WmsConsignOrderPackageRequirement>();
+		for (int i = 0; packageList != null && i < packageList.size(); i++) {
+			com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.WmsConsignOrderPackageRequirement obj=packageList.get(i);
+			WmsConsignOrderPackageRequirement pack = new WmsConsignOrderPackageRequirement();
+			pack.generateId();
+			pack.getMaterialGroup();
+			pack.setOrder(order);
+			pack.setMaterialTypes(obj.getMaterialTypes());
+			pack.setMaterialClass(obj.getMaterialClass());
+			pack.setMaterialGroup(obj.getMaterialGroup());
+			pack.setPriority(String.valueOf(obj.getPriority()));
+			list.add(pack);
+		}
+		order.setPackageRequirements(list);
+
+	}
+
+	/**
+	 * 扩展信息处理
+	 * 
+	 * @param order
+	 * @param obj
+	 */
+	private void buildExtendFields(ShipOrder order, Map<String, Object> params, WmsConsignOrderNotifyRequest request) {
+		String extendFields = (String) params.get("extendFields");
+		order.setExtendFields(extendFields);
+	}
+	/**
+	 * 构建CU，并存放在当前的sessionUser中
+	 * @param storeCode
+	 */
+	private void buildCuByStoreCode(String storeCode){
+		Map<String,Object> params=new HashMap<String, Object>();
+		params.put("userName", Constants.cainiao_account);
+		List<Account> list=this.accountService.findAccountsByList(params);
+		if(list!=null && list.size()>0){
+			Account account=list.get(0);
+			params.clear();
+			params.put("storeCode", storeCode);
+			List<Centro> centroList=this.centroService.getCentroByList(params);
+			if(centroList!=null && centroList.size()>0){
+				Centro centro=centroList.get(0);
+				account.setCu(centro.getId());
+				SessionUser.set(account);
+			}
+		}
+				
+	}
+}

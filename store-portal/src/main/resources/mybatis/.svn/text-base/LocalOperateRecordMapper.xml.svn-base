@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.graby.store.dao.mybatis.LocalOperateRecordDao">
+
+	
+	<resultMap id="localOperateRecordEntity" type="com.graby.store.entity.local.LocalOperateRecord">
+		<result property="id" column="id" />
+		<result property="batchCode" column="batch_code" />
+		<result property="fastCode" column="fast_code" />
+		<result property="operateId" column="operate_id" />
+		<result property="model" column="model" />
+		<result property="description" column="description" />
+		<result property="createDate" column="create_date" />
+	</resultMap>
+	
+	<insert id="save" parameterType="LocalOperateRecord" useGeneratedKeys="true" keyProperty="id">
+		insert into sc_local_operator (
+		batch_code,fast_code,operate_id,model,description,create_date)
+		values (
+		#{batchCode},#{fastCode}, #{operateId},#{model},#{description},now())
+	</insert>
+	
+	<select id="findLocalOperateRecordList"  parameterType="map" resultMap="localOperateRecordEntity">
+	    select t.*
+	    from sc_local_operator t
+	    where 1=1
+	    <if test="batchCode!=null and batchCode!=''">
+		    and t.batch_code = #{batchCode}
+		</if>
+		<if test="fastCode!=null and fastCode!=''">
+		    and t.fast_code = #{fastCode}
+		</if>
+		<if test="model!=null and model!=''">
+		    and t.model = #{model}
+		</if>
+	    <if test="q!=null and q!=''">
+		    and t.description like "%"#{q}"%"
+		</if>
+		<if test="startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+		   	<![CDATA[
+				and t.create_date > date_format(#{startDate},'%Y-%m-%d %H:%i')
+				and t.create_date <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+		</if>
+		<if test="start!=null and start!='' and offset!=null and offset!=''">
+			limit #{start},#{offset}
+		</if>
+	</select>
+	
+	<select id="getTotal"  parameterType="map" resultType="int">
+	    select count(1)
+	    from sc_local_operator t
+	    where 1=1
+	    <if test="batchCode!=null and batchCode!=''">
+		    and t.batch_code = #{batchCode}
+		</if>
+		<if test="fastCode!=null and fastCode!=''">
+		    and t.fast_code = #{fastCode}
+		</if>
+		<if test="model!=null and model!=''">
+		    and t.model = #{model}
+		</if>
+	    <if test="q!=null and q!=''">
+		    and t.description like "%"#{q}"%"
+		</if>
+		<if test="startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+		   	<![CDATA[
+				and t.create_date > date_format(#{startDate},'%Y-%m-%d %H:%i')
+				and t.create_date <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+		</if>
+	</select>
+	
+</mapper> 

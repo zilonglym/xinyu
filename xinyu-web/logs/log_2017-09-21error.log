@@ -1,0 +1,14 @@
+2017-09-21 14:23:30  [ 4224335@qtp-1955863-1:65677 ] - [ ERROR ]  LoginInterceptor:[null]/index
+2017-09-21 14:23:30  [ 4224335@qtp-1955863-1:65683 ] - [ ERROR ]  LoginInterceptor1:/indexnull
+2017-09-21 14:23:30  [ 4224335@qtp-1955863-1:65683 ] - [ ERROR ]  LoginInterceptor00:null
+2017-09-21 14:23:30  [ 4224335@qtp-1955863-1:65688 ] - [ ERROR ]  LoginInterceptor:[null]/login
+2017-09-21 14:23:39  [ 15230362@qtp-1955863-3:74776 ] - [ ERROR ]  LoginInterceptor:[XMLHttpRequest]/login/submitLogin
+2017-09-21 14:23:39  [ 15230362@qtp-1955863-3:74838 ] - [ ERROR ]  account dao impl logger!
+2017-09-21 14:23:39  [ 15230362@qtp-1955863-3:74900 ] - [ ERROR ]  SELECT T.*
+		FROM t_xinyu_account T where 1=1
+2017-09-21 14:23:40  [ 15230362@qtp-1955863-3:75120 ] - [ ERROR ]  LoginInterceptor:[null]/index
+2017-09-21 14:23:40  [ 15230362@qtp-1955863-3:75121 ] - [ ERROR ]  LoginInterceptor1:/indexcom.xinyu.model.system.Account@3ee016
+2017-09-21 14:23:42  [ 15230362@qtp-1955863-3:77686 ] - [ ERROR ]  LoginInterceptor:[null]/shipOrder/waits/search
+2017-09-21 14:23:42  [ 15230362@qtp-1955863-3:77687 ] - [ ERROR ]  LoginInterceptor1:/shipOrder/waits/searchcom.xinyu.model.system.Account@3ee016
+2017-09-21 14:23:43  [ 15230362@qtp-1955863-3:78100 ] - [ ERROR ]  LoginInterceptor:[XMLHttpRequest]/shipOrder/waits/listData
+2017-09-21 14:23:43  [ 15230362@qtp-1955863-3:78100 ] - [ ERROR ]  LoginInterceptor1:/shipOrder/waits/listDatacom.xinyu.model.system.Account@3ee016

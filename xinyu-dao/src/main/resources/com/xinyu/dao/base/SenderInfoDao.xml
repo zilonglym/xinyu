@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.senderInfoDao">
+	<resultMap id="SenderInfoResult" type="com.xinyu.model.base.SenderInfo">
+		<result property="id" column="FID" />
+		<result property="senderZipCode" column="FsenderZipCode" />
+		<result property="senderCountry" column="FsenderCountry" />
+		<result property="senderProvince" column="FsenderProvince" />
+		<result property="senderCity" column="FsenderCity" />
+		<result property="senderArea" column="FsenderArea" />
+		<result property="senderTown" column="FsenderTown" />
+		<result property="senderAddress" column="FsenderAddress" />
+		<result property="senderDivisionId" column="FsenderDivisionId" />
+		<result property="senderName" column="FsenderName" />
+		<result property="senderMobile" column="FsenderMobile" />
+		<result property="senderPhone" column="FsenderPhone" />
+		<result property="senderEmail" column="FsenderEmail" />
+	</resultMap>
+	<select id="getSenderInfoById" parameterType="string" resultMap="SenderInfoResult">
+		SELECT T.*
+		FROM T_xinyu_SenderInfo T where T.FID=#{id}
+	</select>
+	
+	
+	<select id="getSenderInfoByList" parameterType="string" resultMap="SenderInfoResult">
+		SELECT T.*
+		FROM T_xinyu_SenderInfo T 
+		<where>
+		    1=1
+		</where>
+	</select>
+	
+	<insert id="insertSenderInfo" parameterType="com.xinyu.model.base.SenderInfo">
+		insert into
+		T_xinyu_SenderInfo(FID,FsenderZipCode,FsenderCountry,FsenderProvince,FsenderCity,FsenderArea,FsenderTown,FsenderAddress,FsenderDivisionId,FsenderName,FsenderMobile,FsenderPhone,FsenderEmail)
+		VALUES(#{id},#{senderZipCode,jdbcType=VARCHAR},#{senderCountry,jdbcType=VARCHAR},#{senderProvince,jdbcType=VARCHAR},#{senderCity,jdbcType=VARCHAR},#{senderArea,jdbcType=VARCHAR},#{senderTown,jdbcType=VARCHAR},#{senderAddress,jdbcType=VARCHAR},#{senderDivisionId,jdbcType=VARCHAR},#{senderName,jdbcType=VARCHAR},#{senderMobile,jdbcType=VARCHAR},#{senderPhone,jdbcType=VARCHAR},#{senderEmail,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateSenderInfo" parameterType="com.xinyu.model.base.SenderInfo">
+		update T_xinyu_SenderInfo
+		<set>
+			<if test="senderZipCode!=null and senderZipCode!=''">FsenderZipCode=#{senderZipCode},</if>
+			<if test="senderCountry!=null and senderCountry!=''">FsenderCountry=#{senderCountry},</if>
+			<if test="senderProvince!=null and senderProvince!=''">FsenderProvince=#{senderProvince},</if>
+			<if test="senderCity!=null and senderCity!=''">FsenderCity=#{senderCity},</if>
+			<if test="senderArea!=null and senderArea!=''">FsenderArea=#{senderArea},</if>
+			<if test="senderTown!=null and senderTown!=''">FsenderTown=#{senderTown},</if>
+			<if test="senderAddress!=null and senderAddress!=''">FsenderAddress=#{senderAddress},</if>
+			<if test="senderDivisionId!=null and senderDivisionId!=''">FsenderDivisionId=#{senderDivisionId},</if>
+			<if test="senderName!=null and senderName!=''">FsenderName=#{senderName},</if>
+			<if test="senderMobile!=null and senderMobile!=''">FsenderMobile=#{senderMobile},</if>
+			<if test="senderPhone!=null and senderPhone!=''">FsenderPhone=#{senderPhone},</if>
+			<if test="senderEmail!=null and senderEmail!=''">FsenderEmail=#{senderEmail},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteSenderInfoById" parameterType="string">
+		delete from T_xinyu_SenderInfo where fid=#{id}
+	</delete>
+
+</mapper> 

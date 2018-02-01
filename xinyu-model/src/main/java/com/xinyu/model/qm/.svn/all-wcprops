@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/wlpost/!svn/ver/2275/trunk/xinyu-model/src/main/java/com/xinyu/model/qm
+END
+StoreConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/2275/trunk/xinyu-model/src/main/java/com/xinyu/model/qm/StoreConstants.java
+END
+InventoryReportEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/1099/trunk/xinyu-model/src/main/java/com/xinyu/model/qm/InventoryReportEntry.java
+END
+ReturnorderConfirmEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/1099/trunk/xinyu-model/src/main/java/com/xinyu/model/qm/ReturnorderConfirmEntry.java
+END
+StockoutConfirmEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/1099/trunk/xinyu-model/src/main/java/com/xinyu/model/qm/StockoutConfirmEntry.java
+END
+StoreprocessConfirmEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/1099/trunk/xinyu-model/src/main/java/com/xinyu/model/qm/StoreprocessConfirmEntry.java
+END
+EntryorderConfirmEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/1099/trunk/xinyu-model/src/main/java/com/xinyu/model/qm/EntryorderConfirmEntry.java
+END

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;detailList&apos; in &apos;com.graby.store.admin.web.shiporder.AdminTradeController.buildShipOrderItemGroup(...)&apos; to &apos;itemList&apos;&#x0D;&#x0A;- Original project: &apos;store-admin&apos;&#x0D;&#x0A;- Original element: &apos;com.graby.store.admin.web.shiporder.AdminTradeController.buildShipOrderItemGroup(ShipOrder).detailList&apos;&#x0D;&#x0A;- Renamed element: &apos;detailList&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;detailList&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/main\/java&lt;com.graby.store.admin.web.shiporder{AdminTradeController.java[AdminTradeController~buildShipOrderItemGroup~QShipOrder;@detailList!33252!33348!33274!33283!QList\&lt;QShipOrderDetail;&gt;;!0!false" name="itemList" references="true" stamp="1509950310846" version="1.0"/>
+</session>

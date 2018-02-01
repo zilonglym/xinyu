@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.deliverRequirementsDao">
+	<resultMap id="DeliverRequirementsResult" type="com.xinyu.model.base.DeliverRequirements">
+		<result property="id" column="FID" />
+		<result property="scheduleType" column="FscheduleType" />
+		<result property="scheduleDay" column="FscheduleDay" />
+		<result property="scheduleStart" column="FscheduleStart" />
+		<result property="scheduleEnd" column="FscheduleEnd" />
+		<result property="order.id" column="FKorderID" />
+		<result property="scheduleArriveTime" column="FscheduleArriveTime" />
+		<result property="deliveryType" column="FdeliveryType" />
+		
+	</resultMap>
+	<select id="getDeliverRequirementsById" parameterType="string"
+		resultMap="DeliverRequirementsResult">
+		SELECT T.*
+		FROM T_xinyu_deliverrequirements T where T.FID=#{id}
+	</select>
+	
+	<select id="getDeliverRequirementsByList" parameterType="map"
+		resultMap="DeliverRequirementsResult">
+		SELECT T.*
+		FROM T_xinyu_deliverrequirements T
+		<where>
+		    1=1
+		</where>
+	</select>
+	
+	<insert id="insertDeliverRequirements" parameterType="com.xinyu.model.base.DeliverRequirements">
+		insert into
+		T_xinyu_deliverrequirements(FID,FscheduleArriveTime,FdeliveryType,FscheduleType,FscheduleDay,FscheduleStart,FscheduleEnd,FKorderID)
+		VALUES(#{id},#{scheduleArriveTime},#{deliveryType},#{scheduleType,jdbcType=INTEGER},#{scheduleDay},#{scheduleStart},#{scheduleEnd},#{order.id,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateDeliverRequirements" parameterType="com.xinyu.model.base.DeliverRequirements">
+		update T_xinyu_deliverrequirements
+		<set>
+			<if test="scheduleType!=null and scheduleType!=''">FscheduleType=#{scheduleType},</if>
+			<if test="scheduleDay!=null and scheduleDay!=''">FscheduleDay=#{scheduleDay},</if>
+			<if test="scheduleStart!=null and scheduleStart!=''">FscheduleStart=#{scheduleStart},</if>
+			<if test="scheduleEnd!=null and scheduleEnd!=''">FscheduleEnd=#{scheduleEnd},</if>
+			<if test="order!=null and order.id!=''">FKorderID=#{order.id},</if>
+			<if test="deliveryType!=null and deliveryType!=''">FdeliveryType=#{deliveryType},</if>
+			<if test="scheduleArriveTime!=null and scheduleArriveTime!=''">FscheduleArriveTime=#{scheduleArriveTime},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteDeliverRequirementsById" parameterType="string">
+		delete from T_xinyu_deliverrequirements where fid=#{id}
+	</delete>
+
+</mapper> 

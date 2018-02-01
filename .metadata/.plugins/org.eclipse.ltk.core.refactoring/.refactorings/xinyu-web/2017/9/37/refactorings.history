@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;RedisUtil.java&apos; to &apos;xinyu-service/src/main/java/com.xinyu.service.util&apos;&#x0D;&#x0A;- Original project: &apos;xinyu-web&apos;&#x0D;&#x0A;- Destination element: &apos;xinyu-service/src/main/java/com.xinyu.service.util&apos;&#x0D;&#x0A;- Original element: &apos;com.xinyu.util.RedisUtil.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=xinyu-service/src\/main\/java&lt;com.xinyu.service.util" element1="/src\/main\/java&lt;com.xinyu.util{RedisUtil.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1505446743265" units="1" version="1.0"/>
+</session>

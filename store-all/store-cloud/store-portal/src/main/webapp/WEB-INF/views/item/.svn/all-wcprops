@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-portal/src/main/webapp/WEB-INF/views/item
+END
+itemAdd.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-portal/src/main/webapp/WEB-INF/views/item/itemAdd.jsp
+END
+itemList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-portal/src/main/webapp/WEB-INF/views/item/itemList.jsp
+END
+tbitemList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-portal/src/main/webapp/WEB-INF/views/item/tbitemList.jsp
+END
+itemForm.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/store-portal/src/main/webapp/WEB-INF/views/item/itemForm.jsp
+END

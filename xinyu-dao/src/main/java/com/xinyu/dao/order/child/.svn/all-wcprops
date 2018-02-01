@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/wlpost/!svn/ver/1438/trunk/xinyu-dao/src/main/java/com/xinyu/dao/order/child
+END
+WmsStockOutOrderItemDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/1438/trunk/xinyu-dao/src/main/java/com/xinyu/dao/order/child/WmsStockOutOrderItemDao.java
+END
+WmsStockInCaseInfoDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/1046/trunk/xinyu-dao/src/main/java/com/xinyu/dao/order/child/WmsStockInCaseInfoDao.java
+END

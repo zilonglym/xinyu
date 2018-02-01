@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.graby.store.dao.mybatis.ExpressPriceDao">
+	
+	<resultMap id="expressPriceEntity" type="com.graby.store.entity.ExpressPrice">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="code" column="code" />
+		<result property="area" column="area" />
+		<result property="userId" column="user_id" />
+		<result property="userName" column="user_name" />
+		<result property="firstPrice" column="first_price" />
+		<result property="initialPrice" column="initial_price" />
+		<result property="otherPrice" column="other_price" />
+		<result property="deliveryPrice" column="delivery_price" />
+		<result property="firstCost" column="first_cost" />
+		<result property="initialCost" column="initial_cost" />
+		<result property="otherCost" column="other_cost" />
+		<result property="deliveryCost" column="delivery_cost" />
+	</resultMap>
+	
+	<select id="findExpressPriceByParam" resultType="com.graby.store.entity.ExpressPrice" parameterType="map">
+		select a.name as 'name',a.code as 'code',a.area as 'area',a.user_name as 'userName',a.first_price as 'firstPrice',
+		a.initial_price as 'initialPrice',a.delivery_price as 'deliveryPrice',a.other_price as 'otherPrice',a.first_cost as 'firstCost',a.initial_cost as 'initialCost',
+		a.other_cost as 'otherCost',a.delivery_cost as 'deliveryCost',a.id as 'id',a.user_id as 'userId'
+		from sc_express_price a
+		where 
+		1=1
+		<if test="area!=null and area!=''">
+			and a.area like "%"#{area}"%"
+		</if>
+		<if test="code!=null and code!=''">
+			and a.code  like #{code}
+		</if>
+		<if test="name!=null and name!=''">
+			and a.name like #{name}
+		</if>
+		<if test="userName!=null and userName!=''">
+			and a.user_name like #{userName}
+		</if>
+		<if test="userId!=null and userId!=''">
+			and a.user_id=#{userId}
+		</if>
+		<if test="id!=null and id!=''">
+			and a.id=#{id}
+		</if>
+		limit 0,1
+	</select>
+	
+	<select id="findExpressPrices" resultMap="expressPriceEntity" parameterType="map">
+		select a.name as 'name',a.code as 'code',a.area as 'area',a.user_name as 'userName',a.first_price as 'firstPrice',
+		a.initial_price as 'initialPrice',a.delivery_price as 'deliveryPrice',a.other_price as 'otherPrice',a.first_cost as 'firstCost',a.initial_cost as 'initialCost',
+		a.other_cost as 'otherCost',a.delivery_cost as 'deliveryCost',a.id as 'id',a.user_id as 'userId'
+	    from sc_express_price a
+		where 
+		1=1
+		<if test="area!=null and area!=''">
+			and a.area like "%"#{area}"%"
+		</if>		
+		<if test="code!=null and code!=''">
+			and a.code=#{code}
+		</if>
+		<if test="name!=null and name!=''">
+			and a.name=#{name}
+		</if>
+		<if test="userId!=null and userId!=''">
+			and a.user_id=#{userId}
+		</if>
+		limit #{start},#{offset}
+	</select>
+	
+	<select id="getTotalResult" resultType="int" parameterType="map">
+		select count(1) from sc_express_price 
+		where 
+		1=1
+		<if test="area!=null and area!=''">
+			and area like "%"#{area}"%"
+		</if>
+		<if test="code!=null and code!=''">
+			and code=#{code}
+		</if>
+		<if test="name!=null and name!=''">
+			and name=#{name}
+		</if>
+		<if test="userId!=null and userId!=''">
+			and user_id=#{userId}
+		</if>
+	</select>
+	
+	<update id="update">
+		update sc_express_price
+		<set>
+			<if test="area!=null and area!=''">
+				area=#{area},
+			</if>
+			<if test="firstPrice!=null">
+				first_price=#{firstPrice},
+			</if>
+			<if test="initialPrice!=null">
+				initial_price=#{initialPrice},
+			</if>	
+			<if test="otherPrice!=null">
+				other_price=#{otherPrice},
+			</if>	
+			<if test="deliveryPrice!=null">
+				delivery_price=#{deliveryPrice},
+			</if>	
+			<if test="firstCost!=null">
+				first_cost=#{firstCost},
+			</if>
+			<if test="initialCost!=null">
+				initial_cost=#{initialCost},
+			</if>	
+			<if test="otherCost!=null">
+				other_cost=#{otherCost},
+			</if>	
+			<if test="deliveryCost!=null">
+				delivery_cost=#{deliveryCost},
+			</if>	
+			<if test="name!=null and name!=''">
+				name=#{name},
+			</if>
+			<if test="code!=null and code!=''">
+				code=#{code},
+			</if>
+			<if test="userId!=null and userId!=''">
+				user_id=#{userId},
+			</if>
+			<if test="userName!=null and userName!=''">
+				user_name=#{userName},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<insert id="save" parameterType="com.graby.store.entity.ExpressPrice">
+		insert into sc_express_price(area,first_price,initial_price,name,code,user_id,other_price,delivery_price,user_name,first_cost,initial_cost,other_cost,delivery_cost) 
+		value(#{area},#{firstPrice},#{initialPrice},#{name},#{code},#{userId},#{otherPrice},#{deliveryPrice},#{userName},#{firstCost},#{initialCost},#{otherCost},#{deliveryCost})
+	</insert>
+	
+	
+	<resultMap id="priceMapEntity" type="com.graby.store.entity.ExpressPriceMaping">
+		<result property="id" column="id" />
+		<result property="orderId" column="order_id" />
+		<result property="firstWeight" column="first_weight" />
+		<result property="firstPrice" column="first_price" />
+		<result property="initialWeight" column="initial_weight" />
+		<result property="initialPrice" column="initial_price" />
+		<result property="otherPrice" column="other_price" />
+		<result property="totalPrice" column="total_price" />
+	</resultMap>
+	
+	<select id="findPriceByParams" parameterType="map" resultType="com.graby.store.entity.ExpressPriceMaping">
+		select *
+		from sc_express_price_mapping
+		where 1=1
+		<if test="orderId!=null and orderId!=0">
+			and order_id = #{orderId}
+		</if>	
+		<if test="id!=null and id!=0">
+			and id = #{id}
+		</if>		
+	</select>	
+	
+	<insert id="insert" parameterType="com.graby.store.entity.ExpressPriceMaping">
+		insert into sc_express_price_mapping(order_id,first_weight,first_price,initial_weight,initial_price,other_price,total_price) 
+		value(#{orderId},#{firstWeight},#{firstPrice},#{initialWeight},#{initialPrice},#{otherPrice},#{totalPrice})
+	</insert>
+	
+	<update id="updatePrice">
+		update sc_express_price_mapping
+		<set>
+			<if test="orderId!=null and orderId!=''">
+				order_id=#{orderId},
+			</if>
+			<if test="firstPrice!=null">
+				first_price=#{firstPrice},
+			</if>
+			<if test="initialPrice!=null">
+				initial_price=#{initialPrice},
+			</if>	
+			<if test="otherPrice!=null">
+				other_price=#{otherPrice},
+			</if>	
+			<if test="totalPrice!=null">
+				total_price=#{totalPrice},
+			</if>	
+			<if test="firstWeight!=null">
+				first_weight=#{firstWeight},
+			</if>
+			<if test="initialWeight!=null">
+				initial_weight=#{initialWeight},
+			</if>	
+		</set>
+		where id=#{id}
+	</update>
+	
+</mapper> 
+
+
+	
+
+	
+	
+
+

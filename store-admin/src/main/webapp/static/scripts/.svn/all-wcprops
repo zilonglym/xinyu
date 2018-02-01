@@ -1,0 +1,209 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/wlpost/!svn/ver/2787/trunk/store-admin/src/main/webapp/static/scripts
+END
+shopList.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/static/scripts/shopList.js
+END
+tradeWaits.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/wlpost/!svn/ver/615/trunk/store-admin/src/main/webapp/static/scripts/tradeWaits.js
+END
+returnOrder.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/620/trunk/store-admin/src/main/webapp/static/scripts/returnOrder.js
+END
+shipOrderPrint.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/2311/trunk/store-admin/src/main/webapp/static/scripts/shipOrderPrint.js
+END
+workReport.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/1482/trunk/store-admin/src/main/webapp/static/scripts/workReport.js
+END
+checkOutCount.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/static/scripts/checkOutCount.js
+END
+record.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/wlpost/!svn/ver/615/trunk/store-admin/src/main/webapp/static/scripts/record.js
+END
+cainiao_print.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/wlpost/!svn/ver/2233/trunk/store-admin/src/main/webapp/static/scripts/cainiao_print.js
+END
+items.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/wlpost/!svn/ver/2284/trunk/store-admin/src/main/webapp/static/scripts/items.js
+END
+picking.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/static/scripts/picking.js
+END
+auditTrade.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/2283/trunk/store-admin/src/main/webapp/static/scripts/auditTrade.js
+END
+shipOrderOK.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/2286/trunk/store-admin/src/main/webapp/static/scripts/shipOrderOK.js
+END
+operatorRecord.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/wlpost/!svn/ver/615/trunk/store-admin/src/main/webapp/static/scripts/operatorRecord.js
+END
+monthProfits.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/static/scripts/monthProfits.js
+END
+shipOrder.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/wlpost/!svn/ver/2311/trunk/store-admin/src/main/webapp/static/scripts/shipOrder.js
+END
+trade.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/wlpost/!svn/ver/1874/trunk/store-admin/src/main/webapp/static/scripts/trade.js
+END
+profit.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/static/scripts/profit.js
+END
+checkout.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/wlpost/!svn/ver/1926/trunk/store-admin/src/main/webapp/static/scripts/checkout.js
+END
+person.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/static/scripts/person.js
+END
+localItem.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/wlpost/!svn/ver/2779/trunk/store-admin/src/main/webapp/static/scripts/localItem.js
+END
+companyProfits.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/static/scripts/companyProfits.js
+END
+realTimeInventory.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/64/trunk/store-admin/src/main/webapp/static/scripts/realTimeInventory.js
+END
+inventoryDetail.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/static/scripts/inventoryDetail.js
+END
+settlement.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/static/scripts/settlement.js
+END
+sendOrder.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/wlpost/!svn/ver/615/trunk/store-admin/src/main/webapp/static/scripts/sendOrder.js
+END
+pick.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/wlpost/!svn/ver/615/trunk/store-admin/src/main/webapp/static/scripts/pick.js
+END
+localReport.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/2579/trunk/store-admin/src/main/webapp/static/scripts/localReport.js
+END
+count.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/static/scripts/count.js
+END
+express.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/wlpost/!svn/ver/1972/trunk/store-admin/src/main/webapp/static/scripts/express.js
+END
+local.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/wlpost/!svn/ver/2657/trunk/store-admin/src/main/webapp/static/scripts/local.js
+END
+inventoryRecord.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/174/trunk/store-admin/src/main/webapp/static/scripts/inventoryRecord.js
+END
+group.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/wlpost/!svn/ver/2389/trunk/store-admin/src/main/webapp/static/scripts/group.js
+END
+localBatch.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/2738/trunk/store-admin/src/main/webapp/static/scripts/localBatch.js
+END
+shipReport.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/2787/trunk/store-admin/src/main/webapp/static/scripts/shipReport.js
+END

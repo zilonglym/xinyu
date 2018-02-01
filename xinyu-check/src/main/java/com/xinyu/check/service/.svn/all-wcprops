@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/wlpost/!svn/ver/2150/trunk/xinyu-check/src/main/java/com/xinyu/check/service
+END
+IRedisProxy.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/2150/trunk/xinyu-check/src/main/java/com/xinyu/check/service/IRedisProxy.java
+END
+SystemItemService.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/service/SystemItemService.java
+END
+PersonService.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/service/PersonService.java
+END
+BaseService.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/service/BaseService.java
+END
+CheckService.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/1777/trunk/xinyu-check/src/main/java/com/xinyu/check/service/CheckService.java
+END

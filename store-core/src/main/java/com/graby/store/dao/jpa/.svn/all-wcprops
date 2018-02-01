@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/dao/jpa
+END
+EntryOrderDetailJpaDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/dao/jpa/EntryOrderDetailJpaDao.java
+END
+ItemMappingJpaDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/dao/jpa/ItemMappingJpaDao.java
+END
+TradeOrderJpaDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/dao/jpa/TradeOrderJpaDao.java
+END
+InventoryJpaDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/dao/jpa/InventoryJpaDao.java
+END
+ItemJpaDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/dao/jpa/ItemJpaDao.java
+END
+ShipOrderJpaDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/dao/jpa/ShipOrderJpaDao.java
+END
+TradeJpaDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/dao/jpa/TradeJpaDao.java
+END

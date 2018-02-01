@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/wlpost/!svn/ver/2206/trunk/xinyu-model/src/main/java/com/xinyu/model/common
+END
+Digests.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/Digests.java
+END
+CommonConstant.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/CommonConstant.java
+END
+Cryptos.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/Cryptos.java
+END
+ClassUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/ClassUtil.java
+END
+Entity.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/2867/trunk/xinyu-model/src/main/java/com/xinyu/model/common/Entity.java
+END
+Encodes.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/Encodes.java
+END
+Exceptions.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/Exceptions.java
+END
+SessionUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/902/trunk/xinyu-model/src/main/java/com/xinyu/model/common/SessionUser.java
+END
+EncryptUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/EncryptUtil.java
+END
+SkuUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/SkuUtils.java
+END
+Seqence.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/Seqence.java
+END
+QfangModeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/QfangModeEnum.java
+END
+StringUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/StringUtils.java
+END
+Pagination.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/Pagination.java
+END
+CityEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/CityEnum.java
+END
+DateUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/669/trunk/xinyu-model/src/main/java/com/xinyu/model/common/DateUtils.java
+END

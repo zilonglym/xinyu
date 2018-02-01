@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.graby.store.dao.mybatis.ProcessDao" >
+  <resultMap id="BaseResultMap" type="com.graby.store.entity.StoreProcess" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="VARCHAR" />
+    <result column="planTime" property="plantime" jdbcType="VARCHAR" />
+    <result column="serviceType" property="servicetype" jdbcType="VARCHAR" />
+    <result column="planQty" property="planqty" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+ 
+    <!-- 查询待所有单据 -->
+	<select id="findProcessConfirm" resultType="StoreProcess">
+		select * from sc_process where 1=1
+	</select>
+  
+  
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    
+    select * from sc_process where 1=1
+   
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+     select * from sc_process where 1=1
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+   
+    delete from sc_process
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.graby.store.entity.StoreProcess" >
+
+    insert into sc_process (id, code,type,createTime,planTime,serviceType,planQty,remark)
+    values (#{id,jdbcType=INTEGER},#{code,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},
+    #{createtime,jdbcType=VARCHAR},#{plantime,jdbcType=VARCHAR},#{servicetype,jdbcType=VARCHAR},
+    #{planqty,jdbcType=INTEGER},#{remark,jdbcType=VARCHAR})
+  </insert>
+ 
+  <select id="selectByCount" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    
+    select count(*) from sc_process
+   where 1=1
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    
+    update sc_process
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.code != null" >
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        createTime = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plantime != null" >
+        planTime = #{record.plantime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.servicetype != null" >
+        serviceType = #{record.servicetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.planqty != null" >
+        planQty = #{record.planqty,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id=#{id}
+  </update>
+  
+  
+  <update id="updateByPrimaryKey" parameterType="com.graby.store.entity.StoreProcess" >
+    update sc_process
+    set code = #{code,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=VARCHAR},
+      planTime = #{plantime,jdbcType=VARCHAR},
+      serviceType = #{servicetype,jdbcType=VARCHAR},
+      planQty = #{planqty,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

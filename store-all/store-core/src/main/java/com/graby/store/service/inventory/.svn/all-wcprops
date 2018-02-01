@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-core/src/main/java/com/graby/store/service/inventory
+END
+Accounts.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-core/src/main/java/com/graby/store/service/inventory/Accounts.java
+END
+AccountTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-core/src/main/java/com/graby/store/service/inventory/AccountTemplate.java
+END
+AccountEntryArray.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-core/src/main/java/com/graby/store/service/inventory/AccountEntryArray.java
+END
+AccountEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-core/src/main/java/com/graby/store/service/inventory/AccountEntry.java
+END
+InventoryService.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-core/src/main/java/com/graby/store/service/inventory/InventoryService.java
+END

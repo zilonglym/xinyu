@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.trade.ShipOrderBackDao">
+	<resultMap id="ShipOrderBackResult" type="com.xinyu.model.trade.ShipOrderBack">
+		<result property="id" column="FID" />
+		<result property="cu" column="Fcu" />
+		<result property="orderId" column="ForderId" />
+		<result property="tmsOrderCode" column="FtmsOrderCode" />
+		<result property="backOrderCode" column="FbackOrderCode" />
+		<result property="userId" column="FuserId" />
+		<result property="createDate" column="FcreateDate" />
+		<result property="createBy.id" column="FKacoountId" />
+		<result property="description" column="Fdescription" />
+	</resultMap>
+
+	<select id="getShipOrderBackByParams" parameterType="map" resultMap="ShipOrderBackResult">
+		SELECT T.*
+		FROM T_xinyu_ShipOrderBack T
+		where 1=1
+		<if test="orderId!=null and orderId!=''">
+			and T.ForderId=#{orderId}
+		</if>
+		<if test="id!=null and id!=''">
+			and T.FID=#{id}
+		</if>
+		<if test="userId!=null and userId!=''">
+			and T.FuserId=#{userId}
+		</if>
+		<if test="tmsOrderCode!=null and tmsOrderCode!=''">
+			and T.FtmsOrderCode=#{tmsOrderCode}
+		</if>
+		<if test="backOrderCode!=null and backOrderCode!=''">
+			and T.FbackOrderCode=#{backOrderCode}
+		</if>
+	</select>
+	
+	<select id="getShipOrderBackList" parameterType="map" resultMap="ShipOrderBackResult">
+		SELECT T.*
+		FROM T_xinyu_ShipOrderBack T
+		where 1=1
+		<if test="orderId!=null and orderId!=''">
+			and T.ForderId=#{orderId}
+		</if>
+		<if test="userId!=null and userId!=''">
+			and T.FuserId=#{userId}
+		</if>
+		<if test="tmsOrderCode!=null and tmsOrderCode!=''">
+			and T.FtmsOrderCode=#{tmsOrderCode}
+		</if>
+		<if test="backOrderCode!=null and backOrderCode!=''">
+			and T.FbackOrderCode=#{backOrderCode}
+		</if>
+		<if test="q!=null and q!=''">
+			and (T.FbackOrderCode=#{q} or T.FtmsOrderCode=#{q})
+		</if>
+		<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+				and t.`FcreateDate` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+				and t.`FcreateDate` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+		</if>
+		<if test="pageSize!=null and pageNum!=null">
+			limit #{pageNum},#{pageSize}
+		</if>
+	</select>
+	
+	<select id="getTotal" parameterType="map" resultType="int">
+		SELECT count(1)
+		FROM T_xinyu_ShipOrderBack T
+		where 1=1
+		<if test="orderId!=null and orderId!=''">
+			and T.ForderId=#{orderId}
+		</if>
+		<if test="userId!=null and userId!=''">
+			and T.FuserId=#{userId}
+		</if>
+		<if test="tmsOrderCode!=null and tmsOrderCode!=''">
+			and T.FtmsOrderCode=#{tmsOrderCode}
+		</if>
+		<if test="backOrderCode!=null and backOrderCode!=''">
+			and T.FbackOrderCode=#{backOrderCode}
+		</if>
+		<if test="q!=null and q!=''">
+			and (T.FbackOrderCode=#{q} or T.FtmsOrderCode=#{q})
+		</if>
+		<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+				and t.`FcreateDate` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+				and t.`FcreateDate` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+		</if>
+	</select>
+	
+	<insert id="insertShipOrderBack" parameterType="com.xinyu.model.trade.ShipOrderBack">
+		insert into
+		T_xinyu_ShipOrderBack(FID,Fcu,ForderId,FtmsOrderCode,FbackOrderCode,FuserId,FcreateDate,FKacoountId,Fdescription)
+		VALUES(#{id},#{cu},#{orderId},#{tmsOrderCode},#{backOrderCode},#{userId},now(),#{createBy.id},#{description})
+	</insert>
+
+	<update id="updateShipOrderBack" parameterType="com.xinyu.model.trade.ShipOrderBack">
+		update T_xinyu_ShipOrderBack
+		<set>	
+			<if test="orderId!=null and orderId!=''">ForderId=#{orderId},</if>
+			<if test="userId!=null and userId!=''">FuserId=#{userId},</if>
+			<if test="tmsOrderCode!=null and tmsOrderCode!=''">FtmsOrderCode=#{tmsOrderCode},</if>
+			<if test="backOrderCode!=null and backOrderCode!=''">FbackOrderCode=#{backOrderCode},</if>
+			<if test="createBy!=null">FKacoountId=#{createBy.id},</if>
+			FcreateDate = now()
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteShipOrderBackById" parameterType="string">
+		delete from
+		T_xinyu_ShipOrderBack where fid=#{id}
+	</delete>
+
+</mapper>

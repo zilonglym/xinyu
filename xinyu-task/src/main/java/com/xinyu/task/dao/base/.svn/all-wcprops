@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base
+END
+DynamicDataSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/DynamicDataSource.java
+END
+CommonConstant.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/CommonConstant.java
+END
+Cryptos.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/Cryptos.java
+END
+ClassUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/ClassUtil.java
+END
+Dialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/Dialect.java
+END
+PaginationInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/PaginationInterceptor.java
+END
+Entity.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/Entity.java
+END
+BaseDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/BaseDaoImpl.java
+END
+SqlSessionCallback.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/SqlSessionCallback.java
+END
+Exceptions.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/Exceptions.java
+END
+ContextHolder.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/ContextHolder.java
+END
+AbstractInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/AbstractInterceptor.java
+END
+SessionUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/SessionUser.java
+END
+Seqence.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/Seqence.java
+END
+MultiDataSourceInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/MultiDataSourceInterceptor.java
+END
+QfangModeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/QfangModeEnum.java
+END
+StringUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/StringUtils.java
+END
+Pagination.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/Pagination.java
+END
+OracleDialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/OracleDialect.java
+END
+MySqlDialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/MySqlDialect.java
+END
+BaseDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/dao/base/BaseDao.java
+END

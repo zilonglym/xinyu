@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-core/src/main/java/com/graby/store/web/context
+END
+MessageContextHolder.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-core/src/main/java/com/graby/store/web/context/MessageContextHolder.java
+END
+MessageContext.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-core/src/main/java/com/graby/store/web/context/MessageContext.java
+END
+MessageContextImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-core/src/main/java/com/graby/store/web/context/MessageContextImpl.java
+END

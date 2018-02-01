@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/entity/qm
+END
+InventoryReportEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/entity/qm/InventoryReportEntry.java
+END
+ReturnorderConfirmEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/entity/qm/ReturnorderConfirmEntry.java
+END
+StockoutConfirmEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/entity/qm/StockoutConfirmEntry.java
+END
+StoreprocessConfirmEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/entity/qm/StoreprocessConfirmEntry.java
+END
+EntryorderConfirmEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/3/trunk/store-core/src/main/java/com/graby/store/entity/qm/EntryorderConfirmEntry.java
+END

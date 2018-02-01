@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.base.SnSampleDao">
+    <resultMap id="SnSampleResult" type="com.xinyu.model.base.SnSample" >
+	<result property="id" column="FID" />
+	<result property="snSeq" column="FsnSeq" />
+	<result property="item.id" column="fkitemid" />
+	<result property="sampleDesc" column="FsampleDesc" />
+	
+</resultMap>
+	<select id="getSnSampleByList" parameterType="string"  resultMap="SnSampleResult" >
+		 SELECT T.* 
+			FROM T_xinyu_SnSample T 
+			<where>
+			    1=1
+			</where>
+	</select>
+<insert id="insertSnSample" parameterType="com.xinyu.model.base.SnSample" >
+insert into T_xinyu_SnSample(FID,fkitemid,FsnSeq,FsampleDesc)
+VALUES(#{id},#{item.id},#{snSeq,jdbcType=VARCHAR},#{sampleDesc,jdbcType=VARCHAR})
+</insert>
+
+<update id="updateSnSample" parameterType="com.xinyu.model.base.SnSample" >
+	update T_xinyu_SnSample
+	<set>
+		<if test="snSeq!=null and snSeq!=''">FsnSeq=#{snSeq},</if>
+		<if test="sampleDesc!=null and sampleDesc!=''">FsampleDesc=#{sampleDesc},</if>
+	</set>
+where fid=#{id}
+</update>
+
+<delete id="deleteSnSampleById"  parameterType="string"  >
+	delete  from T_xinyu_SnSample where fid=#{id}
+</delete>
+    
+</mapper> 

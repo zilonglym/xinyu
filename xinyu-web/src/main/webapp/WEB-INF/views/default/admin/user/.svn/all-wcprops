@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/961/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/user
+END
+userEdit.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/763/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/user/userEdit.ftl
+END
+userAdd.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/763/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/user/userAdd.ftl
+END
+userList.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/961/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/user/userList.ftl
+END

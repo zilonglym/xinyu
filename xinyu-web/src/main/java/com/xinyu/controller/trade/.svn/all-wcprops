@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/wlpost/!svn/ver/2855/trunk/xinyu-web/src/main/java/com/xinyu/controller/trade
+END
+ShipOrderController.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/2817/trunk/xinyu-web/src/main/java/com/xinyu/controller/trade/ShipOrderController.java
+END
+ShipOrderBackController.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/2777/trunk/xinyu-web/src/main/java/com/xinyu/controller/trade/ShipOrderBackController.java
+END
+WayBillController.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/2855/trunk/xinyu-web/src/main/java/com/xinyu/controller/trade/WayBillController.java
+END
+CheckOutController.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/1892/trunk/xinyu-web/src/main/java/com/xinyu/controller/trade/CheckOutController.java
+END

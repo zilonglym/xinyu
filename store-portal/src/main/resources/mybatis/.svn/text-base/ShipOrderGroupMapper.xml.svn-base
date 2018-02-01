@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.graby.store.dao.mybatis.ShipOrderGroupDao">
+
+
+	<insert id="insertShipOrderGroup" parameterType="com.graby.store.entity.ShipOrderGroup">
+		insert into
+		sc_ship_order_group(order_id,quantity,item_group,create_date)
+		VALUES(#{order.id},#{quantity},#{itemGroup.id},#{createDate})
+
+	</insert>
+<!-- com.graby.store.dao.mybatis.ShipOrderGroupDao.shipOrderGroupResult -->
+
+	<resultMap id="orderGroupMapper" type="com.graby.store.entity.ShipOrderGroup">
+		<id column="id" property="id" />
+		<result property="order.id" column="order_id" />
+		<result property="quantity" column="quantity" />
+		<result property="itemGroup.id" column="item_group" />
+		<result property="createDate" column="create_date" />
+	</resultMap>
+
+
+
+	<select id="getShipOrderGroupByList" parameterType="map"
+		resultMap="orderGroupMapper">
+		SELECT T.*
+		FROM sc_ship_order_group T
+		<where>
+			1=1
+			<if test="id!=null and id!=''">
+				and id=#{id}
+			</if>
+			<if test="orderId!=null and orderId!=''">
+				and order_id=#{orderId}
+			</if>
+			<if test="itemGroupId!=null and itemGroupId!=''">
+				and item_group=#{itemGroupId}
+			</if>
+		</where>
+	</select>
+</mapper> 

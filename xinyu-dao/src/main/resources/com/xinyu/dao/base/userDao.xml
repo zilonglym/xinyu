@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.dao.base.UserDao">
+	<resultMap id="UserResult" type="com.xinyu.model.base.User">
+		<result property="id" column="FID" />
+		<result property="tbUserId" column="FtbUserId" />
+		<result property="serviceCode" column="FserviceCode" />
+		<result property="subscriberName" column="FsubscriberName" />
+		<result property="subscriberNick" column="FsubscriberNick" />
+		<result property="subscriberMobile" column="FsubscriberMobile" />
+		<result property="subscriberPhone" column="FsubscriberPhone" />
+		<result property="subscriberContactEmail" column="FsubscriberContactEmail" />
+		<result property="subscriberAddress" column="FsubscriberAddress" />
+		<result property="content" column="Fcontent" />
+		<result property="remark" column="Fremark" />
+		<result property="ownerCode" column="FownerCode" />
+		<result property="shortName" column="FshortName" />	
+		<result property="cu" column="Fcu" />	
+	</resultMap>
+	
+	<select id="getUserById" parameterType="string" resultMap="UserResult">
+		SELECT T.*
+		FROM t_xinyu_user T where T.FID=#{id}
+	</select>
+	
+	<select id="getStoreUserById" parameterType="string" resultType="map">
+		SELECT T.id as "userId",T.shop_name as "shopName"
+		FROM store.sc_user T where T.id=#{id}
+	</select>
+	
+	<select id="findUserByOwnerCode" parameterType="string" resultMap="UserResult">
+		SELECT T.*
+		FROM t_xinyu_user T where T.FownerCode=#{ownerCode}
+	</select>
+	
+	<insert id="insertUser" parameterType="com.xinyu.model.base.User">
+		insert into
+		t_xinyu_user(FID,FtbUserId,FserviceCode,FsubscriberName,FsubscriberNick,FsubscriberMobile,FsubscriberPhone,FsubscriberContactEmail,FsubscriberAddress,Fcontent,Fremark,FownerCode)
+		VALUES(#{id},#{tbUserId,jdbcType=VARCHAR},#{serviceCode,jdbcType=VARCHAR},#{subscriberName,jdbcType=VARCHAR},#{subscriberNick,jdbcType=VARCHAR},#{subscriberMobile,jdbcType=VARCHAR},#{subscriberPhone,jdbcType=VARCHAR},#{subscriberContactEmail,jdbcType=VARCHAR},#{subscriberAddress,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{ownerCode,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateUser" parameterType="com.xinyu.model.base.User">
+		update t_xinyu_user
+		<set>
+			<if test="tbUserId!=null and tbUserId!=''">FtbUserId=#{tbUserId},</if>
+			<if test="serviceCode!=null and serviceCode!=''">FserviceCode=#{serviceCode},</if>
+			<if test="subscriberName!=null and subscriberName!=''">FsubscriberName=#{subscriberName},</if>
+			<if test="subscriberNick!=null and subscriberNick!=''">FsubscriberNick=#{subscriberNick},</if>
+			<if test="subscriberMobile!=null and subscriberMobile!=''">FsubscriberMobile=#{subscriberMobile},</if>
+			<if test="subscriberPhone!=null and subscriberPhone!=''">FsubscriberPhone=#{subscriberPhone},</if>
+			<if test="subscriberContactEmail!=null and subscriberContactEmail!=''">FsubscriberContactEmail=#{subscriberContactEmail},</if>
+			<if test="subscriberAddress!=null and subscriberAddress!=''">FsubscriberAddress=#{subscriberAddress},</if>
+			<if test="content!=null and content!=''">Fcontent=#{content},</if>
+			<if test="remark!=null and remark!=''">Fremark=#{remark},</if>
+			<if test="ownerCode!=null and ownerCode!=''">FownerCode=#{ownerCode},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteUserById" parameterType="string">
+		delete from t_xinyu_user where fid=#{id}
+	</delete>
+	
+	
+	<select id="getUserBySearch" parameterType="map" resultMap="UserResult">
+		SELECT T.*
+		FROM t_xinyu_user T 
+		<where>
+		    1=1
+		    <if test="tbUserId!=null and tbUserId!=''">
+		        and FtbUserId=#{tbUserId}
+		    </if>
+		    <if test="ownerCode!=null and ownerCode!=''">
+		        and FownerCode=#{ownerCode}
+		    </if>
+		    <if test="searchText!=null and searchText!=''">
+		        and (FsubscriberName like "%"#{searchText}"%" or FsubscriberNick like "%"#{searchText}"%" or FsubscriberMobile like "%"#{searchText}"%" or FsubscriberPhone like "%"#{searchText}"%")
+		    </if>
+		</where>
+		<if test="pageSize!=null and pageSize!=''">
+			limit #{pageNum},#{pageSize}    
+		</if>
+	</select>
+
+	<select id="getTotal" parameterType="map" resultType="int">
+		SELECT count(1)
+		FROM t_xinyu_user T 
+		<where>
+		    1=1
+		    <if test="tbUserId!=null and tbUserId!=''">
+		        and FtbUserId=#{tbUserId}
+		    </if>
+		    <if test="ownerCode!=null and ownerCode!=''">
+		        and FownerCode=#{ownerCode}
+		    </if>
+		    <if test="searchText!=null and searchText!=''">
+		        and (FsubscriberName like "%"#{searchText}"%" or FsubscriberNick like "%"#{searchText}"%" or FsubscriberMobile like "%"#{searchText}"%" or FsubscriberPhone like "%"#{searchText}"%")
+		    </if>
+		</where>
+	</select>
+	
+</mapper>

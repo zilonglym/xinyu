@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.order.StockOutOrderConfirmDao">
+	<resultMap id="StockOutOrderConfirmResult" type="com.xinyu.model.order.StockOutOrderConfirm" >
+		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
+		<result property="orderCode" column="ForderCode" />
+		<result property="orderType" column="ForderType" />
+		<result property="outBizCode" column="FoutBizCode" />
+		<result property="confirmType" column="FconfirmType" />
+		<result property="orderConfirmTime" column="ForderConfirmTime" />
+		<result property="timeZone" column="FtimeZone" />
+	</resultMap>
+	
+	<select id="getStockOutOrderConfirmById" parameterType="string"  resultMap="StockOutOrderConfirmResult" >
+		 SELECT T.* 
+			FROM T_xinyu_StockOutOrderConfirm T where T.FID=#{id}
+	</select>
+	
+	<select id="getStockOutOrderConfirmList" parameterType="map"  resultMap="StockOutOrderConfirmResult" >
+		 SELECT T.* 
+			FROM T_xinyu_StockOutOrderConfirm T 
+		where 1=1 
+		<if test="orderCode!=null and orderCode!=''">
+			and T.ForderCode=#{orderCode}
+		</if>
+		<if test="confirmType!=null and confirmType!=''">
+			and T.FconfirmType=#{confirmType}
+		</if>
+	</select>
+	
+	<insert id="insertStockOutOrderConfirm" parameterType="com.xinyu.model.order.StockOutOrderConfirm" >
+		insert into T_xinyu_StockOutOrderConfirm(FID,FCU,ForderCode,ForderType,FoutBizCode,FconfirmType,ForderConfirmTime,FtimeZone)
+		VALUES(#{id},#{cu},#{orderCode},#{orderType},#{outBizCode},#{confirmType},#{orderConfirmTime},#{timeZone})
+	</insert>
+
+	<update id="updateStockOutOrderConfirm" parameterType="com.xinyu.model.order.StockOutOrderConfirm" >
+		update T_xinyu_StockOutOrderConfirm
+		<set>
+			<if test="cu!=null and cu!=''">FCU=#{cu},</if>
+			<if test="orderCode!=null and orderCode!=''">ForderCode=#{orderCode},</if>
+			<if test="orderType!=null and orderType!=''">ForderType=#{orderType},</if>
+			<if test="outBizCode!=null and outBizCode!=''">FoutBizCode=#{outBizCode},</if>
+			<if test="confirmType!=null and confirmType!=''">FconfirmType=#{confirmType},</if>
+			<if test="orderConfirmTime!=null and orderConfirmTime!=''">ForderConfirmTime=#{orderConfirmTime},</if>
+			<if test="timeZone!=null and timeZone!=''">FtimeZone=#{timeZone},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteStockOutOrderConfirmById"  parameterType="string"  >
+		delete  from T_xinyu_StockOutOrderConfirm where fid=#{id}
+	</delete>
+</mapper> 

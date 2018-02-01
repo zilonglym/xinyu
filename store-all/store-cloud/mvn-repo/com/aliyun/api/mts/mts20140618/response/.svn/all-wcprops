@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response
+END
+QueryTranscodeSupportedTemplatesResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/QueryTranscodeSupportedTemplatesResponse.class
+END
+AddVideoResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/AddVideoResponse.class
+END
+QueryTranscodeJobListResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/QueryTranscodeJobListResponse.class
+END
+CreateTranscodeJobResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/CreateTranscodeJobResponse.class
+END
+CancelTranscodeJobResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/CancelTranscodeJobResponse.class
+END
+QueryMediaBucketResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/QueryMediaBucketResponse.class
+END
+QueryVideoListByIdsResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/QueryVideoListByIdsResponse.class
+END
+QueryVideoByIdResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/QueryVideoByIdResponse.class
+END
+GetSnapshotByIdResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/GetSnapshotByIdResponse.class
+END
+SearchVideoListResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/SearchVideoListResponse.class
+END
+DeleteVideoResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/DeleteVideoResponse.class
+END
+QueryTranscodeOutputResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/QueryTranscodeOutputResponse.class
+END
+UpdateVideoResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/mts/mts20140618/response/UpdateVideoResponse.class
+END

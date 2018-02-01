@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.trade.ShipOrderOperatorDao">
+	<resultMap id="ShipOrderOperatorResult" type="com.xinyu.model.trade.ShipOrderOperator">
+		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
+		<result property="shipOrder.id" column="FKshipOrderID" />
+		<result property="operatorDate" column="FoperatorDate" />
+		<result property="account.id" column="FKaccountID" />
+		<result property="operatorModel" column="FoperatorModel" />
+		<result property="oldValue" column="FoldValue" />
+		<result property="newValue" column="FnewValue" />
+		<result property="description" column="Fdescription" />
+	</resultMap>
+	<select id="getShipOrderOperatorById" parameterType="string"
+		resultMap="ShipOrderOperatorResult">
+		SELECT T.*
+		FROM T_xinyu_ShipOrderOperator T where T.FID=#{id}
+	</select>
+	
+	<select id="getShipOrderOperatorByList" parameterType="map"
+		resultMap="ShipOrderOperatorResult">
+		SELECT T.*
+		FROM T_xinyu_ShipOrderOperator T 
+		where 1=1
+		<if test="accountId!=null and accountId!=''">
+			and t.FKaccountID = #{accountId}
+		</if>
+		<if test="orderId!=null and orderId!=''">
+			and t.FKshipOrderID = #{orderId}
+		</if>
+		<if test="operatorModel!=null and operatorModel!=''">
+		    and FoperatorModel=#{operatorModel}
+		</if>
+		<if test="searchText!=null and searchText!=''">
+			and (t.FoldValue like "%"#{searchText}"%" or t.FnewValue like "%"#{searchText}"%" or t.Fdescription like "%"#{searchText}"%")
+		</if>
+		<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and t.`FoperatorDate` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+			and t.`FoperatorDate` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+    	</if> 
+    	order by t.`FoperatorDate` desc
+    	limit 200
+	</select>
+	
+	<insert id="insertShipOrderOperator" parameterType="com.xinyu.model.trade.ShipOrderOperator">
+		insert into
+		T_xinyu_ShipOrderOperator(FID,FCU,FKshipOrderID,FoperatorDate,FKaccountID,FoperatorModel,FoldValue,FnewValue,Fdescription)
+		VALUES(#{id},#{cu},#{shipOrder.id,jdbcType=VARCHAR},#{operatorDate},#{account.id,jdbcType=VARCHAR},#{operatorModel,jdbcType=VARCHAR},#{oldValue,jdbcType=VARCHAR},#{newValue,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateShipOrderOperator" parameterType="com.xinyu.model.trade.ShipOrderOperator">
+		update T_xinyu_ShipOrderOperator
+		<set>
+			<if test="null!=null and null!=''">FCU=#{},</if>
+			<if test="shipOrder!=null and shipOrder!=''">FKshipOrderID=#{shipOrder.id},</if>
+			<if test="operatorDate!=null and operatorDate!=''">FoperatorDate=#{operatorDate},</if>
+			<if test="account!=null and account!=''">FKaccountID=#{account.id},</if>
+			<if test="operatorModel!=null and operatorModel!=''">FoperatorModel=#{operatorModel},</if>
+			<if test="oldValue!=null and oldValue!=''">FoldValue=#{oldValue},</if>
+			<if test="newValue!=null and newValue!=''">FnewValue=#{newValue},</if>
+			<if test="description!=null and description!=''">Fdescription=#{description},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteShipOrderOperatorById" parameterType="string">
+		delete from T_xinyu_ShipOrderOperator where fid=#{id}
+	</delete>
+</mapper> 

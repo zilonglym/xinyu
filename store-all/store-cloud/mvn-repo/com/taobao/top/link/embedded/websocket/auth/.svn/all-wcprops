@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/auth
+END
+BasicAuthenticator.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/auth/BasicAuthenticator.class
+END
+Credentials.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/auth/Credentials.class
+END
+AbstractAuthenticator.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/auth/AbstractAuthenticator.class
+END
+DefaultAuthenticator.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/auth/DefaultAuthenticator.class
+END
+Challenge.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/auth/Challenge.class
+END
+AuthScheme.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/auth/AuthScheme.class
+END
+Authenticator.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/auth/Authenticator.class
+END
+DigestAuthenticator.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/embedded/websocket/auth/DigestAuthenticator.class
+END

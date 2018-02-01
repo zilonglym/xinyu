@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;store-check&apos;&#x0D;&#x0A;- Original project: &apos;store-check&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     DataView.java.merge-left.r435&#x0D;&#x0A;     DataView.java.merge-right.r434&#x0D;&#x0A;     DataView.java.working" description="Delete elements" element1="src/com/store/check/DataView.java.merge-right.r434" element2="src/com/store/check/DataView.java.merge-left.r435" element3="src/com/store/check/DataView.java.working" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="3" stamp="1487928956541" subPackages="false" version="1.0"/>
+</session>

@@ -1,0 +1,119 @@
+10
+
+dir
+2852
+http://code.taobao.org/svn/wlpost/trunk/store-admin/src/main/webapp/WEB-INF/views
+http://code.taobao.org/svn/wlpost
+
+
+
+2018-01-05T04:08:12.901342Z
+2739
+fufangjue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+b937248f-ba71-4ac9-bc5d-8b21318fe002
+
+system
+dir
+
+picking
+dir
+
+welcome.jsp
+file
+
+
+
+
+2017-03-30T07:32:21.920255Z
+088f9e5602a8bbd923d8e4a15acd8497
+2017-03-29T09:02:53.546256Z
+636
+fufangjue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+751
+
+admin
+dir
+
+point
+dir
+
+error
+dir
+
+local
+dir
+
+checkInventory
+dir
+
+store
+dir
+
+account
+dir
+
+group
+dir
+
+item
+dir
+
+shipOrder
+dir
+
+auth
+dir
+
+finance
+dir
+
+waybill
+dir
+
+storage
+dir
+
+f7index
+dir
+
+centroItem
+dir
+
+import
+dir
+

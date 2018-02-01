@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.order.StockInOrderDao">
+	<resultMap id="StockInOrderResult" type="com.xinyu.model.order.StockInOrder" >
+	<result property="id" column="FID" />
+	<result property="user.id" column="FKuserID" />
+	<result property="ownerUserName" column="FownerUserName" />
+	<result property="storeCode" column="FstoreCode" />
+	<result property="orderCode" column="ForderCode" />
+	<result property="erpOrderCode" column="FerpOrderCode" />
+	<result property="orderType" column="ForderType" />
+	<result property="expectStartTime" column="FexpectStartTime" />
+	<result property="expectEndTime" column="FexpectEndTime" />
+	<result property="inboundTypeDesc" column="FinboundTypeDesc" />
+	<result property="orderFlag" column="ForderFlag" />
+	<result property="orderSource" column="ForderSource" />
+	<result property="orderCreateTime" column="ForderCreateTime" />
+	<result property="supplierCode" column="FsupplierCode" />
+	<result property="supplierName" column="FsupplierName" />
+	<result property="tmsServiceCode" column="FtmsServiceCode" />
+	<result property="tmsServiceName" column="FtmsServiceName" />
+	<result property="tmsOrderCode" column="FtmsOrderCode" />
+	<result property="prevEprOrderCode" column="FprevEprOrderCode" />
+	<result property="prevOrderCode" column="FprevOrderCode" />
+	<result property="returnReason" column="FreturnReason" />
+	<result property="buyerNick" column="FbuyerNick" />
+	<result property="batchSendCtrlParam.id" column="FKbatchSendCtrlParamID" />
+	<result property="senderInfo.id" column="FKsenderInfoID" />
+	<result property="timeZone" column="FtimeZone" />
+	<result property="currency" column="Fcurrency" />
+	<result property="driverInfo.id" column="FKdriverInfoID" />
+	<result property="remark" column="Fremark" />
+	<result property="state" column="Fstate" />
+</resultMap>
+	<select id="findStockInOrderByParam" parameterType="map"  resultMap="StockInOrderResult" >
+		 SELECT T.* 
+		 FROM T_xinyu_StockInOrder T 
+		 where 1=1
+		 <if test="orderCode!=null and orderCode!=''">
+		 	and T.ForderCode=#{orderCode}
+		 </if>
+		 <if test="userId!=null and userId!=''">
+		 	and T.FKuserID=#{userId}
+		 </if>
+		 <if test="orderType!=null and orderType!=''">
+		 	and T.ForderType=#{orderType}
+		 </if>
+	</select>
+
+	<select id="getStockInOrderById" parameterType="string"  resultMap="StockInOrderResult" >
+		 SELECT T.* 
+			FROM T_xinyu_StockInOrder T where T.FID=#{id}
+	</select>
+	
+	
+	<select id="isExistByMap" resultType="int"  parameterType="map" >
+		 SELECT count(1) c
+			FROM T_xinyu_StockInOrder T where T.forderCode=#{orderCode}
+	</select>
+	
+	<select id="findStockInOrderByList" parameterType="map"  resultMap="StockInOrderResult" >
+		 SELECT T.* 
+		 FROM T_xinyu_StockInOrder T where 1=1
+		<if test="userId!=null and userId!=''">and FKuserID=#{userId}</if>
+		<if test="ownerUserName!=null and ownerUserName!=''">and FownerUserName=#{ownerUserName}</if>
+		<if test="storeCode!=null and storeCode!=''">and FstoreCode=#{storeCode}</if>
+		<if test="orderCode!=null and orderCode!=''">and ForderCode=#{orderCode}</if>
+		<if test="erpOrderCode!=null and erpOrderCode!=''">and FerpOrderCode=#{erpOrderCode}</if>
+		<if test="orderType!=null and orderType!=''">and ForderType=#{orderType}</if>
+		<if test="type!=null and type!=''">and ForderType like #{type}"%"</if>
+		<if test="supplierCode!=null and supplierCode!=''">and FsupplierCode=#{supplierCode}</if>
+		<if test="supplierName!=null and supplierName!=''">and FsupplierName=#{supplierName}</if>
+		<if test="tmsServiceCode!=null and tmsServiceCode!=''">and FtmsServiceCode=#{tmsServiceCode}</if>
+		<if test="tmsServiceName!=null and tmsServiceName!=''">and FtmsServiceName=#{tmsServiceName}</if>
+		<if test="tmsOrderCode!=null and tmsOrderCode!=''">and FtmsOrderCode=#{tmsOrderCode}</if>
+		<if test="prevEprOrderCode!=null and prevEprOrderCode!=''">and FprevEprOrderCode=#{prevEprOrderCode}</if>
+		<if test="prevOrderCode!=null and prevOrderCode!=''">and FprevOrderCode=#{prevOrderCode}</if>
+		<if test="returnReason!=null and returnReason!=''">and FreturnReason=#{returnReason}</if>
+		<if test="buyerNick!=null and buyerNick!=''">and FbuyerNick=#{buyerNick}</if>
+		<if test="remark!=null and remark!=''">and Fremark=#{remark}</if>
+		<if test="state!=null and state!=''">and Fstate=#{state}</if>
+		<if test="searchText!=null and searchText!=''">
+			and (ForderCode like "%"#{searchText}"%" or FerpOrderCode like "%"#{searchText}"%" or FtmsOrderCode like "%"#{searchText}"%" or FbuyerNick like "%"#{searchText}"%")
+		</if>
+		order by ForderCreateTime desc
+		<if test="pageSize!=null and pageSize!=''">
+			limit #{pageNum},#{pageSize}
+		</if>
+	</select>
+	
+	<select id="getTotal" parameterType="map"  resultType="int" >
+		 SELECT count(1) 
+		 FROM T_xinyu_StockInOrder T where 1=1
+		<if test="userId!=null and userId!=''">and FKuserID=#{userId}</if>
+		<if test="ownerUserName!=null and ownerUserName!=''">and FownerUserName=#{ownerUserName}</if>
+		<if test="storeCode!=null and storeCode!=''">and FstoreCode=#{storeCode}</if>
+		<if test="orderCode!=null and orderCode!=''">and ForderCode=#{orderCode}</if>
+		<if test="erpOrderCode!=null and erpOrderCode!=''">and FerpOrderCode=#{erpOrderCode}</if>
+		<if test="orderType!=null and orderType!=''">and ForderType=#{orderType}</if>
+		<if test="type!=null and type!=''">and ForderType like #{type}"%"</if>
+		<if test="supplierCode!=null and supplierCode!=''">and FsupplierCode=#{supplierCode}</if>
+		<if test="supplierName!=null and supplierName!=''">and FsupplierName=#{supplierName}</if>
+		<if test="tmsServiceCode!=null and tmsServiceCode!=''">and FtmsServiceCode=#{tmsServiceCode}</if>
+		<if test="tmsServiceName!=null and tmsServiceName!=''">and FtmsServiceName=#{tmsServiceName}</if>
+		<if test="tmsOrderCode!=null and tmsOrderCode!=''">and FtmsOrderCode=#{tmsOrderCode}</if>
+		<if test="prevEprOrderCode!=null and prevEprOrderCode!=''">and FprevEprOrderCode=#{prevEprOrderCode}</if>
+		<if test="prevOrderCode!=null and prevOrderCode!=''">and FprevOrderCode=#{prevOrderCode}</if>
+		<if test="returnReason!=null and returnReason!=''">and FreturnReason=#{returnReason}</if>
+		<if test="buyerNick!=null and buyerNick!=''">and FbuyerNick=#{buyerNick}</if>
+		<if test="remark!=null and remark!=''">and Fremark=#{remark}</if>
+		<if test="state!=null and state!=''">and Fstate=#{state}</if>
+		<if test="searchText!=null and searchText!=''">
+			and (ForderCode like "%"#{searchText}"%" or FerpOrderCode like "%"#{searchText}"%" or FtmsOrderCode like "%"#{searchText}"%" or FbuyerNick like "%"#{searchText}"%")
+		</if>
+		order by ForderCreateTime desc
+	</select>
+	
+<insert id="insertStockInOrder" parameterType="com.xinyu.model.order.StockInOrder" >
+insert into T_xinyu_StockInOrder(Fstate,FID,FKuserID,FownerUserName,FstoreCode,ForderCode,FerpOrderCode,ForderType,FexpectStartTime,FexpectEndTime,FinboundTypeDesc,ForderFlag,ForderSource,ForderCreateTime,FsupplierCode,FsupplierName,FtmsServiceCode,FtmsServiceName,FtmsOrderCode,FprevEprOrderCode,FprevOrderCode,FreturnReason,FbuyerNick,FKbatchSendCtrlParamID,FKsenderInfoID,FtimeZone,Fcurrency,FKdriverInfoID,Fremark)
+VALUES(#{state,jdbcType=VARCHAR},#{id},#{user.id,jdbcType=VARCHAR},#{ownerUserName,jdbcType=VARCHAR},#{storeCode,jdbcType=VARCHAR},#{orderCode,jdbcType=VARCHAR},#{erpOrderCode,jdbcType=VARCHAR},#{orderType,jdbcType=VARCHAR},#{expectStartTime,jdbcType=VARCHAR},#{expectEndTime,jdbcType=VARCHAR},#{inboundTypeDesc,jdbcType=VARCHAR},#{orderFlag,jdbcType=VARCHAR},#{orderSource,jdbcType=VARCHAR},#{orderCreateTime},#{supplierCode,jdbcType=VARCHAR},#{supplierName,jdbcType=VARCHAR},#{tmsServiceCode,jdbcType=VARCHAR},#{tmsServiceName,jdbcType=VARCHAR},#{tmsOrderCode,jdbcType=VARCHAR},#{prevEprOrderCode,jdbcType=VARCHAR},#{prevOrderCode,jdbcType=VARCHAR},#{returnReason,jdbcType=VARCHAR},#{buyerNick,jdbcType=VARCHAR},#{batchSendCtrlParam.id,jdbcType=VARCHAR},#{senderInfo.id,jdbcType=VARCHAR},#{timeZone,jdbcType=VARCHAR},#{currency,jdbcType=VARCHAR},#{driverInfo.id,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR})
+</insert>
+
+<update id="updateStockInOrder" parameterType="com.xinyu.model.order.StockInOrder" >
+	update T_xinyu_StockInOrder
+	<set>
+		<if test="user!=null and user!=''">FKuserID=#{user.id},</if>
+		<if test="ownerUserName!=null and ownerUserName!=''">FownerUserName=#{ownerUserName},</if>
+		<if test="storeCode!=null and storeCode!=''">FstoreCode=#{storeCode},</if>
+		<if test="orderCode!=null and orderCode!=''">ForderCode=#{orderCode},</if>
+		<if test="erpOrderCode!=null and erpOrderCode!=''">FerpOrderCode=#{erpOrderCode},</if>
+		<if test="orderType!=null and orderType!=''">ForderType=#{orderType},</if>
+		<if test="expectStartTime!=null and expectStartTime!=''">FexpectStartTime=#{expectStartTime},</if>
+		<if test="expectEndTime!=null and expectEndTime!=''">FexpectEndTime=#{expectEndTime},</if>
+		<if test="inboundTypeDesc!=null and inboundTypeDesc!=''">FinboundTypeDesc=#{inboundTypeDesc},</if>
+		<if test="orderFlag!=null and orderFlag!=''">ForderFlag=#{orderFlag},</if>
+		<if test="orderSource!=null and orderSource!=''">ForderSource=#{orderSource},</if>
+		<if test="orderCreateTime!=null and orderCreateTime!=''">ForderCreateTime=#{orderCreateTime},</if>
+		<if test="supplierCode!=null and supplierCode!=''">FsupplierCode=#{supplierCode},</if>
+		<if test="supplierName!=null and supplierName!=''">FsupplierName=#{supplierName},</if>
+		<if test="tmsServiceCode!=null and tmsServiceCode!=''">FtmsServiceCode=#{tmsServiceCode},</if>
+		<if test="tmsServiceName!=null and tmsServiceName!=''">FtmsServiceName=#{tmsServiceName},</if>
+		<if test="tmsOrderCode!=null and tmsOrderCode!=''">FtmsOrderCode=#{tmsOrderCode},</if>
+		<if test="prevEprOrderCode!=null and prevEprOrderCode!=''">FprevEprOrderCode=#{prevEprOrderCode},</if>
+		<if test="prevOrderCode!=null and prevOrderCode!=''">FprevOrderCode=#{prevOrderCode},</if>
+		<if test="returnReason!=null and returnReason!=''">FreturnReason=#{returnReason},</if>
+		<if test="buyerNick!=null and buyerNick!=''">FbuyerNick=#{buyerNick},</if>
+		<if test="batchSendCtrlParam!=null and batchSendCtrlParam!=''">FKbatchSendCtrlParamID=#{batchSendCtrlParam.id},</if>
+		<if test="senderInfo!=null and senderInfo!=''">FKsenderInfoID=#{senderInfo.id},</if>
+		<if test="timeZone!=null and timeZone!=''">FtimeZone=#{timeZone},</if>
+		<if test="currency!=null and currency!=''">Fcurrency=#{currency},</if>
+		<if test="driverInfo!=null and driverInfo!=''">FKdriverInfoID=#{driverInfo.id},</if>
+		<if test="remark!=null and remark!=''">Fremark=#{remark},</if>
+		<if test="state!=null and state!=''">Fstate=#{state},</if>
+	</set>
+where fid=#{id}
+</update>
+
+<delete id="deleteStockInOrderById"  parameterType="string"  >
+	delete  from T_xinyu_StockInOrder where fid=#{id}
+</delete>
+
+
+</mapper> 

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.graby.store.dao.mybatis.AuditRulesDao">
+
+	
+	<resultMap id="AuditRulesEntity" type="com.graby.store.entity.AuditRules">
+		<result property="id" column="id" />
+		<result property="user.id" column="user" />
+		<result property="expressCompany" column="express_company" />
+		<result property="includes" column="includes" />
+		<result property="exincludes" column="exincludes" />
+		<result property="startWegiht" column="start_wegiht" />
+		<result property="endWegiht" column="end_wegiht" />
+	</resultMap>
+	
+	<select id="findAuditRules" parameterType="map" resultMap="AuditRulesEntity">
+		SELECT * from sc_audit_rules 
+			where express_company = #{expressCompany}  and user = #{userId}
+	</select>
+	
+	<select id="findAuditRulesbyId" parameterType="String" resultMap="AuditRulesEntity">
+		SELECT * from sc_audit_rules  t where t.id=#{id}
+			
+	</select>
+
+	<select id="findAuditRulesList" parameterType="map" resultMap="AuditRulesEntity">
+		SELECT * from sc_audit_rules 
+			<where>
+				1=1
+			</where>
+	</select>
+		
+	<insert id="save" parameterType="AuditRules" useGeneratedKeys="true" keyProperty="id">
+		insert into sc_audit_rules (
+		user, express_company, includes, exincludes,start_wegiht,end_wegiht)
+		values (
+		#{user.id},#{expressCompany}, #{includes},#{exincludes},#{startWegiht},#{endWegiht})
+	</insert>
+	
+	<update id="updateAuditRules" parameterType="AuditRules">
+		update sc_audit_rules 
+		<set>
+		<if test="user!=null">
+			user=#{user.id},
+		</if>
+		<if test="expressCompany!=null">
+			express_company=#{expressCompany},
+		</if>
+		<if test="includes!=null">
+			includes=#{includes},
+		</if>
+		<if test="exincludes!=null">
+			exincludes=#{exincludes},
+		</if>
+		<if test="startWegiht!=null">
+			start_wegiht=#{startWegiht},
+		</if>
+		<if test="endWegiht!=null">
+			end_wegiht=#{endWegiht},
+		</if>
+		</set>
+		where id=#{id}
+	</update>
+</mapper> 

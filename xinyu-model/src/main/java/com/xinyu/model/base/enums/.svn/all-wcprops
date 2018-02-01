@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/wlpost/!svn/ver/2520/trunk/xinyu-model/src/main/java/com/xinyu/model/base/enums
+END
+XmlEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/673/trunk/xinyu-model/src/main/java/com/xinyu/model/base/enums/XmlEnum.java
+END
+ItemTypeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/1408/trunk/xinyu-model/src/main/java/com/xinyu/model/base/enums/ItemTypeEnum.java
+END
+VehicleTypeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/1017/trunk/xinyu-model/src/main/java/com/xinyu/model/base/enums/VehicleTypeEnum.java
+END
+ItemStatusEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/1135/trunk/xinyu-model/src/main/java/com/xinyu/model/base/enums/ItemStatusEnum.java
+END
+CaiNiaoBillOperatorTypeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/1135/trunk/xinyu-model/src/main/java/com/xinyu/model/base/enums/CaiNiaoBillOperatorTypeEnum.java
+END
+ReceiveStateEnums.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/2520/trunk/xinyu-model/src/main/java/com/xinyu/model/base/enums/ReceiveStateEnums.java
+END

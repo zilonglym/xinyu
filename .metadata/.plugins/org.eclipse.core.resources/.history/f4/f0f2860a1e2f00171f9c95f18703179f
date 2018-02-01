@@ -1,0 +1,422 @@
+package com.xinyu.dao.base.util;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Repository;
+
+import com.xinyu.dao.base.ItemDao;
+import com.xinyu.dao.common.BaseDao;
+import com.xinyu.model.base.Item;
+import com.xinyu.model.base.SampleRule;
+import com.xinyu.model.base.SnSample;
+import com.xinyu.model.trade.ShipOrder;
+
+/**
+ * 生成sql及xml脚本
+ * 
+ * @author yinyuqiao 2017年4月12日 下午3:35:55
+ */
+public class MyBatisXMLDaoImpl {
+
+	private static String tableName = "T_xinyu_"+"item"; // 表名
+	private static String projectName = "xinyu"; // 项目名称
+	@SuppressWarnings("rawtypes")
+	private static Class className = Item.class;
+
+	public static MyBatisXMLDaoImpl object = new MyBatisXMLDaoImpl();
+	private static String modelName = "";
+	private static String packName="";
+	private static String packImplName="";
+
+	public static void main(String[] args) throws SQLException {
+		modelName = className.getSimpleName();
+		packName=className.getPackage().getName();
+		packImplName=className.getPackage().getName();
+		packName=packName.replace("model", "dao");
+		packImplName=packImplName.replace("model", "dao.impl");
+//		System.err.println(className);
+		//object.getDaoPath();
+		 object.grenterateDaoImplFile();
+		/*
+		 ResultSet rs =object.getResult();
+		 if(rs!=null){
+			 object.grenerateResultMap(rs);
+			 object.grenerateGetModelById();
+			 object.grenerateInsertXML(rs);
+			 object.grenerateUpdateXML(rs);
+			 object.grenerateDeleteXml();
+			 object.grenterateDaoFile();
+		 }else{
+			 object.grenerateCreateTableSql();
+		 }*/
+	}
+	/**
+	 * 生成dao 文件
+	 */
+	private void grenterateDaoFile(){
+		StringBuilder buf=new StringBuilder();
+		buf.append("package ").append(packName).append(";\n");
+		buf.append("import java.util.List;\n")
+			.append("import java.util.Map;\n")
+			.append("import ").append(className).append(";\n");
+		buf.append("public interface "+modelName+"Dao extends BaseDao {\n");
+		buf.append("\t public void save"+modelName+"("+modelName+" info);\n");
+		buf.append("\t public void update"+modelName+"("+modelName+" info);\n");
+		buf.append("\t public "+modelName+" get"+modelName+"ById(String id);\n");
+		buf.append("\t public List<"+modelName+"> get"+modelName+"ByList(Map<String, Object> params);\n");		
+		buf.append("}\n");
+		System.err.println(buf.toString());
+		
+		String path=this.getDaoPath()+"\\"+modelName+"dao.java";
+	}
+	
+	
+	/**
+	 * 生成dao 文件
+	 */
+	private void grenterateDaoImplFile(){
+		String path=this.getDaoPath()+"\\impl\\"+modelName+"daoImpl.java";
+		StringBuilder buf=new StringBuilder();
+		buf.append("package ").append(packName).append(".impl;\n");
+		buf.append("import java.util.List;\n")
+			.append("import java.util.Map;\n")
+			.append("import org.springframework.stereotype.Repository;\n")
+			.append("import com.xinyu.dao.common.BaseDaoImpl;\n")
+			.append("import "+packName+"."+modelName+"Dao;\n")
+			.append("import ").append(className.getName()).append(";\n");
+		buf.append("@Repository(\""+modelName+"DaoImpl\")\n");
+		buf.append("public class "+modelName+"DaoImpl extends BaseDaoImpl implements "+modelName+"Dao {\n");
+		buf.append("\tpublic void save"+modelName+"("+modelName+" info){\n");
+		buf.append("\t\tthis.insert(\""+packName+".insert"+modelName+"\",info);\n");
+		buf.append("\t}\n");
+		buf.append("\tpublic void update"+modelName+"("+modelName+" info){\n");
+		buf.append("\t\tthis.insert(\""+packName+".update"+modelName+"\",info);\n");
+		buf.append("\t}\n");
+		buf.append("\tpublic "+modelName+" get"+modelName+"ById(String id){\n");
+		buf.append("\t\treturn ("+modelName+")this.selectOne(\""+packName+".select"+modelName+"ById\",id);\n");
+		buf.append("\t}\n");
+		buf.append("\tpublic List<"+modelName+"> get"+modelName+"ByList(Map<String, Object> params){\n");		
+		buf.append("\t\treturn (List<"+modelName+">)this.selectList(\""+packName+".select"+modelName+"ByList\",params);\n");
+		buf.append("\t}\n");
+		buf.append("}\n");
+		saveFile(path, buf.toString());
+	}
+	
+	private String getDaoPath(){
+		String path=System.getProperty("user.dir");
+		String temp=packName.replace(".", "\\");
+		path=path+"\\src\\main\\java\\"+temp;
+		System.err.println(path);
+		return path;
+	}
+	
+	
+	/**
+	 * 根据字段属性取类属性
+	 * 
+	 * @param column
+	 * @return
+	 */
+	private Field getPropertyByColumn(String column) {
+		Field[] ary = className.getDeclaredFields();
+		String str = "";
+		Field resultField = null;
+		if (column.endsWith("ID") && column.startsWith("FK")) {
+			str = column.substring(2);
+			str = str.substring(0, str.length() - 2);
+		} else if (column.startsWith("F")) {
+			str = column.substring(1);
+		}
+		for (int i = 0; i < ary.length; i++) {
+			Field field = ary[i];
+			if (str.equalsIgnoreCase(field.getName())) {
+				resultField = field;
+				break;
+			}
+		}
+		return resultField;
+	}
+
+	/**
+	 * 生成ResultMap
+	 * 
+	 * @param rs
+	 * @throws SQLException
+	 */
+	private void grenerateResultMap(ResultSet rs) throws SQLException {
+		StringBuilder buf = new StringBuilder();
+		buf.append("<resultMap id=\"").append(modelName).append("Result\"").append(" type=\"")
+				.append(className.getName()).append("\" >").append("\n");
+		ResultSetMetaData rm = rs.getMetaData();
+		for (int i = 0; i < rm.getColumnCount(); i++) {
+			Field field = getPropertyByColumn(rm.getColumnName(i + 1));
+			if( field!=null &&  (field.getType().equals(List.class)  || field.getType().equals(ArrayList.class) || field.getType().equals(Map.class))){
+				continue;
+			}
+			String fieldName = this.getFieldName(field);
+			buf.append("\t<result property=\"").append(fieldName == null ? "id" : fieldName).append("\" column=\"")
+					.append(rm.getColumnName(i + 1)).append("\" />\n");
+		}
+		buf.append("</resultMap>");
+		System.err.println(buf.toString());
+	}
+
+	/**
+	 * 生成insert
+	 * 
+	 * @param rs
+	 */
+	private void grenerateInsertXML(ResultSet rs) throws SQLException {
+		StringBuilder buf = new StringBuilder();
+		buf.append("<insert id=\"insert").append(modelName).append("\" parameterType=\"").append(className.getName())
+				.append("\" >\n");
+		buf.append("insert into ").append(tableName).append("(FID");
+		StringBuilder sql = new StringBuilder();
+		sql.append("\nVALUES(#{id},#{Fcu}");
+		ResultSetMetaData rm = rs.getMetaData();
+		for (int i = 0; i < rm.getColumnCount(); i++) {
+			Field field = getPropertyByColumn(rm.getColumnName(i + 1));
+			if (rm.getColumnName(i + 1).equals("FID")) {
+				continue;
+			}
+			if(field!=null && ( field.getType().equals(List.class)  || field.getType().equals(ArrayList.class) || field.getType().equals(Map.class))){
+				continue;
+			}
+			buf.append(",").append(rm.getColumnName(i + 1));
+			sql.append(",#{cu,jdbcType=VARCHAR},#{").append(getFieldName(field)).append(",jdbcType=").append(getJdbcType(field)).append("}");
+		}
+		buf.append(")");
+		sql.append(")");
+		buf.append(sql);
+		buf.append("\n</insert>\n");
+		System.err.println(buf.toString());
+	}
+
+	/**
+	 * 生成带条件的UPDATE
+	 * 
+	 * @param rs
+	 * @throws SQLException
+	 */
+	private void grenerateUpdateXML(ResultSet rs) throws SQLException {
+		StringBuilder buf = new StringBuilder();
+		buf.append("<update id=\"update").append(modelName).append("\" parameterType=\"").append(className.getName())
+				.append("\" >\n");
+		buf.append("\tupdate ").append(tableName).append("\n\t<set>\n");
+		ResultSetMetaData rm = rs.getMetaData();
+		for (int i = 0; i < rm.getColumnCount(); i++) {
+			if (rm.getColumnName(i + 1).equals("FID")) {
+				continue;
+			}
+			Field field = getPropertyByColumn(rm.getColumnName(i + 1));
+			if(field!=null && ( field.getType().equals(List.class)  || field.getType().equals(ArrayList.class) || field.getType().equals(Map.class))){
+				continue;
+			}
+			String fieldName = getFieldName(field);
+			buf.append("\t\t<if test=\"").append(field == null ? null : field.getName()).append("!=null and ")
+					.append(field == null ? null : field.getName()).append("!=''\">");
+			buf.append(rm.getColumnName(i + 1)).append("=").append("#{").append(fieldName).append("},</if>\n");
+		}
+		buf.append("\t</set>\n");
+		buf.append("where fid=#{id}");
+		buf.append("\n</update>\n");
+		System.err.println(buf.toString());
+	}
+
+	/**
+	 * 生成DELETEBYID
+	 */
+	@SuppressWarnings("static-access")
+	private void grenerateDeleteXml() {
+		StringBuilder buf = new StringBuilder();
+		buf.append("<delete id=\"delete").append(modelName).append("ById\" ").append(" parameterType=\"string\" ")
+				.append(" >\n\t");
+		buf.append("delete  from ").append(this.tableName).append(" where fid=#{id}\n");
+		buf.append("</delete>");
+		System.err.println(buf.toString());
+	}
+
+	/**
+	 * 生成SELECTBYID记录
+	 */
+	private void grenerateGetModelById() {
+		StringBuilder buf = new StringBuilder();
+
+		buf.append("\t").append("<select id=\"get").append(modelName).append("ById\"")
+				.append(" parameterType=\"string\" ").append(" resultMap=\"").append(modelName).append("Result\" >")
+				.append("\n");
+		buf.append("\t\t").append(" SELECT T.* \n\t\t\tFROM ").append(tableName).append(" T where T.FID=#{id}")
+				.append("\n");
+		buf.append("\t</select>");
+		System.err.println(buf.toString());
+	}
+
+	@SuppressWarnings("static-access")
+	public void grenerateCreateTableSql(){
+		StringBuilder buf = new StringBuilder();
+		buf.append("create table ")
+			.append(" T_").append(this.projectName).append("_").append(this.modelName);
+		buf.append("(");
+		buf.append("FID VARCHAR(44),FCU VARCHAR(44),\n");
+		Field[] ary = className.getDeclaredFields();
+		for(int i=0;i<ary.length;i++){
+			Field field=ary[i];
+			if( field.getType().equals(List.class)  || field.getType().equals(ArrayList.class) || field.getType().equals(Map.class)){
+				continue;
+			}
+			buf.append("\t").
+			
+			append(this.getColumnName(field)).append(" ").append(getCreateJdbcType(field)).append(",\n");
+		}
+		StringBuilder outBuf = new StringBuilder(buf.substring(0, buf.length()-2));
+		outBuf.append(")");
+		outBuf.append(";");
+		outBuf.append("ALTER TABLE `")
+		.append("T_").append(this.projectName).append("_").append(this.modelName)
+		.append("` MODIFY COLUMN `FID`  varchar(44) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL FIRST ,ADD PRIMARY KEY (`FID`);");
+		System.err.println(outBuf.toString());
+	}
+
+	private String getFieldName(Field field) {
+		if (field == null) {
+			return "";
+		} else if (field.getType().toString().indexOf(".enums.") > 0) {
+			return field.getName();
+		} else if (field.getType().equals(BigDecimal.class) || field.getType().equals(int.class)
+				|| field.getType().equals(String.class) || field.getType().equals(Integer.class)
+				|| field.getType().equals(Boolean.class) || field.getType().equals(boolean.class)
+				|| field.getType().equals(Double.class) || field.getType().equals(double.class)
+				|| field.getType().equals(Long.class) || field.getType().equals(long.class)
+				|| field.getType().equals(Date.class)) {
+			return field.getName();
+		} else {
+			return field.getName() + ".id";
+		}
+	}
+
+	private String getColumnName(Field field) {
+		if (field == null) {
+			return "";
+		} else if (field.getType().toString().indexOf(".enums.") > 0) {
+			return "F" + field.getName();
+		} else if (field.getType().equals(BigDecimal.class) || field.getType().equals(int.class)
+				|| field.getType().equals(String.class) || field.getType().equals(Integer.class)
+				|| field.getType().equals(Boolean.class) || field.getType().equals(boolean.class)
+				|| field.getType().equals(Double.class) || field.getType().equals(double.class)
+				|| field.getType().equals(Long.class) || field.getType().equals(long.class)
+				|| field.getType().equals(Date.class)) {
+			return "F" + field.getName();
+		} else {
+			return "FK" + field.getName() + "ID";
+		}
+	}
+
+	/**
+	 * 取JDBCTYPE类型
+	 * 
+	 * @param field
+	 * @return
+	 */
+	private String getJdbcType(Field field) {
+		if (field == null) {
+			return "VARCHAR";
+		}
+		String jdbcType = "VARCHAR";// 默认
+		if (field.getType().equals(BigDecimal.class)) {
+			jdbcType = "DOUBLE";
+		} else if (field.getType().equals(Date.class)) {
+			jdbcType = "datetime";
+		} else if (field.getType().equals(int.class) || field.getType().equals(Integer.class)) {
+			jdbcType = "INTEGER";
+		} else {
+			jdbcType = "VARCHAR";
+		}
+		return jdbcType;
+	}
+
+	private String getCreateJdbcType(Field field) {
+		if (field == null) {
+			return "varchar(44)";
+		}
+		String jdbcType = "varchar(44)";// 默认
+		if (field.getType().equals(BigDecimal.class) || field.getType().equals(double.class) || field.getType().equals(Double.class)) {
+			jdbcType = "double";
+		} else if (field.getType().equals(Date.class)) {
+			jdbcType = "datetime";
+		} else if (field.getType().equals(int.class) || field.getType().equals(Integer.class)) {
+			jdbcType = "int";
+		}else if(field.getType().equals(long.class) || field.getType().equals(Long.class)){
+			jdbcType = "double";
+		} else {
+			jdbcType = "varchar(50)";
+		}
+		return jdbcType;
+	}
+
+	/*
+	 * 取得结果集
+	 */
+	private ResultSet getResult() {
+		Connection cn = null;
+		try {
+			Class.forName("org.gjt.mm.mysql.Driver");
+			cn = DriverManager.getConnection("jdbc:mysql://rdsy7yz29kap64v3ub54o.mysql.rds.aliyuncs.com/xinyu?useUnicode=true&characterEncoding=utf-8",
+					"store", "store888");
+			Statement st = cn.createStatement();
+			ResultSet rs = st.executeQuery("select * from " + tableName);
+			return rs;
+		} catch (Exception e) {
+			//e.printStackTrace();
+		}
+		return null;
+	}
+	
+	private void saveFile(String path,String content) {
+		FileOutputStream fop = null;
+		File file;
+		try {
+			  
+			    file = new File(path);
+			   fop = new FileOutputStream(file);
+			  
+			   // if file doesnt exists, then create it
+			   if (!file.exists()) {
+			    file.createNewFile();
+			   }
+			  
+			   // get the content in bytes
+			   byte[] contentInBytes = content.getBytes();
+			  
+			   fop.write(contentInBytes);
+			   fop.flush();
+			   fop.close();
+			   System.out.println(path);
+			  } catch (IOException e) {
+			   e.printStackTrace();
+			  } finally {
+			   try {
+			    if (fop != null) {
+			     fop.close();
+			    }
+			   } catch (IOException e) {
+			    e.printStackTrace();
+			   }
+			  }
+       
+    }
+}

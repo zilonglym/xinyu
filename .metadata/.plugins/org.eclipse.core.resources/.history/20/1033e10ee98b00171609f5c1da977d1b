@@ -1,0 +1,396 @@
+package com.graby.store.admin.web.qm;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.graby.store.admin.util.BaseResource;
+import com.graby.store.admin.util.MemcachedManager;
+import com.graby.store.admin.util.qm.XmlUtil;
+import com.graby.store.entity.ShipOrder;
+import com.graby.store.entity.ShipOrderDetail;
+import com.graby.store.entity.SystemItem;
+import com.graby.store.entity.SystemOperatorRecord;
+import com.graby.store.entity.User;
+import com.graby.store.entity.enums.OperatorModel;
+import com.graby.store.entity.enums.StoreSystemItemEnums;
+import com.graby.store.entity.enums.qm.XmlEnum;
+import com.graby.store.remote.InventoryRemote;
+import com.graby.store.remote.QmSyncRemote;
+import com.graby.store.remote.ShipOrderRemote;
+import com.graby.store.remote.SystemItemRemote;
+import com.graby.store.remote.SystemOperatorRecordRemote;
+import com.graby.store.remote.UserRemote;
+import com.graby.store.service.inventory.Accounts;
+import com.graby.store.service.qm.QmMethodInterface;
+
+
+/**
+ * 奇门接口入口
+ * 
+ * @author 杨敏
+ *
+ */
+@Controller
+public class QmWebController extends QMBaseController{
+
+	public static final Logger logger = Logger.getLogger(QmWebController.class);
+	
+	@Autowired
+	private QmSyncRemote qmSyncRemote;
+	@Autowired
+	private ShipOrderRemote shipOrderRemote;
+	@Autowired
+	private SystemItemRemote sysRemote;
+	@Autowired
+	private UserRemote userRemote;
+	@Autowired
+	private SystemOperatorRecordRemote operatorRemote;
+	@Autowired
+	private InventoryRemote inventoryRemote;
+
+	/**
+	 * 奇门调用WMS接口入口
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "qm_index", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String index(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String method = request.getParameter("method");// 调用API的方法名，根据相就在的method来调用不同的方法。
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		InputStreamReader reader = new InputStreamReader(request.getInputStream(), "UTF8");
+		char[] buff = new char[1024];
+		int length = 0;
+		StringBuilder requestStr=new StringBuilder();
+		while ((length = reader.read(buff)) != -1) {
+			String x = new String(buff, 0, length);
+			requestStr.append(x);
+		}
+		String xmlStr = requestStr.toString();
+		logger.info("奇门调用参数 qm_index:"+xmlStr);
+		String msg = "";
+		String resultStr="";
+		try {
+			if (method == null || method.length() == 0) {
+				resultMap.put("flag", "failure");
+				resultMap.put("message", "method参数为空!");
+				String resultXml = XmlUtil.converterPayPalm(resultMap, XmlEnum.RESPONSE);
+				return resultXml;
+			}
+			
+			if (method.equals("items.synchronize")) {
+				msg = this.qmSyncRemote.itemBatchSync(xmlStr);
+			}else if (method.equals("singleitem.synchronize")) {// 商品同步 OK
+				msg = this.qmSyncRemote.itemSync(xmlStr);
+			} else if (method.equals("combineitem.synchronize")) {// 组合商品
+				msg = this.qmSyncRemote.combineitem(xmlStr);
+			} else if (method.equals("entryorder.create")) {// 入库单创建 OK
+				msg = this.qmSyncRemote.entryorder(xmlStr);
+			} else if (method.equals("returnorder.create")) {// 退货入库单 ok
+				msg = this.qmSyncRemote.returnorder(xmlStr);
+			} else if (method.equals("stockout.create")) {// 出库单创建 OK
+				msg = this.qmSyncRemote.stockout(xmlStr);
+			} else if (method.equals("deliveryorder.create")) {// 发货单创建 OK
+				msg = this.qmSyncRemote.deliveryorder(xmlStr);
+			} else if (method.equals("deliveryorder.query")) {// 发货单查询接口
+				resultStr=this.qmSyncRemote.deliveryQuery(xmlStr);
+			} else if (method.equals("orderprocess.query")) {// 订单查询接口
+				resultStr=this.qmSyncRemote.orderprocessQuery(xmlStr);
+			}else if(method.equals("order.cancel")){//单据取消接口
+				logger.debug("单据取消:"+xmlStr);
+				msg=this.qmSyncRemote.orderCancel(xmlStr);
+				logger.debug("单据取消返回:"+msg);
+			}else if(method.equals("inventory.query")){//库存查询接口
+				resultStr=this.qmSyncRemote.inventoryQuery(xmlStr);
+			}else if(method.equals("storeprocess.create")){//仓内加工单创建接口 OK
+				msg=this.qmSyncRemote.storeprocessCreate(xmlStr);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultMap.put("flag", "failure");
+			resultMap.put("message", msg);
+			resultMap.put("itemId", "");
+			msg = XmlUtil.converterPayPalm(resultMap, XmlEnum.RESPONSE);
+		}
+		return msg;
+	}
+	
+	/**
+	 *跳转发货确认界面
+	 * @return
+	 */
+	@RequestMapping(value="/store/shipOrder/toConfirmDelivery/{id}")
+	public String confirmDeliveryOrder(@PathVariable int id,HttpServletRequest request,ModelMap model){
+		ShipOrder shipOrder = shipOrderRemote.getShipOrderInfo(Long.valueOf(id));
+		model.addAttribute("order", shipOrder);
+		List<SystemItem> itemList=this.sysRemote.findSystemItemByType(StoreSystemItemEnums.LOGISTICS.getKey());
+		model.put("logistList", itemList);
+		return "store/list/deliveryOrderDetail";
+	}
+	
+	/**
+	 *跳转发货确认界面
+	 * @return
+	 */
+	@RequestMapping(value="/store/shipOrder/toItemLack/{id}")
+	public String toItemLack(@PathVariable int id,HttpServletRequest request,ModelMap model){
+		ShipOrder shipOrder = shipOrderRemote.getShipOrderInfo(Long.valueOf(id));
+		model.addAttribute("order", shipOrder);
+		List<SystemItem> itemList=this.sysRemote.findSystemItemByType(StoreSystemItemEnums.LOGISTICS.getKey());
+		List<ShipOrderDetail> detailList=new ArrayList<ShipOrderDetail>();
+		for(int i=0;shipOrder.getDetails()!=null && i<shipOrder.getDetails().size();i++){
+			ShipOrderDetail detail=shipOrder.getDetails().get(i);
+			if(detail.getNum()<=detail.getActualnum()){
+				continue;
+			}
+			detailList.add(detail);
+		}
+		model.put("logistList", itemList);
+		model.put("detailList", detailList);
+		return "store/list/itemLackDetail";
+	}
+	
+	/**
+	 * 批量发货确认
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/store/shipOrder/submitButchDeliverOrder")
+	public  Map<String,Object> batchSubmitDeliverOrder(HttpServletRequest request){
+		logger.error("订单确认发货开始...");
+		MemcachedManager manager=new MemcachedManager();
+		Date date=new Date();
+		String ids=request.getParameter("ids");
+		String[] idAry=ids.split(",");
+		Map<String,Object> resultMap=new HashMap<String, Object>();
+		List<Map<String,Object>> memcachedMapList=new ArrayList<Map<String,Object>>();
+		String xmlStr="";
+		try{
+			for(int i=0;i<idAry.length;i++){
+				ShipOrder shipOrder = shipOrderRemote.getShipOrderInfo(Long.valueOf(idAry[i]));
+				//start modify  shark_cj   2017-07-17   订单已完成状态 跳过 提交 此操作
+				String status = shipOrder.getStatus();
+			
+				//end modify 
+				User user=this.userRemote.getUser(shipOrder.getCreateUser().getId());
+				Map<String,Object> orderMap=new HashMap<String, Object>();
+				/**
+				 * 判断当前单据是否有拆过单,如果拆过单，则调用buildOrderDetailInfo方法重构明细
+				 */
+				if(shipOrder!=null && shipOrder.getSourcePlatformCode().indexOf("split")>=0){
+					buildOrderDetailInfo(shipOrder);
+				}
+				Map<String,Object> memcachedMap=new HashMap<String, Object>();
+				xmlStr=buildDeliverOrderInfo(orderMap, shipOrder,user,memcachedMap);
+				
+				
+				/**
+				 * 写缓存
+				 */
+				logger.error("订单缓存"+shipOrder.getExpressOrderno());
+				this.saveMemcached(shipOrder.getExpressOrderno().trim(), memcachedMap,manager);
+				if(ShipOrder.EntryOrderStatus.WMS_FINISH.equals(status)){//订单状态仓库方完成确认 
+					continue;
+				}
+				
+				String  retStr  = qmSyncRemote.submitQm(xmlStr, QmMethodInterface.METHOD_DELIVERORDER,user.getOwnerCode());
+				SystemOperatorRecord record=new SystemOperatorRecord();
+				record.setOperator(BaseResource.getCurrentUser().getId().intValue());
+				record.setDescription(xmlStr);
+				record.setTime(new Date());
+				record.setIpaddr(shipOrder.getExpressOrderno());
+				record.setUser(shipOrder.getCreateUser()!=null ?shipOrder.getCreateUser().getId().intValue():0);
+				record.setOperatorModel(OperatorModel.QM_TRADE_CONFIRM);
+				logger.info("DELIVERORDER_XMLSTR:"+retStr);
+				//请求成功
+				if(retStr.indexOf("success")!=-1){
+					/**
+					 * 发货成功进行操作
+					 * 1.运单号之类的数据进行返回
+					 * 2.单据的状态进行改写
+					 * 3.发货数据保存
+					 * 暂时不反写操作,运单号在打面单的时候已写入数据库，这里不能修改  2015-10-12
+					 */
+					Map<String,Object> params=new HashMap<String, Object>();
+					params.put("id", shipOrder.getId());
+					params.put("status", ShipOrder.EntryOrderStatus.WMS_FINISH);
+					params.put("lastUpdateBy", BaseResource.getCurrentUser().getId());
+					this.shipOrderRemote.updateShipOrderStatus(params);
+					this.itemInventoryHandle(shipOrder);
+					
+					record.setStatus("Y");
+				}else{
+//					logger.error("确认不成功写缓存!");
+//					this.saveMemcached(shipOrder.getExpressOrderno(), memcachedMap,manager);
+					record.setStatus("N");
+					resultMap.put("ret", 0);
+				}
+				this.operatorRemote.insert(record);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			logger.error("发货确认异常！"+e.getMessage());
+			System.err.println(e.getMessage());
+			resultMap.put("ret", 0);
+			return resultMap;
+		}
+		//return "redirect:/store/shipOrder/deliveryorderList";
+		resultMap.put("ret", 1);
+		logger.error("订单确认发货完成:"+(new Date().getTime()-date.getTime())+"|"+idAry.length+"|"+resultMap);
+		return resultMap;
+	}
+	
+	
+	/**
+	 * 确认发货修改库存
+	 * @param shipOrder
+	 */
+	private void itemInventoryHandle(ShipOrder shipOrder){
+		List<ShipOrderDetail> detailList=this.shipOrderRemote.getShipOrderDetailByOrderId(shipOrder.getId());
+		for(ShipOrderDetail detail :detailList){
+			 logger.debug("qm item inventory:"+detail.getItem().getId()+"|"+detail.getNum());
+			 this.inventoryRemote.addInventory(Long.valueOf(BaseResource.getCurrentCentroId()), shipOrder.getCreateUser().getId(), detail.getItem().getId(), -detail.getNum(), Accounts.CODE_SALEABLE, "确认出库", shipOrder.getExpressOrderno());
+			 this.inventoryRemote.updateUserNum(Long.valueOf(BaseResource.getCurrentCentroId()),  detail.getItem().getId(), Accounts.CODE_SALEABLE, -detail.getNum() );
+		}
+		//qmInventoryService.addInventory(Long.valueOf(stock), createUser.getId(), item.getId(), -detail.getNum(), Accounts.CODE_SALEABLE, "扫描出库", order.getExpressOrderno());
+		//this.inventoryService.updateUserNum(Long.valueOf(stock),  item.getId(), Accounts.CODE_SALEABLE, -detail.getNum() );
+	}
+	
+	/**
+	 * 提交发货确认信息
+	 * 单个确认发货信息，在弄缓存时停止使用
+	 * @return
+	 */
+	@RequestMapping(value="/store/shipOrder/submitDeliverOrder/{id}")
+	public String submitDeliverOrder(@PathVariable int id,HttpServletRequest request,ModelMap model){
+		try{
+		ShipOrder shipOrder = shipOrderRemote.getShipOrderInfo(Long.valueOf(id));
+		User user=this.userRemote.getUser(shipOrder.getCreateUser().getId());
+		Map<String,Object> orderMap=new HashMap<String, Object>();
+		/**
+		 * 判断当前单据是否有过拆单,如果有拆过单则调用buildOrderDetailInfo方法重构明细
+		 */
+		if(shipOrder!=null && shipOrder.getSourcePlatformCode().indexOf("split")>=0){
+			//有过拆单，这里就要进行组合
+			buildOrderDetailInfo(shipOrder);
+		}
+		Map<String,Object> memcachedMap=new HashMap<String, Object>();
+		String xmlStr = buildDeliverOrderInfo(orderMap, shipOrder,user,memcachedMap);
+		logger.debug("xmlStr:"+xmlStr);
+		String  retStr  = qmSyncRemote.submitQm(xmlStr, QmMethodInterface.METHOD_DELIVERORDER,user.getOwnerCode());
+		logger.debug("retStr:"+retStr);
+		//请求成功
+		if(retStr.indexOf("success")!=-1){
+			/**
+			 * 发货成功进行操作
+			 * 1.运单号之类的数据进行返回
+			 * 2.单据的状态进行改写
+			 * 3.发货数据保存
+			 * 暂时不反写操作,运单号在打面单的时候已写入数据库，这里不能修改  2015-10-12
+			 */
+			Map<String,Object> params=new HashMap<String, Object>();
+			params.put("id", shipOrder.getId());
+			params.put("status", ShipOrder.EntryOrderStatus.WMS_FINISH);
+			this.shipOrderRemote.updateShipOrderStatus(params);
+			this.itemInventoryHandle(shipOrder);
+		}
+		}catch(Exception  e){
+			System.err.println(e.getMessage());
+			e.printStackTrace();
+		}
+		//跳转回发货确表
+		return "redirect:/store/shipOrder/deliveryorderList";
+	}
+
+	
+	//itemlack
+	@RequestMapping(value="/store/shipOrder/itemLack/{id}")
+	public String itemLack(@PathVariable int id,HttpServletRequest request,ModelMap model){
+		ShipOrder shipOrder = shipOrderRemote.getShipOrderInfo(Long.valueOf(id));
+		User user=this.userRemote.getUser(shipOrder.getCreateUser().getId());
+		//
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		Map<String,Object> resultMap=new HashMap<String,Object>();
+		resultMap.put("warehouseCode", QmMethodInterface.warehouseCode);
+		resultMap.put("deliveryOrderCode", shipOrder.getOrderno());
+		resultMap.put("deliveryOrderId", shipOrder.getId());
+		resultMap.put("createTime", sdf.format(new Date()));
+		resultMap.put("outBizCode", shipOrder.getOrderno());
+		
+		String[] itemIdAry = request.getParameterValues("itemId");
+		String[] itemAry = request.getParameterValues("item");
+		String[] numsPar = request.getParameterValues("num");
+		String[] detailAry=request.getParameterValues("detailId");
+		String[] reasonAry=request.getParameterValues("reason");
+		
+		List<Map<String,Object>> itemList=new ArrayList<Map<String,Object>>();
+		Map<String,Object> itemMap=new HashMap<String,Object>();
+		itemMap.put("item", itemList);
+		resultMap.put("items", itemMap);
+		for(int i=0;i<numsPar.length;i++){
+			String num=numsPar[i];
+			if(num==null || num.equals("0") || num.length()==0){
+				continue;
+			}
+			String detailId=detailAry[i];
+			Map<String,Object> params=new HashMap<String,Object>();
+			params.put("id", detailId);
+			ShipOrderDetail detail=this.shipOrderRemote.getShipOrderDetail(params); 
+			Map<String,Object> item=new HashMap<String,Object>();
+			item.put("itemId", itemIdAry[i]);
+			item.put("itemCode", itemAry[i]);
+			item.put("planQty", detail.getNum());
+			item.put("lackQty", num);
+			item.put("reason", reasonAry[i]);
+			itemList.add(item);
+		}
+		
+		String xmlStr = XmlUtil.converterPayPalm(resultMap, XmlEnum.REQUEST);
+		
+		logger.debug("xmlStr:"+xmlStr);
+		String  retStr  = qmSyncRemote.submitQm(xmlStr, QmMethodInterface.METHOD_ITEMLACK,user.getOwnerCode());
+		logger.debug("retStr:"+retStr);
+		if(retStr.indexOf("success")!=-1){
+			//转向至发送成功页面
+		}
+		return confirmDeliveryOrder(id, request, model);
+	}
+	
+
+	
+	/**
+	 * 手动调用生成订单
+	 * @param request
+	 */
+	@RequestMapping(value="qmHelp/cts")
+	public void helpTradeByShipOrder(HttpServletRequest request){
+		String id=request.getParameter("id");
+		this.qmSyncRemote.createTradeByShipOrder(Long.valueOf(id));
+	}
+	
+}
+
+
+

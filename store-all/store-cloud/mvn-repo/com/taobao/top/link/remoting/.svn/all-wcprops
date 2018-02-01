@@ -1,0 +1,281 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting
+END
+MethodCallWrapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/MethodCallWrapper.class
+END
+DefaultSerializer.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/DefaultSerializer.class
+END
+SpringServerBean.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/SpringServerBean.class
+END
+MethodReturn.class
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/MethodReturn.class
+END
+MethodCallContext.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/MethodCallContext.class
+END
+DefaultMethodCallProcessor.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/DefaultMethodCallProcessor.class
+END
+CrossLanguageJsonSerializer.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/CrossLanguageJsonSerializer.class
+END
+NettyRemotingDecoder$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/NettyRemotingDecoder$1.class
+END
+Message.class
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/Message.class
+END
+SpringRemotingServerChannelHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/SpringRemotingServerChannelHandler.class
+END
+ServiceBean.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/ServiceBean.class
+END
+DynamicProxy.class
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/DynamicProxy.class
+END
+RemotingServerChannelHandler$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/RemotingServerChannelHandler$1.class
+END
+RemotingServerChannelHandler$2.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/RemotingServerChannelHandler$2.class
+END
+NettyRemotingClientChannelSharedSelector.class
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/NettyRemotingClientChannelSharedSelector.class
+END
+HandshakerBean.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/HandshakerBean.class
+END
+SpringMethodCallProcessor.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/SpringMethodCallProcessor.class
+END
+NettyRemotingTcpServerChannel.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/NettyRemotingTcpServerChannel.class
+END
+SynchronizedRemotingCallback.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/SynchronizedRemotingCallback.class
+END
+RemotingCallback.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/RemotingCallback.class
+END
+NettyRemotingDecoder$State.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/NettyRemotingDecoder$State.class
+END
+RemotingException.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/RemotingException.class
+END
+SerializationFactory.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/SerializationFactory.class
+END
+CrossLanguageJsonSerializer$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/CrossLanguageJsonSerializer$1.class
+END
+SerializerUtil.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/SerializerUtil.class
+END
+MethodCallContextBean.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/MethodCallContextBean.class
+END
+NettyRemotingEncoder.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/NettyRemotingEncoder.class
+END
+DefaultSerializationFactory.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/DefaultSerializationFactory.class
+END
+RemotingClientChannelHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/RemotingClientChannelHandler.class
+END
+DynamicProxy$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/DynamicProxy$1.class
+END
+SpringServiceProxyBean.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/SpringServiceProxyBean.class
+END
+RemotingConfiguration.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/RemotingConfiguration.class
+END
+MethodCallProcessor.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/MethodCallProcessor.class
+END
+MethodCall.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/MethodCall.class
+END
+MethodReturnWrapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/MethodReturnWrapper.class
+END
+FormatterException.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/FormatterException.class
+END
+CrossLanguageSerializationFactory.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/CrossLanguageSerializationFactory.class
+END
+NettyRemotingDecoder.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/NettyRemotingDecoder.class
+END
+SpringRemotingServerChannelHandler$Context.class
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/SpringRemotingServerChannelHandler$Context.class
+END
+HandshakingHeadersBean.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/HandshakingHeadersBean.class
+END
+RemotingServerChannelHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/RemotingServerChannelHandler.class
+END
+ChannelContextBean.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/ChannelContextBean.class
+END
+RemotingService.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/RemotingService.class
+END
+NettyRemotingProtocolHandle.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/NettyRemotingProtocolHandle.class
+END
+DefaultRemotingServerChannelHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/DefaultRemotingServerChannelHandler.class
+END
+Serializer.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/top/link/remoting/Serializer.class
+END

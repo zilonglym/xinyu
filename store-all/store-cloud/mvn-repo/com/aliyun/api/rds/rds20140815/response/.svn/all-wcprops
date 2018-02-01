@@ -1,0 +1,323 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response
+END
+ModifyBackupPolicyResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/ModifyBackupPolicyResponse.class
+END
+DescribeDBInstancesResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeDBInstancesResponse.class
+END
+DescribeBinlogFilesResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeBinlogFilesResponse.class
+END
+DescribeDBInstanceAttributeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeDBInstanceAttributeResponse.class
+END
+GrantAccountPrivilegeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/GrantAccountPrivilegeResponse.class
+END
+DescribeOptimizeAdviceOnMissPKResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeOptimizeAdviceOnMissPKResponse.class
+END
+CreateUploadPathForSQLServerResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/CreateUploadPathForSQLServerResponse.class
+END
+DescribeParametersResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeParametersResponse.class
+END
+DescribeOptimizeAdviceOnBigTableResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeOptimizeAdviceOnBigTableResponse.class
+END
+DescribeRegionsResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeRegionsResponse.class
+END
+ModifyAccountDescriptionResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/ModifyAccountDescriptionResponse.class
+END
+DescribeSlowLogRecordsResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeSlowLogRecordsResponse.class
+END
+DescribeImportsForSQLServerResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeImportsForSQLServerResponse.class
+END
+DescribeResourceUsageResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeResourceUsageResponse.class
+END
+UpgradeDBInstanceEngineVersionResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/UpgradeDBInstanceEngineVersionResponse.class
+END
+PurgeDBInstanceLogResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/PurgeDBInstanceLogResponse.class
+END
+RevokeAccountPrivilegeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/RevokeAccountPrivilegeResponse.class
+END
+DescribeOptimizeAdviceByDBAResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeOptimizeAdviceByDBAResponse.class
+END
+DescribeErrorLogsResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeErrorLogsResponse.class
+END
+DeleteAccountResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DeleteAccountResponse.class
+END
+RestartDBInstanceResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/RestartDBInstanceResponse.class
+END
+ImportDatabaseBetweenInstancesResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/ImportDatabaseBetweenInstancesResponse.class
+END
+DescribeFilesForSQLServerResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeFilesForSQLServerResponse.class
+END
+ImportDataForSQLServerResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/ImportDataForSQLServerResponse.class
+END
+ModifyDBInstanceMaintainTimeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/ModifyDBInstanceMaintainTimeResponse.class
+END
+ResetAccountPasswordResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/ResetAccountPasswordResponse.class
+END
+CreateTempDBInstanceResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/CreateTempDBInstanceResponse.class
+END
+DescribeSQLLogRecordsResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeSQLLogRecordsResponse.class
+END
+DeleteDatabaseResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DeleteDatabaseResponse.class
+END
+CreateDatabaseResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/CreateDatabaseResponse.class
+END
+ModifySecurityIpsResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/ModifySecurityIpsResponse.class
+END
+DeleteDBInstanceResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DeleteDBInstanceResponse.class
+END
+DescribeDBInstancePerformanceResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeDBInstancePerformanceResponse.class
+END
+DescribeOptimizeAdviceOnMissIndexResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeOptimizeAdviceOnMissIndexResponse.class
+END
+DescribeOptimizeAdviceOnStorageResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeOptimizeAdviceOnStorageResponse.class
+END
+DescribeParameterTemplatesResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeParameterTemplatesResponse.class
+END
+ModifyDBDescriptionResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/ModifyDBDescriptionResponse.class
+END
+ModifyPostpaidDBInstanceSpecResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/ModifyPostpaidDBInstanceSpecResponse.class
+END
+CreatePostpaidDBInstanceResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/CreatePostpaidDBInstanceResponse.class
+END
+SwitchDBInstanceNetTypeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/SwitchDBInstanceNetTypeResponse.class
+END
+DescribeSlowLogsResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeSlowLogsResponse.class
+END
+DescribeOptimizeAdviceOnExcessIndexResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeOptimizeAdviceOnExcessIndexResponse.class
+END
+CreateAccountResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/CreateAccountResponse.class
+END
+CancelImportResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/CancelImportResponse.class
+END
+DescribeAccountsResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeAccountsResponse.class
+END
+DescribeSQLLogReportsResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeSQLLogReportsResponse.class
+END
+ModifyDBInstanceDescriptionResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/ModifyDBInstanceDescriptionResponse.class
+END
+DescribeBackupPolicyResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeBackupPolicyResponse.class
+END
+CreateDBInstanceforFirstPayResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/CreateDBInstanceforFirstPayResponse.class
+END
+ModifyParameterResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/ModifyParameterResponse.class
+END
+DescribeDatabasesResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeDatabasesResponse.class
+END
+DescribeBackupsResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/DescribeBackupsResponse.class
+END
+CreateBackupResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/aliyun/api/rds/rds20140815/response/CreateBackupResponse.class
+END

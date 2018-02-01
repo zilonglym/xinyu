@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.order.WmsStockInOrderItemDao">
+	<resultMap id="WmsStockInOrderItemResult" type="com.xinyu.model.order.child.WmsStockInOrderItem" >
+	<result property="id" column="FID" />
+	<result property="stockInOrder.id" column="FKstockInOrderID" />
+	<result property="orderItemId" column="ForderItemId" />
+	<result property="orderSourceCode" column="ForderSourceCode" />
+	<result property="subSourceCode" column="FsubSourceCode" />
+	<result property="ownerUserId" column="FownerUserId" />
+	<result property="item.id" column="FKitemID" />
+	<result property="itemName" column="FitemName" />
+	<result property="itemCode" column="FitemCode" />
+	<result property="barCode" column="FbarCode" />
+	<result property="inventoryType" column="FinventoryType" />
+	<result property="itemQuantity" column="FitemQuantity" />
+	<result property="itemQuantityNormal" column="FitemQuantityNormal" />
+	<result property="itemQuantityDefective" column="FitemQuantityDefective" />
+	<result property="itemVersion" column="FitemVersion" />
+	<result property="batchCode" column="FbatchCode" />
+	<result property="dueDate" column="FdueDate" />
+	<result property="produceDate" column="FproduceDate" />
+	<result property="produceCode" column="FproduceCode" />
+	<result property="purchaseOrderCode" column="FpurchaseOrderCode" />
+	<result property="taxRate" column="FtaxRate" />
+	<result property="purchasePrice" column="FpurchasePrice" />
+	<result property="itemPrice" column="FitemPrice" />
+	<result property="batchRemark" column="FbatchRemark" />
+</resultMap>
+	<select id="getWmsStockInOrderItemById" parameterType="string"  resultMap="WmsStockInOrderItemResult" >
+		 SELECT T.* 
+			FROM T_xinyu_WmsStockInOrderItem T where T.FID=#{id}
+	</select>
+	
+	<select id="getWmsStockInOrderItemByList" parameterType="map"  resultMap="WmsStockInOrderItemResult">
+		 SELECT T.* 
+			FROM T_xinyu_WmsStockInOrderItem T 
+			<where>
+			    1 = 1
+			    <if  test="stockInOrderId!=null  and  stockInOrderId!=''">
+			        and     T.FKstockInOrderID   =  #{stockInOrderId}
+			    </if>
+			</where>	
+	</select>
+	
+<insert id="insertWmsStockInOrderItem" parameterType="com.xinyu.model.order.child.WmsStockInOrderItem" >
+insert into T_xinyu_WmsStockInOrderItem(FitemQuantityDefective,FitemQuantityNormal,FID,FKstockInOrderID,ForderItemId,ForderSourceCode,FsubSourceCode,FownerUserId,FKitemID,FitemName,FitemCode,FbarCode,FinventoryType,FitemQuantity,FitemVersion,FbatchCode,FdueDate,FproduceDate,FproduceCode,FpurchaseOrderCode,FtaxRate,FpurchasePrice,FitemPrice,FbatchRemark)
+VALUES(#{itemQuantityDefective,jdbcType=INTEGER},#{itemQuantityNormal,jdbcType=INTEGER},#{id},#{stockInOrder.id,jdbcType=VARCHAR},#{orderItemId,jdbcType=VARCHAR},#{orderSourceCode,jdbcType=VARCHAR},#{subSourceCode,jdbcType=VARCHAR},#{ownerUserId,jdbcType=VARCHAR},#{item.id,jdbcType=VARCHAR},#{itemName,jdbcType=VARCHAR},#{itemCode,jdbcType=VARCHAR},#{barCode,jdbcType=VARCHAR},#{inventoryType,jdbcType=VARCHAR},#{itemQuantity,jdbcType=INTEGER},#{itemVersion,jdbcType=INTEGER},#{batchCode,jdbcType=VARCHAR},#{dueDate},#{produceDate},#{produceCode,jdbcType=VARCHAR},#{purchaseOrderCode,jdbcType=VARCHAR},#{taxRate,jdbcType=VARCHAR},#{purchasePrice,jdbcType=VARCHAR},#{itemPrice,jdbcType=VARCHAR},#{batchRemark,jdbcType=VARCHAR})
+</insert>
+
+<update id="updateWmsStockInOrderItem" parameterType="com.xinyu.model.order.child.WmsStockInOrderItem" >
+	update T_xinyu_WmsStockInOrderItem
+	<set>
+		<if test="stockInOrder!=null and stockInOrder!=''">FKstockInOrderID=#{stockInOrder.id},</if>
+		<if test="orderItemId!=null and orderItemId!=''">ForderItemId=#{orderItemId},</if>
+		<if test="orderSourceCode!=null and orderSourceCode!=''">ForderSourceCode=#{orderSourceCode},</if>
+		<if test="subSourceCode!=null and subSourceCode!=''">FsubSourceCode=#{subSourceCode},</if>
+		<if test="ownerUserId!=null and ownerUserId!=''">FownerUserId=#{ownerUserId},</if>
+		<if test="item!=null and item!=''">FKitemID=#{item.id},</if>
+		<if test="itemName!=null and itemName!=''">FitemName=#{itemName},</if>
+		<if test="itemCode!=null and itemCode!=''">FitemCode=#{itemCode},</if>
+		<if test="barCode!=null and barCode!=''">FbarCode=#{barCode},</if>
+		<if test="inventoryType!=null and inventoryType!=''">FinventoryType=#{inventoryType},</if>
+		<if test="itemQuantity!=null and itemQuantity!=''">FitemQuantity=#{itemQuantity},</if>
+		<if test="itemVersion!=null and itemVersion!=''">FitemVersion=#{itemVersion},</if>
+		<if test="batchCode!=null and batchCode!=''">FbatchCode=#{batchCode},</if>
+		<if test="dueDate!=null and dueDate!=''">FdueDate=#{dueDate},</if>
+		<if test="produceDate!=null and produceDate!=''">FproduceDate=#{produceDate},</if>
+		<if test="produceCode!=null and produceCode!=''">FproduceCode=#{produceCode},</if>
+		<if test="purchaseOrderCode!=null and purchaseOrderCode!=''">FpurchaseOrderCode=#{purchaseOrderCode},</if>
+		<if test="taxRate!=null and taxRate!=''">FtaxRate=#{taxRate},</if>
+		<if test="purchasePrice!=null and purchasePrice!=''">FpurchasePrice=#{purchasePrice},</if>
+		<if test="itemPrice!=null and itemPrice!=''">FitemPrice=#{itemPrice},</if>
+		<if test="batchRemark!=null and batchRemark!=''">FbatchRemark=#{batchRemark},</if>
+		<if test="itemQuantityNormal!=null and itemQuantityNormal!=''">FitemQuantityNormal=#{itemQuantityNormal},</if>
+		<if test="itemQuantityDefective!=null and itemQuantityDefective!=''">FitemQuantityDefective=#{itemQuantityDefective},</if>
+	</set>
+	where fid=#{id}
+</update>
+
+<delete id="deleteWmsStockInOrderItemById"  parameterType="string"  >
+	delete  from T_xinyu_WmsStockInOrderItem where fid=#{id}
+</delete>
+
+
+</mapper> 

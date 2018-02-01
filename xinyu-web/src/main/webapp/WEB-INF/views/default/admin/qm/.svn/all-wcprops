@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/1663/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/qm
+END
+deliveryorderList.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/1663/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/qm/deliveryorderList.ftl
+END
+stockInOrderList.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/1335/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/qm/stockInOrderList.ftl
+END
+stockOutOrderList.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/1117/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/qm/stockOutOrderList.ftl
+END

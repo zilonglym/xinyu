@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.graby.store.dao.mybatis.LocalPlateDao">
+
+	
+	<resultMap id="localPlateEntity" type="com.graby.store.entity.local.LocalPlate">
+		<result property="id" column="id" />
+		<result property="boxOut.id" column="box_out_id" />
+		<result property="code" column="code" />
+		<result property="state" column="state" />
+		<result property="item" column="item_id" />
+		<result property="num" column="num" />
+		<result property="fastCode" column="fast_code" />
+		<result property="lastUpdateDate" column="last_update_date" />	
+		<result property="batchId" column="batch_id" />	
+	</resultMap>
+	<insert id="save" parameterType="LocalPlate" useGeneratedKeys="true" keyProperty="id">
+		insert into sc_local_plate (
+		box_out_id, code, state,item_id,num,last_update_date,batch_id)
+		values (
+		#{boxOut.id},#{code}, #{state},#{item},#{num},#{lastUpdateDate},#{batchId})
+	</insert>
+	<select id="findLocalPlateByBoxOutId"   resultType="localPlate" >
+	    select id,code, state, box_out_id as "boxOut.id",item_id  AS "item", num , last_update_date  as lastUpdateDate,fast_code as  fastCode from  sc_local_plate  t 
+	    <where>
+	        t.box_out_id  = #{0}  order by  code  asc
+	   </where>
+	     
+	</select>
+	
+	<select id="findLocalPlateByFastCode"   resultType="localPlate" >
+	    select t.id,t.code, t.state, t.box_out_id as "boxOut.id",t.item_id  AS "item", t.num , t.last_update_date  as lastUpdateDate  ,fast_code as  fastCode 
+	    from  sc_local_plate  t 
+	    <where>
+	        t.fast_code  = #{0} 
+	   </where>	     
+	</select>
+	
+		<select id="findLocalPlateByBatchId"   resultType="localPlate" >
+	    select t.id,t.code, t.state, t.box_out_id as "boxOut.id",t.item_id  AS "item", t.num , t.last_update_date  as lastUpdateDate,t.batch_id  
+	    from  sc_local_plate  t 
+	    <where>
+	        t.batch_id  = #{0} 
+	   </where>	     
+	</select>
+	
+	<select id="findLocalPlate"   resultType="localPlate" >
+	    select id,code, state, box_out_id as "boxOut.id",item_id  AS "item", num , last_update_date  as lastUpdateDate, batch_id as batchId  from  sc_local_plate  t 
+	    <where>
+	        t.id  = #{0} 
+	   </where>
+	</select>
+	
+	<select id="findLocalPlateByItemId"   resultType="localPlate" >
+	    select id,code, state, box_out_id as "boxOut.id",item_id  AS "item", num , last_update_date  as lastUpdateDate  from  sc_local_plate  t 
+	    <where>
+	        t.item_id  = #{0} 
+	   </where>
+	   	order by box_out_id  asc 
+	</select>
+	
+	<update id="updateLocalPlate">
+	    update  sc_local_plate  
+	    <set>
+			<if test="num != null and num!=0">
+				num=#{num},
+			</if>
+			<if test="itemId!=null and itemId!=''">
+				item_id=#{itemId},
+			</if>
+			<if test="batchId!=null and batchId!=''">
+				batch_id=#{batchId},
+			</if>
+			<if test="state!=null and state!=''">
+				state=#{state}, last_update_date = now(),
+			</if>
+			
+		</set>
+		where id=#{id}
+	</update>
+	
+	<!-- 下架 -->
+	<update id="downLocalPlate">
+	    update  sc_local_plate  
+	    <set>
+				num = null,
+				item_id = null,
+				state   = 0,
+				batch_id = null,
+				last_update_date = now()
+		</set>
+		where id=#{0} 
+	</update>
+	
+		<select id="findLocalPlateList" parameterType="map" resultType="map">
+		select a.id as "id",b.`row` as "row",b.box_out as "boxOut",b.floor as "floor",a.code as "code",c.shop_name as "shopName",
+			   c.`name` as "name",c.sku as "sku",c.bar_code as "barCode",a.last_update_date as "lastUpdate",a.num as "num",a.fast_code as "fastCode",
+			   d.order_code as "batchCode",d.birth_date as "birthDate"
+			from sc_local_plate a
+			left join sc_local_boxout b on a.box_out_id = b.id
+			left join sc_local_item c on a.item_id = c.id
+			left join sc_local_batch d on a.batch_id = d.id
+			where 1=1
+			<if test="shopId!=null and shopId!=''">
+				and c.shop_id = #{shopId}
+			</if>
+			<if test="row!=null and row!=''">
+				and b.row = #{row}
+			</if>
+			<if test="boxOut!=null and boxOut!=''">
+				and b.box_out = #{boxOut}
+			</if>
+			<if test="floor!=null and floor!=''">
+				and b.floor = #{floor}
+			</if>
+			<if test="code!=null and code!=''">
+				and a.code = #{code}
+			</if>
+			<if test="state!=null and state!=''">
+				and a.state = #{state}
+			</if>
+			<if test="isEmty == 'true'">
+				and a.state = '0'
+			</if>
+			<if test="q!=null and q!=''">
+				and (c.name like "%"#{q}"%" or c.bar_code = #{q} or d.order_code = #{q})
+			</if>
+			<if test="startTime!=null and endTime!=null and startTime!='' and endTime!=''">
+				<![CDATA[
+					and a.last_update_date > date_format(#{startTime},'%Y-%m-%d %H:%i')
+					and a.last_update_date <= date_format(#{endTime},'%Y-%m-%d %H:%i')
+				]]>
+			</if>
+			order by b.row,b.box_out,b.floor,a.code
+			limit #{start},#{offset}
+	</select>
+	
+	<select id="findPCLocalPlate" parameterType="map" resultType="map">
+		select a.id as "id",b.`row` as "row",b.box_out as "boxOut",b.floor as "floor",a.code as "code",c.shop_name as "shopName",
+			   c.`name` as "name",c.sku as "sku",c.bar_code as "barCode",a.last_update_date as "lastUpdate",a.num as "num",a.fast_code as "fastCode",
+			   d.order_code as "batchCode",d.birth_date as "birthDate"
+			from sc_local_plate a
+			left join sc_local_boxout b on a.box_out_id = b.id
+			left join sc_local_item c on a.item_id = c.id
+			left join sc_local_batch d on a.batch_id = d.id
+			where 1=1
+			<if test="q!=null and q!=''">
+				and c.name like "%"#{q}"%"
+			</if>
+			<if test="itemId!=null and itemId!=''">
+				and a.item_id = #{itemId}
+			</if>
+			order by d.birth_date asc
+			limit 0,20
+	</select>
+	
+	<select id="getTotal" parameterType="map" resultType="int">
+		select count(1)
+			from sc_local_plate a
+			left join sc_local_boxout b on a.box_out_id = b.id
+			left join sc_local_item c on a.item_id = c.id
+			left join sc_local_batch d on a.batch_id = d.id
+			where 1=1
+			<if test="shopId!=null and shopId!=''">
+				and c.shop_id = #{shopId}
+			</if>
+			<if test="row!=null and row!=''">
+				and b.row = #{row}
+			</if>
+			<if test="boxOut!=null and boxOut!=''">
+				and b.box_out = #{boxOut}
+			</if>
+			<if test="floor!=null and floor!=''">
+				and b.floor = #{floor}
+			</if>
+			<if test="code!=null and code!=''">
+				and a.code = #{code}
+			</if>
+			<if test="state!=null and state!=''">
+				and a.state = #{state}
+			</if>
+			<if test="isEmty == 'true'">
+				and a.state = '0'
+			</if>
+			<if test="q!=null and q!=''">
+				and (c.name like "%"#{q}"%" or c.bar_code = #{q} or d.order_code = #{q})
+			</if>
+			<if test="startTime!=null and endTime!=null and startTime!='' and endTime!=''">
+				<![CDATA[
+					and a.last_update_date > date_format(#{startTime},'%Y-%m-%d %H:%i')
+					and a.last_update_date <= date_format(#{endTime},'%Y-%m-%d %H:%i')
+				]]>
+			</if>
+	</select>
+	
+	<select id="findLocalReport" parameterType="map" resultType="map">
+		select c.shop_id as "shopId",c.shop_name as "shopName",count(1) as "bnum",sum(a.num) as "num"
+			from sc_local_plate a
+			left join sc_local_boxout b on a.box_out_id = b.id
+			left join sc_local_item c on a.item_id = c.id
+		where a.item_id is not null
+		<if test="startTime!=null and endTime!=null and startTime!='' and endTime!=''">
+			<![CDATA[
+				and a.last_update_date > date_format(#{startTime},'%Y-%m-%d %H:%i')
+				and a.last_update_date <= date_format(#{endTime},'%Y-%m-%d %H:%i')
+			]]>
+		</if>
+		<if test="shopId!=null and shopId!=''">
+			and c.shop_id = #{shopId}
+		</if>
+		<if test="q!=null and q!=''">
+			and (c.name like "%"#{q}"%" or c.bar_code = #{q})
+		</if>
+		group by c.shop_id
+		limit #{start},#{offset}
+	</select>
+	
+	<select id="findItemReport" parameterType="map" resultType="map">
+		select c.shop_name as "shopName",c.name as "itemName",c.sku as "sku",
+		c.bar_code as "barCode",sum(a.num) as "bnum"
+			from sc_local_plate a
+			inner join sc_local_item c on a.item_id = c.id
+		where a.item_id is not null
+		<if test="startTime!=null and endTime!=null and startTime!='' and endTime!=''">
+			<![CDATA[
+				and a.last_update_date > date_format(#{startTime},'%Y-%m-%d %H:%i')
+				and a.last_update_date <= date_format(#{endTime},'%Y-%m-%d %H:%i')
+			]]>
+		</if>
+		<if test="shopId!=null and shopId!=''">
+			and c.shop_id = #{shopId}
+		</if>
+		<if test="q!=null and q!=''">
+			and (c.name like "%"#{q}"%" or c.bar_code = #{q})
+		</if>
+		group by a.item_id
+	</select>
+	
+</mapper> 

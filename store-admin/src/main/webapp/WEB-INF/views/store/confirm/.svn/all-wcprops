@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/wlpost/!svn/ver/613/trunk/store-admin/src/main/webapp/WEB-INF/views/store/confirm
+END
+returnorderList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/613/trunk/store-admin/src/main/webapp/WEB-INF/views/store/confirm/returnorderList.jsp
+END
+stockoutList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/store/confirm/stockoutList.jsp
+END
+storeprocessList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/store/confirm/storeprocessList.jsp
+END
+entryOrderList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/store/confirm/entryOrderList.jsp
+END
+returnorderDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/store/confirm/returnorderDetail.jsp
+END
+stockoutDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/store/confirm/stockoutDetail.jsp
+END
+storeprocessDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/store/confirm/storeprocessDetail.jsp
+END
+entryOrderDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-admin/src/main/webapp/WEB-INF/views/store/confirm/entryOrderDetail.jsp
+END

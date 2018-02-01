@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.dao.base.AccountRelationDao">
+	<resultMap id="AccountRelationResult" type="com.xinyu.model.system.AccountRelation">
+		<result property="id" column="FID" />
+		<result property="account.id" column="FKaccountID" />
+		<result property="type" column="Ftype" />
+		<result property="object.id" column="FKobjectID" />
+	</resultMap>
+	<select id="getAccountRelationById" parameterType="string"
+		resultMap="AccountRelationResult">
+		SELECT T.*
+		FROM t_xinyu_accountrelation T where T.FID=#{id}
+	</select>
+	
+	<select id="findAccountRlationByPersonId" parameterType="string"
+		resultMap="AccountRelationResult">
+		SELECT T.*
+		FROM t_xinyu_accountrelation T where T.FKobjectID=#{objectId}
+	</select>
+	
+	<select id="getAccountRelationByList" parameterType="map"
+		resultMap="AccountRelationResult">
+		SELECT T.*
+		FROM t_xinyu_accountrelation T 
+		<where>
+		    1=1
+		    <if test="objectId!=null and objectId!=''">
+		        and fkobjectId=#{objectId}
+		    </if>
+		</where>
+	</select>
+	
+	<insert id="insertAccountRelation" parameterType="com.xinyu.model.system.AccountRelation">
+		insert into t_xinyu_accountrelation(FID,FKaccountID,Ftype,FKobjectID)
+		VALUES(#{id},#{account.id,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{object.id,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateAccountRelation" parameterType="com.xinyu.model.system.AccountRelation">
+		update t_xinyu_accountrelation
+		<set>
+			<if test="account!=null and account!=''">FKaccountID=#{account.id},</if>
+			<if test="type!=null and type!=''">Ftype=#{type},</if>
+			<if test="object!=null and object!=''">FKobjectID=#{object.id},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteAccountRelationById" parameterType="string">
+		delete from t_xinyu_accountrelation where fid=#{id}
+	</delete>
+
+</mapper>

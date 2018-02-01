@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/wlpost/!svn/ver/425/trunk/store-check/src/serialException
+END
+SerialPortOutputStreamCloseFailure.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/425/trunk/store-check/src/serialException/SerialPortOutputStreamCloseFailure.java
+END
+TooManyListeners.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/wlpost/!svn/ver/425/trunk/store-check/src/serialException/TooManyListeners.java
+END
+SendDataToSerialPortFailure.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/425/trunk/store-check/src/serialException/SendDataToSerialPortFailure.java
+END
+NoSuchPort.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/wlpost/!svn/ver/425/trunk/store-check/src/serialException/NoSuchPort.java
+END
+NotASerialPort.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/wlpost/!svn/ver/425/trunk/store-check/src/serialException/NotASerialPort.java
+END
+ReadDataFromSerialPortFailure.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/425/trunk/store-check/src/serialException/ReadDataFromSerialPortFailure.java
+END
+PortInUse.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/wlpost/!svn/ver/425/trunk/store-check/src/serialException/PortInUse.java
+END
+ExceptionWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/wlpost/!svn/ver/425/trunk/store-check/src/serialException/ExceptionWriter.java
+END
+SerialPortParameterFailure.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/425/trunk/store-check/src/serialException/SerialPortParameterFailure.java
+END
+SerialPortInputStreamCloseFailure.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/425/trunk/store-check/src/serialException/SerialPortInputStreamCloseFailure.java
+END

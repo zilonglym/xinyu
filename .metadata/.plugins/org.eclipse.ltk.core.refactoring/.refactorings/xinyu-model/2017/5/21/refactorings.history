@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;xinyu-model&apos;&#x0D;&#x0A;- Original project: &apos;xinyu-model&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     WmsConsignOrderItem.java.mine&#x0D;&#x0A;     WmsConsignOrderItem.java.r1186&#x0D;&#x0A;     WmsConsignOrderItem.java.r1229" description="Delete elements" element1="src/main/java/com/xinyu/model/trade/WmsConsignOrderItem.java.r1229" element2="src/main/java/com/xinyu/model/trade/WmsConsignOrderItem.java.mine" element3="src/main/java/com/xinyu/model/trade/WmsConsignOrderItem.java.r1186" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="3" stamp="1495847392004" subPackages="false" version="1.0"/>
+</session>

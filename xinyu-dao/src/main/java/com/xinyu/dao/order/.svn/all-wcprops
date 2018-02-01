@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/wlpost/!svn/ver/2558/trunk/xinyu-dao/src/main/java/com/xinyu/dao/order
+END
+StockOrderOperatorDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/2144/trunk/xinyu-dao/src/main/java/com/xinyu/dao/order/StockOrderOperatorDao.java
+END
+StockInOrderConfirmDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/1431/trunk/xinyu-dao/src/main/java/com/xinyu/dao/order/StockInOrderConfirmDao.java
+END
+StockOutOrderConfirmDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/1690/trunk/xinyu-dao/src/main/java/com/xinyu/dao/order/StockOutOrderConfirmDao.java
+END
+StockInOrderDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/wlpost/!svn/ver/2557/trunk/xinyu-dao/src/main/java/com/xinyu/dao/order/StockInOrderDao.java
+END
+StockOutOrderDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/2224/trunk/xinyu-dao/src/main/java/com/xinyu/dao/order/StockOutOrderDao.java
+END

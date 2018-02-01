@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/auth
+END
+post.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/auth/post.jsp
+END
+oauthPost.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-portal/src/main/webapp/WEB-INF/views/auth/oauthPost.jsp
+END

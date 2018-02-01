@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+encoding//src/com/store/check/DataView.java=UTF-8
+encoding//src/com/store/check/DataViewNew.java=UTF-8
+encoding//src/serialException=gbk
+encoding//src/serialException/ExceptionWriter.java=UTF-8
+encoding//src/serialException/NoSuchPort.java=UTF-8
+encoding//src/serialException/NotASerialPort.java=UTF-8
+encoding//src/serialException/PortInUse.java=UTF-8
+encoding//src/serialException/ReadDataFromSerialPortFailure.java=UTF-8
+encoding//src/serialException/SendDataToSerialPortFailure.java=UTF-8
+encoding//src/serialException/SerialPortInputStreamCloseFailure.java=UTF-8
+encoding//src/serialException/SerialPortOutputStreamCloseFailure.java=UTF-8
+encoding//src/serialException/SerialPortParameterFailure.java=UTF-8
+encoding//src/serialException/TooManyListeners.java=UTF-8
+encoding/<project>=UTF-8

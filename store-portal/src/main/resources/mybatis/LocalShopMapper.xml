@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.graby.store.dao.mybatis.LocalShopDao">
+    
+	<resultMap id="localShopEntity" type="com.graby.store.entity.local.LocalShop">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+	</resultMap>
+	
+	<select id="getLocalShop" parameterType="map" resultMap="localShopEntity">
+	   select a.* 
+	   from sc_local_shop a 
+	   where 1=1
+	   <if test="id!=null and id!=''">
+	   	and a.id = #{id}
+	   </if>
+	    <if test="name!=null and name!=''">
+	   	and a.name = #{name}
+	   </if>
+	</select>
+
+	
+	<insert id="save" parameterType="LocalShop" useGeneratedKeys="true" keyProperty="id">
+		insert into sc_local_shop(name) values (#{name})
+	</insert>
+	
+	<select id="getLocalShopList" parameterType="map" resultMap="localShopEntity">
+	    select a.*
+	    from sc_local_shop a
+	   <where> 
+	        1 = 1
+	   		 <if test="id!=null and id!=''">
+		    	and a.id = #{id}
+			</if>
+			 <if test="name!=null and name!=''">
+		   	 	and a.name = #{name}
+			</if>
+		</where>
+		<if test="start!=null and start!='' and offset!=null and offset!=''">
+			limit #{start},#{offset}
+		</if>	
+	</select>
+	
+	<select id="getLocalShopCount" parameterType="map" resultType="int">
+	    select count(1)
+	    from sc_local_shop a
+	   <where> 
+	        1 = 1
+	   		 <if test="id!=null and id!=''">
+		    	and a.id = #{id}
+			</if>
+			 <if test="name!=null and name!=''">
+		   	 	and a.name = #{name}
+			</if>
+		</where>	
+	</select>
+	
+	<update id="updateLocalShop">
+	    update sc_local_shop  
+	    <set>
+			<if test="name!=null and name!=''">
+				name=#{name},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+</mapper> 

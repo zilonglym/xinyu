@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/wlpost/!svn/ver/1454/trunk/xinyu-model/src/main/java/com/xinyu/model/order/child
+END
+StockInOrderItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/1246/trunk/xinyu-model/src/main/java/com/xinyu/model/order/child/StockInOrderItem.java
+END
+StockOutOrderItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/1454/trunk/xinyu-model/src/main/java/com/xinyu/model/order/child/StockOutOrderItem.java
+END
+StockInCheckItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/880/trunk/xinyu-model/src/main/java/com/xinyu/model/order/child/StockInCheckItem.java
+END
+StockInItemInventory.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/1233/trunk/xinyu-model/src/main/java/com/xinyu/model/order/child/StockInItemInventory.java
+END
+StockOutCheckItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/880/trunk/xinyu-model/src/main/java/com/xinyu/model/order/child/StockOutCheckItem.java
+END
+StockOutItemInventory.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/880/trunk/xinyu-model/src/main/java/com/xinyu/model/order/child/StockOutItemInventory.java
+END
+WmsStockInCaseInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/1044/trunk/xinyu-model/src/main/java/com/xinyu/model/order/child/WmsStockInCaseInfo.java
+END
+WmsStockInCaseItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/1044/trunk/xinyu-model/src/main/java/com/xinyu/model/order/child/WmsStockInCaseItem.java
+END
+WmsStockInOrderItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/1412/trunk/xinyu-model/src/main/java/com/xinyu/model/order/child/WmsStockInOrderItem.java
+END
+WmsStockOutOrderItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/1123/trunk/xinyu-model/src/main/java/com/xinyu/model/order/child/WmsStockOutOrderItem.java
+END

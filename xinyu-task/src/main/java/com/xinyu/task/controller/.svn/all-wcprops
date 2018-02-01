@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/controller
+END
+ShipOrderController.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/controller/ShipOrderController.java
+END
+RedisDataInitController.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/controller/RedisDataInitController.java
+END
+CheckOutController.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/2195/trunk/xinyu-task/src/main/java/com/xinyu/task/controller/CheckOutController.java
+END

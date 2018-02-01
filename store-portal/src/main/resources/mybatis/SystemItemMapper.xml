@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.graby.store.dao.mybatis.SystemItemDao">
+
+		<resultMap id="itemMap" type="SystemItem">
+			<result property="id" column="id" />
+			<result property="value" column="value" />
+			<result property="description" column="description" />
+			<result property="type" column="type" />
+			<result property="parentId" column="parentId" />
+			<result property="seq" column="seq" />
+		</resultMap>
+	<select id="findSystemItem"  resultMap="itemMap" parameterType="Integer">
+		select *
+		from sc_system_item
+		where id=#{id}
+	</select>
+	
+	<select id="findSystemItemByParentId"  resultMap="itemMap" parameterType="Integer">
+		select *
+		from sc_system_item
+		where parentId=#{parentId}
+	</select>
+	
+	<select id="findSystemItemByType"  resultMap="itemMap" parameterType="String">
+		select *
+		from sc_system_item
+		where type=#{type}
+	</select>
+	
+	<select id="findSystemItemByTypeAndVal"  resultMap="itemMap" parameterType="map">
+		select *
+		from sc_system_item
+		where type=#{type} and value like concat('%',#{expressNo},'%')
+	</select>
+	
+</mapper> 

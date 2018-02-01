@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.xinyu.service.trade.TmsOrderDao&apos; to &apos;TmsOrderService&apos;&#x0D;&#x0A;- Original project: &apos;xinyu-service&apos;&#x0D;&#x0A;- Original element: &apos;com.xinyu.service.trade.TmsOrderDao&apos;&#x0D;&#x0A;- Renamed element: &apos;com.xinyu.service.trade.TmsOrderService&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;TmsOrderDao&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;com.xinyu.service.trade{TmsOrderDao.java[TmsOrderDao" matchStrategy="1" name="TmsOrderService" qualified="false" references="true" similarDeclarations="false" stamp="1510819735760" textual="false" version="1.0"/>
+</session>

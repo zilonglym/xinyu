@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.graby.store.dao.mybatis.ReportDao">
+
+	<!-- 统计已售出商品-->
+	<select id="sumUserSellouts" resultType="map">	
+		select a.`create_userid` as userId, d.username as "userName", d.shop_name as "shopName", 
+		b.item_id as 'itemId', c.title as 'itemName', c.code as 'itemCode', c.sku as 'itemSku', 
+		c.barCode as 'barCode1', c.bar_code as 'barCode2',sum(b.num) as 'num' ,e.name as "centroName" ,c.position as "position"
+		from sc_ship_order a
+			left join sc_ship_order_detail b on b.order_id = a.id
+			left join sc_item c on b.item_id = c.id
+			left join sc_user d on d.id = a.create_userid
+			left join sc_centro e on a.centro_id=e.id
+		where
+			a.type='deliver' and  (a.status='WMS_FINISH' || a.status='WAIT_EXPRESS_PICKING') 
+		<if test="userId != null and userId!=0">  
+    		and a.`create_userid`= #{userId}  
+        </if> 
+          <if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and a.`last_update_date` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+			and a.`last_update_date` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+        </if> 
+		group by b.item_id		
+	</select>
+	
+
+  	<select id="findOrderSelloutCount"  resultType="long">
+		SELECT count(1) 
+		FROM sc_ship_order a
+		WHERE 
+		a.type='deliver' and  (a.status='WMS_FINISH' || a.status='WAIT_EXPRESS_PICKING') 
+		<if test="userId != null and userId!=0">  
+    		and a.`create_userid`= #{userId}  
+        </if>
+		<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and a.`last_update_date` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+			and a.`last_update_date` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+        </if> 
+
+	</select>	
+		
+	<!-- 查询待出库单 -->
+  	<select id="findOrderSellout" resultMap="ShipOrderEntity">
+		SELECT 
+		a.trade_id as "tradeId",
+		a.shop_nick as "createUser.shopName", 
+		create_date as "createDate",
+		a.id, a.centro_id as centroId,
+		a.origin_persion as "originPersion",
+		a.origin_phone as "originPhone",		
+		a.receiver_address as "receiverAddress", 
+		a.receiver_city as "receiverCity",
+		a.receiver_state as "receiverState", 
+		a.receiver_name as "receiverName", 
+		a.receiver_mobile as "receiverMobile",
+		a.receiver_phone as "receiverPhone", 
+		a.receiver_district as "receiverDistrict", 
+		a.receiver_zip as "receiverZip",
+		a.seller_memo as "sellerMemo",
+		a.seller_mobile as "sellerMobile",
+		a.seller_phone as "sellerPhone",
+		a.buyer_nick as "buyerNick",
+		a.buyer_memo as "buyerMemo",
+		a.buyer_message as "buyerMessage" ,
+		a.total_weight as "totalWeight" ,
+		a.total_price as "totalPrice" ,
+		a.last_update_date as "lastUpdateDate",
+		a.remark,
+		a.orderno,
+		a.items as"Items",
+		a.express_company as "expressCompany",
+		a.express_orderno as "expressOrderno"
+		FROM sc_ship_order a LEFT JOIN sc_user b ON a.create_userid = b.id
+		WHERE 
+		a.type='deliver' and  (a.status='WMS_FINISH' || a.status='WAIT_EXPRESS_PICKING') 
+		<if test="userId != null and userId!=0">  
+    		and a.`create_userid`= #{userId}  
+        </if>
+		<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and a.`last_update_date` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+			and a.`last_update_date` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+        </if> 
+		<if test="start != null and offset != null">  
+    		limit #{start},#{offset}	  	  
+        </if>
+	</select>	
+	
+	
+	<select id="findShipOrderNumByParams"  parameterType="map" resultType="long">
+		select count(1) 
+		from sc_ship_order s
+		where s.type="deliver"
+		<if test="status!=null and status!='' and status!='finished'">
+			and s.status = #{status}
+		</if>
+		<if test="status=='finished'">
+			and (s.status = 'WMS_FINISH'||s.status = 'FULFILLED')
+		</if>
+		<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and s.`create_date` >= date_format(#{startDate},'%Y-%m-%d')
+			and s.`create_date` < date_format(#{endDate},'%Y-%m-%d')
+			]]>
+        </if> 
+	</select>	
+	
+	<select id="findCheckOutNumByParams"  parameterType="map" resultType="long">
+		select count(1) 
+		from sc_ship_order s
+		left join sc_check_out c on s.express_orderno=c.order_code
+		where s.type="deliver" and c.msg like "%成功%" and s.express_orderno is not null
+		<if test="status!=null and status!=''">
+			and s.'status' = #{status}
+		</if>
+		<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and s.`create_date` >= date_format(#{startDate},'%Y-%m-%d')
+			and s.`create_date` < date_format(#{endDate},'%Y-%m-%d')
+			]]>
+        </if> 
+	</select>	
+	
+	<select id="findUnfinishOrder"  resultType="map" parameterType="map">	
+		select s.create_date as "createDate",s.create_userid as "userId",s.last_update_date as "lastUpdate",s.express_company as "company",
+			s.express_orderno as "orderNo",s.items as "items", group_concat(i.bar_code separator ';') as "barCode"
+		from sc_ship_order_detail d 
+		left join sc_ship_order s on d.order_id = s.id
+		left join sc_item i on d.item_id = i.id
+		where s.type="deliver" and not exists(
+			select 1 from sc_check_out c where c.msg like "%成功%" and s.express_orderno=c.order_code
+		) and s.express_orderno is not null
+		<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and s.`create_date` >= date_format(#{startDate},'%Y-%m-%d')
+			and s.`create_date` < date_format(#{endDate},'%Y-%m-%d')
+			]]>
+        </if>  
+        <if test="userId != null and userId != ''">  
+    		and s.create_userid = #{userId}
+        </if>          
+       	 group by d.order_id
+         order by s.last_update_date asc
+	</select>	
+	
+	<resultMap id="ShipOrderEntity" type="ShipOrder">
+		<result property="id" column="id" />
+		<result property="centroId" column="centro_id" />
+		<result property="createDate" column="create_date" />
+		<result property="expressCompany" column="express_company" />
+		<result property="expressOrderno" column="express_orderno" />
+		<result property="fetchDate" column="fetch_date" />
+		<result property="lastUpdateDate" column="last_update_date" />
+		<result property="orderno" column="orderno" />
+		<result property="originPersion" column="origin_persion" />
+		<result property="originPhone" column="origin_phone" />
+		<result property="receiverAddress" column="receiver_address" />
+		<result property="receiverCity" column="receiver_city" />
+		<result property="receiverDistrict" column="receiver_district" />
+		<result property="receiverMobile" column="receiver_mobile" />
+		<result property="receiverName" column="receiver_name" />
+		<result property="receiverPhone" column="receiver_phone" />
+		<result property="receiverState" column="receiver_state" />
+		<result property="receiverZip" column="receiver_zip" />
+		<result property="receiverPhone" column="receiver_phone" />
+		<result property="buyerNick" column="buyer_nick" />
+		<result property="buyerMessage" column="buyer_message" />
+		<result property="buyerMemo" column="buyer_memo" />
+		<result property="sellerPhone" column="seller_phone"/>
+		<result property="sellerMobile" column="seller_mobile"/>
+		<result property="sellerMemo" column="seller_memo"/>
+		<result property="remark" column="remark" />
+		<result property="status" column="status" />
+		<result property="totalnum" column="totalnum" />
+		<result property="tradeId" column="trade_id" />
+		<result property="type" column="type" />
+		<result property="createUser.id" column="create_userid" />
+		<result property="lastUpdateUser.id" column="last_update_userid" />
+		<collection property="details" column="id" javaType="ArrayList" ofType="ShipOrderDetail" select="shipOrderDetailMapped"/>  
+	</resultMap>
+	
+	<select id="shipOrderDetailMapped" parameterType="long" resultType="ShipOrderDetail">
+		SELECT  a.id, num, 
+		sku_properties_name AS "skuPropertiesName", 
+		a.item_id AS "item.id", 
+		order_id AS "order.id",
+		b.code AS "item.code" ,
+		b.title AS "item.title",
+		b.sku AS "item.sku", 
+		b.weight AS "item.weight"
+		FROM sc_ship_order_detail a LEFT JOIN sc_item b ON a.item_id = b.id		
+		WHERE order_id =  #{id}
+	</select>	
+	
+	<select id="shipCount" resultType="map">
+		SELECT 
+			b.id as "userId",
+			b.shop_name as "shopName",
+			count(0) as "num",
+			sum(c.num) as "items"
+		FROM sc_ship_order a 
+			LEFT JOIN sc_user b ON a.create_userid = b.id
+			left join sc_ship_order_detail c on c.order_id = a.id
+		WHERE 
+		a.type='deliver' and  (a.status='WMS_FINISH' || a.status='WAIT_EXPRESS_PICKING') 
+		<if test="userId != null and userId!=0">  
+    		and a.`create_userid`= #{userId}  
+        </if>
+       <if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and a.`last_update_date` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+			and a.`last_update_date` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+        </if> 
+		group by a.`create_userid`
+	</select>	
+	
+	<select id="orderCount" resultType="map">
+		SELECT 
+			b.id as "userId",
+			b.shop_name as "shopName",
+			count(0) as "num"
+		FROM sc_ship_order a 
+			LEFT JOIN sc_user b ON a.create_userid = b.id
+		WHERE 
+		a.type='deliver' and  (a.status='WMS_FINISH' || a.status='WAIT_EXPRESS_PICKING') 
+		<if test="userId != null and userId!=0">  
+    		and a.`create_userid`= #{userId}  
+        </if>
+       <if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and a.`last_update_date` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+			and a.`last_update_date` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+        </if> 
+		group by a.`create_userid`
+	</select>	
+
+</mapper> 

@@ -1,0 +1,50 @@
+2017-10-18 13:57:18  [ 16811956@qtp-286337-0:69088 ] - [ ERROR ]  account dao impl logger!
+2017-10-18 13:57:18  [ 16811956@qtp-286337-0:69293 ] - [ ERROR ]  SELECT T.*
+		FROM t_xinyu_account T where 1=1
+2017-10-18 13:59:05  [ 31240705@qtp-286337-6:176274 ] - [ ERROR ]  account dao impl logger!
+2017-10-18 13:59:05  [ 31240705@qtp-286337-6:176322 ] - [ ERROR ]  SELECT T.*
+		FROM t_xinyu_account T where 1=1
+2017-10-18 14:00:00  [ pool-1-thread-1:230468 ] - [ ERROR ]  订单商品推送信息写缓存
+2017-10-18 14:00:00  [ pool-1-thread-1:230524 ] - [ ERROR ]  GROUP1
+2017-10-18 14:00:02  [ pool-1-thread-1:232592 ] - [ ERROR ]  GROUP2
+2017-10-18 14:00:12  [ pool-1-thread-1:243098 ] - [ ERROR ]  订单商品推送信息写缓存结束
+2017-10-18 14:00:12  [ pool-1-thread-1:243098 ] - [ ERROR ]  订单不存在自动补录!
+2017-10-18 14:00:12  [ pool-1-thread-1:243113 ] - [ ERROR ]  订单接单
+2017-10-18 14:00:12  [ pool-1-thread-1:243127 ] - [ ERROR ]  订单接单完成！0
+2017-10-18 14:00:12  [ pool-1-thread-1:243177 ] - [ ERROR ]  拒单操作开始!
+2017-10-18 14:00:13  [ pool-1-thread-1:243816 ] - [ ERROR ]  订单拒单null
+2017-10-18 14:00:16  [ pool-1-thread-1:246757 ] - [ ERROR ]  {storeOrderCode=TZC001, orderType=201, status=WMS_REJECT, orderCode=LBX0329771167023292, description=志高电磁炉 G380:null库存不足！}
+2017-10-18 14:04:00  [ pool-1-thread-1:470468 ] - [ ERROR ]  订单接单
+2017-10-18 14:04:00  [ pool-1-thread-1:470842 ] - [ ERROR ]  订单接单IDd0aac235-4132-489b-ab65-47a4f6fefe0f
+2017-10-18 14:04:00  [ pool-1-thread-1:471125 ] - [ ERROR ]  订单接单ID27fa3f00-718c-4b2f-a460-95315a3ef2bc
+2017-10-18 14:04:00  [ pool-1-thread-1:471385 ] - [ ERROR ]  订单接单IDf3f39855-5f52-4271-a960-251e643dbfc2
+2017-10-18 14:04:01  [ pool-1-thread-1:471648 ] - [ ERROR ]  订单接单ID57648a73-db48-4ab7-abe9-61b57a5548c3
+2017-10-18 14:04:01  [ pool-1-thread-1:471905 ] - [ ERROR ]  订单接单ID9d4b16dc-3c4f-4f17-83ac-b089531a7601
+2017-10-18 14:04:01  [ pool-1-thread-1:472009 ] - [ ERROR ]  不存在的订单！ORDER_ACCEPTcee40728-df6a-4881-b84b-78ca962557f1
+2017-10-18 14:04:01  [ pool-1-thread-1:472096 ] - [ ERROR ]  不存在的订单！ORDER_ACCEPTfb2a3f04-57fe-4b08-ae2f-3eac92f913e9
+2017-10-18 14:04:01  [ pool-1-thread-1:472375 ] - [ ERROR ]  订单接单ID08e2ccfc-081a-47d9-b598-3e5bc825e8b8
+2017-10-18 14:04:01  [ pool-1-thread-1:472445 ] - [ ERROR ]  不存在的订单！ORDER_ACCEPTdc9c4ab1-1e05-44c0-9352-c2299ab484e7
+2017-10-18 14:04:02  [ pool-1-thread-1:472720 ] - [ ERROR ]  订单接单ID5bdc0e27-4eb1-4a21-a7c1-f807a356c1ae
+2017-10-18 14:04:02  [ pool-1-thread-1:472793 ] - [ ERROR ]  不存在的订单！ORDER_ACCEPTc8b1d186-1c40-4f26-b289-37abb80a92ee
+2017-10-18 14:04:02  [ pool-1-thread-1:473064 ] - [ ERROR ]  订单接单IDeacb173a-0ffa-442f-8ec2-0d730cfe9838
+2017-10-18 14:04:02  [ pool-1-thread-1:473134 ] - [ ERROR ]  不存在的订单！ORDER_ACCEPT96d7ab4d-d8a6-4719-a058-b351a0921dad
+2017-10-18 14:04:02  [ pool-1-thread-1:473149 ] - [ ERROR ]  订单接单完成！13
+2017-10-18 14:08:00  [ pool-1-thread-1:710468 ] - [ ERROR ]  订单接单
+2017-10-18 14:08:00  [ pool-1-thread-1:710729 ] - [ ERROR ]  订单接单IDb1eb56ba-cf16-42fa-a6a2-8615b703a4ef
+2017-10-18 14:08:00  [ pool-1-thread-1:710946 ] - [ ERROR ]  订单接单IDd217c962-6a53-4f29-aadf-2f3639f9b355
+2017-10-18 14:08:00  [ pool-1-thread-1:711146 ] - [ ERROR ]  订单接单ID5725df4a-73b0-45b0-bfb0-b7c3a6ad1ecc
+2017-10-18 14:08:00  [ pool-1-thread-1:711341 ] - [ ERROR ]  订单接单IDdac11e99-41c1-4d03-9188-f69184bd02ce
+2017-10-18 14:08:01  [ pool-1-thread-1:711544 ] - [ ERROR ]  订单接单ID80f4f058-07e2-4c9d-82bd-4b485866daf6
+2017-10-18 14:08:01  [ pool-1-thread-1:711726 ] - [ ERROR ]  订单接单IDf2278c71-3474-41d6-90a9-d1c07dc62d35
+2017-10-18 14:08:01  [ pool-1-thread-1:711933 ] - [ ERROR ]  订单接单IDc9ed3429-69e8-45a7-8da7-4230acecec56
+2017-10-18 14:08:01  [ pool-1-thread-1:712116 ] - [ ERROR ]  订单接单ID57d51867-4da9-41fc-87a1-fb2be9316f15
+2017-10-18 14:08:01  [ pool-1-thread-1:712322 ] - [ ERROR ]  订单接单ID194cb8e6-01ae-42af-b86e-7ae3db256b32
+2017-10-18 14:08:01  [ pool-1-thread-1:712368 ] - [ ERROR ]  不存在的订单！ORDER_ACCEPTa67b3420-93e2-4ec3-95ee-fe4484bc7f63
+2017-10-18 14:08:02  [ pool-1-thread-1:712590 ] - [ ERROR ]  订单接单ID1f2c5bb7-0720-4a32-811f-7cb52c4a530f
+2017-10-18 14:08:02  [ pool-1-thread-1:712637 ] - [ ERROR ]  不存在的订单！ORDER_ACCEPTffd38008-7cbc-496f-8d26-39a2dfc0c9c4
+2017-10-18 14:08:02  [ pool-1-thread-1:712832 ] - [ ERROR ]  订单接单IDc4d9206a-8f4f-4130-a520-c6b19d8d06ee
+2017-10-18 14:08:02  [ pool-1-thread-1:713076 ] - [ ERROR ]  订单接单ID8d1752cc-afc3-4385-895a-351f419958a0
+2017-10-18 14:08:02  [ pool-1-thread-1:713124 ] - [ ERROR ]  不存在的订单！ORDER_ACCEPTa1df06e5-12df-49dc-b6a2-f5f02c77a942
+2017-10-18 14:08:02  [ pool-1-thread-1:713309 ] - [ ERROR ]  订单接单IDebdb8e7d-6c06-46ab-8857-a7a3c8ea4ac0
+2017-10-18 14:08:03  [ pool-1-thread-1:713494 ] - [ ERROR ]  订单接单ID00581432-961b-4bf6-b547-b41f7f8e193a
+2017-10-18 14:08:03  [ pool-1-thread-1:713495 ] - [ ERROR ]  订单接单完成！17

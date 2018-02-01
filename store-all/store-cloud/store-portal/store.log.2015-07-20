@@ -1,0 +1,336 @@
+2015-07-20 14:55:05,398 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_company varchar(255)
+2015-07-20 14:55:05,400 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,401 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_id varchar(255)
+2015-07-20 14:55:05,401 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,402 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_mobile varchar(255)
+2015-07-20 14:55:05,402 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,403 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_name varchar(255)
+2015-07-20 14:55:05,404 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,405 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_tel varchar(255)
+2015-07-20 14:55:05,405 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,406 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column place_order_time varchar(255)
+2015-07-20 14:55:05,406 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,407 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_code varchar(255)
+2015-07-20 14:55:05,407 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,408 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_id varchar(255)
+2015-07-20 14:55:05,408 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,409 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column receive_copmany varchar(255)
+2015-07-20 14:55:05,410 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,411 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column return_reason varchar(255)
+2015-07-20 14:55:05,411 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,412 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column schedule_date varchar(255)
+2015-07-20 14:55:05,412 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,413 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_message varchar(255)
+2015-07-20 14:55:05,413 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,414 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_nick varchar(255)
+2015-07-20 14:55:05,414 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,415 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_area varchar(255)
+2015-07-20 14:55:05,416 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,417 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_city varchar(255)
+2015-07-20 14:55:05,417 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,418 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_company varchar(255)
+2015-07-20 14:55:05,418 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,420 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_province varchar(255)
+2015-07-20 14:55:05,420 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,422 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_town varchar(255)
+2015-07-20 14:55:05,422 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,423 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_zip_code varchar(255)
+2015-07-20 14:55:05,423 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,425 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column shop_nick varchar(255)
+2015-07-20 14:55:05,425 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 14:55:05,426 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column transport_mode varchar(255)
+2015-07-20 14:55:05,426 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,488 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_company varchar(255)
+2015-07-20 15:07:41,489 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,490 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_id varchar(255)
+2015-07-20 15:07:41,490 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,491 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_mobile varchar(255)
+2015-07-20 15:07:41,491 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,492 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_name varchar(255)
+2015-07-20 15:07:41,492 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,493 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_tel varchar(255)
+2015-07-20 15:07:41,494 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,495 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column place_order_time varchar(255)
+2015-07-20 15:07:41,495 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,496 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_code varchar(255)
+2015-07-20 15:07:41,496 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,497 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_id varchar(255)
+2015-07-20 15:07:41,497 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,499 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column receive_copmany varchar(255)
+2015-07-20 15:07:41,499 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,500 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column return_reason varchar(255)
+2015-07-20 15:07:41,500 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,501 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column schedule_date varchar(255)
+2015-07-20 15:07:41,502 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,503 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_message varchar(255)
+2015-07-20 15:07:41,503 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,505 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_nick varchar(255)
+2015-07-20 15:07:41,505 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,506 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_area varchar(255)
+2015-07-20 15:07:41,506 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,507 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_city varchar(255)
+2015-07-20 15:07:41,507 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,509 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_company varchar(255)
+2015-07-20 15:07:41,509 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,510 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_province varchar(255)
+2015-07-20 15:07:41,510 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,511 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_town varchar(255)
+2015-07-20 15:07:41,511 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,513 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_zip_code varchar(255)
+2015-07-20 15:07:41,513 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,514 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column shop_nick varchar(255)
+2015-07-20 15:07:41,514 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:07:41,515 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column transport_mode varchar(255)
+2015-07-20 15:07:41,515 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,351 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_company varchar(255)
+2015-07-20 15:09:05,351 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,352 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_id varchar(255)
+2015-07-20 15:09:05,352 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,353 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_mobile varchar(255)
+2015-07-20 15:09:05,353 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,354 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_name varchar(255)
+2015-07-20 15:09:05,355 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,356 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_tel varchar(255)
+2015-07-20 15:09:05,356 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,357 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column place_order_time varchar(255)
+2015-07-20 15:09:05,357 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,358 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_code varchar(255)
+2015-07-20 15:09:05,358 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,359 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_id varchar(255)
+2015-07-20 15:09:05,359 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,360 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column receive_copmany varchar(255)
+2015-07-20 15:09:05,360 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,361 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column return_reason varchar(255)
+2015-07-20 15:09:05,362 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,363 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column schedule_date varchar(255)
+2015-07-20 15:09:05,363 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,364 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_message varchar(255)
+2015-07-20 15:09:05,364 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,365 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_nick varchar(255)
+2015-07-20 15:09:05,366 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,367 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_area varchar(255)
+2015-07-20 15:09:05,367 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,368 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_city varchar(255)
+2015-07-20 15:09:05,368 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,369 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_company varchar(255)
+2015-07-20 15:09:05,369 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,370 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_province varchar(255)
+2015-07-20 15:09:05,371 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,372 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_town varchar(255)
+2015-07-20 15:09:05,372 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,373 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_zip_code varchar(255)
+2015-07-20 15:09:05,373 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,374 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column shop_nick varchar(255)
+2015-07-20 15:09:05,374 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:09:05,375 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column transport_mode varchar(255)
+2015-07-20 15:09:05,375 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,315 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_company varchar(255)
+2015-07-20 15:11:18,315 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,316 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_id varchar(255)
+2015-07-20 15:11:18,316 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,317 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_mobile varchar(255)
+2015-07-20 15:11:18,317 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,318 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_name varchar(255)
+2015-07-20 15:11:18,319 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,320 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_tel varchar(255)
+2015-07-20 15:11:18,320 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,321 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column place_order_time varchar(255)
+2015-07-20 15:11:18,321 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,322 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_code varchar(255)
+2015-07-20 15:11:18,322 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,323 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_id varchar(255)
+2015-07-20 15:11:18,323 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,324 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column receive_copmany varchar(255)
+2015-07-20 15:11:18,324 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,325 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column return_reason varchar(255)
+2015-07-20 15:11:18,325 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,326 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column schedule_date varchar(255)
+2015-07-20 15:11:18,326 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,328 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_message varchar(255)
+2015-07-20 15:11:18,328 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,329 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_nick varchar(255)
+2015-07-20 15:11:18,329 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,330 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_area varchar(255)
+2015-07-20 15:11:18,330 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,331 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_city varchar(255)
+2015-07-20 15:11:18,331 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,333 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_company varchar(255)
+2015-07-20 15:11:18,333 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,334 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_province varchar(255)
+2015-07-20 15:11:18,334 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,335 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_town varchar(255)
+2015-07-20 15:11:18,335 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,336 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_zip_code varchar(255)
+2015-07-20 15:11:18,336 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,337 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column shop_nick varchar(255)
+2015-07-20 15:11:18,337 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:11:18,338 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column transport_mode varchar(255)
+2015-07-20 15:11:18,338 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,315 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_company varchar(255)
+2015-07-20 15:19:10,315 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,316 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_id varchar(255)
+2015-07-20 15:19:10,316 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,317 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_mobile varchar(255)
+2015-07-20 15:19:10,318 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,319 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_name varchar(255)
+2015-07-20 15:19:10,319 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,320 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_tel varchar(255)
+2015-07-20 15:19:10,320 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,321 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column place_order_time varchar(255)
+2015-07-20 15:19:10,321 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,322 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_code varchar(255)
+2015-07-20 15:19:10,322 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,323 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_id varchar(255)
+2015-07-20 15:19:10,323 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,325 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column receive_copmany varchar(255)
+2015-07-20 15:19:10,325 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,326 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column return_reason varchar(255)
+2015-07-20 15:19:10,326 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,327 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column schedule_date varchar(255)
+2015-07-20 15:19:10,327 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,328 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_message varchar(255)
+2015-07-20 15:19:10,328 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,330 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_nick varchar(255)
+2015-07-20 15:19:10,330 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,331 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_area varchar(255)
+2015-07-20 15:19:10,331 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,332 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_city varchar(255)
+2015-07-20 15:19:10,332 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,333 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_company varchar(255)
+2015-07-20 15:19:10,333 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,334 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_province varchar(255)
+2015-07-20 15:19:10,334 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,335 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_town varchar(255)
+2015-07-20 15:19:10,335 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,336 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_zip_code varchar(255)
+2015-07-20 15:19:10,337 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,337 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column shop_nick varchar(255)
+2015-07-20 15:19:10,338 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:19:10,339 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column transport_mode varchar(255)
+2015-07-20 15:19:10,339 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,782 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_company varchar(255)
+2015-07-20 15:23:02,782 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,783 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_id varchar(255)
+2015-07-20 15:23:02,783 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,784 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_mobile varchar(255)
+2015-07-20 15:23:02,785 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,786 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_name varchar(255)
+2015-07-20 15:23:02,786 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,787 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_tel varchar(255)
+2015-07-20 15:23:02,787 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,788 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column place_order_time varchar(255)
+2015-07-20 15:23:02,788 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,789 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_code varchar(255)
+2015-07-20 15:23:02,790 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,791 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_id varchar(255)
+2015-07-20 15:23:02,791 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,792 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column receive_copmany varchar(255)
+2015-07-20 15:23:02,792 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,793 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column return_reason varchar(255)
+2015-07-20 15:23:02,793 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,794 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column schedule_date varchar(255)
+2015-07-20 15:23:02,794 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,796 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_message varchar(255)
+2015-07-20 15:23:02,796 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,797 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_nick varchar(255)
+2015-07-20 15:23:02,797 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,798 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_area varchar(255)
+2015-07-20 15:23:02,798 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,799 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_city varchar(255)
+2015-07-20 15:23:02,800 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,801 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_company varchar(255)
+2015-07-20 15:23:02,801 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,802 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_province varchar(255)
+2015-07-20 15:23:02,802 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,803 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_town varchar(255)
+2015-07-20 15:23:02,803 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,805 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_zip_code varchar(255)
+2015-07-20 15:23:02,805 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,806 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column shop_nick varchar(255)
+2015-07-20 15:23:02,806 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:23:02,807 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column transport_mode varchar(255)
+2015-07-20 15:23:02,807 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,380 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_company varchar(255)
+2015-07-20 15:24:24,381 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,382 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_id varchar(255)
+2015-07-20 15:24:24,382 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,383 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_mobile varchar(255)
+2015-07-20 15:24:24,383 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,385 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_name varchar(255)
+2015-07-20 15:24:24,385 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,386 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_tel varchar(255)
+2015-07-20 15:24:24,386 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,387 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column place_order_time varchar(255)
+2015-07-20 15:24:24,387 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,388 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_code varchar(255)
+2015-07-20 15:24:24,388 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,389 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_id varchar(255)
+2015-07-20 15:24:24,390 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,391 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column receive_copmany varchar(255)
+2015-07-20 15:24:24,391 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,392 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column return_reason varchar(255)
+2015-07-20 15:24:24,392 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,393 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column schedule_date varchar(255)
+2015-07-20 15:24:24,393 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,395 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_message varchar(255)
+2015-07-20 15:24:24,395 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,396 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_nick varchar(255)
+2015-07-20 15:24:24,397 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,398 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_area varchar(255)
+2015-07-20 15:24:24,398 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,399 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_city varchar(255)
+2015-07-20 15:24:24,399 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,401 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_company varchar(255)
+2015-07-20 15:24:24,401 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,402 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_province varchar(255)
+2015-07-20 15:24:24,402 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,403 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_town varchar(255)
+2015-07-20 15:24:24,403 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,405 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_zip_code varchar(255)
+2015-07-20 15:24:24,405 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,406 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column shop_nick varchar(255)
+2015-07-20 15:24:24,406 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 15:24:24,407 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column transport_mode varchar(255)
+2015-07-20 15:24:24,407 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,099 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_company varchar(255)
+2015-07-20 16:38:44,114 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,115 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_id varchar(255)
+2015-07-20 16:38:44,115 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,116 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_mobile varchar(255)
+2015-07-20 16:38:44,117 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,118 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_name varchar(255)
+2015-07-20 16:38:44,118 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,119 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column picker_tel varchar(255)
+2015-07-20 16:38:44,119 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,120 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column place_order_time varchar(255)
+2015-07-20 16:38:44,120 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,121 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_code varchar(255)
+2015-07-20 16:38:44,121 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,122 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column pre_delivery_order_id varchar(255)
+2015-07-20 16:38:44,122 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,123 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column receive_copmany varchar(255)
+2015-07-20 16:38:44,123 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,125 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column return_reason varchar(255)
+2015-07-20 16:38:44,125 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,126 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column schedule_date varchar(255)
+2015-07-20 16:38:44,126 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,127 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_message varchar(255)
+2015-07-20 16:38:44,127 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,128 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column seller_nick varchar(255)
+2015-07-20 16:38:44,128 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,129 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_area varchar(255)
+2015-07-20 16:38:44,129 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,131 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_city varchar(255)
+2015-07-20 16:38:44,131 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,132 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_company varchar(255)
+2015-07-20 16:38:44,132 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,133 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_province varchar(255)
+2015-07-20 16:38:44,133 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,134 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_town varchar(255)
+2015-07-20 16:38:44,134 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,135 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column sender_zip_code varchar(255)
+2015-07-20 16:38:44,136 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,137 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column shop_nick varchar(255)
+2015-07-20 16:38:44,137 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs
+2015-07-20 16:38:44,138 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - HHH000388: Unsuccessful: alter table sc_ship_order add column transport_mode varchar(255)
+2015-07-20 16:38:44,138 [main] ERROR [org.hibernate.tool.hbm2ddl.SchemaUpdate] - Row size too large. The maximum row size for the used table type, not counting BLOBs, is 65535. You have to change some columns to TEXT or BLOBs

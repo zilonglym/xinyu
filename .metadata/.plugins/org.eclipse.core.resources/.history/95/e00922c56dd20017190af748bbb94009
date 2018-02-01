@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinyu.dao.base.ItemGroupDao">
+	
+	<resultMap id="ItemGroupResult" type="com.xinyu.model.base.ItemGroup" >
+		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
+		<result property="name" column="Fname" />
+		<result property="barCode" column="FbarCode" />
+		<result property="user.id" column="FKuserID" />
+		<result property="laterDate" column="FlaterDate" />
+		<result property="state" column="Fstate" />
+		<result property="remark" column="Fremark" />
+		<result property="priority" column="Fpriority" />
+	</resultMap>
+	
+	<select id="getItemGroupById" parameterType="string"  resultMap="ItemGroupResult" >
+		 SELECT T.* 
+			FROM T_xinyu_ItemGroup T where T.FID=#{id}
+	</select>
+	
+	<select id="getItemGroupListByParams" parameterType="map"  resultMap="ItemGroupResult" >
+		select i.*
+			from t_xinyu_itemgroup i
+		left join (
+			select d.FKitemGroupID as "itemGroupID",group_concat(t.Fname SEPARATOR ";") as "itemName"
+		    from t_xinyu_itemgroupdetail d 
+			left join t_xinyu_item t on d.FKitemID = t.FID
+			group by d.FKitemGroupID 
+		)a on a.itemGroupID = i.FID
+		where 1=1
+		<if test="userId!=null and userId!=''">
+			and i.FKuserID=#{userId}
+		</if>
+		<if test="searchText!=null and searchText!=''">
+			and (i.Fname like "%"#{searchText}"%" or a.itemName like "%"#{searchText}"%")
+		</if>
+	</select>
+	
+	<select id="getToTal" parameterType="map"  resultType="int" >
+		select count(1)
+			from t_xinyu_itemgroup i
+		left join (
+			select d.FKitemGroupID as "itemGroupID",group_concat(t.Fname SEPARATOR ";") as "itemName"
+		    from t_xinyu_itemgroupdetail d 
+			left join t_xinyu_item t on d.FKitemID = t.FID
+			group by d.FKitemGroupID 
+		)a on a.itemGroupID = i.FID
+		where 1=1
+		<if test="userId!=null and userId!=''">
+			and i.FKuserID=#{userId}
+		</if>
+		<if test="searchText!=null and searchText!=''">
+			and (i.Fname like "%"#{searchText}"%" or a.itemName like "%"#{searchText}"%")
+		</if>
+	</select>
+	
+	
+	<insert id="insertItemGroup" parameterType="com.xinyu.model.base.ItemGroup" >
+		insert into T_xinyu_ItemGroup(FID,FCU,Fname,FbarCode,FKuserID,FlaterDate,Fstate,Fremark,Fpriority)
+		VALUES(#{id},#{cu},#{name},#{barCode},#{user.id},#{laterDate},#{state},#{remark},#{priority})
+	</insert>
+
+	<update id="updateItemGroup" parameterType="com.xinyu.model.base.ItemGroup" >
+		update T_xinyu_ItemGroup
+		<set>
+			<if test="cu!=null and cu!=''">FCU=#{cu},</if>
+			<if test="name!=null and name!=''">Fname=#{name},</if>
+			<if test="name!=null and name!=''">FbarCode=#{barCode},</if>
+			<if test="user!=null and user!=''">FKuserID=#{user.id},</if>
+			<if test="laterDate!=null and laterDate!=''">FlaterDate=#{laterDate},</if>
+			<if test="state!=null and state!=''">Fstate=#{state},</if>
+			<if test="remark!=null and remark!=''">Fremark=#{remark},</if>
+			<if test="priority!=null and priority!=''">Fpriority=#{priority},</if>
+		</set>
+		where fid=#{id}
+	</update>
+	
+	<update id="updateState" parameterType="map" >
+		update T_xinyu_ItemGroup
+		set Fstate=#{state},FlaterDate=now()
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteItemGroupById"  parameterType="string"  >
+		delete  from T_xinyu_ItemGroup where fid=#{id}
+	</delete>
+
+	
+	
+	
+	<select id="getItemGroupByOrder" parameterType="map"  resultMap="ItemGroupResult" >
+		select t.* from  t_xinyu_itemgroup   t    
+		INNER   JOIN t_xinyu_itemgroupdetail 
+		  
+		t1 ON     t.fid  =  t1.fkitemGroupId 
+	 where   1=1	
+		<if test="userId!=null and userId!=''">
+			and t.FKuserID=#{userId}
+		</if> 
+		and 
+		 <foreach collection="itemList"  item="mapStr" separator=" or " open="(" close=")">
+		     	 <![CDATA[
+					  (t1.fkitemId =  #{mapStr.itemId}  and  t1.fnum  <=#{mapStr.num} )   
+			 ]]>
+        </foreach>        
+		 GROUP BY t.FID
+		 order Fpriority
+	</select>
+</mapper>

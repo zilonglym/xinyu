@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/2847/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/waybill
+END
+sf_ajax.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/2380/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/waybill/sf_ajax.ftl
+END
+print.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/wlpost/!svn/ver/2847/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/waybill/print.ftl
+END
+sf_new.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/2170/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/waybill/sf_new.ftl
+END
+sf_isv.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/wlpost/!svn/ver/1671/trunk/xinyu-web/src/main/webapp/WEB-INF/views/default/admin/waybill/sf_isv.ftl
+END

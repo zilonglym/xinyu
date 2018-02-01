@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;xinyu-web/src/main/java/com.xinyu.common.util&apos;&#x0D;&#x0A;- Original project: &apos;store-admin&apos;&#x0D;&#x0A;- Destination element: &apos;xinyu-web/src/main/java/com.xinyu.common.util&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     com.graby.store.admin.util.qm.HttpClientUtils.java&#x0D;&#x0A;     com.graby.store.admin.util.qm.XmlUtil.java" description="Copy compilation units" destination="=xinyu-web/src\/main\/java&lt;com.xinyu.common.util" element1="/src\/main\/java&lt;com.graby.store.admin.util.qm{HttpClientUtils.java" element2="/src\/main\/java&lt;com.graby.store.admin.util.qm{XmlUtil.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1492910591707" units="2" version="1.0"/>
+</session>

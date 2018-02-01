@@ -1,0 +1,4859 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response
+END
+FenxiaoCooperationGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoCooperationGetResponse.class
+END
+SellercatsListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SellercatsListGetResponse.class
+END
+RefundRefuseResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/RefundRefuseResponse.class
+END
+FenxiaoRefundGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoRefundGetResponse.class
+END
+TradesSoldIncrementvGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradesSoldIncrementvGetResponse.class
+END
+WaimaiItemAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiItemAddResponse.class
+END
+WangwangEserviceAvgwaittimeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceAvgwaittimeGetResponse.class
+END
+TradeWaimaiRefuseResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeWaimaiRefuseResponse.class
+END
+RefundMessageAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/RefundMessageAddResponse.class
+END
+SpContentGetalltagResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentGetalltagResponse.class
+END
+ShopRemainshowcaseGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ShopRemainshowcaseGetResponse.class
+END
+DeliveryTemplateDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DeliveryTemplateDeleteResponse.class
+END
+WlbItemAuthorizationDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemAuthorizationDeleteResponse.class
+END
+UmpPromotionGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpPromotionGetResponse.class
+END
+TmallEaiOrderRefundGoodReturnRefuseResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallEaiOrderRefundGoodReturnRefuseResponse.class
+END
+WeitaoFeedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoFeedGetResponse.class
+END
+WeitaoCloudtagsTagsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoCloudtagsTagsGetResponse.class
+END
+WaimaiAgentOrderlistGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiAgentOrderlistGetResponse.class
+END
+LogisticsAddressAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsAddressAddResponse.class
+END
+PromotionLimitdiscountDetailGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionLimitdiscountDetailGetResponse.class
+END
+JaeClientContextGetnetworkstatusResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JaeClientContextGetnetworkstatusResponse.class
+END
+BillBookBillsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/BillBookBillsGetResponse.class
+END
+CrmGroupMoveResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGroupMoveResponse.class
+END
+PictureUserinfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PictureUserinfoGetResponse.class
+END
+FenxiaoProductSkuAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductSkuAddResponse.class
+END
+TmallProductSpecPicUploadResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallProductSpecPicUploadResponse.class
+END
+CrmMembergradeSetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmMembergradeSetResponse.class
+END
+TmallBrandcatPropinputGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallBrandcatPropinputGetResponse.class
+END
+WirelessBuntingItemShorturlCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WirelessBuntingItemShorturlCreateResponse.class
+END
+AlipayUserAccountGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayUserAccountGetResponse.class
+END
+ScitemMapAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ScitemMapAddResponse.class
+END
+AlibabaXiamiApiContractSellerlistGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaXiamiApiContractSellerlistGetResponse.class
+END
+TbkShopsConvertResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TbkShopsConvertResponse.class
+END
+FenxiaoCooperationTerminateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoCooperationTerminateResponse.class
+END
+DdAuctionRuleUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DdAuctionRuleUpdateResponse.class
+END
+HotelOrderGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelOrderGetResponse.class
+END
+WlbExtorderCancleResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbExtorderCancleResponse.class
+END
+UmpDetailDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpDetailDeleteResponse.class
+END
+WlbWaybillGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbWaybillGetResponse.class
+END
+TmallTraderateCattagsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallTraderateCattagsGetResponse.class
+END
+JaeClientSharingShowsharingmenuResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JaeClientSharingShowsharingmenuResponse.class
+END
+CaipiaoLotterytypesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CaipiaoLotterytypesGetResponse.class
+END
+SpItemExtraInfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpItemExtraInfoGetResponse.class
+END
+DeliveryTemplateUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DeliveryTemplateUpdateResponse.class
+END
+WeitaoCloudtagsGroupAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoCloudtagsGroupAddResponse.class
+END
+HotelsSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelsSearchResponse.class
+END
+WlbWlborderGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbWlborderGetResponse.class
+END
+AlipayDataBillDownloadurlGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayDataBillDownloadurlGetResponse.class
+END
+TmallPromotagTagRemovetagResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallPromotagTagRemovetagResponse.class
+END
+PromotionLimitdiscountGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionLimitdiscountGetResponse.class
+END
+TmallProductSpecAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallProductSpecAddResponse.class
+END
+SimbaKeywordRankingforecastGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordRankingforecastGetResponse.class
+END
+WlbItemMapGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemMapGetResponse.class
+END
+FenxiaoRefundMessageGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoRefundMessageGetResponse.class
+END
+FenxiaoProductAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductAddResponse.class
+END
+TmallEaiOrderRefundMgetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallEaiOrderRefundMgetResponse.class
+END
+FenxiaoRequisitionsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoRequisitionsGetResponse.class
+END
+UserrecommendItemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UserrecommendItemsGetResponse.class
+END
+HotelRoomImgUploadResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelRoomImgUploadResponse.class
+END
+WangwangEserviceAccountstatusGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceAccountstatusGetResponse.class
+END
+ItemCspuMoveResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemCspuMoveResponse.class
+END
+ItemSkuGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemSkuGetResponse.class
+END
+HotelRoomsSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelRoomsSearchResponse.class
+END
+TraderateImprImprwordByfeedidGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TraderateImprImprwordByfeedidGetResponse.class
+END
+ProductPropimgUploadResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ProductPropimgUploadResponse.class
+END
+UserSellerGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UserSellerGetResponse.class
+END
+EbookmediaFileQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/EbookmediaFileQueryResponse.class
+END
+JushitaJdpUsersGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JushitaJdpUsersGetResponse.class
+END
+ItemEbookSerialAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemEbookSerialAddResponse.class
+END
+UmpDetailUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpDetailUpdateResponse.class
+END
+JaeClientContextGetenvironmentResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JaeClientContextGetenvironmentResponse.class
+END
+WlbItemBatchQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemBatchQueryResponse.class
+END
+SpContentDeletetagResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentDeletetagResponse.class
+END
+FenxiaoDealerRequisitionorderGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDealerRequisitionorderGetResponse.class
+END
+ScitemOutercodeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ScitemOutercodeGetResponse.class
+END
+SimbaAdgroupDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupDeleteResponse.class
+END
+SimbaInsightToplevelcatsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightToplevelcatsGetResponse.class
+END
+UmpToolAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpToolAddResponse.class
+END
+BillBillsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/BillBillsGetResponse.class
+END
+ShopGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ShopGetResponse.class
+END
+TripJipiaoNsearchOwSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TripJipiaoNsearchOwSearchResponse.class
+END
+FenxiaoProductsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductsGetResponse.class
+END
+LogisticsOrderShengxianConfirmResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsOrderShengxianConfirmResponse.class
+END
+MediaFileGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/MediaFileGetResponse.class
+END
+TmallProductBooksAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallProductBooksAddResponse.class
+END
+TmallProductSuitespecsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallProductSuitespecsGetResponse.class
+END
+FenxiaoCooperationAuditResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoCooperationAuditResponse.class
+END
+FenxiaoRefundQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoRefundQueryResponse.class
+END
+SubuserFullinfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubuserFullinfoGetResponse.class
+END
+SimbaAdgroupAdgroupcatmatchsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupAdgroupcatmatchsGetResponse.class
+END
+HotelRoomImgDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelRoomImgDeleteResponse.class
+END
+CrmMembersGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmMembersGetResponse.class
+END
+CaipiaoGoodsInfoInputResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CaipiaoGoodsInfoInputResponse.class
+END
+SimbaCampaignUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignUpdateResponse.class
+END
+WangwangEserviceChatpeersGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceChatpeersGetResponse.class
+END
+WeitaoFeedsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoFeedsGetResponse.class
+END
+SimbaRptAdgroupnonsearchbaseGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptAdgroupnonsearchbaseGetResponse.class
+END
+ItemQuantityUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemQuantityUpdateResponse.class
+END
+ProductPropimgDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ProductPropimgDeleteResponse.class
+END
+PromotionActivityGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionActivityGetResponse.class
+END
+WlbItemGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemGetResponse.class
+END
+WangwangEserviceGroupmemberGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceGroupmemberGetResponse.class
+END
+SimbaCampaignAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignAddResponse.class
+END
+SimbaAdgroupidsDeletedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupidsDeletedGetResponse.class
+END
+ScitemMapDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ScitemMapDeleteResponse.class
+END
+TripJipiaoAgentOrderHkResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TripJipiaoAgentOrderHkResponse.class
+END
+AlibabaLaiwangUserListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaLaiwangUserListGetResponse.class
+END
+SpContentGetpageResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentGetpageResponse.class
+END
+HotelOrderFaceDealResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelOrderFaceDealResponse.class
+END
+SimbaRptDemographicbaseGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptDemographicbaseGetResponse.class
+END
+SimbaAdgroupUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupUpdateResponse.class
+END
+SimbaInsightCatsforecastGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightCatsforecastGetResponse.class
+END
+InventoryStoreManageResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/InventoryStoreManageResponse.class
+END
+TmcGroupsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmcGroupsGetResponse.class
+END
+SimbaCampaignAreaGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignAreaGetResponse.class
+END
+TmallPromotagTagApplyResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallPromotagTagApplyResponse.class
+END
+TicketItemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TicketItemsGetResponse.class
+END
+TripJipiaoAgentOrderFindResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TripJipiaoAgentOrderFindResponse.class
+END
+CrmGroupAppendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGroupAppendResponse.class
+END
+CaipiaoPresentWinItemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CaipiaoPresentWinItemsGetResponse.class
+END
+WaimaiItemPicUploadResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiItemPicUploadResponse.class
+END
+SkusQuantityUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SkusQuantityUpdateResponse.class
+END
+SimbaAdgroupidsChangedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupidsChangedGetResponse.class
+END
+FavoriteAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FavoriteAddResponse.class
+END
+SpShopInfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpShopInfoGetResponse.class
+END
+AreasGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AreasGetResponse.class
+END
+InventoryOccupyAdjustResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/InventoryOccupyAdjustResponse.class
+END
+SimbaKeywordsChangedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordsChangedGetResponse.class
+END
+CrmGrademktMemberDetailDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGrademktMemberDetailDeleteResponse.class
+END
+CrmGrademktMemberDetailCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGrademktMemberDetailCreateResponse.class
+END
+InventoryStoreQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/InventoryStoreQueryResponse.class
+END
+FenxiaoProductMapAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductMapAddResponse.class
+END
+WirelessBuntingShopShorturlCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WirelessBuntingShopShorturlCreateResponse.class
+END
+FenxiaoProductcatsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductcatsGetResponse.class
+END
+TradeWaimaiOrdersGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeWaimaiOrdersGetResponse.class
+END
+SpContentUpdateclassResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentUpdateclassResponse.class
+END
+WangwangEserviceStreamweigthsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceStreamweigthsGetResponse.class
+END
+SimbaKeywordsDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordsDeleteResponse.class
+END
+TravelItemsAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TravelItemsAddResponse.class
+END
+UmpMbbGetbycodeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpMbbGetbycodeResponse.class
+END
+RpRefundsAgreeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/RpRefundsAgreeResponse.class
+END
+CrmGrademktMemberQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGrademktMemberQueryResponse.class
+END
+TbkShopsDetailGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TbkShopsDetailGetResponse.class
+END
+PictureUploadResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PictureUploadResponse.class
+END
+FenxiaoLoginUserGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoLoginUserGetResponse.class
+END
+TraderateAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TraderateAddResponse.class
+END
+PromotionmiscActivityRangeListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscActivityRangeListGetResponse.class
+END
+DeliveryTemplateAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DeliveryTemplateAddResponse.class
+END
+PromotionmiscMjsActivityGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscMjsActivityGetResponse.class
+END
+WaimaiOrderIndexGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiOrderIndexGetResponse.class
+END
+SimbaAdgroupsItemExistResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupsItemExistResponse.class
+END
+AlipayUserAccountFreezeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayUserAccountFreezeGetResponse.class
+END
+SimbaInsightCatsforecastnewGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightCatsforecastnewGetResponse.class
+END
+TradeReceivetimeDelayResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeReceivetimeDelayResponse.class
+END
+UmpMbbsListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpMbbsListGetResponse.class
+END
+SpItemFeedInfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpItemFeedInfoGetResponse.class
+END
+CrmGrademktMemberDetailQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGrademktMemberDetailQueryResponse.class
+END
+TraderateExplainAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TraderateExplainAddResponse.class
+END
+SubuserInfoUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubuserInfoUpdateResponse.class
+END
+JuCityitemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JuCityitemsGetResponse.class
+END
+TraderateImprImprwordsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TraderateImprImprwordsGetResponse.class
+END
+FenxiaoOrderCloseResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoOrderCloseResponse.class
+END
+MaPackcodeCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/MaPackcodeCreateResponse.class
+END
+TaeItemDetailGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TaeItemDetailGetResponse.class
+END
+SimbaCampaignsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignsGetResponse.class
+END
+AitaobaoShopsDetailGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AitaobaoShopsDetailGetResponse.class
+END
+WeikeSubscinfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeikeSubscinfoGetResponse.class
+END
+UmpActivitiesListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpActivitiesListGetResponse.class
+END
+SpContentItemPublishResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentItemPublishResponse.class
+END
+PromotionCouponAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionCouponAddResponse.class
+END
+AlipayPointBudgetGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayPointBudgetGetResponse.class
+END
+XhotelIncrementInfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/XhotelIncrementInfoGetResponse.class
+END
+SpContentGetcountResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentGetcountResponse.class
+END
+ProductsSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ProductsSearchResponse.class
+END
+EbookmediaChapterDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/EbookmediaChapterDeleteResponse.class
+END
+WeitaoCommentsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoCommentsGetResponse.class
+END
+HotelRoomsUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelRoomsUpdateResponse.class
+END
+PictureDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PictureDeleteResponse.class
+END
+LogisticsConsignOrderCreateandsendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsConsignOrderCreateandsendResponse.class
+END
+AlibabaGeoipGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaGeoipGetResponse.class
+END
+ItemImgUploadResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemImgUploadResponse.class
+END
+SimbaInsightRelatedwordsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightRelatedwordsGetResponse.class
+END
+SimbaCreativesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCreativesGetResponse.class
+END
+CaipiaoLotterySendbynickResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CaipiaoLotterySendbynickResponse.class
+END
+ItemcatsAuthorizeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemcatsAuthorizeGetResponse.class
+END
+UppShoppointPredeductResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UppShoppointPredeductResponse.class
+END
+SimbaAdgroupCatmatchforecastGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupCatmatchforecastGetResponse.class
+END
+TopatsSimbaCampkeywordeffectGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TopatsSimbaCampkeywordeffectGetResponse.class
+END
+RefundsApplyGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/RefundsApplyGetResponse.class
+END
+ItemsListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemsListGetResponse.class
+END
+UmpActivityGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpActivityGetResponse.class
+END
+SpContentGraphicUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentGraphicUpdateResponse.class
+END
+JuCitiesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JuCitiesGetResponse.class
+END
+LogisticsPartnersGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsPartnersGetResponse.class
+END
+EbookmediaChapterAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/EbookmediaChapterAddResponse.class
+END
+FenxiaoProductGradepriceGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductGradepriceGetResponse.class
+END
+TraderateListAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TraderateListAddResponse.class
+END
+JuItemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JuItemsGetResponse.class
+END
+RdsDbDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/RdsDbDeleteResponse.class
+END
+TmallYaoPiatsCheckResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallYaoPiatsCheckResponse.class
+END
+HotelRoomAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelRoomAddResponse.class
+END
+RdsDbCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/RdsDbCreateResponse.class
+END
+UmpDetailGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpDetailGetResponse.class
+END
+SellercenterRoleInfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SellercenterRoleInfoGetResponse.class
+END
+SimbaInsightCatsdataGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightCatsdataGetResponse.class
+END
+TradeWaimaiGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeWaimaiGetResponse.class
+END
+AlipayUserAccountreportGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayUserAccountreportGetResponse.class
+END
+WaimaiShopCloseResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiShopCloseResponse.class
+END
+SpServiceSiteGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpServiceSiteGetResponse.class
+END
+SimbaRptCampaigneffectGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptCampaigneffectGetResponse.class
+END
+WlbOrderdetailDateGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbOrderdetailDateGetResponse.class
+END
+AthenaItemSolutionDelResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AthenaItemSolutionDelResponse.class
+END
+WangwangAbstractAddwordResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangAbstractAddwordResponse.class
+END
+TmcUserPermitResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmcUserPermitResponse.class
+END
+TmallEaiOrderRefundExamineCancelResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallEaiOrderRefundExamineCancelResponse.class
+END
+PictureReplaceResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PictureReplaceResponse.class
+END
+ItemAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemAddResponse.class
+END
+EbookmediaChapterUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/EbookmediaChapterUpdateResponse.class
+END
+TripJipiaoAgentOrderSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TripJipiaoAgentOrderSearchResponse.class
+END
+PictureGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PictureGetResponse.class
+END
+AthenaItemSolutionGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AthenaItemSolutionGetResponse.class
+END
+ItemImgDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemImgDeleteResponse.class
+END
+PictureUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PictureUpdateResponse.class
+END
+HotelOrdersSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelOrdersSearchResponse.class
+END
+WidgetLoginstatusGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WidgetLoginstatusGetResponse.class
+END
+SimbaRptAdgroupeffectGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptAdgroupeffectGetResponse.class
+END
+WangwangEserviceReceivenumGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceReceivenumGetResponse.class
+END
+PictureCategoryAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PictureCategoryAddResponse.class
+END
+FenxiaoDealerRequisitionorderQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDealerRequisitionorderQueryResponse.class
+END
+WaimaiCategoryOperateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiCategoryOperateResponse.class
+END
+FenxiaoDistributorItemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDistributorItemsGetResponse.class
+END
+JushitaJdpTaskUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JushitaJdpTaskUpdateResponse.class
+END
+FenxiaoDistributorProcuctStaticGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDistributorProcuctStaticGetResponse.class
+END
+LogisticsCompaniesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsCompaniesGetResponse.class
+END
+SpContentDetailGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentDetailGetResponse.class
+END
+BillBookBillGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/BillBookBillGetResponse.class
+END
+SimbaCreativeDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCreativeDeleteResponse.class
+END
+ItemRecommendAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemRecommendAddResponse.class
+END
+SubuserEmployeeAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubuserEmployeeAddResponse.class
+END
+WangwangEserviceNewevalsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceNewevalsGetResponse.class
+END
+InventoryInitialResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/InventoryInitialResponse.class
+END
+LogisticsOnlineCancelResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsOnlineCancelResponse.class
+END
+AlibabaLaiwangPpMenuAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaLaiwangPpMenuAddResponse.class
+END
+WlbSubscriptionQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbSubscriptionQueryResponse.class
+END
+TripJipiaoAgentOrderFailResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TripJipiaoAgentOrderFailResponse.class
+END
+UmpToolsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpToolsGetResponse.class
+END
+AlipayUserTradeSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayUserTradeSearchResponse.class
+END
+FenxiaoDealerRequisitionorderCloseResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDealerRequisitionorderCloseResponse.class
+END
+AlipayEbppBillKeySearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayEbppBillKeySearchResponse.class
+END
+DdAuctionRuleQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DdAuctionRuleQueryResponse.class
+END
+SimbaInsightCatsrelatedwordGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightCatsrelatedwordGetResponse.class
+END
+AitaobaoShopsRelateGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AitaobaoShopsRelateGetResponse.class
+END
+JipiaoAgentOrderTicketResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JipiaoAgentOrderTicketResponse.class
+END
+DdReservedUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DdReservedUpdateResponse.class
+END
+CaipiaoShopInfoInputResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CaipiaoShopInfoInputResponse.class
+END
+VasSubscribeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/VasSubscribeGetResponse.class
+END
+SpItemListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpItemListGetResponse.class
+END
+TradeFullinfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeFullinfoGetResponse.class
+END
+TmallEaiOrderRefundGoodReturnGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallEaiOrderRefundGoodReturnGetResponse.class
+END
+AitaobaoItemsCouponGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AitaobaoItemsCouponGetResponse.class
+END
+TradeShippingaddressUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeShippingaddressUpdateResponse.class
+END
+TmallItemsDiscountSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallItemsDiscountSearchResponse.class
+END
+TaeItemsSelectResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TaeItemsSelectResponse.class
+END
+HotelGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelGetResponse.class
+END
+FenxiaoDiscountAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDiscountAddResponse.class
+END
+UserGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UserGetResponse.class
+END
+HotelUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelUpdateResponse.class
+END
+TopatsTaskDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TopatsTaskDeleteResponse.class
+END
+SimbaCreativeUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCreativeUpdateResponse.class
+END
+SimbaInsightCatsworddataGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightCatsworddataGetResponse.class
+END
+ProductUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ProductUpdateResponse.class
+END
+TmcGroupDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmcGroupDeleteResponse.class
+END
+UppSellerPointrecordGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UppSellerPointrecordGetResponse.class
+END
+JuCatitemidsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JuCatitemidsGetResponse.class
+END
+UserBuyerGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UserBuyerGetResponse.class
+END
+TradePostageUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradePostageUpdateResponse.class
+END
+WlbItemDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemDeleteResponse.class
+END
+MaQrcodeCommonCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/MaQrcodeCommonCreateResponse.class
+END
+WeitaoCloudtagsGroupAnalyseResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoCloudtagsGroupAnalyseResponse.class
+END
+WlbOutInventoryChangeNotifyResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbOutInventoryChangeNotifyResponse.class
+END
+PromotionmiscItemActivityListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscItemActivityListGetResponse.class
+END
+SellercenterRolesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SellercenterRolesGetResponse.class
+END
+SimbaInsightCatsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightCatsGetResponse.class
+END
+WlbOrderitemPageGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbOrderitemPageGetResponse.class
+END
+SimbaRptCusteffectGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptCusteffectGetResponse.class
+END
+TimeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TimeGetResponse.class
+END
+LogisticsAddressReachablebatchGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsAddressReachablebatchGetResponse.class
+END
+ItemPropimgUploadResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemPropimgUploadResponse.class
+END
+JaeClientInteractionListenblowResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JaeClientInteractionListenblowResponse.class
+END
+TicketItemGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TicketItemGetResponse.class
+END
+ItemSkusGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemSkusGetResponse.class
+END
+SimbaAdgroupNonsearchstatesUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupNonsearchstatesUpdateResponse.class
+END
+CaipiaoPresentItemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CaipiaoPresentItemsGetResponse.class
+END
+TopatsResultGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TopatsResultGetResponse.class
+END
+AppipGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AppipGetResponse.class
+END
+PromotionmiscActivityRangeRemoveResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscActivityRangeRemoveResponse.class
+END
+ItemsCustomGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemsCustomGetResponse.class
+END
+SimbaNonsearchAllplacesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaNonsearchAllplacesGetResponse.class
+END
+UmpRangeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpRangeGetResponse.class
+END
+AthenaItemSolutionUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AthenaItemSolutionUpdateResponse.class
+END
+ShoprecommendShopsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ShoprecommendShopsGetResponse.class
+END
+FenxiaoTrademonitorGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoTrademonitorGetResponse.class
+END
+WaimaiShopOpenResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiShopOpenResponse.class
+END
+CrmGradeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGradeGetResponse.class
+END
+SubuserDepartmentAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubuserDepartmentAddResponse.class
+END
+ProductAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ProductAddResponse.class
+END
+TmcMessagesConfirmResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmcMessagesConfirmResponse.class
+END
+FenxiaoProductcatAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductcatAddResponse.class
+END
+TsPropertyGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TsPropertyGetResponse.class
+END
+WlbExtorderPageGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbExtorderPageGetResponse.class
+END
+CrmGradeSetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGradeSetResponse.class
+END
+FenxiaoOrderMessageAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoOrderMessageAddResponse.class
+END
+WlbItemUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemUpdateResponse.class
+END
+TradesSoldIncrementGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradesSoldIncrementGetResponse.class
+END
+TmcMessageProduceResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmcMessageProduceResponse.class
+END
+DdAuctionRuleAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DdAuctionRuleAddResponse.class
+END
+SimbaKeywordsRecommendGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordsRecommendGetResponse.class
+END
+TripJipiaoAgentOrderSuccessResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TripJipiaoAgentOrderSuccessResponse.class
+END
+WangwangAbstractInitializeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangAbstractInitializeResponse.class
+END
+ItemPropimgDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemPropimgDeleteResponse.class
+END
+QtReportGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/QtReportGetResponse.class
+END
+ItempropsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItempropsGetResponse.class
+END
+BillAccountsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/BillAccountsGetResponse.class
+END
+AlipayPointOrderGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayPointOrderGetResponse.class
+END
+WaimaiShopbycityGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiShopbycityGetResponse.class
+END
+SimbaNonsearchAdgroupplacesDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaNonsearchAdgroupplacesDeleteResponse.class
+END
+TripJipiaoAgentItinerarySendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TripJipiaoAgentItinerarySendResponse.class
+END
+TbkShopsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TbkShopsGetResponse.class
+END
+WlbOrderScheduleRuleAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbOrderScheduleRuleAddResponse.class
+END
+AitaobaoRealtimeReportGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AitaobaoRealtimeReportGetResponse.class
+END
+DdMenuDetailResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DdMenuDetailResponse.class
+END
+SimbaCampaignAreaoptionsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignAreaoptionsGetResponse.class
+END
+TbkItemsDetailGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TbkItemsDetailGetResponse.class
+END
+PromotionmiscItemActivityAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscItemActivityAddResponse.class
+END
+FenxiaoDistributorProductsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDistributorProductsGetResponse.class
+END
+SimbaNonsearchAlldemographicsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaNonsearchAlldemographicsGetResponse.class
+END
+SpContentCustomUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentCustomUpdateResponse.class
+END
+TmallPromotagTagFindResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallPromotagTagFindResponse.class
+END
+CrmGrouptaskCheckResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGrouptaskCheckResponse.class
+END
+SimbaNonsearchAdgroupplacesAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaNonsearchAdgroupplacesAddResponse.class
+END
+UmpToolDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpToolDeleteResponse.class
+END
+WangwangEserviceOnlinetimeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceOnlinetimeGetResponse.class
+END
+HotelSoldTypesIncrementGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelSoldTypesIncrementGetResponse.class
+END
+WaimaiShopBusinessrulesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiShopBusinessrulesGetResponse.class
+END
+ItemJointImgResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemJointImgResponse.class
+END
+FenxiaoOrderConfirmPaidResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoOrderConfirmPaidResponse.class
+END
+SpContentGraphicPublishResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentGraphicPublishResponse.class
+END
+MediaFileDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/MediaFileDeleteResponse.class
+END
+FenxiaoDealerRequisitionorderAgreeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDealerRequisitionorderAgreeResponse.class
+END
+AitaobaoItemsDetailGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AitaobaoItemsDetailGetResponse.class
+END
+WlbOrderCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbOrderCreateResponse.class
+END
+TmcMessagesConsumeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmcMessagesConsumeResponse.class
+END
+SimbaKeywordsPricevonSetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordsPricevonSetResponse.class
+END
+SimbaNonsearchAdgroupplacesUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaNonsearchAdgroupplacesUpdateResponse.class
+END
+HotelRoomUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelRoomUpdateResponse.class
+END
+MarketingPromotionsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/MarketingPromotionsGetResponse.class
+END
+PromotionmiscMjsActivityDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscMjsActivityDeleteResponse.class
+END
+AlipayUserGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayUserGetResponse.class
+END
+SimbaAdgroupChangedcatmatchsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupChangedcatmatchsGetResponse.class
+END
+VasSubscSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/VasSubscSearchResponse.class
+END
+TradeMemoUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeMemoUpdateResponse.class
+END
+EbookmediaResourceAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/EbookmediaResourceAddResponse.class
+END
+TravelItemspropsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TravelItemspropsGetResponse.class
+END
+AlipayMicropayOrderDirectPayResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayMicropayOrderDirectPayResponse.class
+END
+WlbOrderstatusGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbOrderstatusGetResponse.class
+END
+TripJipiaoAgentOrderGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TripJipiaoAgentOrderGetResponse.class
+END
+SimbaNonsearchDemographicsUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaNonsearchDemographicsUpdateResponse.class
+END
+SimbaAdgroupAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupAddResponse.class
+END
+ItemUpdateListingResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemUpdateListingResponse.class
+END
+WaimaiShopListResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiShopListResponse.class
+END
+SpContentItemUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentItemUpdateResponse.class
+END
+UmpActivityDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpActivityDeleteResponse.class
+END
+UmpToolUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpToolUpdateResponse.class
+END
+FenxiaoProductcatDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductcatDeleteResponse.class
+END
+DdStoreExportResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DdStoreExportResponse.class
+END
+SimbaAdgroupsbycampaignidGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupsbycampaignidGetResponse.class
+END
+SimbaAdgroupsbyadgroupidsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupsbyadgroupidsGetResponse.class
+END
+WeikePerformancePutResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeikePerformancePutResponse.class
+END
+ItemDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemDeleteResponse.class
+END
+JuTodayitemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JuTodayitemsGetResponse.class
+END
+RpReturngoodsAgreeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/RpReturngoodsAgreeResponse.class
+END
+DdReservedListResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DdReservedListResponse.class
+END
+SellercenterRolemembersGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SellercenterRolemembersGetResponse.class
+END
+JuCitygroupGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JuCitygroupGetResponse.class
+END
+WaimaiItemGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiItemGetResponse.class
+END
+InventoryInitialItemResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/InventoryInitialItemResponse.class
+END
+ItemrecommendItemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemrecommendItemsGetResponse.class
+END
+WlbStoresBaseinfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbStoresBaseinfoGetResponse.class
+END
+SpShopExtraInfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpShopExtraInfoGetResponse.class
+END
+SimbaKeywordKeywordforecastGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordKeywordforecastGetResponse.class
+END
+PromotionmiscMjsActivityUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscMjsActivityUpdateResponse.class
+END
+HotelMatchFeedbackResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelMatchFeedbackResponse.class
+END
+ScitemAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ScitemAddResponse.class
+END
+WeitaoCloudtagsGroupDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoCloudtagsGroupDeleteResponse.class
+END
+RdsDbGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/RdsDbGetResponse.class
+END
+SimbaCustomersAuthorizedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCustomersAuthorizedGetResponse.class
+END
+TradeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeGetResponse.class
+END
+TripJipiaoAgentOrderConfirmResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TripJipiaoAgentOrderConfirmResponse.class
+END
+PromotionmiscActivityRangeAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscActivityRangeAddResponse.class
+END
+TicketItemUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TicketItemUpdateResponse.class
+END
+WaimaiItemOperateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiItemOperateResponse.class
+END
+SellercatsListAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SellercatsListAddResponse.class
+END
+FenxiaoDealerRequisitionorderRefuseResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDealerRequisitionorderRefuseResponse.class
+END
+AlipayEbppOweBillUploadResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayEbppOweBillUploadResponse.class
+END
+TmallBrandcatControlGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallBrandcatControlGetResponse.class
+END
+RefundsReceiveGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/RefundsReceiveGetResponse.class
+END
+HotelNameGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelNameGetResponse.class
+END
+CaipiaoGoodsInfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CaipiaoGoodsInfoGetResponse.class
+END
+TradeSnapshotGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeSnapshotGetResponse.class
+END
+UmpActivityUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpActivityUpdateResponse.class
+END
+SimbaKeywordsbykeywordidsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordsbykeywordidsGetResponse.class
+END
+WeitaoFeedAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoFeedAddResponse.class
+END
+FenxiaoProductcatUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductcatUpdateResponse.class
+END
+JaeClientCameraTakephotoResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JaeClientCameraTakephotoResponse.class
+END
+JushitaJdpUserDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JushitaJdpUserDeleteResponse.class
+END
+WaimaiItemUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiItemUpdateResponse.class
+END
+JuGroupGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JuGroupGetResponse.class
+END
+SpContentCustomPublishResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentCustomPublishResponse.class
+END
+SimbaKeywordsQscoreGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordsQscoreGetResponse.class
+END
+ItemUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemUpdateResponse.class
+END
+XhotelPriceInfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/XhotelPriceInfoGetResponse.class
+END
+TravelItemsUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TravelItemsUpdateResponse.class
+END
+SimbaCampaignPlatformUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignPlatformUpdateResponse.class
+END
+SimbaCreativeidsDeletedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCreativeidsDeletedGetResponse.class
+END
+TradeWaimaiConfirmResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeWaimaiConfirmResponse.class
+END
+FenxiaoGradeAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoGradeAddResponse.class
+END
+ScitemQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ScitemQueryResponse.class
+END
+JushitaJdpTasksGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JushitaJdpTasksGetResponse.class
+END
+InventoryAdjustExternalResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/InventoryAdjustExternalResponse.class
+END
+WeitaoCloudtagsGroupGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoCloudtagsGroupGetResponse.class
+END
+SubusersGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubusersGetResponse.class
+END
+AitaobaoItemsRelateGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AitaobaoItemsRelateGetResponse.class
+END
+SkusCustomGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SkusCustomGetResponse.class
+END
+LogisticsOrderCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsOrderCreateResponse.class
+END
+WeitaoFeedRemainedResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoFeedRemainedResponse.class
+END
+AlipayMicropayOrderUnfreezeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayMicropayOrderUnfreezeResponse.class
+END
+CrmMembersGroupBatchaddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmMembersGroupBatchaddResponse.class
+END
+TmallProductSpecGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallProductSpecGetResponse.class
+END
+LogisticsDummySendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsDummySendResponse.class
+END
+WangwangEserviceEvaluationGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceEvaluationGetResponse.class
+END
+SimbaCreativeAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCreativeAddResponse.class
+END
+SimbaInsightCatsbaseGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightCatsbaseGetResponse.class
+END
+SimbaAdgroupNonsearchpricesUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupNonsearchpricesUpdateResponse.class
+END
+SimbaCreativeidsChangedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCreativeidsChangedGetResponse.class
+END
+TmallBrandcatSuiteconfGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallBrandcatSuiteconfGetResponse.class
+END
+TraderateImprImprwordByaucidGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TraderateImprImprwordByaucidGetResponse.class
+END
+WangwangEserviceEvalsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceEvalsGetResponse.class
+END
+SimbaCampaignPlatformGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignPlatformGetResponse.class
+END
+SimbaToolsItemsTopGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaToolsItemsTopGetResponse.class
+END
+FenxiaoProductImageUploadResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductImageUploadResponse.class
+END
+SimbaAdgroupOnlineitemsvonGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupOnlineitemsvonGetResponse.class
+END
+FenxiaoDistributorsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDistributorsGetResponse.class
+END
+WlbOrderscheduleruleQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbOrderscheduleruleQueryResponse.class
+END
+SimbaInsightWordscatsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightWordscatsGetResponse.class
+END
+FenxiaoRefundMessageAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoRefundMessageAddResponse.class
+END
+PictureCategoryUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PictureCategoryUpdateResponse.class
+END
+FenxiaoGradeDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoGradeDeleteResponse.class
+END
+AlibabaXiamiApiContractGiftSendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaXiamiApiContractGiftSendResponse.class
+END
+ItemEbookUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemEbookUpdateResponse.class
+END
+CrmMembersSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmMembersSearchResponse.class
+END
+HotelImageUploadResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelImageUploadResponse.class
+END
+ItemPriceUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemPriceUpdateResponse.class
+END
+SimbaAdgroupCatmatchUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupCatmatchUpdateResponse.class
+END
+WlbExtorderCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbExtorderCreateResponse.class
+END
+ItemSkuAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemSkuAddResponse.class
+END
+XhotelCityGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/XhotelCityGetResponse.class
+END
+TmallPromotagTaguserSaveResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallPromotagTaguserSaveResponse.class
+END
+EbookFileUploadChunkResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/EbookFileUploadChunkResponse.class
+END
+SimbaRptAdgroupbaseGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptAdgroupbaseGetResponse.class
+END
+FenxiaoCooperationUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoCooperationUpdateResponse.class
+END
+UmpToolGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpToolGetResponse.class
+END
+UmpRangeDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpRangeDeleteResponse.class
+END
+ItemSkuDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemSkuDeleteResponse.class
+END
+WaimaiOrderSingleGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiOrderSingleGetResponse.class
+END
+TmallProductTemplateGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallProductTemplateGetResponse.class
+END
+UmpDetailsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpDetailsGetResponse.class
+END
+SubuserDutyAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubuserDutyAddResponse.class
+END
+SpContentGetdetailbyidResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentGetdetailbyidResponse.class
+END
+TmallCrmEquityGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallCrmEquityGetResponse.class
+END
+SimbaInsightWordspricedataGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightWordspricedataGetResponse.class
+END
+SimbaKeywordsvonAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordsvonAddResponse.class
+END
+LogisticsOrdersGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsOrdersGetResponse.class
+END
+FenxiaoProductImageDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductImageDeleteResponse.class
+END
+TmallItemDescModulesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallItemDescModulesGetResponse.class
+END
+SimbaRptCampadgroupeffectGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptCampadgroupeffectGetResponse.class
+END
+AthenaItemKnowledgeTypeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AthenaItemKnowledgeTypeGetResponse.class
+END
+ItemBarcodeUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemBarcodeUpdateResponse.class
+END
+RefundGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/RefundGetResponse.class
+END
+FenxiaoDiscountsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDiscountsGetResponse.class
+END
+SimbaRptAdgroupkeywordeffectGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptAdgroupkeywordeffectGetResponse.class
+END
+SpContentDeleteclassResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentDeleteclassResponse.class
+END
+MediaFileAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/MediaFileAddResponse.class
+END
+TmallCrmEquitySetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallCrmEquitySetResponse.class
+END
+WlbItemQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemQueryResponse.class
+END
+PictureIsreferencedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PictureIsreferencedGetResponse.class
+END
+SimbaInsightWordsdataGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightWordsdataGetResponse.class
+END
+InventoryIpcInventorydetailGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/InventoryIpcInventorydetailGetResponse.class
+END
+AitaobaoShopsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AitaobaoShopsGetResponse.class
+END
+TradeConfirmfeeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeConfirmfeeGetResponse.class
+END
+WlbWaybillSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbWaybillSearchResponse.class
+END
+WlbInventorySyncResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbInventorySyncResponse.class
+END
+FenxiaoGradeUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoGradeUpdateResponse.class
+END
+CrmShopvipCancelResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmShopvipCancelResponse.class
+END
+CrmMembersIncrementGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmMembersIncrementGetResponse.class
+END
+UppShoppointDeductResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UppShoppointDeductResponse.class
+END
+WlbOrderConsignResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbOrderConsignResponse.class
+END
+TmallEaiOrderRefundRefuseResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallEaiOrderRefundRefuseResponse.class
+END
+CaipiaoLotterySendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CaipiaoLotterySendResponse.class
+END
+QtReportsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/QtReportsGetResponse.class
+END
+WeitaoMenuQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoMenuQueryResponse.class
+END
+SimbaRptAdgroupkeywordbaseGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptAdgroupkeywordbaseGetResponse.class
+END
+TradesSoldGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradesSoldGetResponse.class
+END
+CrmGroupAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGroupAddResponse.class
+END
+SimbaAdgroupsChangedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupsChangedGetResponse.class
+END
+SpmeffectGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpmeffectGetResponse.class
+END
+SpContentUpdatetagResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentUpdatetagResponse.class
+END
+WlbItemAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemAddResponse.class
+END
+WangwangAbstractDeletewordResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangAbstractDeletewordResponse.class
+END
+TopatsJushitaJdpDatadeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TopatsJushitaJdpDatadeleteResponse.class
+END
+FenxiaoGradesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoGradesGetResponse.class
+END
+FenxiaoRefundCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoRefundCreateResponse.class
+END
+PromotionmiscItemActivityDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscItemActivityDeleteResponse.class
+END
+ItemSkuUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemSkuUpdateResponse.class
+END
+PromotionMealGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionMealGetResponse.class
+END
+ItemAnchorGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemAnchorGetResponse.class
+END
+WaimaiShopBusinessrulesUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiShopBusinessrulesUpdateResponse.class
+END
+JuGroupidsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JuGroupidsGetResponse.class
+END
+FenxiaoCooperationProductcatAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoCooperationProductcatAddResponse.class
+END
+TravelItemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TravelItemsGetResponse.class
+END
+WlbItemSynchronizeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemSynchronizeResponse.class
+END
+WeitaoMenuDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoMenuDeleteResponse.class
+END
+FenxiaoProductSkusGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductSkusGetResponse.class
+END
+JuGroupAssignResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JuGroupAssignResponse.class
+END
+FenxiaoProductSkuDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductSkuDeleteResponse.class
+END
+WlbNotifyMessageConfirmResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbNotifyMessageConfirmResponse.class
+END
+WeitaoMenuCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoMenuCreateResponse.class
+END
+SellercenterSubuserPermissionsRolesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SellercenterSubuserPermissionsRolesGetResponse.class
+END
+ShoprecommendItemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ShoprecommendItemsGetResponse.class
+END
+ItemSkuPriceUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemSkuPriceUpdateResponse.class
+END
+JaeClientInteractionStoplistenblowResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JaeClientInteractionStoplistenblowResponse.class
+END
+PromotionCouponSnsSendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionCouponSnsSendResponse.class
+END
+SimbaInsightCatsinfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightCatsinfoGetResponse.class
+END
+JaeClientInteractionVibrateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JaeClientInteractionVibrateResponse.class
+END
+SimbaInsightCatstopwordGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightCatstopwordGetResponse.class
+END
+LogisticsOrdertracePushResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsOrdertracePushResponse.class
+END
+XhotelInfoListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/XhotelInfoListGetResponse.class
+END
+LogisticsOfflineSendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsOfflineSendResponse.class
+END
+HotelTypeNameGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelTypeNameGetResponse.class
+END
+DeliveryTemplateGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DeliveryTemplateGetResponse.class
+END
+JaeClientLocationGetlocationResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JaeClientLocationGetlocationResponse.class
+END
+TmallTemaiItemsSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallTemaiItemsSearchResponse.class
+END
+TradeAmountGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeAmountGetResponse.class
+END
+WangwangAbstractLogqueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangAbstractLogqueryResponse.class
+END
+WlbOrderCancelResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbOrderCancelResponse.class
+END
+SimbaCatmatchidsDeletedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCatmatchidsDeletedGetResponse.class
+END
+CaipiaoSignstatusCheckResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CaipiaoSignstatusCheckResponse.class
+END
+SimbaKeywordscatQscoreGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordscatQscoreGetResponse.class
+END
+EbookYunpanTokenGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/EbookYunpanTokenGetResponse.class
+END
+CrmGrademktMemberGradeactivityInitResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGrademktMemberGradeactivityInitResponse.class
+END
+TmallEaiOrderRefundGoodReturnCheckResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallEaiOrderRefundGoodReturnCheckResponse.class
+END
+FenxiaoRefundUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoRefundUpdateResponse.class
+END
+WlbTradeorderGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbTradeorderGetResponse.class
+END
+SellercatsListUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SellercatsListUpdateResponse.class
+END
+PromotionmiscItemActivityUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscItemActivityUpdateResponse.class
+END
+PromotionmiscMjsActivityAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscMjsActivityAddResponse.class
+END
+CaipiaoPresentStatGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CaipiaoPresentStatGetResponse.class
+END
+LogisticsTraceSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsTraceSearchResponse.class
+END
+WlbIcitemRegionsaleOperateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbIcitemRegionsaleOperateResponse.class
+END
+SimbaCatmatchidsChangedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCatmatchidsChangedGetResponse.class
+END
+SimbaCampaignScheduleUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignScheduleUpdateResponse.class
+END
+JipiaoAgentOrderSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JipiaoAgentOrderSearchResponse.class
+END
+SimbaRptCampaignbaseGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptCampaignbaseGetResponse.class
+END
+WlbOrderPageGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbOrderPageGetResponse.class
+END
+SpContentUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentUpdateResponse.class
+END
+FenxiaoProductSkuUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductSkuUpdateResponse.class
+END
+TradeOrderskuUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeOrderskuUpdateResponse.class
+END
+TmallBrandcatSalesproGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallBrandcatSalesproGetResponse.class
+END
+TbkItemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TbkItemsGetResponse.class
+END
+ProductImgUploadResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ProductImgUploadResponse.class
+END
+LogisticsOnlineConfirmResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsOnlineConfirmResponse.class
+END
+FenxiaoProductGradepriceUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductGradepriceUpdateResponse.class
+END
+BillBillGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/BillBillGetResponse.class
+END
+SimbaCampaignBudgetGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignBudgetGetResponse.class
+END
+TravelItemsareaGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TravelItemsareaGetResponse.class
+END
+LogisticsAddressReachableResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsAddressReachableResponse.class
+END
+AlibabaLaiwangPpMessageSendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaLaiwangPpMessageSendResponse.class
+END
+WlbItemAuthorizationAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemAuthorizationAddResponse.class
+END
+JdsTradesStatisticsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JdsTradesStatisticsGetResponse.class
+END
+PromotionmiscToolCheckResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscToolCheckResponse.class
+END
+ItemsInventoryGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemsInventoryGetResponse.class
+END
+TmallTemaiSubcatsSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallTemaiSubcatsSearchResponse.class
+END
+SpContentDeletebyidResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentDeletebyidResponse.class
+END
+HotelRoomGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelRoomGetResponse.class
+END
+SpItemInfoListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpItemInfoListGetResponse.class
+END
+TmallTraderateFeedsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallTraderateFeedsGetResponse.class
+END
+TmallProductSpecsTicketGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallProductSpecsTicketGetResponse.class
+END
+JushitaJdpUserAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JushitaJdpUserAddResponse.class
+END
+BrandserviceFanscountQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/BrandserviceFanscountQueryResponse.class
+END
+AlipayTopatsUserAccountreportGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayTopatsUserAccountreportGetResponse.class
+END
+WlbInventoryDetailGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbInventoryDetailGetResponse.class
+END
+XhotelListSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/XhotelListSearchResponse.class
+END
+AlipaySystemOauthTokenResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipaySystemOauthTokenResponse.class
+END
+HotelTypeAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelTypeAddResponse.class
+END
+CrmMemberGroupGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmMemberGroupGetResponse.class
+END
+UmpActivityAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpActivityAddResponse.class
+END
+JdsTradesStatisticsDiffResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JdsTradesStatisticsDiffResponse.class
+END
+TmcUserCancelResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmcUserCancelResponse.class
+END
+SimbaCampaignBudgetUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignBudgetUpdateResponse.class
+END
+AlibabaInteractSensorAuthorizeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaInteractSensorAuthorizeResponse.class
+END
+FenxiaoOrderRemarkUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoOrderRemarkUpdateResponse.class
+END
+TmallEaiOrderRefundAgreeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallEaiOrderRefundAgreeResponse.class
+END
+PromotionCouponsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionCouponsGetResponse.class
+END
+UmpDetailAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpDetailAddResponse.class
+END
+TmallEaiOrderRefundMessageGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallEaiOrderRefundMessageGetResponse.class
+END
+TraderatesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TraderatesGetResponse.class
+END
+ItemGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemGetResponse.class
+END
+SimbaCampaignChanneloptionsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignChanneloptionsGetResponse.class
+END
+ProductImgDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ProductImgDeleteResponse.class
+END
+LogisticsOrdersDetailGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsOrdersDetailGetResponse.class
+END
+SimbaInsightWordsanalysisGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightWordsanalysisGetResponse.class
+END
+FenxiaoDealerRequisitionorderModifyResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDealerRequisitionorderModifyResponse.class
+END
+AlibabaXiamiApiContractIssignResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaXiamiApiContractIssignResponse.class
+END
+PictureCategoryGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PictureCategoryGetResponse.class
+END
+WlbItemAuthorizationQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemAuthorizationQueryResponse.class
+END
+ScitemMapBatchQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ScitemMapBatchQueryResponse.class
+END
+WlbWaybillUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbWaybillUpdateResponse.class
+END
+AlibabaXiamiApiContractSignResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaXiamiApiContractSignResponse.class
+END
+BrandserviceIsfanQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/BrandserviceIsfanQueryResponse.class
+END
+LogisticsOnlineSendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsOnlineSendResponse.class
+END
+ShopcatsListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ShopcatsListGetResponse.class
+END
+SubuserDutysGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubuserDutysGetResponse.class
+END
+HotelSoldHotelsIncrementGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelSoldHotelsIncrementGetResponse.class
+END
+CrmMembersGroupsBatchdeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmMembersGroupsBatchdeleteResponse.class
+END
+ItemsOnsaleGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemsOnsaleGetResponse.class
+END
+SellercenterSubusersGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SellercenterSubusersGetResponse.class
+END
+HotelOrderFaceCheckResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelOrderFaceCheckResponse.class
+END
+AthenaItemSolutionAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AthenaItemSolutionAddResponse.class
+END
+TradeCloseResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeCloseResponse.class
+END
+TradeMemoAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TradeMemoAddResponse.class
+END
+DdTakeoutExportResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DdTakeoutExportResponse.class
+END
+UmpActivitiesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpActivitiesGetResponse.class
+END
+TmallEaiOrderRefundGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallEaiOrderRefundGetResponse.class
+END
+WlbTmsorderQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbTmsorderQueryResponse.class
+END
+WlbItemConsignmentDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemConsignmentDeleteResponse.class
+END
+TmallPromotagTaguserJudgeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallPromotagTaguserJudgeResponse.class
+END
+WlbItemConsignmentCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemConsignmentCreateResponse.class
+END
+AlibabaLaiwangPpMenuGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaLaiwangPpMenuGetResponse.class
+END
+EbookmediaVolumeAddOrUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/EbookmediaVolumeAddOrUpdateResponse.class
+END
+WlbItemConsignmentPageGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemConsignmentPageGetResponse.class
+END
+FuwuScoresGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FuwuScoresGetResponse.class
+END
+TaeItemsListResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TaeItemsListResponse.class
+END
+WaimaiBcategoryGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiBcategoryGetResponse.class
+END
+LogisticsInfoGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsInfoGetResponse.class
+END
+AlipayMicropayOrderFreezeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayMicropayOrderFreezeResponse.class
+END
+CrmGroupsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGroupsGetResponse.class
+END
+AlibabaLaiwangPpMenuRemoveResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaLaiwangPpMenuRemoveResponse.class
+END
+UppShoppointSendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UppShoppointSendResponse.class
+END
+SimbaNonsearchDemographicsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaNonsearchDemographicsGetResponse.class
+END
+LogisticsAddressRemoveResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsAddressRemoveResponse.class
+END
+ItemEbookAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemEbookAddResponse.class
+END
+WaimaiAddressOperateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiAddressOperateResponse.class
+END
+TmallEaiOrderRefundExamineResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallEaiOrderRefundExamineResponse.class
+END
+FenxiaoDealerRequisitionorderRemarkUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDealerRequisitionorderRemarkUpdateResponse.class
+END
+FuwuSaleLinkGenResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FuwuSaleLinkGenResponse.class
+END
+QtReportDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/QtReportDeleteResponse.class
+END
+SimbaRptAdgroupcreativeeffectGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptAdgroupcreativeeffectGetResponse.class
+END
+ItemUpdateDelistingResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemUpdateDelistingResponse.class
+END
+AftersaleGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AftersaleGetResponse.class
+END
+SpContentListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentListGetResponse.class
+END
+WlbItemMapGetByExtentityResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemMapGetByExtentityResponse.class
+END
+FenxiaoProductMapDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductMapDeleteResponse.class
+END
+AlibabaLaiwangUserGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaLaiwangUserGetResponse.class
+END
+SimbaKeywordsbyadgroupidGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordsbyadgroupidGetResponse.class
+END
+SubuserDutyDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubuserDutyDeleteResponse.class
+END
+SellercenterRoleAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SellercenterRoleAddResponse.class
+END
+FenxiaoDealerRequisitionorderCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDealerRequisitionorderCreateResponse.class
+END
+HotelAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelAddResponse.class
+END
+WangwangAbstractGetwordlistResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangAbstractGetwordlistResponse.class
+END
+FenxiaoOrderCreateDealerResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoOrderCreateDealerResponse.class
+END
+SimbaKeywordidsDeletedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordidsDeletedGetResponse.class
+END
+ScitemUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ScitemUpdateResponse.class
+END
+WlbOrderScheduleRuleUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbOrderScheduleRuleUpdateResponse.class
+END
+WaimaiShopGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiShopGetResponse.class
+END
+TmallEaiOrderRefundGoodReturnAgreeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallEaiOrderRefundGoodReturnAgreeResponse.class
+END
+QianniuNumberPutResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/QianniuNumberPutResponse.class
+END
+WlbOrderscheduleruleDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbOrderscheduleruleDeleteResponse.class
+END
+ItemcatsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemcatsGetResponse.class
+END
+FenxiaoDistributorArchivesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDistributorArchivesGetResponse.class
+END
+SimbaKeywordidsChangedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaKeywordidsChangedGetResponse.class
+END
+VasOrderSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/VasOrderSearchResponse.class
+END
+SimbaRptCustbaseGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptCustbaseGetResponse.class
+END
+TicketItemAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TicketItemAddResponse.class
+END
+AlipayMicropayOrderFreezepayurlGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayMicropayOrderFreezepayurlGetResponse.class
+END
+AlipayMicropayOrderGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayMicropayOrderGetResponse.class
+END
+WeitaoCloudtagsGroupCustomAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoCloudtagsGroupCustomAddResponse.class
+END
+ProductGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ProductGetResponse.class
+END
+ItemEbookSerialUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemEbookSerialUpdateResponse.class
+END
+SimbaRptAdgroupnonsearcheffectGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptAdgroupnonsearcheffectGetResponse.class
+END
+CrmGroupDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGroupDeleteResponse.class
+END
+WlbItemSynchronizeDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemSynchronizeDeleteResponse.class
+END
+QtReportUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/QtReportUpdateResponse.class
+END
+TmallLatoGameRechargeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallLatoGameRechargeResponse.class
+END
+SimbaLoginAuthsignGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaLoginAuthsignGetResponse.class
+END
+UmpRangeAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpRangeAddResponse.class
+END
+WangwangEserviceNoreplynumGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceNoreplynumGetResponse.class
+END
+AlipayMicropayOrderConfirmpayurlGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayMicropayOrderConfirmpayurlGetResponse.class
+END
+KfcKeywordSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/KfcKeywordSearchResponse.class
+END
+SpItemInfoListAdvancedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpItemInfoListAdvancedGetResponse.class
+END
+SimbaRptCampadgroupbaseGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptCampadgroupbaseGetResponse.class
+END
+SimbaCreativesRecordGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCreativesRecordGetResponse.class
+END
+SimbaInsightCatsanalysisGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightCatsanalysisGetResponse.class
+END
+ItemJointPropimgResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemJointPropimgResponse.class
+END
+SimbaRptDemographiceffectGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptDemographiceffectGetResponse.class
+END
+SubuserDutyUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubuserDutyUpdateResponse.class
+END
+CrmGrademktMemberAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGrademktMemberAddResponse.class
+END
+JdsTradeTracesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JdsTradeTracesGetResponse.class
+END
+DeliveryTemplatesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DeliveryTemplatesGetResponse.class
+END
+FavoriteSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FavoriteSearchResponse.class
+END
+UmpMbbsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpMbbsGetResponse.class
+END
+JipiaoPoliciesstatusUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JipiaoPoliciesstatusUpdateResponse.class
+END
+ItemTemplatesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemTemplatesGetResponse.class
+END
+TmallEaiOrderRefundGoodReturnMgetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallEaiOrderRefundGoodReturnMgetResponse.class
+END
+TmcUserGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmcUserGetResponse.class
+END
+AlibabaLaiwangMediaUploadResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaLaiwangMediaUploadResponse.class
+END
+QtReportAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/QtReportAddResponse.class
+END
+UmpMbbGetbyidResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpMbbGetbyidResponse.class
+END
+SpContentGetallclassResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentGetallclassResponse.class
+END
+LogisticsAddressSearchResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsAddressSearchResponse.class
+END
+JuItemidsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JuItemidsGetResponse.class
+END
+PromotionmiscItemActivityGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscItemActivityGetResponse.class
+END
+WlbItemConsignmentQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemConsignmentQueryResponse.class
+END
+AlipayPointOrderAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayPointOrderAddResponse.class
+END
+SubuserDepartmentDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubuserDepartmentDeleteResponse.class
+END
+CrmGroupUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmGroupUpdateResponse.class
+END
+PromotionmiscActivityRangeAllRemoveResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscActivityRangeAllRemoveResponse.class
+END
+WaimaiShopUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiShopUpdateResponse.class
+END
+SimbaNonsearchAdgroupplacesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaNonsearchAdgroupplacesGetResponse.class
+END
+TmcGroupAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmcGroupAddResponse.class
+END
+ShopUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ShopUpdateResponse.class
+END
+WaimaiAddressGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiAddressGetResponse.class
+END
+LogisticsAddressModifyResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsAddressModifyResponse.class
+END
+SimbaAccountBalanceGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAccountBalanceGetResponse.class
+END
+WlbNotifyMessagePageGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbNotifyMessagePageGetResponse.class
+END
+HotelSoldOrdersIncrementGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelSoldOrdersIncrementGetResponse.class
+END
+AitaobaoItemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AitaobaoItemsGetResponse.class
+END
+SimbaAdgroupCatmatchGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupCatmatchGetResponse.class
+END
+SimbaInsightWordsareadataGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightWordsareadataGetResponse.class
+END
+JaeClientInteractionListeningshakeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JaeClientInteractionListeningshakeResponse.class
+END
+UmpDetailListAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UmpDetailListAddResponse.class
+END
+SimbaInsightWordsbaseGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightWordsbaseGetResponse.class
+END
+SpContentDeletebyidsResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentDeletebyidsResponse.class
+END
+AlipayEbppBillAddResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayEbppBillAddResponse.class
+END
+TmallLatourPepsiAwardsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallLatourPepsiAwardsGetResponse.class
+END
+SimbaInsightWordssubdataGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightWordssubdataGetResponse.class
+END
+WeitaoFeedIsrelationResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoFeedIsrelationResponse.class
+END
+SimbaAdgroupCampcatmatchsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaAdgroupCampcatmatchsGetResponse.class
+END
+JipiaoAgentOrderProductSnapshotResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JipiaoAgentOrderProductSnapshotResponse.class
+END
+TmallProductSpecsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallProductSpecsGetResponse.class
+END
+ScitemMapQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ScitemMapQueryResponse.class
+END
+FenxiaoOrdersGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoOrdersGetResponse.class
+END
+WlbItemCombinationDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemCombinationDeleteResponse.class
+END
+CategoryrecommendItemsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CategoryrecommendItemsGetResponse.class
+END
+JipiaoAgentOrderDetailResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JipiaoAgentOrderDetailResponse.class
+END
+WlbItemCombinationCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemCombinationCreateResponse.class
+END
+ItemRecommendDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItemRecommendDeleteResponse.class
+END
+AlipayUserContractGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlipayUserContractGetResponse.class
+END
+JaeClientRelationShowfollowbuttonResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/JaeClientRelationShowfollowbuttonResponse.class
+END
+SubuserDepartmentUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubuserDepartmentUpdateResponse.class
+END
+SimbaRptAdgroupcreativebaseGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaRptAdgroupcreativebaseGetResponse.class
+END
+WaimaiItemlistGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WaimaiItemlistGetResponse.class
+END
+TbkItemsConvertResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TbkItemsConvertResponse.class
+END
+PromotionCouponSendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionCouponSendResponse.class
+END
+SimbaInsightCatstopwordnewGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaInsightCatstopwordnewGetResponse.class
+END
+WlbItemCombinationGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbItemCombinationGetResponse.class
+END
+WangwangEserviceNewloginlogsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceNewloginlogsGetResponse.class
+END
+UppShoppointPresendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/UppShoppointPresendResponse.class
+END
+WlbInventorylogQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbInventorylogQueryResponse.class
+END
+FenxiaoProductUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoProductUpdateResponse.class
+END
+SubuserDepartmentsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubuserDepartmentsGetResponse.class
+END
+TmallTraderateItemtagsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallTraderateItemtagsGetResponse.class
+END
+HotelCityGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/HotelCityGetResponse.class
+END
+SpContentPublishResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SpContentPublishResponse.class
+END
+FenxiaoDiscountUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/FenxiaoDiscountUpdateResponse.class
+END
+SimbaCampaignScheduleGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignScheduleGetResponse.class
+END
+LogisticsOrderstorePushResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsOrderstorePushResponse.class
+END
+WlbReplenishStatisticsResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbReplenishStatisticsResponse.class
+END
+CrmQnLabelsSellerGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmQnLabelsSellerGetResponse.class
+END
+SimbaCreativesChangedGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCreativesChangedGetResponse.class
+END
+RefundMessagesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/RefundMessagesGetResponse.class
+END
+MarketingPromotionKfcResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/MarketingPromotionKfcResponse.class
+END
+WangwangEserviceLoginlogsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WangwangEserviceLoginlogsGetResponse.class
+END
+WlbWaybillShengxianGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WlbWaybillShengxianGetResponse.class
+END
+ItempropvaluesGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ItempropvaluesGetResponse.class
+END
+SellercenterUserPermissionsGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SellercenterUserPermissionsGetResponse.class
+END
+LogisticsConsignResendResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/LogisticsConsignResendResponse.class
+END
+WeitaoCloudtagsGroupGetbyidResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WeitaoCloudtagsGroupGetbyidResponse.class
+END
+InventoryQueryResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/InventoryQueryResponse.class
+END
+ScitemGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/ScitemGetResponse.class
+END
+PromotionmiscMjsActivityListGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/PromotionmiscMjsActivityListGetResponse.class
+END
+DdAuctionRuleDeleteResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/DdAuctionRuleDeleteResponse.class
+END
+SimbaCampaignAreaUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SimbaCampaignAreaUpdateResponse.class
+END
+TopatsSimbaCampkeywordbaseGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TopatsSimbaCampkeywordbaseGetResponse.class
+END
+AlibabaLaiwangPpMenuCreateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/AlibabaLaiwangPpMenuCreateResponse.class
+END
+TsSubscribeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TsSubscribeGetResponse.class
+END
+InventoryAdjustTradeResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/InventoryAdjustTradeResponse.class
+END
+CrmMemberinfoUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/CrmMemberinfoUpdateResponse.class
+END
+SubuserEmployeeUpdateResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/SubuserEmployeeUpdateResponse.class
+END
+TmallPromotagTaguserRemoveResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/TmallPromotagTaguserRemoveResponse.class
+END
+WirelessQrcodeGetResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/wlpost/!svn/ver/3/trunk/store-all/store-cloud/mvn-repo/com/taobao/api/response/WirelessQrcodeGetResponse.class
+END

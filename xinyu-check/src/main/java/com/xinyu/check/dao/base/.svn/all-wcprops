@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base
+END
+DynamicDataSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/DynamicDataSource.java
+END
+CommonConstant.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/CommonConstant.java
+END
+Cryptos.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/Cryptos.java
+END
+ClassUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/ClassUtil.java
+END
+Dialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/Dialect.java
+END
+PaginationInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/PaginationInterceptor.java
+END
+Entity.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/Entity.java
+END
+BaseDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/BaseDaoImpl.java
+END
+SqlSessionCallback.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/SqlSessionCallback.java
+END
+Exceptions.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/Exceptions.java
+END
+ContextHolder.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/ContextHolder.java
+END
+AbstractInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/AbstractInterceptor.java
+END
+SessionUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/SessionUser.java
+END
+Seqence.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/Seqence.java
+END
+MultiDataSourceInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/MultiDataSourceInterceptor.java
+END
+QfangModeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/QfangModeEnum.java
+END
+StringUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/StringUtils.java
+END
+Pagination.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/Pagination.java
+END
+OracleDialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/OracleDialect.java
+END
+MySqlDialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/MySqlDialect.java
+END
+BaseDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/dao/base/BaseDao.java
+END

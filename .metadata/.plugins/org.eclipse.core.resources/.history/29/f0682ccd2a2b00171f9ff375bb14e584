@@ -1,0 +1,357 @@
+package com.xinyu.service.caoniao;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.taobao.pac.sdk.cp.ReceiveListener;
+import com.taobao.pac.sdk.cp.ReceiveSysParams;
+import com.taobao.pac.sdk.cp.dataobject.request.WMS_CONSIGN_ORDER_NOTIFY.WmsConsignOrderNotifyRequest;
+import com.taobao.pac.sdk.cp.dataobject.response.WMS_CONSIGN_ORDER_NOTIFY.WmsConsignOrderNotifyResponse;
+import com.xinyu.model.base.DeliverRequirements;
+import com.xinyu.model.base.InvoiceInfo;
+import com.xinyu.model.base.InvoiceItemDetail;
+import com.xinyu.model.base.ReceiverInfo;
+import com.xinyu.model.base.SenderInfo;
+import com.xinyu.model.base.User;
+import com.xinyu.model.base.WmsConsignOrderPackageRequirement;
+import com.xinyu.model.trade.ShipOrder;
+import com.xinyu.model.trade.WmsConsignOrderItem;
+import com.xinyu.service.system.ItemService;
+import com.xinyu.service.system.UserService;
+import com.xinyu.service.trade.ReceiverInfoService;
+import com.xinyu.service.trade.SenderInfoService;
+import com.xinyu.service.util.XmlUtil;
+
+/**
+ * 销售订单发货通知接口（主动模式，WMS_CONSIGN_ORDER_NOTIFY，必选！）
+ * @author yangmin
+ * 2017年4月26日
+ *
+ */
+@Component
+public class WmsConsignOrderNotifyCpImpl implements ReceiveListener<WmsConsignOrderNotifyRequest, WmsConsignOrderNotifyResponse> {
+
+	public static final Logger logger = Logger.getLogger(WmsConsignOrderNotifyCpImpl.class);
+
+	@Autowired
+	private ItemService itemService;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private ReceiverInfoService receiverInfoService;
+	@Autowired
+	private SenderInfoService senderInfoService;
+	
+	private SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+	public WmsConsignOrderNotifyResponse execute(ReceiveSysParams params, WmsConsignOrderNotifyRequest request) {
+		// TODO Auto-generated method stub
+		logger.debug("销售订单发货业务逻辑开始处理!");
+		String content = params.getContent();
+		try{
+			ShipOrder order=new ShipOrder();
+			order.generateId();
+			Map<String, Object> map = XmlUtil.Dom2Map(content);
+			buildOrderInfo(order, map);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		WmsConsignOrderNotifyResponse response = new WmsConsignOrderNotifyResponse();
+		response.setSuccess(true);// 业务成功
+		return response;
+	}
+	/**
+	 * 构建订单发货数据
+	 * @param order
+	 * @param params
+	 * @throws Exception 
+	 */
+	private void buildOrderInfo(ShipOrder order,Map<String,Object> params) throws Exception{
+		String ownerUserId=(String) params.get("ownerUserId");
+		Map<String,Object> p=new HashMap<String, Object>();
+		p.put("tbUserId", ownerUserId);
+		User user=this.userService.getUserBySearch(p).get(0);
+		
+		order.setUser(user);
+		order.setStoreCode((String) params.get("storeCode"));
+		order.setOrderCode((String) params.get("orderCode"));
+		order.setOrderType(Integer.valueOf((String) params.get("orderType")));
+		order.setOrderSource(Integer.valueOf((String) params.get("orderSource")));
+		order.setOrderCreateTime(sdf.parse((String) params.get("orderCreateTime")));
+		order.setErpOrderCode((String) params.get("erpOrderCode"));
+		order.setShopId((String) params.get("userId"));
+		order.setShopName((String) params.get("userName"));
+		order.setOrderFlag((String) params.get("orderFlag"));
+		order.setOrderSource((Integer) params.get("orderSource"));		
+		order.setOrderCreateTime(sdf.parse((String) params.get("orderCreateTime")));
+		order.setOrderPayTime(sdf.parse((String) params.get("orderPayTime")));
+		order.setOrderExaminationTime(sdf.parse((String) params.get("orderExaminationTime")));
+		order.setOrderShopCreateTime(sdf.parse((String) params.get("orderShopCreateTime")));
+		order.setOrderAmount(Long.valueOf((String) params.get("orderAmount")));
+		order.setDiscountAmount(Long.valueOf((String) params.get("discountAmount")));
+		order.setArAmount(Long.valueOf((String) params.get("arAmount")));
+		order.setGotAmount(Long.valueOf((String) params.get("gotAmount")));
+		order.setPostfee(Long.valueOf((String) params.get("postfee")));
+		order.setTmsServiceCode((String) params.get("tmsServiceCode"));
+		order.setTmsServiceName((String) params.get("tmsServiceName"));
+		order.setTmsOrderCode((String) params.get("tmsOrderCode"));
+		order.setPrevOrderCode((String) params.get("prevOrderCode"));
+		order.setPrevErpOrderCode((String) params.get("prevErpOrderCode"));
+		order.setTimeZone((String) params.get("timeZone"));
+		order.setCurrency((String) params.get("currency"));
+		order.setRemark((String) params.get("remark"));
+		order.setBuyerMessage((String) params.get("buyerMessage"));
+		order.setSellerMessage((String) params.get("sellerMessage"));;
+		order.setServiceFee(Long.valueOf((String) params.get("serviceFee")));
+		
+		this.buildDeliverRequirements(order, params);
+		this.buildReceiverInfo(order, params);
+		this.buildSenderInfo(order, params);
+		this.buildInvoiceInfo(order, params);
+		this.buildOrderItemInfo(order, params);
+		this.buildExtendFields(order, params);
+		this.buildPackageRequirements(order, params);
+		//保存订单 发货信息
+		
+	}
+	/**
+	 * 订单商品明细处理
+	 * @param order
+	 * @param object
+	 */
+	private void buildOrderItemInfo(ShipOrder order,Map<String,Object> params){
+		Object obj=params.get("orderItemList");
+		List<Map<String,Object>> resultList=new ArrayList<Map<String,Object>>();
+		if (obj !=null) {
+			Object itemObj=params.get("orderItem");
+			/**
+			 * 如果这里item只有一个，取出来的类型就会是map ,如果是多个，取出来才会是List
+			 */
+			if(itemObj instanceof java.util.ArrayList){
+				resultList=(List<Map<String, Object>>) itemObj;
+			}else{
+				resultList.add( (Map<String, Object>) itemObj);
+			}
+		}
+		List<WmsConsignOrderItem> itemList=new ArrayList<WmsConsignOrderItem>();
+		for(int i=0; resultList!=null && i<resultList.size();i++){
+			Map<String,Object> map=resultList.get(i);
+			WmsConsignOrderItem item=new WmsConsignOrderItem();
+			item.generateId();
+			item.setOrderItemId((String) map.get("orderItemId"));
+			item.setOrderSourceCode((String) map.get("orderSourceCode"));
+			item.setSubSourceCode((String) map.get("subSourceCode"));
+			item.setUserId((String) map.get("userId"));
+			item.setUsername((String) map.get("userName"));
+			item.setOwnerUserId((String) map.get("ownerUserId"));
+			item.setOwnerUserName((String) map.get("ownerUserName"));
+			String itemId=(String) map.get("ownerUserName");
+			item.setItemName((String) map.get("itemName"));
+			item.setItemCode((String) map.get("itemCode"));
+			item.setInventoryType(Integer.valueOf((String) map.get("inventoryType")));
+			item.setItemQuantity(Integer.valueOf((String) map.get("itemQuantity")));
+			item.setActualPrice(Long.valueOf((String) map.get("actualPrice")));
+			item.setItemPrice(Long.valueOf((String) map.get("itemPrice")));
+			item.setItemVersion(Integer.valueOf((String) map.get("itemVersion")));
+			String extendFields=(String) map.get("extendFields");
+			item.setRemark(extendFields);
+			item.setOrder(order);
+			itemList.add(item);			
+		}
+		//持久化数据
+	}
+	/**
+	 * 配送要求处理
+	 * @param order
+	 * @param obj
+	 * @throws Exception 
+	 */
+	private void buildDeliverRequirements(ShipOrder order,Map<String,Object> params) throws Exception{
+		Map<String,Object> obj=(Map<String, Object>) params.get("deliverRequirements");
+		DeliverRequirements oo=new DeliverRequirements();
+		oo.setOrder(order);
+		oo.setScheduleDay(sdf.parse((String) obj.get("scheduleDay")));
+		oo.setScheduleEnd(sdf.parse((String) obj.get("scheduleEnd")));
+		oo.setScheduleStart(sdf.parse((String) obj.get("scheduleEnd")));
+		oo.setScheduleType(Integer.valueOf((String) obj.get("scheduleType")));
+			
+		//持久化信息
+	}
+	/**
+	 * 收件人信息处理
+	 * @param order
+	 * @param obj
+	 */
+	private void buildReceiverInfo(ShipOrder order,Map<String,Object> params){
+		Map<String,Object> obj=(Map<String, Object>) params.get("receiverInfo");
+		ReceiverInfo info=new ReceiverInfo();
+		order.setReceiverInfo(info);
+		info.generateId();
+		info.setReceiverZipCode((String) obj.get("receiverZipCode"));
+		info.setReceiverAddress((String) obj.get("receiverAddress"));
+		info.setReceiverArea((String) obj.get("receiverArea"));
+		info.setReceiverCity((String) obj.get("receiverCity"));
+		info.setReceiverCountry((String) obj.get("receiverCountry"));
+		info.setReceiverDivisionId((String) obj.get("receiverDivisionId"));
+		info.setReceiverEmail((String) obj.get("receiverDivisionId"));
+		info.setReceiverMobile((String) obj.get("receiverMobile"));
+		info.setReceiverName((String) obj.get("receiverName"));
+		info.setReceiverNick((String) obj.get("receiverName"));
+		info.setReceiverPhone((String) obj.get("receiverPhone"));
+		info.setReceiverProvince((String) obj.get("receiverProvince"));
+		info.setReceiveTown((String) obj.get("receiveTown"));
+		//持久化对象
+		this.receiverInfoService.saveReceiverInfo(info);
+	}
+	/**
+	 * 发货方信息处理
+	 * @param order
+	 * @param obj
+	 */
+	private void buildSenderInfo(ShipOrder order,Map<String,Object> params){
+		Map<String,Object>  obj=(Map<String, Object>) params.get("senderInfo");
+		SenderInfo info=new SenderInfo();
+		info.generateId();
+		order.setSenderInfo(info);
+		info.setSenderAddress((String) obj.get("senderAddress"));
+		info.setSenderArea((String) obj.get("senderArea"));
+		info.setSenderCity((String) obj.get("senderCity"));
+		info.setSenderCountry((String) obj.get("senderCountry"));
+		info.setSenderDivisionId((String) obj.get("senderDivisionId"));
+		info.setSenderEmail((String) obj.get("senderEmail"));
+		info.setSenderMobile((String) obj.get("senderMobile"));
+		info.setSenderName((String) obj.get("senderName"));
+		info.setSenderPhone((String) obj.get("senderPhone"));
+		info.setSenderProvince((String) obj.get("senderProvince"));
+		info.setSenderTown((String) obj.get("senderTown"));
+		info.setSenderZipCode((String) obj.get("senderZipCode"));
+		/**
+		 * 持久化对象信息
+		 */
+		this.senderInfoService.save(info);
+	}
+	/**
+	 * 发票信息处理。
+	 * @param order
+	 * @param obj
+	 */
+	private void buildInvoiceInfo(ShipOrder order ,Map<String,Object> params){
+		Object obj=params.get("invoiceInfoList");
+		List<Map<String,Object>> resultList=new ArrayList<Map<String,Object>>();
+		
+		if(obj==null){
+			return;
+		}
+		if (obj !=null) {
+			Object itemObj=params.get("invoiceInfo");
+			/**
+			 * 如果这里item只有一个，取出来的类型就会是map ,如果是多个，取出来才会是List
+			 */
+			if(itemObj instanceof java.util.ArrayList){
+				resultList=(List<Map<String, Object>>) itemObj;
+			}else{
+				resultList.add( (Map<String, Object>) itemObj);
+			}
+		}
+		for(int i=0;resultList!=null && i<resultList.size();i++){
+			Map<String,Object> oo=resultList.get(i);
+			InvoiceInfo info=new InvoiceInfo();
+			info.generateId();
+			info.setBillType((String) oo.get("billType"));
+			info.setBillId(Long.valueOf((String) oo.get("billType")));
+			info.setBillTitle((String) oo.get("billTitle"));
+			info.setBillAccount((String) oo.get("billAccount"));
+			info.setBillContent((String) oo.get("billContent"));
+			info.setBuyerNo((String) oo.get("buyerNo"));
+			info.setBuyerAddrPhone((String) oo.get("buyerAddrPhone"));
+			info.setBuyerBankAccount((String) oo.get("buyerBankAccount"));
+			/**
+			 * 处理发票商品明细
+			 */
+			List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
+			List<InvoiceItemDetail> detailList=new ArrayList<InvoiceItemDetail>();
+			Object itemObj=oo.get("detailList");
+			if(itemObj!=null){
+				Object listObj=params.get("itemDetail");
+					if(listObj instanceof java.util.ArrayList){
+						list=(List<Map<String, Object>>) listObj;
+					}else{
+						list.add( (Map<String, Object>) listObj);
+					}
+				for(int j=0;list!=null && j<list.size();j++){
+					Map<String,Object> o=list.get(j);
+					InvoiceItemDetail detail=new InvoiceItemDetail();
+					detail.generateId();
+					detail.setInvoice(info);
+					detail.setItemName((String) o.get("itemName"));
+					detail.setUnit((String) o.get("unit"));
+					detail.setPrice(Double.valueOf((String) o.get("price")));
+					detail.setQuantity(Long.valueOf((String) o.get("quantity")));
+					detail.setAmount(Double.valueOf((String) o.get("amount")));
+					detail.setSpecificModel((String) o.get("specificModel"));
+					detail.setTaxRate(Double.valueOf((String) o.get("taxRate")));
+					detail.setTaxAmount(Double.valueOf((String) o.get("taxAmount")));
+					detail.setTaxCode((String) o.get("taxCode"));
+					detailList.add(detail);
+				}
+				/**
+				 * 持久化detailList对象
+				 */
+			}
+		}
+		
+		/**
+		 * 持久化invoiceInfoList对象
+		 */
+	}
+	/**
+	 * 包装要求信息处理
+	 * @param order
+	 * @param params
+	 */
+	private void buildPackageRequirements(ShipOrder order,Map<String,Object> params){
+		Object object=params.get("packageRequirements");
+		List<Map<String,Object>> resultList=new ArrayList<Map<String,Object>>();
+		if(object!=null){
+			Object obj=params.get("packageRequirement");
+			if(obj instanceof java.util.ArrayList){
+				resultList=(List<Map<String, Object>>) obj;
+			}else{
+				resultList.add( (Map<String, Object>) obj);
+			}
+			List<WmsConsignOrderPackageRequirement> list=new ArrayList<WmsConsignOrderPackageRequirement>();
+			for(int i=0;resultList!=null && i<resultList.size();i++){
+				Map<String,Object> map=resultList.get(i);
+				WmsConsignOrderPackageRequirement pack=new WmsConsignOrderPackageRequirement();
+				pack.getMaterialGroup();
+				pack.setOrder(order);
+				pack.setMaterialTypes((String) map.get("materialTypes"));
+				pack.setMaterialClass((String) map.get("materialClass"));
+				pack.setMaterialGroup((String) map.get("materialGroup"));
+				pack.setPriority((String) map.get("priority"));
+				list.add(pack);
+			}
+			/**
+			 * 持久化对象信息
+			 */
+		}
+		
+	}
+	/**
+	 * 扩展信息处理
+	 * @param order
+	 * @param obj
+	 */
+	private void buildExtendFields(ShipOrder order,Map<String,Object> params){
+		String extendFields=(String) params.get("extendFields");
+		order.setExtendFields(extendFields);
+	}
+}
