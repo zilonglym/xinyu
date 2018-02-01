@@ -1,61 +1,0 @@
-10
-
-dir
-2858
-http://code.taobao.org/svn/wlpost/trunk/xinyu-service/src/main/java/com/xinyu/service
-http://code.taobao.org/svn/wlpost
-
-
-
-2018-01-30T05:12:13.609531Z
-2856
-fufangjue
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-b937248f-ba71-4ac9-bc5d-8b21318fe002
-
-trade
-dir
-
-waybill
-dir
-
-system
-dir
-
-common
-dir
-
-caoniao
-dir
-
-express
-dir
-
-order
-dir
-
-report
-dir
-
-util
-dir
-
-inventory
-dir
-
-qm
-dir
-
