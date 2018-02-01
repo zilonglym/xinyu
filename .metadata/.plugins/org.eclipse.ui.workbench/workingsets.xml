@@ -3,8 +3,8 @@
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1492824783071_1" label="store" name="store">
 <item elementID="=store-portal" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=store-core" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=store-admin" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/store-all" type="4"/>
+<item elementID="=store-admin" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/store-check" type="4"/>
 </workingSet>
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1492824794432_2" label="zc" name="zc">

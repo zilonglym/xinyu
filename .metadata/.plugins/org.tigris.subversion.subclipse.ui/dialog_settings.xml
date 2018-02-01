@@ -17,8 +17,8 @@
 	<item value="342" key="CommitDialog.location.x"/>
 	<item value="525" key="RevertDialog.size.x"/>
 	<item value="393" key="RevertDialog.size.y"/>
-	<item value="1344" key="CommitDialog.size.x"/>
 	<item value="416" key="DifferencesDialog.size.y"/>
+	<item value="1344" key="CommitDialog.size.x"/>
 	<item value="676" key="CommitDialog.size.y"/>
 	<item value="913" key="DifferencesDialog.size.x"/>
 	<item value="243" key="DifferencesDialog.location.y"/>
