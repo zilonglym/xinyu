@@ -47,7 +47,7 @@ import com.xinyu.service.util.CaiNiaoPacClient;
 
 /**
  * 菜鸟基础的入口Controller
- * 
+ * xxxxxx....xxx
  * @author yangmin 2017年4月23日
  *
  */
