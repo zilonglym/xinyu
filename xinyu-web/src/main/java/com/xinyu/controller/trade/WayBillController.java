@@ -245,7 +245,7 @@ public class WayBillController extends BaseController{
 				 * TmsOrder没有特殊处理
 				 */
 				String company = shipOrder.getTmsServiceCode();
-				if ("YUNDA411353".equals(company)) {
+				if ("YUNDAX".equals(company)) {
 					retMap.put("company", "YUNDA");
 					company = "YUNDA";
 				}else if("HTKY5".equals(company)||"HTKY11".equals(company)){
