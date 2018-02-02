@@ -1,8 +1,8 @@
 $(document).ready(function(){
-	if(userId!=null && userId.length>0){
-		 $('#selectUser').combobox('select', userId);
-	}
+	if(userId!=null && userId.length>0)	
+    $('#selectUser').combobox('select', userId);
 	audit.initTable();
+	
 });
 
 var audit={};
@@ -199,18 +199,7 @@ audit.auditTrade=function(){
 		if(data && data.ret==1){
 			$('#myModal').hide();
 			$('.modal-backdrop').css("display","nones");
-			$('#tb_auditTable').datagrid('load', {
-				 userId:$("#selectUser").combobox('getValue'),
-		   		 q:$("#q").textbox('getValue'),
-		   		 searchType:$("#searchType").textbox('getValue'),
-		   		 others:$("#others").combobox('getValue'),
-		   		 state:$("#selectState").combobox('getValue'),
-		   		 beigainTime:$('#beigainTime').datetimebox('getValue'),
-		   		 weight_x:$('#weight_x').combobox('getValue'),
-		   		 weight:$("#weight").textbox('getValue'),
-				 lastTime:$('#lastTime').datetimebox('getValue'),
-				 company:$('#selectCompany').combobox('getValue')
-			});
+			$('#tb_auditTable').datagrid('reload');   
 		}else{
 			 $.messager.alert('审核失败','订单审核失败,请联系管理员!');
 		}
@@ -514,10 +503,4 @@ audit.auditYUNDAArea=function(typeStr){
 		ids+=obj.tmsId+",";
 	}
 	window.open(ctx+"/shipOrder/toAuditAreaYUNDA/"+typeStr+"?ids="+ids);
-}
-
-function selectShop(){
-	var userId = $("#selectUser").combobox('getValue');
-	var url = ctx+'/shipOrder/selectShop?userId='+userId;  
-	$("#selectShop").combobox('reload', url);
 }
