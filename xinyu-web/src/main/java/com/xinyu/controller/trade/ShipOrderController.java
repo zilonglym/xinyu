@@ -1485,7 +1485,7 @@ public class ShipOrderController extends BaseController {
 	public Map<String,Object> auditAreaYUNDA(@PathVariable("type") String type,@RequestParam(value = "ids", defaultValue = "0") String[] ids
 		) throws Exception {
 		
-		if(!("YUNDA411353".equals(type)  || "YUNDA".equals(type) || "YTO".equals(type)) ){
+		if(!("YUNDAX".equals(type)  || "YUNDA".equals(type) || "YTO".equals(type)) ){
 			logger.error("快递公司异常【"+type+"】");
 			return null;
 		}
