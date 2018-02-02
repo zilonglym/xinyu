@@ -15,6 +15,7 @@ import com.taobao.pac.sdk.cp.ReceiveListener;
 import com.taobao.pac.sdk.cp.ReceiveSysParams;
 import com.taobao.pac.sdk.cp.dataobject.request.WMS_STOCK_IN_ORDER_NOTIFY.WmsStockInOrderNotifyRequest;
 import com.taobao.pac.sdk.cp.dataobject.response.WMS_STOCK_IN_ORDER_NOTIFY.WmsStockInOrderNotifyResponse;
+import com.xinyu.dao.base.AccountDao;
 import com.xinyu.dao.base.BatchSendCtrlParamDao;
 import com.xinyu.dao.base.DriverInfoDao;
 import com.xinyu.dao.base.ItemDao;
@@ -28,6 +29,7 @@ import com.xinyu.model.base.Item;
 import com.xinyu.model.base.SenderInfo;
 import com.xinyu.model.base.User;
 import com.xinyu.model.base.enums.VehicleTypeEnum;
+import com.xinyu.model.common.SessionUser;
 import com.xinyu.model.inventory.enums.InventoryTypeEnum;
 import com.xinyu.model.order.StockInOrder;
 import com.xinyu.model.order.StockOrderOperator;
@@ -39,6 +41,8 @@ import com.xinyu.model.order.enums.OrderFlagEnum;
 import com.xinyu.model.order.enums.OrderSourceEnum;
 import com.xinyu.model.order.enums.StockOperateTypeEnum;
 import com.xinyu.model.system.Account;
+import com.xinyu.service.common.Constants;
+import com.xinyu.service.system.AccountService;
 import com.xinyu.service.system.UserService;
 
 /**
@@ -62,6 +66,9 @@ public class WmsStockInOrderNotifyCpImpl implements ReceiveListener<WmsStockInOr
 	
 	@Autowired
 	private  ItemDao   itemDao;
+	
+	@Autowired
+	private AccountService accountService;
 	
 	@Autowired
 	private  SenderInfoDao   senderInfoDao;
@@ -394,10 +401,29 @@ public class WmsStockInOrderNotifyCpImpl implements ReceiveListener<WmsStockInOr
     	
     	retMap.put("code", "200");
     	retMap.put("msg", "成功");
+    	
+    	//仓库参数
+    	this.buildCuByStoreCode(stockInOrder.getUser());
+    	
     	stockInOrderDao.insertStockInOrder(stockInOrder);
     	return retMap;
 	}
     
-    
+    /**
+	 * 构建CU，并存放在当前的sessionUser中
+	 * @param storeCode
+	 */
+	private void buildCuByStoreCode(User user){
+		Map<String,Object> params=new HashMap<String, Object>();
+		params.put("userName", Constants.cainiao_account);
+		List<Account> list=this.accountService.findAccountsByList(params);
+		//1.查询出属于菜鸟的那个帐号
+		if(list!=null && list.size()>0){
+			Account account=list.get(0);
+			//2.
+			account.setCu(user.getCu());
+			SessionUser.set(account);
+		}
+	}
     
 }

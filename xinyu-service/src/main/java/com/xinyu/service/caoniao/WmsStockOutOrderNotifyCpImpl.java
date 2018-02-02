@@ -28,6 +28,7 @@ import com.xinyu.model.base.ReceiverInfo;
 import com.xinyu.model.base.SenderInfo;
 import com.xinyu.model.base.User;
 import com.xinyu.model.base.enums.VehicleTypeEnum;
+import com.xinyu.model.common.SessionUser;
 import com.xinyu.model.inventory.enums.InventoryTypeEnum;
 import com.xinyu.model.order.StockOrderOperator;
 import com.xinyu.model.order.StockOutOrder;
@@ -36,6 +37,8 @@ import com.xinyu.model.order.enums.OutOrderTypeEnum;
 import com.xinyu.model.order.enums.StockOperateTypeEnum;
 import com.xinyu.model.system.Account;
 import com.xinyu.model.util.MyException;
+import com.xinyu.service.common.Constants;
+import com.xinyu.service.system.AccountService;
 import com.xinyu.service.system.ItemService;
 import com.xinyu.service.system.UserService;
 
@@ -73,6 +76,9 @@ public class WmsStockOutOrderNotifyCpImpl  implements ReceiveListener<WmsStockOu
 	
 	@Autowired
 	private StockOrderOperatorDao   operatorDao;
+	
+	@Autowired
+	private AccountService accountService;
 	
 	
 	public  WmsStockOutOrderNotifyResponse execute(ReceiveSysParams params, WmsStockOutOrderNotifyRequest request) {
@@ -236,6 +242,9 @@ public class WmsStockOutOrderNotifyCpImpl  implements ReceiveListener<WmsStockOu
 			this.createDriverInfo(driverInfo,driverInfoTemp);			
 			stockOutOrder.setDriverInfo(driverInfoTemp);
 		}
+		
+		//仓库参数
+		this.buildCuByStoreCode(stockOutOrder.getUser());
     	  	
     	stockOutOrderDao.insertStockOutOrder(stockOutOrder);
     	
@@ -372,5 +381,22 @@ public class WmsStockOutOrderNotifyCpImpl  implements ReceiveListener<WmsStockOu
     	batchParamTemp.setDistributeType(batchParam.getDistributeType());
     	batchParamTemp.setTotalOrderItemCount(batchParam.getTotalOrderItemCount());
     	batchSendCtrlParamDao.saveBatchSendCtrlParam(batchParamTemp);
+	}
+	
+	 /**
+	  * 构建CU，并存放在当前的sessionUser中
+	  * @param storeCode
+	  */
+	private void buildCuByStoreCode(User user){
+		Map<String,Object> params=new HashMap<String, Object>();
+		params.put("userName", Constants.cainiao_account);
+		List<Account> list=this.accountService.findAccountsByList(params);
+		//1.查询出属于菜鸟的那个帐号
+		if(list!=null && list.size()>0){
+			Account account=list.get(0);
+			//2.
+			account.setCu(user.getCu());
+			SessionUser.set(account);
+		}
 	}
 }
