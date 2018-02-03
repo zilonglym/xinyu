@@ -454,6 +454,77 @@ public class AdminPcLocalController extends BaseController {
 			return results;
 		}
 		
+		/**
+		 * 货架信息导出
+		 * @param request
+		 * @param response
+		 * @return
+		 * @throws ParseException
+		 */
+		@RequestMapping(value = "localPlate/xls")
+		public String localPlateExport(HttpServletRequest request,HttpServletResponse response) throws ParseException{
+			logger.debug("货架信息导出开始！");
+			SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Map<String,Object> params=new HashMap<String, Object>();
+			String shopId = request.getParameter("shopId");
+			String row = request.getParameter("row");
+			String boxOut = request.getParameter("boxOut");
+			String floor = request.getParameter("floor");
+			String code = request.getParameter("code");
+			String state=request.getParameter("state");
+			String q=request.getParameter("q");
+			params.put("shopId",shopId);
+			params.put("row",row);
+			params.put("boxOut",boxOut);
+			params.put("floor",floor);
+			params.put("code",code);
+			params.put("state",state);
+			params.put("q",q);						
+			List<Map<String, Object>> plateMaps = this.localRemote.findLocalPlateList(params, 1, 999999);
+					
+			List<POIModel> poiModels=new ArrayList<POIModel>();
+			
+			for(Map<String,Object> map:plateMaps){
+				
+				POIModel poiModel=new POIModel();
+				
+				//货架信息
+				poiModel.setM1(""+map.get("fastCode"));
+				//商家
+				poiModel.setM2(""+map.get("shopName"));
+				//商品名称
+				poiModel.setM3(""+map.get("name"));
+				//商品属性
+				poiModel.setM4(""+map.get("sku"));
+				//数量
+				poiModel.setM5(""+map.get("num"));
+				//单据编号
+				poiModel.setM6(""+map.get("batchCode"));
+				//上架时间
+				poiModel.setM7(""+map.get("lastUpdate"));	
+				
+				poiModels.add(poiModel);
+			}
+			//时间格式化
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+			//拼接Excel文件名称
+			String filename=sdf.format(new Date())+"货架信息";
+			//新建PoiExcelExport对象
+			PoiExcelExport pee = new PoiExcelExport(response,filename,"sheet1");
+			//Excel文件填充内容属性
+			String titleColumn[] = {"m1","m2","m3","m4","m5","m6","m7"};  
+			//Excel文件填充内容列名
+			String titleName[] = {"货架","商家","品名","属性","数量","编号","时间"};  
+			//Excel文件填充内容大小
+			int titleSize[] = {20,20,20,20,20,20,20};  
+			//调用PoiExcelExport导出Excel文件
+			pee.wirteExcel(titleColumn, titleName, titleSize, poiModels);
+			
+			logger.debug("货位信息导出结束！");
+			
+			return null;
+		}
+		
 		@RequestMapping(value="report")
 		public String adminLocalReport(ModelMap model){
 			List<LocalShop> shops = this.localRemote.getLocalShopList(null);
