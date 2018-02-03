@@ -20,6 +20,14 @@
 	group by s.FKuserID
 	</select>
 	
+	<select id="findZeroItemCount" resultType="map">
+	select i.FKuserID as "userId",u.FsubscriberName as "shopName",count(1) as "num"
+		from t_xinyu_item i
+		inner join t_xinyu_user u on u.fid = i.FKuserID
+	where i.FwmsGrossWeight is null or i.FwmsGrossWeight=""
+	group by i.FKuserID
+	</select>
+	
 	<select id="findShipCount" resultType="map">
 	select s.FKuserID as 'userId',u.FsubscriberName as "userName",count(1) as 'num'
 	from t_xinyu_shiporder s 

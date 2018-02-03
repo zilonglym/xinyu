@@ -39,7 +39,9 @@
 		    <if test="express!=null and express!=''">
 		        and FexpressOrderno is not null
 		    </if>
-		        
+		     <if test="cu!=null and cu!=null">
+		        and Fcu=#{cu}
+			 </if>    
 		</where>
 		order by T.FcreateTime desc
 		<if test="pageSize!=null and pageSize!=''">
@@ -64,6 +66,9 @@
 		    <if test="expressOrderno!=null and expressOrderno!=''">
 		        and FexpressOrderno=#{expressOrderno}
 		    </if>
+		   <if test="cu!=null and cu!=null">
+		        and Fcu=#{cu}
+		  </if>
 		</where>
 	</select>
 	

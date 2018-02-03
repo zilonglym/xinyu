@@ -28,6 +28,7 @@
 		<if test="shortName!=null and shortName!=''">and FshortName=#{shortName}</if>
 		<if test="mobile!=null and mobile!=''">and Fmobile=#{mobile}</if>
 		<if test="phone!=null and phone!=''">and Fphone=#{phone}</if>
+		<if test="cu!=null and cu!=''">and Fcu=#{cu}</if>
 		<if test="searchText!=null and searchText!=''">
 			and (FuserName like "%"#searchText{}"%" or FshortName like "%"#searchText{}"%" or Fmobile like "%"#searchText{}"%" or Fphone like "%"#searchText{}"%" or Femail like "%"#searchText{}"%")
 		</if>
@@ -44,6 +45,7 @@
 		<if test="shortName!=null and shortName!=''">and FshortName=#{shortName}</if>
 		<if test="mobile!=null and mobile!=''">and Fmobile=#{mobile}</if>
 		<if test="phone!=null and phone!=''">and Fphone=#{phone}</if>
+		<if test="cu!=null and cu!=''">and Fcu=#{cu}</if>
 		<if test="searchText!=null and searchText!=''">
 			and (FuserName like "%"#searchText{}"%" or FshortName like "%"#searchText{}"%" or Fmobile like "%"#searchText{}"%" or Fphone like "%"#searchText{}"%" or Femail like "%"#searchText{}"%")
 		</if>
@@ -64,6 +66,7 @@
 			<if test="mobile!=null and mobile!=''">Fmobile=#{mobile},</if>
 			<if test="phone!=null and phone!=''">Fphone=#{phone},</if>
 			<if test="email!=null and email!=''">Femail=#{email},</if>
+			<if test="cu!=null and cu!=''">Fcu=#{cu},</if>
 			<if test="createTime!=null and createTime!=''">FcreateTime=#{createTime},</if>
 		</set>
 		where fid=#{id}

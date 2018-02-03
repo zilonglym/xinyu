@@ -17,7 +17,6 @@
 		<result property="remark" column="Fremark" />
 		<result property="ownerCode" column="FownerCode" />
 		<result property="shortName" column="FshortName" />	
-		<result property="cu" column="Fcu" />	
 	</resultMap>
 	
 	<select id="getUserById" parameterType="string" resultMap="UserResult">
@@ -45,6 +44,7 @@
 		update t_xinyu_user
 		<set>
 			<if test="tbUserId!=null and tbUserId!=''">FtbUserId=#{tbUserId},</if>
+			<if test="cu!=null and cu!=''">Fcu=#{cu},</if>
 			<if test="serviceCode!=null and serviceCode!=''">FserviceCode=#{serviceCode},</if>
 			<if test="subscriberName!=null and subscriberName!=''">FsubscriberName=#{subscriberName},</if>
 			<if test="subscriberNick!=null and subscriberNick!=''">FsubscriberNick=#{subscriberNick},</if>
@@ -72,6 +72,9 @@
 		    <if test="tbUserId!=null and tbUserId!=''">
 		        and FtbUserId=#{tbUserId}
 		    </if>
+		    <if test="cu!=null and cu!=''">
+		        and Fcu=#{cu}
+		    </if>
 		    <if test="ownerCode!=null and ownerCode!=''">
 		        and FownerCode=#{ownerCode}
 		    </if>
@@ -91,6 +94,9 @@
 		    1=1
 		    <if test="tbUserId!=null and tbUserId!=''">
 		        and FtbUserId=#{tbUserId}
+		    </if>
+		     <if test="cu!=null and cu!=''">
+		        and Fcu=#{cu}
 		    </if>
 		    <if test="ownerCode!=null and ownerCode!=''">
 		        and FownerCode=#{ownerCode}

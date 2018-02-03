@@ -5,6 +5,7 @@
 <mapper namespace="com.xinyu.dao.senderInfoDao">
 	<resultMap id="SenderInfoResult" type="com.xinyu.model.base.SenderInfo">
 		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
 		<result property="senderZipCode" column="FsenderZipCode" />
 		<result property="senderCountry" column="FsenderCountry" />
 		<result property="senderProvince" column="FsenderProvince" />
@@ -29,18 +30,22 @@
 		FROM T_xinyu_SenderInfo T 
 		<where>
 		    1=1
+		    <if test="cu!=null and cu!=''">
+		    	and T.FCU = #{cu}
+		    </if>
 		</where>
 	</select>
 	
 	<insert id="insertSenderInfo" parameterType="com.xinyu.model.base.SenderInfo">
 		insert into
-		T_xinyu_SenderInfo(FID,FsenderZipCode,FsenderCountry,FsenderProvince,FsenderCity,FsenderArea,FsenderTown,FsenderAddress,FsenderDivisionId,FsenderName,FsenderMobile,FsenderPhone,FsenderEmail)
-		VALUES(#{id},#{senderZipCode,jdbcType=VARCHAR},#{senderCountry,jdbcType=VARCHAR},#{senderProvince,jdbcType=VARCHAR},#{senderCity,jdbcType=VARCHAR},#{senderArea,jdbcType=VARCHAR},#{senderTown,jdbcType=VARCHAR},#{senderAddress,jdbcType=VARCHAR},#{senderDivisionId,jdbcType=VARCHAR},#{senderName,jdbcType=VARCHAR},#{senderMobile,jdbcType=VARCHAR},#{senderPhone,jdbcType=VARCHAR},#{senderEmail,jdbcType=VARCHAR})
+		T_xinyu_SenderInfo(FID,FCU,FsenderZipCode,FsenderCountry,FsenderProvince,FsenderCity,FsenderArea,FsenderTown,FsenderAddress,FsenderDivisionId,FsenderName,FsenderMobile,FsenderPhone,FsenderEmail)
+		VALUES(#{id},#{cu},#{senderZipCode,jdbcType=VARCHAR},#{senderCountry,jdbcType=VARCHAR},#{senderProvince,jdbcType=VARCHAR},#{senderCity,jdbcType=VARCHAR},#{senderArea,jdbcType=VARCHAR},#{senderTown,jdbcType=VARCHAR},#{senderAddress,jdbcType=VARCHAR},#{senderDivisionId,jdbcType=VARCHAR},#{senderName,jdbcType=VARCHAR},#{senderMobile,jdbcType=VARCHAR},#{senderPhone,jdbcType=VARCHAR},#{senderEmail,jdbcType=VARCHAR})
 	</insert>
 
 	<update id="updateSenderInfo" parameterType="com.xinyu.model.base.SenderInfo">
 		update T_xinyu_SenderInfo
 		<set>
+			<if test="cu!=null and cu!=''">FCU = #{cu},</if>
 			<if test="senderZipCode!=null and senderZipCode!=''">FsenderZipCode=#{senderZipCode},</if>
 			<if test="senderCountry!=null and senderCountry!=''">FsenderCountry=#{senderCountry},</if>
 			<if test="senderProvince!=null and senderProvince!=''">FsenderProvince=#{senderProvince},</if>

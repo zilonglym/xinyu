@@ -5,6 +5,7 @@
 <mapper namespace="com.xinyu.dao.invoiceItemDetailDao">
 	<resultMap id="InvoiceItemDetailResult" type="com.xinyu.model.base.InvoiceItemDetail">
 		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
 		<result property="invoice.id" column="FKinvoiceID" />
 		<result property="taxCode" column="FtaxCode" />
 		<result property="itemName" column="FitemName" />
@@ -34,8 +35,8 @@
 	
 	<insert id="insertInvoiceItemDetail" parameterType="com.xinyu.model.base.InvoiceItemDetail">
 		insert into
-		T_xinyu_InvoiceItemDetail(FID,FKinvoiceID,FtaxCode,FitemName,FspecificModel,Funit,Fprice,Fquantity,Famount,FtaxRate,FtaxAmount)
-		VALUES(#{id},#{invoice.id,jdbcType=VARCHAR},#{taxCode,jdbcType=VARCHAR},#{itemName,jdbcType=VARCHAR},#{specificModel,jdbcType=VARCHAR},#{unit,jdbcType=VARCHAR},#{price,jdbcType=VARCHAR},#{quantity,jdbcType=VARCHAR},#{amount,jdbcType=VARCHAR},#{taxRate,jdbcType=VARCHAR},#{taxAmount,jdbcType=VARCHAR})
+		T_xinyu_InvoiceItemDetail(FID,FCU,FKinvoiceID,FtaxCode,FitemName,FspecificModel,Funit,Fprice,Fquantity,Famount,FtaxRate,FtaxAmount)
+		VALUES(#{id},#{cu},#{invoice.id,jdbcType=VARCHAR},#{taxCode,jdbcType=VARCHAR},#{itemName,jdbcType=VARCHAR},#{specificModel,jdbcType=VARCHAR},#{unit,jdbcType=VARCHAR},#{price,jdbcType=VARCHAR},#{quantity,jdbcType=VARCHAR},#{amount,jdbcType=VARCHAR},#{taxRate,jdbcType=VARCHAR},#{taxAmount,jdbcType=VARCHAR})
 	</insert>
 
 	<update id="updateInvoiceItemDetail" parameterType="com.xinyu.model.base.InvoiceItemDetail">

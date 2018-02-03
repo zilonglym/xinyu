@@ -21,6 +21,9 @@
 		FROM T_xinyu_Inventory T 
 		<where>
 		 	T.FKitemID=#{itemId} and FinventoryType=#{inventoryType}
+		 	<if test="cu!=null and cu!=''">
+				and T.Fcu=#{cu}
+			</if>
 		 </where> 
 	</select>
 	
@@ -33,6 +36,9 @@
 			</if>
 			<if test="inventoryType!=null and inventoryType!=''">
 				and FinventoryType=#{inventoryType}
+			</if>
+			<if test="cu!=null and cu!=''">
+				and T.Fcu=#{cu}
 			</if>
 	</select>
 	

@@ -5,6 +5,7 @@
 <mapper namespace="com.xinyu.dao.receiverInfoDao">
 	<resultMap id="ReceiverInfoResult" type="com.xinyu.model.base.ReceiverInfo">
 		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
 		<result property="receiverZipCode" column="FreceiverZipCode" />
 		<result property="receiverCountry" column="FreceiverCountry" />
 		<result property="receiverProvince" column="FreceiverProvince" />
@@ -37,17 +38,19 @@
 		FROM T_xinyu_ReceiverInfo T 
 		<where>
 		    1=1
+		    <if test="cu!=null and cu!=''">and T.Fcu=#{cu}</if>
 		</where>
 	</select>
 	<insert id="insertReceiverInfo" parameterType="com.xinyu.model.base.ReceiverInfo">
 		insert into
-		T_xinyu_ReceiverInfo(FID,FreceiverZipCode,FreceiverCountry,FreceiverProvince,FreceiverCity,FreceiverArea,FreceiveTown,FreceiverDivisionId,FreceiverAddress,FreceiverName,FreceiverNick,FreceiverMobile,FreceiverPhone,FreceiverEmail)
-		VALUES(#{id},#{receiverZipCode,jdbcType=VARCHAR},#{receiverCountry,jdbcType=VARCHAR},#{receiverProvince,jdbcType=VARCHAR},#{receiverCity,jdbcType=VARCHAR},#{receiverArea,jdbcType=VARCHAR},#{receiveTown,jdbcType=VARCHAR},#{receiverDivisionId,jdbcType=VARCHAR},#{receiverAddress,jdbcType=VARCHAR},#{receiverName,jdbcType=VARCHAR},#{receiverNick,jdbcType=VARCHAR},#{receiverMobile,jdbcType=VARCHAR},#{receiverPhone,jdbcType=VARCHAR},#{receiverEmail,jdbcType=VARCHAR})
+		T_xinyu_ReceiverInfo(FID,FCU,FreceiverZipCode,FreceiverCountry,FreceiverProvince,FreceiverCity,FreceiverArea,FreceiveTown,FreceiverDivisionId,FreceiverAddress,FreceiverName,FreceiverNick,FreceiverMobile,FreceiverPhone,FreceiverEmail)
+		VALUES(#{id},#{cu},#{receiverZipCode,jdbcType=VARCHAR},#{receiverCountry,jdbcType=VARCHAR},#{receiverProvince,jdbcType=VARCHAR},#{receiverCity,jdbcType=VARCHAR},#{receiverArea,jdbcType=VARCHAR},#{receiveTown,jdbcType=VARCHAR},#{receiverDivisionId,jdbcType=VARCHAR},#{receiverAddress,jdbcType=VARCHAR},#{receiverName,jdbcType=VARCHAR},#{receiverNick,jdbcType=VARCHAR},#{receiverMobile,jdbcType=VARCHAR},#{receiverPhone,jdbcType=VARCHAR},#{receiverEmail,jdbcType=VARCHAR})
 	</insert>
 
 	<update id="updateReceiverInfo" parameterType="com.xinyu.model.base.ReceiverInfo">
 		update T_xinyu_ReceiverInfo
 		<set>
+			<if test="cu!=null and cu!=''">Fcu=#{cu},</if>
 			<if test="receiverZipCode!=null and receiverZipCode!=''">FreceiverZipCode=#{receiverZipCode},</if>
 			<if test="receiverCountry!=null and receiverCountry!=''">FreceiverCountry=#{receiverCountry},</if>
 			<if test="receiverProvince!=null and receiverProvince!=''">FreceiverProvince=#{receiverProvince},</if>

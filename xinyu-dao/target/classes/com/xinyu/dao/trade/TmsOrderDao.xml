@@ -50,6 +50,9 @@
 		FROM t_xinyu_tmsOrder T
 		<where>
 		    1=1
+		    <if test="cu!=null and cu!=null">
+		        and Fcu=#{cu}
+		  	</if>
 		    <if test="status!=null and status!=''">
 		        and Fstatus=#{status}
 		    </if>

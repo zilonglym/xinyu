@@ -26,6 +26,9 @@
 		<if test="orderCode!=null and orderCode!=''">
 			and T.ForderCode=#{orderCode}
 		</if>
+		<if test="cu!=null and cu!=''">
+			and T.Fcu = #{cu}
+		</if>
 		<if test="confirmType!=null and confirmType!=''">
 			and T.FconfirmType=#{confirmType}
 		</if>

@@ -77,6 +77,9 @@
 		<if test="receiverInfoId!=null and receiverInfoId!=''">
 			and T.FKreceiverInfoID=#{receiverInfoId}
 		</if>
+		<if test="cu!=null and cu!=''">
+			and T.Fcu=#{cu}
+		</if>
 	</select>
 
 	<select id="findStoreOrderList" parameterType="map"
@@ -87,6 +90,9 @@
 		where 1=1
 		<if test="code!=null and code!=''">
 			and t.express_orderno = #{code}
+		</if>
+		<if test="cu!=null and cu!=''">
+			and T.Fcu=#{cu}
 		</if>
 	</select>
 
@@ -191,7 +197,8 @@
 
 		<where>
 			1=1
-			<if test="status!=null and status!='' and status!='PerPrint' and status!='report'">and o.forderStatus =#{status}</if>
+			<if test="cu!=null and cu!=''">and o.Fcu=#{cu}</if>
+			<if test="status!=null and status!='' and status!='PerPrint' and status!='report'">and o.forderStatus=#{status}</if>
 			<if test="status=='PerPrint'">and (o.forderStatus='WMS_FINASH' or o.forderStatus='WMS_PRINT')</if>
 			<if test="status=='report'">and (o.forderStatus='WMS_FINASH' or o.forderStatus='WMS_RETURN') and o.ForderCode is not null</if>
 			<if test="userId!=null and userId!='' ">and t.FKuserID=#{userId}</if>
@@ -284,6 +291,7 @@
 		on o.fkorderid=t.fid
 		<where>
 			1=1
+			<if test="cu!=null and cu!=''">and o.Fcu=#{cu}</if>
 			<if test="status!=null and status!='' and status!='PerPrint'">and o.forderStatus=#{status}</if>
 			<if test="status=='PerPrint'">and (o.forderStatus='WMS_FINASH' or o.forderStatus='WMS_PRINT')</if>
 			<if test="status=='report'">and (o.forderStatus='WMS_FINASH' or o.forderStatus='WMS_RETURN') and o.ForderCode is not null</if>
@@ -398,6 +406,7 @@
 		
 		<where>
 			1=1
+			<if test="cu!=null and cu!=''">and T.Fcu=#{cu}</if>
 			<if test="status!=null and status!='' and status!='PerPrint'">and t.fStatus=#{status}</if>
 			<if test="status=='PerPrint'">and (t.fStatus='WMS_FINASH' or t.fStatus='WMS_PRINT')</if>
 			<if test="userId!=null and userId!=''">and t.FKuserID=#{userId}</if>
@@ -477,6 +486,7 @@
 		
 		<where>
 			1=1
+			<if test="cu!=null and cu!=''">and T.Fcu=#{cu}</if>
 			<if test="status!=null and status!='' and status!='PerPrint'">and t.fStatus=#{status}</if>
 			<if test="status=='PerPrint'">and (t.fStatus='WMS_FINASH' or t.fStatus='WMS_PRINT')</if>
 			<if test="userId!=null and userId!=''">and t.FKuserID=#{userId}</if>
@@ -564,6 +574,7 @@
 		t.FKreceiverInfoID = i.FID
 		<where>
 			1=1
+			<if test="cu!=null and cu!=''">and T.Fcu=#{cu}</if>
 			<if
 				test="status!=null and status!='' and status!='PerPrint' and status!='report'">and t.fstatus=#{status}</if>
 			<if test="status=='PerPrint'">and (t.fstatus='WMS_FINASH' or t.fstatus='WMS_PRINT')
@@ -646,6 +657,7 @@
 		t.FKreceiverInfoID = i.FID
 		<where>
 			1=1
+			<if test="cu!=null and cu!=''">and T.Fcu=#{cu}</if>
 			<if test="status!=null and status!='' and status!='PerPrint'">and t.fstatus=#{status}</if>
 			<if test="status=='PerPrint'">and (t.fstatus='WMS_FINASH' or t.fstatus='WMS_PRINT')
 			</if>
@@ -732,6 +744,9 @@
 			<if test="itemId!=null and itemId!=''">
 				and d.FKitemID=#{itemId}
 			</if>
+			<if test="cu!=null and cu!=''">
+				and t.Fcu=#{cu}
+			</if>
 		</where>
 		GROUP BY d.FKitemID
 		order BY t.FKuserID,quantity desc
@@ -802,7 +817,7 @@
 			<if test="lastUpdateTime!=null and lastUpdateTime!=''">FlastUpdateTime=#{lastUpdateTime},</if>
 			<if test="items!=null and items!=''">Fitems=#{items},</if>
 			<if test="itemGroupStatus!=null and itemGroupStatus!=''">FitemGroupStatus=#{itemGroupStatus},</if>
-
+			<if test="cu!=null and cu!=''">Fcu=#{cu},</if>
 			<if test="tmsDisplayName!=null and tmsDisplayName!=''">FtmsDisplayName=#{tmsDisplayName},</if>
 
 		</set>
@@ -823,7 +838,7 @@
 			<if test="consolidationName!=null and consolidationName!=''">FconsolidationName=#{consolidationName},</if>
 			<if test="consolidationCode!=null and consolidationCode!=''">FconsolidationCode=#{consolidationCode},</if>
 			<if test="batchCode!=null and batchCode!=''">FbatchCode=#{batchCode},</if>
-
+			<if test="cu!=null and cu!=''">Fcu=#{cu},</if>
 		</set>
 		where fid=#{id}
 	</update>

@@ -5,6 +5,7 @@
 <mapper namespace="com.xinyu.dao.base.ItemDao">
 	<resultMap id="ItemResult" type="com.xinyu.model.base.Item">
 		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
 		<result property="itemId" column="FitemId" />
 		<result property="itemCode" column="FitemCode" />
 		<result property="barCode" column="FbarCode" />
@@ -107,12 +108,12 @@
 
 	<insert id="insertItem" parameterType="com.xinyu.model.base.Item">
 		insert into
-		t_xinyu_item(FSTATUS,FID,FitemId,FitemCode,FbarCode,Fname,FKuserID,FitemVersion,Ftype,Fcategory,FcategoryName,Fbrand,FbrandName,Fspecification,
+		t_xinyu_item(Fcu,FSTATUS,FID,FitemId,FitemCode,FbarCode,Fname,FKuserID,FitemVersion,Ftype,Fcategory,FcategoryName,Fbrand,FbrandName,Fspecification,
 		Fcolor,Fsize,Funit,FgrossWeight,FwmsGrossWeight,FnetWeight,Flength,FwmsLength,Fwidth,FwmsWidth,Fheight,FwmsHeight,Fvolume,FwmsVolume,FcartonWeight,
 		FcartonLength,FcartonWidth,FcartonHeight,FcartonVolume,Fpcs,FisShelflife,Flifecycle,FrejectLifecycle,FlockupLifecycle,FadventLifecycle,FisSnMgt,FsnMode,
 		FisHygroscopic,FisDanger,FisPoMgt,FisProduceCodeMgt,FisPrecious,FtemperatureRequirement,FdosageForms,FproducingArea,Fmanufacturer,Fclassification,FfirstState,
 		FisImported,FisDrugs,FapprovalNumber,FincludeBattery,FpackageUnit,FKextendFieldsID,fcreateTime,fsystemSource,FgoodsNo)
-		VALUES(#{status},#{id},#{itemId,jdbcType=VARCHAR},#{itemCode,jdbcType=VARCHAR},#{barCode,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{user.id,jdbcType=VARCHAR},
+		VALUES(#{cu},#{status},#{id},#{itemId,jdbcType=VARCHAR},#{itemCode,jdbcType=VARCHAR},#{barCode,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{user.id,jdbcType=VARCHAR},
 		#{itemVersion,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{category,jdbcType=VARCHAR},#{categoryName,jdbcType=VARCHAR},#{brand,jdbcType=VARCHAR},
 		#{brandName,jdbcType=VARCHAR},#{specification,jdbcType=VARCHAR},#{color,jdbcType=VARCHAR},#{size,jdbcType=VARCHAR},#{unit,jdbcType=VARCHAR},
 		#{grossWeight,jdbcType=VARCHAR},#{wmsGrossWeight,jdbcType=VARCHAR},#{netWeight,jdbcType=VARCHAR},#{length,jdbcType=VARCHAR},#{wmsLength,jdbcType=VARCHAR},
@@ -218,8 +219,14 @@
 		FROM t_xinyu_item T
 		<where>
 			1=1
+			<if test="cu!=null and cu!=null">
+		    	and T.Fcu=#{cu}
+		 	</if>
 			<if test="itemId!=null and itemId!=''">
 				and T.FitemId=#{itemId}
+			</if>
+			<if test="id!=null and id!=''">
+				and T.FID=#{id}
 			</if>
 			<if test="userId!=null and userId!=''">
 				and T.FKuserID=#{userId}
@@ -247,8 +254,14 @@
 		FROM t_xinyu_item T
 		<where>
 			1=1
+			<if test="cu!=null and cu!=null">
+		    	and T.Fcu=#{cu}
+		 	</if>
 			<if test="itemId!=null and itemId!=''">
 				and FitemId=#{itemId}
+			</if>
+			<if test="id!=null and id!=''">
+				and T.FID=#{id}
 			</if>
 			<if test="userId!=null and userId!=''">
 				and FKuserID=#{userId}

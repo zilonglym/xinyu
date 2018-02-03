@@ -5,6 +5,7 @@
 <mapper namespace="com.xinyu.dao.order.child.WmsStockOutOrderItemDao">
 	<resultMap id="WmsStockOutOrderItemResult" type="com.xinyu.model.order.child.WmsStockOutOrderItem" >
 	<result property="id" column="FID" />
+	<result property="cu" column="FCU" />
 	<result property="stockOutOrder.id" column="FKstockOutOrderID" />
 	<result property="orderItemId" column="ForderItemId" />
 	<result property="user.id" column="FKuserID" />
@@ -33,6 +34,9 @@
 			 <if test="stockOutOrderId!=null and stockOutOrderId!=''">
 			       and t.FKstockOutOrderID  =  #{stockOutOrderId}		        
 			 </if>
+			  <if test="cu!=null and cu!=''">
+			      	and T.Fcu = #{cu}
+			  </if>
 	</select>
 	<select id="findWmsStockOutOrderItems" parameterType="map"  resultMap="WmsStockOutOrderItemResult" >
 		select w.FKitemID as "itemId",
@@ -46,16 +50,20 @@
 		from t_xinyu_stockoutorder s
 		inner join t_xinyu_wmsstockoutorderitem w on w.FKstockOutOrderID=s.fid
 		where w.FKstockOutOrderID = #{id}
+		<if test="cu!=null and cu!=''">
+			  and s.Fcu = #{cu}
+		</if>
 		group by w.FKitemID
 	</select>
 <insert id="insertWmsStockOutOrderItem" parameterType="com.xinyu.model.order.child.WmsStockOutOrderItem" >
-insert into T_xinyu_WmsStockOutOrderItem(FID,FKstockOutOrderID,ForderItemId,FKuserID,FKitemID,FitemName,FitemCode,FinventoryType,FitemQuantity,FitemPrice,FitemVersion,FbatchCode,FdueDate,FproduceDate,FproduceCode,FpurchaseOrderCode,FbatchRemark)
-VALUES(#{id},#{stockOutOrder.id,jdbcType=VARCHAR},#{orderItemId,jdbcType=VARCHAR},#{user.id,jdbcType=VARCHAR},#{item.id,jdbcType=VARCHAR},#{itemName,jdbcType=VARCHAR},#{itemCode,jdbcType=VARCHAR},#{inventoryType,jdbcType=VARCHAR},#{itemQuantity,jdbcType=INTEGER},#{itemPrice,jdbcType=VARCHAR},#{itemVersion,jdbcType=INTEGER},#{batchCode,jdbcType=VARCHAR},#{dueDate},#{produceDate},#{produceCode,jdbcType=VARCHAR},#{purchaseOrderCode,jdbcType=VARCHAR},#{batchRemark,jdbcType=VARCHAR})
+insert into T_xinyu_WmsStockOutOrderItem(FID,FCU,FKstockOutOrderID,ForderItemId,FKuserID,FKitemID,FitemName,FitemCode,FinventoryType,FitemQuantity,FitemPrice,FitemVersion,FbatchCode,FdueDate,FproduceDate,FproduceCode,FpurchaseOrderCode,FbatchRemark)
+VALUES(#{id},#{cu},#{stockOutOrder.id,jdbcType=VARCHAR},#{orderItemId,jdbcType=VARCHAR},#{user.id,jdbcType=VARCHAR},#{item.id,jdbcType=VARCHAR},#{itemName,jdbcType=VARCHAR},#{itemCode,jdbcType=VARCHAR},#{inventoryType,jdbcType=VARCHAR},#{itemQuantity,jdbcType=INTEGER},#{itemPrice,jdbcType=VARCHAR},#{itemVersion,jdbcType=INTEGER},#{batchCode,jdbcType=VARCHAR},#{dueDate},#{produceDate},#{produceCode,jdbcType=VARCHAR},#{purchaseOrderCode,jdbcType=VARCHAR},#{batchRemark,jdbcType=VARCHAR})
 </insert>
 
 <update id="updateWmsStockOutOrderItem" parameterType="com.xinyu.model.order.child.WmsStockOutOrderItem" >
 	update T_xinyu_WmsStockOutOrderItem
 	<set>
+		 <if test="cu!=null and cu!=''">T.Fcu = #{cu},</if>
 		<if test="stockOutOrder!=null and stockOutOrder!=''">FKstockOutOrderID=#{stockOutOrder.id},</if>
 		<if test="orderItemId!=null and orderItemId!=''">ForderItemId=#{orderItemId},</if>
 		<if test="user!=null and user!=''">FKuserID=#{user.id},</if>

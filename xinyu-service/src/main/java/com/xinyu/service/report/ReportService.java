@@ -32,5 +32,7 @@ public interface ReportService extends BaseService {
 	
 
 	List<Map<String, Object>> findItemTotal(Map<String, Object> params);
+	
+	List<Map<String, Object>> findZeroItemCount(Map<String, Object> params);
 
 }

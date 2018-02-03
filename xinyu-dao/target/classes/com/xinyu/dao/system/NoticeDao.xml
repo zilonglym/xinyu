@@ -28,6 +28,7 @@
 	<update id="updateNotice" parameterType="com.xinyu.model.system.Notice">
 		update t_xinyu_notice
 		<set>
+			 <if test="cu!=null and cu!=''">Fcu = #{cu},</if>
 			<if test="msg!=null and msg!=''">Fmsg=#{msg},</if>
 			<if test="lastUpdate!=null and lastUpdate!=''">FlastUpdateTime=#{lastUpdate},</if>
 			<if test="account!=null and account!=''">FKAccountId=#{account.id},</if>

@@ -18,8 +18,12 @@
 		  SELECT T.* 
 			FROM T_xinyu_StockOutOrderItem T 
 			<where>
+				1=1 
 			      <if test="stockOutOrderID!=null  and  stockOutOrderID!=''">
-			         FKstockOutOrderID =#{stockOutOrderID}
+			        and  T.FKstockOutOrderID =#{stockOutOrderID}
+			      </if>
+			      <if test="cu!=null and cu!=''">
+			      	and T.Fcu=#{cu}
 			      </if>
 			</where>
 	</select>

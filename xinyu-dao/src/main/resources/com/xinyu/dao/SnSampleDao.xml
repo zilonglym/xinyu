@@ -5,6 +5,7 @@
 <mapper namespace="com.xinyu.dao.base.SnSampleDao">
     <resultMap id="SnSampleResult" type="com.xinyu.model.base.SnSample" >
 	<result property="id" column="FID" />
+	<result property="cu" column="FCU" />
 	<result property="snSeq" column="FsnSeq" />
 	<result property="item.id" column="fkitemid" />
 	<result property="sampleDesc" column="FsampleDesc" />
@@ -15,16 +16,20 @@
 			FROM T_xinyu_SnSample T 
 			<where>
 			    1=1
+			    <if test="cu!=null and cu!=null">
+					and T.Fcu=#{cu}
+				</if>
 			</where>
 	</select>
 <insert id="insertSnSample" parameterType="com.xinyu.model.base.SnSample" >
-insert into T_xinyu_SnSample(FID,fkitemid,FsnSeq,FsampleDesc)
-VALUES(#{id},#{item.id},#{snSeq,jdbcType=VARCHAR},#{sampleDesc,jdbcType=VARCHAR})
+insert into T_xinyu_SnSample(FID,FCU,fkitemid,FsnSeq,FsampleDesc)
+VALUES(#{id},#{cu},#{item.id},#{snSeq,jdbcType=VARCHAR},#{sampleDesc,jdbcType=VARCHAR})
 </insert>
 
 <update id="updateSnSample" parameterType="com.xinyu.model.base.SnSample" >
 	update T_xinyu_SnSample
 	<set>
+		<if test="cu!=null and cu!=null">Fcu=#{cu},</if>
 		<if test="snSeq!=null and snSeq!=''">FsnSeq=#{snSeq},</if>
 		<if test="sampleDesc!=null and sampleDesc!=''">FsampleDesc=#{sampleDesc},</if>
 	</set>

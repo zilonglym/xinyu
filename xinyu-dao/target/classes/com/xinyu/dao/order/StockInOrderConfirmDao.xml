@@ -29,8 +29,10 @@
 		 SELECT T.* 
 			FROM T_xinyu_StockInOrderConfirm T 
  			<where>
- 			     <if test="stockInOrderId!=null and stockInOrderId!=''">FKstockInOrderID=#{stockInOrderId}</if>
- 			     <if test="confirmType!=null and confirmType!=''">FconfirmType=#{confirmType}</if>
+ 				1=1
+ 			     <if test="stockInOrderId!=null and stockInOrderId!=''">and T.FKstockInOrderID=#{stockInOrderId}</if>
+ 			     <if test="confirmType!=null and confirmType!=''">and T.FconfirmType=#{confirmType}</if>
+ 			     <if test="cu!=null and cu!=''">and T.Fcu=#{cu}</if>
  			</where>
  			order  by ForderConfirmTime  asc 
 	</select>

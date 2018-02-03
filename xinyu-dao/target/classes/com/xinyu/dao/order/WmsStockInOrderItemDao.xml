@@ -5,6 +5,7 @@
 <mapper namespace="com.xinyu.dao.order.WmsStockInOrderItemDao">
 	<resultMap id="WmsStockInOrderItemResult" type="com.xinyu.model.order.child.WmsStockInOrderItem" >
 	<result property="id" column="FID" />
+	<result property="cu" column="FCU" />
 	<result property="stockInOrder.id" column="FKstockInOrderID" />
 	<result property="orderItemId" column="ForderItemId" />
 	<result property="orderSourceCode" column="ForderSourceCode" />
@@ -42,17 +43,21 @@
 			    <if  test="stockInOrderId!=null  and  stockInOrderId!=''">
 			        and     T.FKstockInOrderID   =  #{stockInOrderId}
 			    </if>
+			    <if test="cu!=null and cu!=''">
+			      	and T.Fcu=#{cu}
+			     </if>
 			</where>	
 	</select>
 	
 <insert id="insertWmsStockInOrderItem" parameterType="com.xinyu.model.order.child.WmsStockInOrderItem" >
-insert into T_xinyu_WmsStockInOrderItem(FitemQuantityDefective,FitemQuantityNormal,FID,FKstockInOrderID,ForderItemId,ForderSourceCode,FsubSourceCode,FownerUserId,FKitemID,FitemName,FitemCode,FbarCode,FinventoryType,FitemQuantity,FitemVersion,FbatchCode,FdueDate,FproduceDate,FproduceCode,FpurchaseOrderCode,FtaxRate,FpurchasePrice,FitemPrice,FbatchRemark)
-VALUES(#{itemQuantityDefective,jdbcType=INTEGER},#{itemQuantityNormal,jdbcType=INTEGER},#{id},#{stockInOrder.id,jdbcType=VARCHAR},#{orderItemId,jdbcType=VARCHAR},#{orderSourceCode,jdbcType=VARCHAR},#{subSourceCode,jdbcType=VARCHAR},#{ownerUserId,jdbcType=VARCHAR},#{item.id,jdbcType=VARCHAR},#{itemName,jdbcType=VARCHAR},#{itemCode,jdbcType=VARCHAR},#{barCode,jdbcType=VARCHAR},#{inventoryType,jdbcType=VARCHAR},#{itemQuantity,jdbcType=INTEGER},#{itemVersion,jdbcType=INTEGER},#{batchCode,jdbcType=VARCHAR},#{dueDate},#{produceDate},#{produceCode,jdbcType=VARCHAR},#{purchaseOrderCode,jdbcType=VARCHAR},#{taxRate,jdbcType=VARCHAR},#{purchasePrice,jdbcType=VARCHAR},#{itemPrice,jdbcType=VARCHAR},#{batchRemark,jdbcType=VARCHAR})
+insert into T_xinyu_WmsStockInOrderItem(FCU,FitemQuantityDefective,FitemQuantityNormal,FID,FKstockInOrderID,ForderItemId,ForderSourceCode,FsubSourceCode,FownerUserId,FKitemID,FitemName,FitemCode,FbarCode,FinventoryType,FitemQuantity,FitemVersion,FbatchCode,FdueDate,FproduceDate,FproduceCode,FpurchaseOrderCode,FtaxRate,FpurchasePrice,FitemPrice,FbatchRemark)
+VALUES(#{cu},#{itemQuantityDefective,jdbcType=INTEGER},#{itemQuantityNormal,jdbcType=INTEGER},#{id},#{stockInOrder.id,jdbcType=VARCHAR},#{orderItemId,jdbcType=VARCHAR},#{orderSourceCode,jdbcType=VARCHAR},#{subSourceCode,jdbcType=VARCHAR},#{ownerUserId,jdbcType=VARCHAR},#{item.id,jdbcType=VARCHAR},#{itemName,jdbcType=VARCHAR},#{itemCode,jdbcType=VARCHAR},#{barCode,jdbcType=VARCHAR},#{inventoryType,jdbcType=VARCHAR},#{itemQuantity,jdbcType=INTEGER},#{itemVersion,jdbcType=INTEGER},#{batchCode,jdbcType=VARCHAR},#{dueDate},#{produceDate},#{produceCode,jdbcType=VARCHAR},#{purchaseOrderCode,jdbcType=VARCHAR},#{taxRate,jdbcType=VARCHAR},#{purchasePrice,jdbcType=VARCHAR},#{itemPrice,jdbcType=VARCHAR},#{batchRemark,jdbcType=VARCHAR})
 </insert>
 
 <update id="updateWmsStockInOrderItem" parameterType="com.xinyu.model.order.child.WmsStockInOrderItem" >
 	update T_xinyu_WmsStockInOrderItem
 	<set>
+		 <if test="cu!=null and cu!=''">T.Fcu=#{cu},</if>
 		<if test="stockInOrder!=null and stockInOrder!=''">FKstockInOrderID=#{stockInOrder.id},</if>
 		<if test="orderItemId!=null and orderItemId!=''">ForderItemId=#{orderItemId},</if>
 		<if test="orderSourceCode!=null and orderSourceCode!=''">ForderSourceCode=#{orderSourceCode},</if>

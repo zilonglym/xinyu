@@ -5,6 +5,7 @@
 <mapper namespace="com.xinyu.dao.deliverRequirementsDao">
 	<resultMap id="DeliverRequirementsResult" type="com.xinyu.model.base.DeliverRequirements">
 		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
 		<result property="scheduleType" column="FscheduleType" />
 		<result property="scheduleDay" column="FscheduleDay" />
 		<result property="scheduleStart" column="FscheduleStart" />
@@ -26,18 +27,20 @@
 		FROM T_xinyu_deliverrequirements T
 		<where>
 		    1=1
+		   <if test="cu!=null and cu!=''">and Fcu=#{cu}</if>
 		</where>
 	</select>
 	
 	<insert id="insertDeliverRequirements" parameterType="com.xinyu.model.base.DeliverRequirements">
 		insert into
-		T_xinyu_deliverrequirements(FID,FscheduleArriveTime,FdeliveryType,FscheduleType,FscheduleDay,FscheduleStart,FscheduleEnd,FKorderID)
-		VALUES(#{id},#{scheduleArriveTime},#{deliveryType},#{scheduleType,jdbcType=INTEGER},#{scheduleDay},#{scheduleStart},#{scheduleEnd},#{order.id,jdbcType=VARCHAR})
+		T_xinyu_deliverrequirements(FID,FCU,FscheduleArriveTime,FdeliveryType,FscheduleType,FscheduleDay,FscheduleStart,FscheduleEnd,FKorderID)
+		VALUES(#{id},#{cu},#{scheduleArriveTime},#{deliveryType},#{scheduleType,jdbcType=INTEGER},#{scheduleDay},#{scheduleStart},#{scheduleEnd},#{order.id,jdbcType=VARCHAR})
 	</insert>
 
 	<update id="updateDeliverRequirements" parameterType="com.xinyu.model.base.DeliverRequirements">
 		update T_xinyu_deliverrequirements
 		<set>
+			<if test="cu!=null and cu!=''">Fcu=#{cu},</if>
 			<if test="scheduleType!=null and scheduleType!=''">FscheduleType=#{scheduleType},</if>
 			<if test="scheduleDay!=null and scheduleDay!=''">FscheduleDay=#{scheduleDay},</if>
 			<if test="scheduleStart!=null and scheduleStart!=''">FscheduleStart=#{scheduleStart},</if>

@@ -34,6 +34,9 @@
 		<if test="userId!=null and userId!=''">
 			and i.FKuserID=#{userId}
 		</if>
+		<if test="cu!=null and cu!=''">
+			and i.Fcu = #{cu}
+		</if>
 		<if test="searchText!=null and searchText!=''">
 			and (i.Fname like "%"#{searchText}"%" or a.itemName like "%"#{searchText}"%")
 		</if>
@@ -49,6 +52,9 @@
 			group by d.FKitemGroupID 
 		)a on a.itemGroupID = i.FID
 		where 1=1
+		<if test="cu!=null and cu!=''">
+			and i.Fcu = #{cu}
+		</if>
 		<if test="userId!=null and userId!=''">
 			and i.FKuserID=#{userId}
 		</if>
@@ -100,6 +106,9 @@
 		<if test="userId!=null and userId!=''">
 			and t.FKuserID=#{userId}
 		</if> 
+		<if test="cu!=null and cu!=''">
+			and t.Fcu = #{cu}
+		</if>
 		and 
 		 <foreach collection="itemList"  item="mapStr" separator=" or " open="(" close=")">
 		     	 <![CDATA[

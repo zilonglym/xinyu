@@ -28,6 +28,9 @@
 		    <if test="itemGroupId!=null and itemGroupId!=null">
 		        and fkitemGroupId=#{itemGroupId}
 		    </if>
+		     <if test="cu!=null and cu!=null">
+		        and Fcu=#{cu}
+		    </if>
 		</where>
 	</select>
 	

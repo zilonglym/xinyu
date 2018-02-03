@@ -34,6 +34,9 @@
 		<if test="backOrderCode!=null and backOrderCode!=''">
 			and T.FbackOrderCode=#{backOrderCode}
 		</if>
+		<if test="cu!=null and cu!=''">
+			and T.Fcu=#{cu}
+		</if>
 	</select>
 	
 	<select id="getShipOrderBackList" parameterType="map" resultMap="ShipOrderBackResult">
@@ -54,6 +57,9 @@
 		</if>
 		<if test="q!=null and q!=''">
 			and (T.FbackOrderCode=#{q} or T.FtmsOrderCode=#{q})
+		</if>
+		<if test="cu!=null and cu!=''">
+			and T.Fcu=#{cu}
 		</if>
 		<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
     		<![CDATA[
@@ -85,6 +91,9 @@
 		<if test="q!=null and q!=''">
 			and (T.FbackOrderCode=#{q} or T.FtmsOrderCode=#{q})
 		</if>
+		<if test="cu!=null and cu!=''">
+			and T.Fcu=#{cu}
+		</if>
 		<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
     		<![CDATA[
 				and t.`FcreateDate` > date_format(#{startDate},'%Y-%m-%d %H:%i')
@@ -102,6 +111,7 @@
 	<update id="updateShipOrderBack" parameterType="com.xinyu.model.trade.ShipOrderBack">
 		update T_xinyu_ShipOrderBack
 		<set>	
+			<if test="cu!=null and cu!=''">Fcu=#{cu},</if>
 			<if test="orderId!=null and orderId!=''">ForderId=#{orderId},</if>
 			<if test="userId!=null and userId!=''">FuserId=#{userId},</if>
 			<if test="tmsOrderCode!=null and tmsOrderCode!=''">FtmsOrderCode=#{tmsOrderCode},</if>

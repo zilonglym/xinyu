@@ -21,6 +21,9 @@
 		<if test="itemGroupId!=null and itemGroupId!=''">
 			and T.FKitemGroupID=#{itemGroupId}
 		</if>
+		<if test="cu!=null and cu!=''">
+			and T.Fcu=#{cu}
+		</if>
 	</select>
 	<insert id="insertItemGroupDetail" parameterType="com.xinyu.model.base.ItemGroupDetail" >
 		insert into T_xinyu_ItemGroupDetail(FID,FCU,FKitemGroupID,FKitemID,Fnum)

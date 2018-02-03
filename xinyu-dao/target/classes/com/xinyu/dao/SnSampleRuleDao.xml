@@ -5,6 +5,7 @@
 <mapper namespace="com.xinyu.dao.base.SnSampleRuleDao">
 	<resultMap id="SampleRuleResult" type="com.xinyu.model.base.SampleRule">
 		<result property="id" column="FID" />
+		<result property="cu" column="FCU" />
 		<result property="ruleDesc" column="FruleDesc" />
 		<result property="ruleRegularExpression" column="FruleRegularExpression" />
 		<result property="ruleImgUrl" column="FruleImgUrl" />
@@ -19,18 +20,22 @@
 		    <if test="snSampleId!=null and snSampleId!=''">
 		        and fksnSampleId=#{snSampleId}
 		    </if>
+		    <if test="cu!=null and cu!=null">
+				and Fcu=#{cu}
+			</if>
 		</where>
 	</select>
 	<insert id="insertSampleRule" parameterType="com.xinyu.model.base.SampleRule">
 		insert into
-		T_xinyu_SampleRule(FID,FruleDesc,FruleRegularExpression,FruleImgUrl,FruleSample,fksnSampleId)
-		VALUES(#{id},#{ruleDesc,jdbcType=VARCHAR},#{ruleRegularExpression,jdbcType=VARCHAR},
+		T_xinyu_SampleRule(FID,FCU,FruleDesc,FruleRegularExpression,FruleImgUrl,FruleSample,fksnSampleId)
+		VALUES(#{id},#{cu},#{ruleDesc,jdbcType=VARCHAR},#{ruleRegularExpression,jdbcType=VARCHAR},
 		#{ruleImgUrl,jdbcType=VARCHAR},#{ruleSample,jdbcType=VARCHAR},#{snSample.id,jdbcType=VARCHAR})
 	</insert>
 
 	<update id="updateSampleRule" parameterType="com.xinyu.model.base.SampleRule">
 		update T_xinyu_SampleRule
 		<set>
+			<if test="cu!=null and cu!=null">Fcu=#{cu},</if>
 			<if test="ruleDesc!=null and ruleDesc!=''">FruleDesc=#{ruleDesc},</if>
 			<if test="ruleRegularExpression!=null and ruleRegularExpression!=''">FruleRegularExpression=#{ruleRegularExpression},</if>
 			<if test="ruleImgUrl!=null and ruleImgUrl!=''">FruleImgUrl=#{ruleImgUrl},</if>

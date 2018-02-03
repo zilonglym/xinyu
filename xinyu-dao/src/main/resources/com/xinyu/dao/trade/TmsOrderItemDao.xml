@@ -28,6 +28,9 @@
 			    <if test="tmsOrderId!=null and tmsOrderId!=''">
 			        and fktmsOrderID=#{tmsOrderId}
 			    </if>
+			    <if test="cu!=null and cu!=null">
+		        	and Fcu=#{cu}
+		  		</if>
 			</where>
 	</select>
 <insert id="insertTmsOrderItem" parameterType="com.xinyu.model.trade.TmsOrderItem" >

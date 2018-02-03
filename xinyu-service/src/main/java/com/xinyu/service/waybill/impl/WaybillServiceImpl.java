@@ -294,7 +294,7 @@ public class WaybillServiceImpl extends BaseServiceImpl implements WayBillServic
 			String nameMsg = shipOrder.getId() + ";"; // 订单错误提示信息前缀
 			if (cpCode != null && cpCode.equals("STO")) {
 				address.setDetail(STO_ADDRESS);
-			} else if (cpCode != null && cpCode.equals("YUNDA411353")) {
+			} else if (cpCode != null && cpCode.equals("YUNDAX")) {
 				address.setDetail(YUNDA_411353);
 				cpCode = "YUNDA";
 			} else if (cpCode != null && cpCode.equals("HTKY11")) {
@@ -511,7 +511,7 @@ public class WaybillServiceImpl extends BaseServiceImpl implements WayBillServic
 		address.setProvince(centro.getProvince());
 		if (cpCode != null && cpCode.equals("STO")) {
 			address.setAddressDetail(STO_ADDRESS);
-		} else if (cpCode != null && cpCode.equals("YUNDA411353")) {
+		} else if (cpCode != null && cpCode.equals("YUNDAX")) {
 			address.setAddressDetail(YUNDA_411353);
 			cpCode = "YUNDA";
 		} else if (cpCode != null && cpCode.equals("HTKY11")) {

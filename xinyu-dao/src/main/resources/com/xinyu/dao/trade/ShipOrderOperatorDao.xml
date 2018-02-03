@@ -25,6 +25,9 @@
 		SELECT T.*
 		FROM T_xinyu_ShipOrderOperator T 
 		where 1=1
+		 <if test="cu!=null and cu!=null">
+		        and T.Fcu=#{cu}
+		  </if>
 		<if test="accountId!=null and accountId!=''">
 			and t.FKaccountID = #{accountId}
 		</if>
@@ -43,8 +46,8 @@
 			and t.`FoperatorDate` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
 			]]>
     	</if> 
-    	order by t.`FoperatorDate` desc
-    	limit 200
+    	order by t.`FoperatorDate` desc  
+		limit 0,100    
 	</select>
 	
 	<insert id="insertShipOrderOperator" parameterType="com.xinyu.model.trade.ShipOrderOperator">
@@ -56,7 +59,7 @@
 	<update id="updateShipOrderOperator" parameterType="com.xinyu.model.trade.ShipOrderOperator">
 		update T_xinyu_ShipOrderOperator
 		<set>
-			<if test="null!=null and null!=''">FCU=#{},</if>
+			<if test="cu!=null and cu!=''">FCU=#{cu},</if>
 			<if test="shipOrder!=null and shipOrder!=''">FKshipOrderID=#{shipOrder.id},</if>
 			<if test="operatorDate!=null and operatorDate!=''">FoperatorDate=#{operatorDate},</if>
 			<if test="account!=null and account!=''">FKaccountID=#{account.id},</if>

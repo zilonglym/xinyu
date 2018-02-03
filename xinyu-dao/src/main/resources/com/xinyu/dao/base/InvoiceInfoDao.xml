@@ -5,6 +5,7 @@
 <mapper namespace="com.xinyu.dao.invoiceInfoDao">
 	<resultMap id="InvoiceInfoResult" type="com.xinyu.model.base.InvoiceInfo" >
 	<result property="id" column="FID" />
+	<result property="cu" column="FCU" />
 	<result property="billType" column="FbillType" />
 	<result property="billId" column="FbillId" />
 	<result property="billTitle" column="FbillTitle" />
@@ -19,13 +20,14 @@
 			FROM T_xinyu_InvoiceInfo T where T.FID=#{id}
 	</select>
 <insert id="insertInvoiceInfo" parameterType="com.xinyu.model.base.InvoiceInfo" >
-insert into T_xinyu_InvoiceInfo(FID,FbillType,FbillId,FbillTitle,FbillAccount,FbuyerNo,FbuyerAddrPhone,FbuyerBankAccount,FbillContent)
-VALUES(#{id},#{billType,jdbcType=VARCHAR},#{billId,jdbcType=VARCHAR},#{billTitle,jdbcType=VARCHAR},#{billAccount,jdbcType=VARCHAR},#{buyerNo,jdbcType=VARCHAR},#{buyerAddrPhone,jdbcType=VARCHAR},#{buyerBankAccount,jdbcType=VARCHAR},#{billContent,jdbcType=VARCHAR})
+insert into T_xinyu_InvoiceInfo(FID,FCU,FbillType,FbillId,FbillTitle,FbillAccount,FbuyerNo,FbuyerAddrPhone,FbuyerBankAccount,FbillContent)
+VALUES(#{id},#{cu},#{billType,jdbcType=VARCHAR},#{billId,jdbcType=VARCHAR},#{billTitle,jdbcType=VARCHAR},#{billAccount,jdbcType=VARCHAR},#{buyerNo,jdbcType=VARCHAR},#{buyerAddrPhone,jdbcType=VARCHAR},#{buyerBankAccount,jdbcType=VARCHAR},#{billContent,jdbcType=VARCHAR})
 </insert>
 
 <update id="updateInvoiceInfo" parameterType="com.xinyu.model.base.InvoiceInfo" >
 	update T_xinyu_InvoiceInfo
 	<set>
+		<if test="cu!=null and cu!=''">Fcu=#{cu},</if>
 		<if test="billType!=null and billType!=''">FbillType=#{billType},</if>
 		<if test="billId!=null and billId!=''">FbillId=#{billId},</if>
 		<if test="billTitle!=null and billTitle!=''">FbillTitle=#{billTitle},</if>

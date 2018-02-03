@@ -16,22 +16,22 @@ import com.xinyu.service.report.ReportService;
 
 /**
  * 报表
- * */
+ */
 @Service("reportServiceImpl")
-public class ReportServiceImpl extends BaseServiceImpl implements ReportService{
+public class ReportServiceImpl extends BaseServiceImpl implements ReportService {
 
-	@Autowired 
+	@Autowired
 	private ReportDao reportDao;
-	
-	@Autowired 
+
+	@Autowired
 	private UserDao userDao;
-	
-	
+
 	/**
 	 * 发货统计
+	 * 
 	 * @param map
 	 * @return list
-	 * */
+	 */
 	@Override
 	public List<Map<String, Object>> findShipCount(Map<String, Object> params) {
 		// TODO Auto-generated method stub
@@ -40,19 +40,20 @@ public class ReportServiceImpl extends BaseServiceImpl implements ReportService{
 
 	/**
 	 * 数据封装
-	 * */
+	 */
 	@Override
-	public List<Map<String, Object>> buildListData(List<Map<String, Object>> ships, List<Map<String, Object>> itemCounts) {
-		List<Map<String, Object>> results = new ArrayList<Map<String,Object>>();
-		for(Map<String, Object> map:ships){
+	public List<Map<String, Object>> buildListData(List<Map<String, Object>> ships,
+			List<Map<String, Object>> itemCounts) {
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+		for (Map<String, Object> map : ships) {
 			Map<String, Object> retMap = new HashMap<String, Object>();
 			String userId = "" + map.get("userId");
 			User user = this.userDao.getUserById(userId);
 			retMap.put("userName", user.getSubscriberName());
 			retMap.put("userId", userId);
 			retMap.put("num", map.get("num"));
-			for(Map<String, Object> itemMap:itemCounts){
-//				System.err.println(itemCounts);
+			for (Map<String, Object> itemMap : itemCounts) {
+				// System.err.println(itemCounts);
 				if (itemMap.get("userId").equals(userId)) {
 					retMap.put("sum", itemMap.get("sum"));
 				}
@@ -64,18 +65,23 @@ public class ReportServiceImpl extends BaseServiceImpl implements ReportService{
 
 	/**
 	 * 商品统计
+	 * 
 	 * @param map
 	 * @return list
-	 * */
+	 */
 	@Override
 	public List<Map<String, Object>> findItemCount(Map<String, Object> params) {
 		// TODO Auto-generated method stub
 		return this.reportDao.findItemCount(params);
 	}
-
 	@Override
 	public List<Map<String, Object>> findItemTotal(Map<String, Object> params) {
 		// TODO Auto-generated method stub
 		return this.reportDao.findItemTotal(params);
+	}
+	@Override
+	public List<Map<String, Object>> findZeroItemCount(Map<String, Object> params) {
+		// TODO Auto-generated method stub
+		return this.reportDao.findZeroItemCount(params);
 	}
 }
