@@ -467,6 +467,14 @@ public class WmsConsignOrderNotifyCpImpl
 		info.setReceiverPhone(obj.getReceiverPhone());
 		info.setReceiverProvince(obj.getReceiverProvince());
 		info.setReceiveTown(obj.getReceiveTown());
+		if(StringUtils.isEmpty(info.getReceiverMobile())){
+				/**
+				 * 如果手机号码为空，则判断一下电话号码是不是为空。如果电话号码不为空，则把电话号码写进手机号码中去。
+				 */
+			if(StringUtils.isNotEmpty(info.getReceiverPhone())){
+				info.setReceiverMobile(info.getReceiverPhone());
+			}
+		}
 		// 持久化对象
 		// this.receiverInfoService.saveReceiverInfo(info);
 	}

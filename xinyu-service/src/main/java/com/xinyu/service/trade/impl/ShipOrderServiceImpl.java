@@ -1645,7 +1645,7 @@ public class ShipOrderServiceImpl extends BaseServiceImpl implements ShipOrderSe
  			 */
 	 		this.buildShipOrderItemGroup(shipOrder);
 	 		tmsOrder.setItems(shipOrder.getItems());
-	 		if(expressCompany!=null && expressCompany.equals("YUNDA411353")){
+	 		if(expressCompany!=null && expressCompany.equals("YUNDAX")){
 				shipOrder.setTmsDisplayName("411353"); 			
 			}else if(expressCompany!=null && expressCompany.equals("YUNDA")){
 				shipOrder.setTmsDisplayName("411106");
@@ -1667,7 +1667,7 @@ public class ShipOrderServiceImpl extends BaseServiceImpl implements ShipOrderSe
  				/**
  				 * 表明是审这个单据的最后一个子单。
  				 */
- 				if(expressCompany!=null && expressCompany.equals("YUNDA411353")){
+ 				if(expressCompany!=null && expressCompany.equals("YUNDAX")){
  					shipOrder.setTmsDisplayName("411353"); 			
  				}else if(expressCompany!=null && expressCompany.equals("YUNDA")){
  					shipOrder.setTmsDisplayName("411106");
