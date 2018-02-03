@@ -15,6 +15,33 @@
 		<result property="description" column="Fdescription" />
 	</resultMap>
 
+	<select id="getOrderBackMapList" parameterType="map" resultType="map">
+		select a.ForderId as "orderId",a.FuserId as "userId",a.FcreateDate as "createDate",a.FtmsOrderCode as "tmsOrderCode",
+			   a.FbackOrderCode as "backOrderCode",a.Fdescription as "description",GROUP_CONCAT(a.items) as "items"
+		from(
+			select s.ForderId,s.FID,s.FuserId,s.FcreateDate,s.FtmsOrderCode,s.FbackOrderCode,s.Fdescription,CONCAT(i.FitemName,":",i.Fquantity,"件;") as "items"
+			from t_xinyu_shiporderback s
+			inner join t_xinyu_orderbackitem i on s.FID = i.FKorderBackId
+			where 1=1
+			<if test="userId!=null and userId!=''">
+				and s.FuserId=#{userId}
+			</if>
+			<if test="q!=null and q!=''">
+				and (s.FbackOrderCode=#{q} or s.FtmsOrderCode=#{q})
+			</if>
+			<if test="cu!=null and cu!=''">
+				and s.Fcu=#{cu}
+			</if>
+			<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    			<![CDATA[
+					and s.`FcreateDate` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+					and s.`FcreateDate` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+				]]>
+			</if>
+			)a
+		group by a.FID
+	</select>
+
 	<select id="getShipOrderBackByParams" parameterType="map" resultMap="ShipOrderBackResult">
 		SELECT T.*
 		FROM T_xinyu_ShipOrderBack T

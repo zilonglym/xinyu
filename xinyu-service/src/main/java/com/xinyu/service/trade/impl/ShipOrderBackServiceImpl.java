@@ -50,4 +50,9 @@ public class ShipOrderBackServiceImpl extends BaseServiceImpl implements ShipOrd
 		this.orderBackDao.deleteShipOrderBackById(id);
 	}
 
+	@Override
+	public List<Map<String, Object>> getOrderBackMapList(Map<String, Object> p) {
+		return this.orderBackDao.getOrderBackMapList(p);
+	}
+
 }

@@ -1,7 +1,9 @@
 package com.xinyu.controller.trade;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.xinyu.common.BaseController;
 import com.xinyu.model.base.Item;
+import com.xinyu.model.base.ReceiverInfo;
 import com.xinyu.model.base.User;
 import com.xinyu.model.system.Account;
 import com.xinyu.model.trade.ShipOrder;
@@ -28,6 +32,7 @@ import com.xinyu.model.trade.ShipOrderBack;
 import com.xinyu.model.trade.ShipOrderBackItem;
 import com.xinyu.model.trade.TmsOrder;
 import com.xinyu.model.trade.TmsOrderItem;
+import com.xinyu.model.util.POIModel;
 import com.xinyu.service.caoniao.WmsConsignOrderConfirmService;
 import com.xinyu.service.system.AccountService;
 import com.xinyu.service.system.ItemService;
@@ -37,6 +42,7 @@ import com.xinyu.service.trade.ShipOrderBackService;
 import com.xinyu.service.trade.ShipOrderService;
 import com.xinyu.service.trade.TmsOrderService;
 import com.xinyu.service.trade.WmsConsignOrderItemService;
+import com.xinyu.util.PoiExcelExport;
 
 import net.sf.json.JSONArray;
 
@@ -105,10 +111,14 @@ public class ShipOrderBackController extends BaseController {
 		}
 		String userId = request.getParameter("userId");
 		String q = request.getParameter("q");
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("userId", userId);
 		params.put("q", q);
+		params.put("startDate", startDate);
+		params.put("endDate", endDate);
 		List<ShipOrderBack> orderBacks = this.orderBackService.getShipOrderBackListByPage(params, page, rows);
 		int total = this.orderBackService.getTotal(params);
 
@@ -142,6 +152,7 @@ public class ShipOrderBackController extends BaseController {
 			map.put("returnCode", orderBack.getBackOrderCode());
 			map.put("orderCode", orderBack.getTmsOrderCode());
 			map.put("createDate", sf.format(orderBack.getCreateDate()));
+			System.err.println(orderBack.getId());
 			Account account = this.accountService.findAcountById(orderBack.getCreateBy().getId());
 			map.put("account", account.getUserName());
 			map.put("description", orderBack.getDescription());
@@ -660,6 +671,105 @@ public class ShipOrderBackController extends BaseController {
 		}
 
 		return retMap;
+	}
+	
+	/**
+	 * 发货明细单(POI)下载
+	 * @param userId
+	 * @param startDate
+	 * @param endDate
+	 * @return 
+	 * @throws IOException 
+	 * */
+	@RequestMapping(value = "report/xls")
+	public String shipReport(	
+			@RequestParam(value = "userId") String u,
+			@RequestParam(value = "startDate") String startDate,
+			@RequestParam(value = "endDate") String endDate,
+			@RequestParam(value = "q") String q,HttpServletResponse response) throws IOException {
+		long start = new Date().getTime();
+		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Map<String, Object> p = new HashMap<String, Object>();
+		p.put("userId", u);
+		p.put("startDate", startDate);
+		p.put("endDate", endDate);
+ 		p.put("q", q);
+ 		List<Map<String, Object>> backMaps = this.orderBackService.getOrderBackMapList(p);
+ 		
+		List<POIModel> poiModels=new ArrayList<POIModel>();
+			
+		for(Map<String, Object> bakcMap:backMaps){
+			
+			String userId = "" + bakcMap.get("userId");
+			
+			String orderId = "" + bakcMap.get("orderId");
+			
+			User user = this.userService.getUserById(userId);
+			
+			POIModel poiModel=new POIModel();
+			
+			//时间
+			poiModel.setM1(""+bakcMap.get("createDate"));
+			
+			//商家
+			if (user!=null) {
+				poiModel.setM2(user.getShortName());
+			}else {
+				Map<String, Object> userMap = this.userService.getStoreUserById(userId);
+				poiModel.setM2(""+userMap.get("shopName"));
+			}
+			
+			//原单号
+			poiModel.setM3(""+bakcMap.get("tmsOrderCode"));
+			
+			//退回单号
+			poiModel.setM4(""+bakcMap.get("backOrderCode"));
+			
+			//商品明细
+			if (StringUtils.isNotBlank(orderId)) {
+				TmsOrder order = this.tmsOrderService.getTmsOrderById(orderId);
+				if (order!=null) {
+					//仓库备注
+					poiModel.setM5(order.getItems());
+				}else {
+					Map<String, Object> params = new HashMap<String, Object>();
+					params.put("id", orderId);
+					List<Map<String, Object>> orderMaps = this.orderService.findStoreOrderList(params);
+					Map<String, Object> orderMap = orderMaps.get(0);
+					//仓库备注
+					poiModel.setM5(""+orderMap.get("items"));
+				}
+			}else {
+				//仓库备注
+				poiModel.setM5(""+bakcMap.get("items"));
+			}
+			
+			//退货原因
+			poiModel.setM6(""+bakcMap.get("description"));
+			
+			poiModels.add(poiModel);
+		}		
+		
+		//新建PoiExcelExport对象
+		PoiExcelExport pee = new PoiExcelExport(response,sf.format(new Date())+"退货明细","sheet1");
+		
+		//Excel文件填充内容属性
+		String titleColumn[] = {"m1","m2","m3","m4","m5","m6"};  
+       
+		//Excel文件填充内容列名
+		String titleName[] = {"时间","商家","原单号","退回单号","明细","退回原因"};  
+		
+		//Excel文件填充内容列宽
+		int titleSize[] = {20,20,20,20,20,20};  
+		
+		//调用PoiExcelExport导出Excel文件
+        pee.wirteExcel(titleColumn, titleName, titleSize, poiModels);
+        
+        long end = new Date().getTime();
+        
+        System.err.println("发货明细导出耗时："+(end - start));
+        
+        return null; 
 	}
 
 }

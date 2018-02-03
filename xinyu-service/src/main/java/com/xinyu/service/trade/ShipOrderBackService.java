@@ -21,5 +21,7 @@ public ShipOrderBack getShipOrderBackByParams(Map<String, Object> params);
 	public void updateShipOrderBack(ShipOrderBack orderBack);
 	
 	public void deleteShipOrderBackById(String id);
+
+	public List<Map<String, Object>> getOrderBackMapList(Map<String, Object> p);
 	
 }

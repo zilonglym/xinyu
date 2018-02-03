@@ -38,4 +38,9 @@ public class ShipOrderBackDaoImpl extends BaseDaoImpl implements ShipOrderBackDa
 		super.delete(this.statement+"deleteShipOrderBackById", id);
 	}
 
+	@Override
+	public List<Map<String, Object>> getOrderBackMapList(Map<String, Object> p) {
+		return (List<Map<String, Object>>) super.selectList(this.statement+"getOrderBackMapList", p);
+	}
+
 }

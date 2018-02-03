@@ -19,5 +19,7 @@ public interface ShipOrderBackDao extends BaseDao{
 	public void updateShipOrderBack(ShipOrderBack orderBack);
 	
 	public void deleteShipOrderBackById(String id);
+
+	public List<Map<String, Object>> getOrderBackMapList(Map<String, Object> p);
 	
 }
