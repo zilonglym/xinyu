@@ -37,6 +37,7 @@
 		<input style="width:250px;" id="q" name="q" type="text" class="easyui-textbox" data-options="prompt:'请输入型号/条码'"/>
 		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="local.clear();" >清空</a>
 		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="local.search();" >查询</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-export'" onclick="local.exportData();" >导出</a>
 		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onclick="local.move();" >库位调整</a>
 	</div>
 	<div data-options="title:'货位商品信息'" style="padding:2px;">
