@@ -48,6 +48,18 @@ local.clear = function(){
 	$("#q").textbox('setValue');
 }
 
+local.exportData = function(){
+	var shopId = $('#shopId').combobox('getValue');
+	var row = $('#row').textbox('getValue');
+	var boxOut = $('#boxOut').textbox('getValue');
+	var floor = $('#floor').textbox('getValue');
+	var code = $('#code').textbox('getValue');
+	var state = $('#state').combobox('getValue');
+	var q = $('#q').textbox('getValue');
+	var url = ctx + "/pcLocal/localPlate/xls?shopId="+shopId+"&row="+row+"&boxOut="+boxOut+"&floor="+floor+"&code="+code+"&state="+state+"&q="+q;
+	window.location.href = url;
+}
+
 function initRecordTable(id){
 
 	$('#tb_record').datagrid({
