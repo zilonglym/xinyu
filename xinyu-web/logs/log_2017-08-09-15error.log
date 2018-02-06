@@ -1,6 +1,0 @@
-2017-08-09 15:46:08  [ 15524598@qtp-15392910-2:178119 ] - [ ERROR ]  LoginInterceptor:[null]/login/submitLogin
-2017-08-09 15:46:18  [ 15524598@qtp-15392910-2:188000 ] - [ ERROR ]  account dao impl logger!
-2017-08-09 15:47:02  [ 15524598@qtp-15392910-2:231228 ] - [ ERROR ]  LoginInterceptor:[null]/login/submitLogin
-2017-08-09 15:47:09  [ 15524598@qtp-15392910-2:238667 ] - [ ERROR ]  account dao impl logger!
-2017-08-09 15:47:23  [ 1307450@qtp-15392910-3:252551 ] - [ ERROR ]  LoginInterceptor:[null]/login/submitLogin
-2017-08-09 15:47:29  [ 1307450@qtp-15392910-3:258481 ] - [ ERROR ]  account dao impl logger!

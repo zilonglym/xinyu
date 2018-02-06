@@ -1,0 +1,112 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RackListActivity" >
+	
+    <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_width="fill_parent"
+        >
+        <EditText 
+            android:id="@+id/txt_searchText"
+            android:layout_width="0dip"
+            android:layout_weight="7"
+            android:layout_height="fill_parent"
+            android:hint="请输入要查询的内容"
+            />
+        <Button 
+            android:id="@+id/btn_search"
+            android:layout_width="0dip"
+            android:layout_weight="2"
+            android:layout_height="fill_parent"
+            android:text="查询"/>
+        <Button 
+            android:id="@+id/btn_displayModel"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="视图"/>
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:id="@+id/ll_list"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_height="0dip"
+        >
+        <TextView 
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="货架"
+            />
+          <TextView 
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="商家"
+            />
+        <TextView 
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="商品名"
+            />
+         <TextView 
+            android:layout_width="0dip"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="编号"
+            />
+      
+       
+          <TextView 
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="数量"
+            />
+            <TextView 
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="更新时间"
+            />
+            
+            <TextView 
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="操作"
+            />
+    </LinearLayout>
+    <LinearLayout 
+        android:id="@+id/ll_list"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_weight="9"
+        android:layout_height="0dip"
+        >
+       <ListView 
+           android:id="@+id/list_data"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:visibility="visible"
+           ></ListView>
+
+    </LinearLayout>
+   
+
+</LinearLayout>

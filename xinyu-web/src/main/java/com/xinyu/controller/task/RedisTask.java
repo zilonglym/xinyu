@@ -25,6 +25,7 @@ import com.xinyu.model.base.Item;
 import com.xinyu.model.base.RdsConstants;
 import com.xinyu.model.base.ReceiverInfo;
 import com.xinyu.model.base.User;
+import com.xinyu.model.common.SessionUser;
 import com.xinyu.model.system.Account;
 import com.xinyu.model.system.SystemItem;
 import com.xinyu.model.system.enums.OperatorModel;
@@ -34,6 +35,8 @@ import com.xinyu.model.trade.ShipOrder;
 import com.xinyu.model.trade.ShipOrderOperator;
 import com.xinyu.model.trade.WmsConsignOrderItem;
 import com.xinyu.service.caoniao.WmsOrderStatusUploadCpImpl;
+import com.xinyu.service.common.Constants;
+import com.xinyu.service.system.AccountService;
 import com.xinyu.service.system.CheckOutService;
 import com.xinyu.service.system.ItemService;
 import com.xinyu.service.system.SystemItemService;
@@ -71,6 +74,8 @@ public class RedisTask extends BaseController{
 	private UserService userService;
 	@Autowired
 	private SystemItemService systemItemService;
+	@Autowired
+	private AccountService accountService;
 	@Autowired
 	private ReceiverInfoService receiverInfoService;
 	
@@ -242,7 +247,9 @@ public class RedisTask extends BaseController{
 				
 				continue;
 			}
-			
+			User user=this.userService.getUserById(order.getUser().getId());
+			buildCuByStoreCode(user);
+			operator.setAccount(this.getCurrentAccount());
 			this.orderStatusUploadService.updateOrderState(null, map, RdsConstants.ORDER_REJECT);
 			logger.error(map);
 			this.redisProxy.del(key);			
@@ -256,6 +263,22 @@ public class RedisTask extends BaseController{
 	}
 	
 	
+	/**
+	 * 构建CU，并存放在当前的sessionUser中
+	 * @param storeCode
+	 */
+	private void buildCuByStoreCode(User user){
+		Map<String,Object> params=new HashMap<String, Object>();
+		params.put("userName", Constants.cainiao_account);
+		List<Account> list=this.accountService.findAccountsByList(params);
+		//1.查询出属于菜鸟的那个帐号
+		if(list!=null && list.size()>0){
+			Account account=list.get(0);
+			//2.
+			account.setCu(user.getCu());
+			SessionUser.set(account);
+		}
+	}
 
 	
 	/**

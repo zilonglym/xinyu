@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">中仓网络科技</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_home">中仓网络仓库管理系统</string>
+    <string name="title_activity_rack_list">RackListActivity</string>
+    <string name="title_activity_rack_view">RackViewActivity</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_auto_scanner">AutoScannerActivity</string>
+	<string name="title_activity_Capture">CaptureActivity</string>
+    
+</resources>

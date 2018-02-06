@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zc.mobile"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.zc.mobile.activity.MainActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.zc.mobile.activity.HomeActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name="com.zc.mobile.RackListActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_activity_rack_list" >
+        </activity>
+        <activity
+            android:name="com.zc.mobile.RackViewActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_activity_rack_view" >
+        </activity>
+        <activity
+            android:name="com.zc.mobile.MenuActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_activity_menu" >
+        </activity>
+        <activity
+            android:name="com.zc.mobile.AutoScannerActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_activity_auto_scanner" >
+        </activity>
+         <activity
+            android:configChanges="orientation|keyboardHidden"
+            android:name="com.zxing.activity.CaptureActivity"
+           android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <!--  android:screenOrientation="portrait" -->
+    </application>
+
+</manifest>

@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/wlpost/!svn/ver/1938/trunk/zc_mobile/res/layout
+END
+activity_menu.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/wlpost/!svn/ver/1938/trunk/zc_mobile/res/layout/activity_menu.xml
+END
+rack_fast_down.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/wlpost/!svn/ver/2638/trunk/zc_mobile/res/layout/rack_fast_down.xml
+END
+rack_main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/res/layout/rack_main.xml
+END
+main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/res/layout/main.xml
+END
+activity_rack_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/wlpost/!svn/ver/2446/trunk/zc_mobile/res/layout/activity_rack_view.xml
+END
+activity_rack_list.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/wlpost/!svn/ver/2638/trunk/zc_mobile/res/layout/activity_rack_list.xml
+END
+rack_item_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/wlpost/!svn/ver/1937/trunk/zc_mobile/res/layout/rack_item_view.xml
+END
+order_before_list.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/wlpost/!svn/ver/2446/trunk/zc_mobile/res/layout/order_before_list.xml
+END
+camera.xml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/wlpost/!svn/ver/2638/trunk/zc_mobile/res/layout/camera.xml
+END
+rack_item_list.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/wlpost/!svn/ver/2638/trunk/zc_mobile/res/layout/rack_item_list.xml
+END
+rack_add_popupwin.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/wlpost/!svn/ver/1956/trunk/zc_mobile/res/layout/rack_add_popupwin.xml
+END
+activity_auto_scanner.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/res/layout/activity_auto_scanner.xml
+END
+activity_main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/wlpost/!svn/ver/1937/trunk/zc_mobile/res/layout/activity_main.xml
+END
+rack_main_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/res/layout/rack_main_item.xml
+END
+rack_locator.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/wlpost/!svn/ver/2446/trunk/zc_mobile/res/layout/rack_locator.xml
+END
+activity_home.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/wlpost/!svn/ver/1937/trunk/zc_mobile/res/layout/activity_home.xml
+END
+rack_fast_add.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/wlpost/!svn/ver/2727/trunk/zc_mobile/res/layout/rack_fast_add.xml
+END
+order_before_item_list.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/wlpost/!svn/ver/2446/trunk/zc_mobile/res/layout/order_before_item_list.xml
+END
+item_add.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/wlpost/!svn/ver/2446/trunk/zc_mobile/res/layout/item_add.xml
+END
+rack_fast_confirm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/wlpost/!svn/ver/2638/trunk/zc_mobile/res/layout/rack_fast_confirm.xml
+END
+rack_locator_add.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/wlpost/!svn/ver/2638/trunk/zc_mobile/res/layout/rack_locator_add.xml
+END
+rack_view_popupwin.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/wlpost/!svn/ver/1956/trunk/zc_mobile/res/layout/rack_view_popupwin.xml
+END
