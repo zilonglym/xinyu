@@ -72,7 +72,7 @@
 	    <a id="call" href="javascript:audit.searchList();" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
 	   	<a class="easyui-linkbutton"  href="javascript:selectRow();" >批量审核</a>
 	   	<a class="easyui-linkbutton"  href="javascript:audit.auditSfArea();" >顺风</a>
-	 	<a class="easyui-linkbutton"  href="javascript:audit.auditYUNDAArea('YUNDA411353');" >韵达353</a>
+	 	<a class="easyui-linkbutton"  href="javascript:audit.auditYUNDAArea('YUNDAX');" >韵达353</a>
 	   	<a class="easyui-linkbutton"  href="javascript:audit.auditYUNDAArea('YUNDA');" >韵达106</a>
 	   	<a class="easyui-linkbutton"  href="javascript:audit.auditYUNDAArea('YTO');" >圆通</a>
 	   	<a class="easyui-linkbutton"  href="javascript:audit.addSplit();" >自定义拆单</a>

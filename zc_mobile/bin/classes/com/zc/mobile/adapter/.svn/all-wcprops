@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/wlpost/!svn/ver/1956/trunk/zc_mobile/src/com/zc/mobile/adapter
+END
+RackMainAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/2446/trunk/zc_mobile/src/com/zc/mobile/adapter/RackMainAdapter.java
+END
+RackAddItemAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/wlpost/!svn/ver/2637/trunk/zc_mobile/src/com/zc/mobile/adapter/RackAddItemAdapter.java
+END
+OrderBeforeListAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/2446/trunk/zc_mobile/src/com/zc/mobile/adapter/OrderBeforeListAdapter.java
+END
+ItemAddUpdateAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/2637/trunk/zc_mobile/src/com/zc/mobile/adapter/ItemAddUpdateAdapter.java
+END
+RackViewAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/wlpost/!svn/ver/2637/trunk/zc_mobile/src/com/zc/mobile/adapter/RackViewAdapter.java
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/camera
+END
+FlashlightManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/camera/FlashlightManager.java
+END
+CameraManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/wlpost/!svn/ver/2637/trunk/zc_mobile/src/com/zxing/camera/CameraManager.java
+END
+AutoFocusCallback.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/camera/AutoFocusCallback.java
+END
+CameraConfigurationManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/2637/trunk/zc_mobile/src/com/zxing/camera/CameraConfigurationManager.java
+END
+PlanarYUVLuminanceSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/camera/PlanarYUVLuminanceSource.java
+END
+PreviewCallback.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/camera/PreviewCallback.java
+END

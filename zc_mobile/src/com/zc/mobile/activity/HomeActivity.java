@@ -1,0 +1,229 @@
+package com.zc.mobile.activity;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.zc.mobile.R;
+import com.zc.mobile.fragments.items.ItemAddFragment;
+import com.zc.mobile.fragments.orders.OrderBeforeInfoFragment;
+import com.zc.mobile.fragments.racks.RackFastAddFragment;
+import com.zc.mobile.fragments.racks.RackFastConfirmFragment;
+import com.zc.mobile.fragments.racks.RackFastDownFragment;
+import com.zc.mobile.fragments.racks.RackFragment;
+import com.zc.mobile.fragments.racks.RackMainFragment;
+import com.zc.mobile.fragments.racks.RackViewFragment;
+
+/**
+ * 主界面
+ * 
+ * @author admin
+ * 
+ */
+public class HomeActivity extends Activity implements OnItemClickListener {
+
+	private TextView btn_rack;
+	
+	private ListView menu_left;
+	
+	private List<Map<String,Object>> menuList;
+	
+	public static int login=0;
+	
+	public static Map<String,Object> loginUserInfo=new HashMap<String, Object>();
+	
+	private FragmentManager manager;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+		
+		initMenu();
+		manager=this.getFragmentManager();
+		this.menu_left=(ListView) this.findViewById(R.id.menu_left);
+		
+		//initLoginInfo();
+		this.menu_left.setAdapter(new MenuAdapter());
+		this.menu_left.setOnItemClickListener(this);
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View view, int id, long arg3) {
+		if(id==-1){
+			return;
+		}
+		int realPosition=(int)id; 
+		TextView menuText=(TextView) view;
+		String value=menuText.getText().toString();
+		if(value.equals("货架查询")){
+			this.gotoRackList(view);
+		}else if(value.equals("上下架")){
+			this.gotoRackView(view);
+		}else if(value.equals("推单通知")){
+			gotoOrderBeforeView(view);
+		}else if(value.equals("添加商品")){
+			gotoAddItem(view);
+		}else if(value.equals("上架")){
+			gotoAddRack();
+		}else if(value.equals("下架")){
+			gotodownRack();
+		}else if(value.equals("确认")){
+			gotoConfirmFast();
+		}
+	}
+	
+	private void gotoConfirmFast(){
+		RackFastConfirmFragment rackFragment=new RackFastConfirmFragment();
+		FragmentTransaction transaction= manager.beginTransaction();
+		transaction.replace(R.id.lay_home, rackFragment);
+		transaction.commit();
+		
+	}
+	
+	private void gotoRackList(View view){
+		RackFragment rackFragment=new RackFragment();
+		FragmentTransaction transaction= manager.beginTransaction();
+		transaction.replace(R.id.lay_home, rackFragment);
+		transaction.commit();
+	}
+	
+	private void gotoRackView(View view){
+//		RackViewFragment rackFragment=new RackViewFragment();
+		RackMainFragment fragment=new RackMainFragment();
+		FragmentTransaction transaction= manager.beginTransaction();
+		transaction.replace(R.id.lay_home, fragment);
+		transaction.commit();
+	}
+	
+	private void gotoOrderBeforeView(View view){
+		OrderBeforeInfoFragment orderFragment=new OrderBeforeInfoFragment();
+		FragmentTransaction transaction= manager.beginTransaction();
+		transaction.replace(R.id.lay_home, orderFragment);
+		transaction.commit();
+	}
+	
+	private void gotoAddItem(View view){
+		ItemAddFragment orderFragment=new ItemAddFragment();
+		FragmentTransaction transaction= manager.beginTransaction();
+		transaction.replace(R.id.lay_home, orderFragment);
+		transaction.commit();
+	}
+	/**
+	 * 快速上架
+	 */
+	private void gotoAddRack(){
+		RackFastAddFragment fastAdd=new RackFastAddFragment();
+		FragmentTransaction transaction= manager.beginTransaction();
+		transaction.replace(R.id.lay_home, fastAdd);
+		transaction.commit();
+	}
+	
+	
+	/**
+	 * 快速上架
+	 */
+	private void gotodownRack(){
+		RackFastDownFragment fastAdd=new RackFastDownFragment();
+		FragmentTransaction transaction= manager.beginTransaction();
+		transaction.replace(R.id.lay_home, fastAdd);
+		transaction.commit();
+	}
+	
+	private void initMenu(){
+		if(menuList==null){
+			menuList=new ArrayList<Map<String,Object>>();
+			Map<String,Object> menu1=new HashMap<String, Object>();
+			menu1.put("title", "货架查询");
+			menu1.put("key", "search");
+			
+			Map<String,Object> menu2=new HashMap<String, Object>();
+			menu2.put("title", "上下架");
+			menu2.put("key", "rack");
+			
+			Map<String,Object> menu3=new HashMap<String, Object>();
+			menu3.put("title", "推单通知");
+			menu3.put("key", "order");
+			
+			Map<String,Object> menu4=new HashMap<String, Object>();
+			menu4.put("title", "添加商品");
+			menu4.put("key", "addItem");
+			
+			Map<String,Object> menu5=new HashMap<String, Object>();
+			menu5.put("title", "上架");
+			menu5.put("key", "addRack");
+			
+			Map<String,Object> menu6=new HashMap<String, Object>();
+			menu6.put("title", "下架");
+			menu6.put("key", "downRack");
+			
+			
+			Map<String,Object> menu7=new HashMap<String, Object>();
+			menu7.put("title", "确认");
+			menu7.put("key", "confirm");
+			menuList.add(menu1);
+//			menuList.add(menu2);
+			menuList.add(menu3);
+			menuList.add(menu4);
+			menuList.add(menu5);
+			menuList.add(menu6);
+			menuList.add(menu7);
+		}
+	}
+	/**
+	 * ��ʼ����¼��Ϣ
+	 */
+	private void initLoginInfo(){
+		if(login==0){
+			Intent intent=new Intent(this,MainActivity.class);
+			this.startActivity(intent);
+		}
+	}
+	
+	private class MenuAdapter extends BaseAdapter{
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return menuList.size();
+		}
+		@Override
+		public Object getItem(int arg0) {
+			// TODO Auto-generated method stub
+			return menuList.get(arg0);
+		}
+
+		@Override
+		public long getItemId(int arg0) {
+			// TODO Auto-generated method stub
+			return arg0;
+		}
+		@Override
+		public View getView(int arg0, View arg1, ViewGroup arg2) {
+			Map<String,Object> menu=menuList.get(arg0);
+			TextView tv = new TextView(getApplicationContext());
+			tv.setText((CharSequence) menu.get("title"));
+			tv.setTextSize(20);
+			tv.setTextColor(Color.BLUE);
+			return tv;
+		}}
+
+
+}

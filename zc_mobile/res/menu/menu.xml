@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_show"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="查看"/>
+    <item
+        android:id="@+id/menu_add"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="上架"/>
+    <item
+        android:id="@+id/menu_remove"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="下架"/>
+
+</menu>

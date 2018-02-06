@@ -1,0 +1,70 @@
+10
+
+dir
+1938
+http://code.taobao.org/svn/wlpost/trunk/zc_mobile/res
+http://code.taobao.org/svn/wlpost
+
+
+
+2017-08-24T13:26:09.973063Z
+1938
+zhongcangvip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+b937248f-ba71-4ac9-bc5d-8b21318fe002
+
+values
+dir
+
+values-sw720dp-land
+dir
+
+values-sw600dp
+dir
+
+drawable
+dir
+
+drawable-hdpi
+dir
+
+drawable-xxhdpi
+dir
+
+menu
+dir
+
+values-v11
+dir
+
+drawable-ldpi
+dir
+
+values-v14
+dir
+
+drawable-mdpi
+dir
+
+raw
+dir
+
+drawable-xhdpi
+dir
+
+layout
+dir
+

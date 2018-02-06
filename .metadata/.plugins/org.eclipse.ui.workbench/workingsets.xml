@@ -24,7 +24,7 @@
 <item elementID="=xinyu-check" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1478076947788_0" label="Window Working Set" name="Aggregate for window 1478076947787"/>
-<mruList name="store"/>
 <mruList name="zc"/>
+<mruList name="store"/>
 <mruList name="check"/>
 </workingSetManager>

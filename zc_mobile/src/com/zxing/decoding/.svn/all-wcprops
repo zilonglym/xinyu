@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/decoding
+END
+DecodeHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/decoding/DecodeHandler.java
+END
+InactivityTimer.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/decoding/InactivityTimer.java
+END
+Intents.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/decoding/Intents.java
+END
+FinishListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/decoding/FinishListener.java
+END
+DecodeFormatManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/decoding/DecodeFormatManager.java
+END
+DecodeThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/decoding/DecodeThread.java
+END
+CaptureActivityHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/wlpost/!svn/ver/2242/trunk/zc_mobile/src/com/zxing/decoding/CaptureActivityHandler.java
+END
