@@ -295,6 +295,11 @@ public class ReportController extends BaseController{
 	public String ship(Model model) {
 		List<User> users = userRemote.findAll(null);
 		model.addAttribute("users", users);
+		
+		String type = "waybill";
+		List<SystemItem> companys = this.sysRemote.findSystemItemByType(type);
+		model.addAttribute("companys", companys);
+		
  		return "admin/reportShip";
 	}
 	
@@ -311,10 +316,12 @@ public class ReportController extends BaseController{
 		String userId=request.getParameter("userId");
 		String startDate=request.getParameter("startDate");
 		String endDate=request.getParameter("endDate");
+		String cpCode=request.getParameter("cpCode");
 		Map<String,Object> params=new HashMap<String, Object>();
 		params.put("userId",userId);
 		params.put("startDate",startDate);
 		params.put("endDate",endDate);
+		params.put("cpCode",cpCode);
 		List<Map<String,Object>> itemsNum = reportRemote.shipCount(params);
 		List<Map<String, Object>> orderNum = reportRemote.orderCount(params);	
 		List<Map<String, Object>> resultList=new ArrayList<Map<String,Object>>();
@@ -389,10 +396,11 @@ public class ReportController extends BaseController{
 	
 
 	/**
-	 * 发货明细单(POI)下载
+	 * 发货明细单(POI)下载(单个商家)
 	 * @param userId
 	 * @param startDate
 	 * @param endDate
+	 * @param cpCode
 	 * @return 
 	 * @throws IOException 
 	 * */
@@ -400,6 +408,7 @@ public class ReportController extends BaseController{
 	public String shipReport(	
 			@RequestParam(value = "userId") long userId,
 			@RequestParam(value = "startDate") String startDay,
+			@RequestParam(value = "cpCode") String cpCode,
 			@RequestParam(value = "endDate") String endDay,HttpServletResponse response) throws IOException {
 		//当前导出商家ID
 		User user=this.userRemote.getUser(userId);
@@ -408,6 +417,7 @@ public class ReportController extends BaseController{
 		p.put("userId", userId);
 		p.put("startDate", startDay);
 		p.put("endDate", endDay);
+		p.put("cpCode", cpCode);
 		p.put("start", 0);
 		p.put("offset", Integer.MAX_VALUE);	
 		//新建shipOrder数组存放新shipOrder对象
@@ -470,6 +480,99 @@ public class ReportController extends BaseController{
 		String titleName[] = {"店铺名称","更新时间","订单号","昵称","物流公司","物流单号","收件人","联系方式","省","收件地址","商品明细","重量","备注"};  
 		//Excel文件填充内容列宽
 		int titleSize[] = {20,20,20,20,20,20,20,20,20,20,20,20,20};  
+		//调用PoiExcelExport导出Excel文件
+        pee.wirteExcel(titleColumn, titleName, titleSize, poiModels);
+		return null; 
+	}
+	
+	/**
+	 * 发货明细单(POI)下载
+	 * @param userId
+	 * @param startDate
+	 * @param endDate
+	 * @param cpCode
+	 * @return 
+	 * @throws IOException 
+	 * */
+	@RequestMapping(value = "/order/xls")
+	public String shipOrderReport(	
+			@RequestParam(value = "userId") long userId,
+			@RequestParam(value = "startDate") String startDay,
+			@RequestParam(value = "cpCode") String cpCode,
+			@RequestParam(value = "endDate") String endDay,HttpServletResponse response) throws IOException {
+		
+		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Map<String, Object> p = new HashMap<String, Object>();
+		p.put("userId", userId);
+		p.put("startDate", startDay);
+		p.put("endDate", endDay);
+		p.put("cpCode", cpCode);
+		p.put("start", 0);
+		p.put("offset", Integer.MAX_VALUE);	
+		//新建shipOrder数组存放新shipOrder对象
+		List<POIModel> poiModels=new ArrayList<POIModel>();	
+		List<ShipOrder> orders = reportRemote.findOrderSellout(p);
+		for(ShipOrder shipOrder:orders){
+			//新建一个shipOrder对象
+			POIModel poiModel=new POIModel();
+			Long tradeId=shipOrder.getTradeId();
+			Trade trade=this.tradeRemote.getTrade(tradeId);
+			//对新shipOrder对象进行赋值
+			if (trade!=null) {
+				//订单号
+				poiModel.setM1(trade.getLgAgingType());
+			}
+			
+			User user = this.userRemote.getUser(shipOrder.getCreateUser().getId());	
+			poiModel.setM2(user.getShopName());
+			
+			//时间
+			poiModel.setM3(sf.format(shipOrder.getLastUpdateDate()));
+			//昵称
+			poiModel.setM4(shipOrder.getBuyerNick());
+			
+			//物流公司
+			poiModel.setM6(shipOrder.getExpressCompany());
+			//物流单号
+			poiModel.setM7(shipOrder.getExpressOrderno());
+			//收件人
+			poiModel.setM8(shipOrder.getReceiverName());
+			//收件地址
+			poiModel.setM9(shipOrder.getReceiverState());
+			
+			poiModel.setM10(shipOrder.getReceiverCity());
+			
+			poiModel.setM11(shipOrder.getReceiverDistrict());
+			
+			poiModel.setM12(shipOrder.getReceiverAddress());
+		
+			//联系方式
+			String phone=(shipOrder.getReceiverMobile()==null?"":shipOrder.getReceiverMobile())+","+(shipOrder.getReceiverPhone()==null?"":shipOrder.getReceiverPhone());
+			poiModel.setM13(phone);
+			//重量
+			if (shipOrder.getTotalWeight()!=null) {
+				poiModel.setM14(String.valueOf(shipOrder.getTotalWeight()));
+			}else {
+				poiModel.setM14("0.00");
+			}		
+			//商品明细
+			poiModel.setM15(shipOrder.getItems());
+		
+			//添加到新shipOrder数组
+			poiModels.add(poiModel);
+		}		
+		//时间格式化
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		//拼接Excel文件名称
+//		String filename=desktopPath+sdf.format(new Date())+user.getShopName()+"发货明细.xls";
+		//新建PoiExcelExport对象
+		PoiExcelExport pee = new PoiExcelExport(response,sdf.format(new Date())+cpCode+"发货明细","sheet1");
+		//Excel文件填充内容属性
+		String titleColumn[] = {"m1","m2","m3","m6","m7","m4","m8","m13","m9","m10","m11","m12","m15","m14"};  
+        //Excel文件填充内容列名
+		String titleName[] = {"订单号","店铺名称","更新时间","物流公司","物流单号","昵称","收件人","联系方式","省","市","区","地址","商品明细","重量"};  
+		//Excel文件填充内容列宽
+		int titleSize[] = {20,20,20,20,20,20,20,20,20,20,20,20,20,20};  
 		//调用PoiExcelExport导出Excel文件
         pee.wirteExcel(titleColumn, titleName, titleSize, poiModels);
 		return null; 

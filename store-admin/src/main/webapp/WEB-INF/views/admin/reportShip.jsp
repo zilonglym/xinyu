@@ -21,11 +21,17 @@
 				</c:if>
 			</c:forEach>
 		</select>
+		<select id="sysId" name="sysId" class="easyui-combobox">
+			<option value="0">全部</option> 
+			<c:forEach items="${companys}" var="company">				
+				<option value="${company.value}">${company.description}</option>	
+			</c:forEach>
+		</select>
 		<input class="easyui-datetimebox" name="beigainTime" id="beigainTime" data-options="prompt:'请选择起始时间'" style="width:160px"/>
 		~
 		<input class="easyui-datetimebox" name="lastTime" id="lastTime" data-options="prompt:'请选择截止时间'" style="width:160px"/>    
 		<a href="javascript:ship.search();" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
-		<a href="javascript:ship.refresh();" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">重新加载</a>
+		<a href="javascript:ship.exportData();" class="easyui-linkbutton" data-options="iconCls:'icon-export'">导出</a>
 	</div>
 	<div data-options="title:'发货统计'" style="padding:2px;">
 		<table id="tb_ship">
