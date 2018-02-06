@@ -1,7 +1,9 @@
 $(document).ready(function(){
 	report.initTable();
 });
+
 var report={};
+
 report.initTable=function(){
 	$("#tb_report").datagrid({
 		url:ctx+"/report/ship/listData",

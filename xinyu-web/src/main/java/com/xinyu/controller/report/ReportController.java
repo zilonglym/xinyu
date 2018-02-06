@@ -305,7 +305,7 @@ public class ReportController extends BaseController{
 	
 	
 	/**
-	 * 发货明细单(POI)下载
+	 * 发货明细单xls导出
 	 * @param userId
 	 * @param startDate
 	 * @param endDate

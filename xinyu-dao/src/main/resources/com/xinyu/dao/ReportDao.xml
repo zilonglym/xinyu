@@ -47,10 +47,10 @@
 		and (s.Fstatus='WMS_FINASH'||s.Fstatus='WMS_RETURN') and s.FtmsOrderCode is not null
 	</if>
 	<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
-    		<![CDATA[
+    	<![CDATA[
 			and s.`FlastUpdateTime` > date_format(#{startDate},'%Y-%m-%d %H:%i')
 			and s.`FlastUpdateTime` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
-			]]>
+		]]>
     </if> 
 	group by s.FKuserID
 	</select>

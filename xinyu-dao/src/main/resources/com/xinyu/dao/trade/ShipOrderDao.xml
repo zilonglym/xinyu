@@ -568,10 +568,10 @@
 		resultMap="OldOrderMapper">
 		SELECT T.FID,T.FKreceiverInfoID
 		FROM
-		T_xinyu_ShipOrder_1109 T
+			T_xinyu_ShipOrder_1109 T
 		inner join
-		T_xinyu_receiverinfo_1109 i on
-		t.FKreceiverInfoID = i.FID
+			T_xinyu_receiverinfo_1109 i on
+			t.FKreceiverInfoID = i.FID
 		<where>
 			1=1
 			<if test="cu!=null and cu!=''">and T.Fcu=#{cu}</if>
