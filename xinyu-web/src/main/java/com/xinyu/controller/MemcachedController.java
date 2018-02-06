@@ -199,8 +199,8 @@ public class MemcachedController extends BaseController {
 			// params.put("startDate", sdf.format(this.getYesteday(new
 			// Date())));
 			// params.put("endDate", sdf.format(new Date()));
-			params.put("startDate", "2018-01-30 00:00:00");
-			params.put("endDate", "2018-01-31 00:30:00");
+			params.put("startDate", "2018-02-04 16:00:00");
+			params.put("endDate", "2018-02-05 14:30:00");
 			params.put("status", "WMS_FINASH");
 			params.put("userId", userId);
 			List<ShipOrder> orders = this.shipOrderService.findShipOrderByList(params);

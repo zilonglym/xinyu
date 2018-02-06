@@ -32,7 +32,7 @@
 		SELECT count(1) 
 		FROM sc_ship_order a
 		WHERE 
-		a.type='deliver' and  (a.status='WMS_FINISH' || a.status='WAIT_EXPRESS_PICKING') 
+		a.type='deliver' and  (a.status='WMS_FINISH' || a.status='WAIT_EXPRESS_PICKING'||a.status='FULFILLED') 
 		<if test="userId != null and userId!=0">  
     		and a.`create_userid`= #{userId}  
         </if>
@@ -48,6 +48,7 @@
 	<!-- 查询待出库单 -->
   	<select id="findOrderSellout" resultMap="ShipOrderEntity">
 		SELECT 
+		a.create_userid as "createUser.id",
 		a.trade_id as "tradeId",
 		a.shop_nick as "createUser.shopName", 
 		create_date as "createDate",
@@ -78,9 +79,12 @@
 		a.express_orderno as "expressOrderno"
 		FROM sc_ship_order a LEFT JOIN sc_user b ON a.create_userid = b.id
 		WHERE 
-		a.type='deliver' and  (a.status='WMS_FINISH' || a.status='WAIT_EXPRESS_PICKING') 
+		a.type='deliver' and  (a.status='WMS_FINISH' || a.status='WAIT_EXPRESS_PICKING'||a.status='FULFILLED') 
 		<if test="userId != null and userId!=0">  
     		and a.`create_userid`= #{userId}  
+        </if>
+        <if test="cpCode != null and cpCode!=''">  
+    		and a.express_company = #{cpCode}  
         </if>
 		<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
     		<![CDATA[
@@ -213,6 +217,9 @@
 		<if test="userId != null and userId!=0">  
     		and a.`create_userid`= #{userId}  
         </if>
+        <if test="cpCode!= null and cpCode!=''">  
+    		and a.express_company = #{cpCode}  
+        </if>
        <if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
     		<![CDATA[
 			and a.`last_update_date` > date_format(#{startDate},'%Y-%m-%d %H:%i')
@@ -233,6 +240,9 @@
 		a.type='deliver' and  (a.status='WMS_FINISH' || a.status='WAIT_EXPRESS_PICKING') 
 		<if test="userId != null and userId!=0">  
     		and a.`create_userid`= #{userId}  
+        </if>
+         <if test="cpCode!= null and cpCode!=''">  
+    		and a.express_company = #{cpCode}  
         </if>
        <if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
     		<![CDATA[

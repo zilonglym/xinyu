@@ -51,29 +51,29 @@ public final class _404_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
 response.setStatus(200);
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("<!DOCTYPE html>\r\n");
-      out.write("<html>\r\n");
-      out.write("<head>\r\n");
-      out.write("\t<title>404 - 页面不存在</title>\r\n");
-      out.write("</head>\r\n");
-      out.write("\r\n");
-      out.write("<body>\r\n");
-      out.write("\t<h2>404 - 页面不存在.</h2>\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("<head>\n");
+      out.write("\t<title>404 - 页面不存在</title>\n");
+      out.write("</head>\n");
+      out.write("\n");
+      out.write("<body>\n");
+      out.write("\t<h2>404 - 页面不存在.</h2>\n");
       out.write("\t<img src = \"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ctx}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("/static/images/404.gif\">\r\n");
-      out.write("\t\r\n");
+      out.write("/static/images/404.gif\">\n");
+      out.write("\t\n");
       out.write("\t<p><a href=\"");
       if (_jspx_meth_c_url_0(_jspx_page_context))
         return;
-      out.write("\">返回首页</a></p>\r\n");
-      out.write("</body>\r\n");
+      out.write("\">返回首页</a></p>\n");
+      out.write("</body>\n");
       out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

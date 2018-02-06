@@ -41,7 +41,7 @@ public class InventoryExcelReader {
 			map.put("userId",userId.getStringCellValue());
 			
 			Cell itemName = row.getCell(1);
-			map.put("itemName", itemName.getStringCellValue());
+			map.put("itemCode", itemName.getStringCellValue());
 			
 //			map.put("barCode", itemCode.getStringCellValue());
 			
@@ -49,7 +49,7 @@ public class InventoryExcelReader {
 // 			Cell skuCode = row.getCell(3);
 // 			map.put("sku", skuCode.getStringCellValue());
 			
-			Cell num = row.getCell(4);
+			Cell num = row.getCell(2);
 			Double numValue = num.getNumericCellValue();
 			map.put("num", numValue.longValue());
 			

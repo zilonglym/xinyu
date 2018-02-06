@@ -4,5 +4,5 @@ com\graby\store\top\TopAPITest.class
 com\graby\store\user\IdWorker.class
 com\graby\store\report\ReportTest.class
 com\graby\store\user\UserServiceTest.class
-com\graby\store\item\TestM.class
 com\graby\store\trade\TestTradeService.class
+com\graby\store\item\TestM.class

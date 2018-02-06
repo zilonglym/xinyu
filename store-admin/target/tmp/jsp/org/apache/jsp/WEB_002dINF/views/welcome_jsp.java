@@ -54,32 +54,32 @@ public final class welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       if (_jspx_meth_c_set_0(_jspx_page_context))
         return;
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("<html>\r\n");
-      out.write("<head>\r\n");
-      out.write("\t<title>后台首页</title>\r\n");
-      out.write("\t<script type=\"text/javascript\">\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<html>\n");
+      out.write("<head>\n");
+      out.write("\t<title>后台首页</title>\n");
+      out.write("\t<script type=\"text/javascript\">\n");
       out.write("\tvar ctx=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ctx}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\";\r\n");
-      out.write("\t</script>\r\n");
-      out.write("</head>\r\n");
-      out.write("\r\n");
-      out.write("<body>\t\r\n");
-      out.write("\t<h1><i>欢迎使用中仓物流通系统</i></h1>\r\n");
-      out.write("\t&nbsp;\r\n");
+      out.write("\";\n");
+      out.write("\t</script>\n");
+      out.write("</head>\n");
+      out.write("\n");
+      out.write("<body>\t\n");
+      out.write("\t<h1><i>欢迎使用中仓物流通系统</i></h1>\n");
+      out.write("\t&nbsp;\n");
       out.write("\t");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
-      out.write("\r\n");
-      out.write("</body>\r\n");
-      out.write("</html>\r\n");
+      out.write("\n");
+      out.write("</body>\n");
+      out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -127,7 +127,7 @@ public final class welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\r\n");
+          out.write("\n");
           out.write("\t\t<h4>注意！<span style=\"color:red;\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${obj.userName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</span>有未审核订单<span style=\"color:red;\">");
@@ -136,7 +136,7 @@ public final class welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ctx}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("/trade/waits/search?userId=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${obj.userId}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\">进入操作</a></span>。</h4>\r\n");
+          out.write("\">进入操作</a></span>。</h4>\n");
           out.write("\t");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

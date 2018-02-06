@@ -91,8 +91,8 @@
 		<if test="code!=null and code!=''">
 			and t.express_orderno = #{code}
 		</if>
-		<if test="cu!=null and cu!=''">
-			and T.Fcu=#{cu}
+		<if test="id!=null and id!=''">
+			and t.id=#{id}
 		</if>
 	</select>
 

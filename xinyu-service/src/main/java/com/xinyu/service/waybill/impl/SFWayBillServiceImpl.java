@@ -182,7 +182,7 @@ public class SFWayBillServiceImpl extends BaseServiceImpl implements SFWayBillSe
 
 		// 订单号，唯一标
 		xmlStr.append("<Order orderid ='");
-		xmlStr.append(tmsOrder.getId()).append("'");
+		xmlStr.append(tmsOrder.getId()).append("-2").append("'");
 		// " j_company='华为'" 寄件方公司名称
 		xmlStr.append(" j_company='星宇物流'");
 		; // 必填

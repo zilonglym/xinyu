@@ -57,12 +57,12 @@ public final class _500_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
 response.setStatus(200);
-      out.write("\r\n");
-      out.write("\r\n");
+      out.write('\n');
+      out.write('\n');
 
 	Throwable ex = null;
 	if (exception != null)
@@ -74,22 +74,22 @@ response.setStatus(200);
 	Logger logger = LoggerFactory.getLogger("500.jsp");
 	logger.error(ex.getMessage(), ex);
 
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("<!DOCTYPE html>\r\n");
-      out.write("<html>\r\n");
-      out.write("<head>\r\n");
-      out.write("\t<title>500 - 系统内部错误</title>\r\n");
-      out.write("</head>\r\n");
-      out.write("\r\n");
-      out.write("<body>\r\n");
-      out.write("\t<h2>500 - 系统发生内部错误.</h2>\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("<head>\n");
+      out.write("\t<title>500 - 系统内部错误</title>\n");
+      out.write("</head>\n");
+      out.write("\n");
+      out.write("<body>\n");
+      out.write("\t<h2>500 - 系统发生内部错误.</h2>\n");
       out.write("\t<p><a href=\"");
       if (_jspx_meth_c_url_0(_jspx_page_context))
         return;
-      out.write("\">返回首页</a></p>\r\n");
-      out.write("</body>\r\n");
-      out.write("</html>\r\n");
+      out.write("\">返回首页</a></p>\n");
+      out.write("</body>\n");
+      out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
