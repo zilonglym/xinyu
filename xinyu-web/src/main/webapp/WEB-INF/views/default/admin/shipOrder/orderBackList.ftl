@@ -20,6 +20,9 @@
 			<option value="55">黑白调</option>
 			<option value="56">广州知音</option>
 			<option value="54">公司</option>
+			<option value="74">游鲜生</option>
+			<option value="75">火焰皇</option>
+			<option value="26">山东烤箱</option>
 		</select>	
 		<input class="easyui-datetimebox" name="startDate" id="startDate" data-options="prompt:'请选择起始时间'" style="width:160px" />
 		~

@@ -14,6 +14,10 @@
 			<option value="24">小熊百洋</option>
 			<option value="55">黑白调</option>
 			<option value="56">广州知音</option>
+			<option value="54">公司</option>
+			<option value="74">游鲜生</option>
+			<option value="75">火焰皇</option>
+			<option value="26">山东烤箱</option>
 		</select>  
 		<input id="q" name="q" class="easyui-textbox" style="width:200px"/>
 		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchItem();" >查询</a>

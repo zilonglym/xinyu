@@ -30,11 +30,15 @@
 	
 	<select id="findShipCount" resultType="map">
 	select s.FKuserID as 'userId',u.FsubscriberName as "userName",count(1) as 'num'
-	from t_xinyu_shiporder s 
+	from t_xinyu_tmsOrder t
+	inner join t_xinyu_shipOrder s on t.FKorderID = s.fid
 	inner join t_xinyu_user u on s.FKuserID = u.FID
 	where 1=1
 	<if test="userId!=null and userId!=''">
 		and s.FKuserID=#{userId}
+	</if>
+	<if test="cpCode!=null and cpCode!=''">
+		and t.Fcode=#{cpCode}
 	</if>
 	<if test="status!=null and status!='' and status!='report'">
 		and s.Fstatus=#{status}

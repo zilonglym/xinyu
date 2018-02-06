@@ -317,7 +317,7 @@ backOrder.exportData = function(){
 	var startDate = $("#startDate").datetimebox('getValue');
 	var endDate = $("#endDate").datetimebox('getValue');
 	var q = $("#q").textbox('getValue');
-	var url = ctx + "/orderBack/report/xls?userId="+userId+"&startDate="+startDate+"&endDate="+endDate+"&q="+q
+	var url = ctx + "/orderBack/report/xls?userId="+userId+"&startDate="+startDate+"&endDate="+endDate+"&q="+q;
 	window.location.href = url;
 }
 

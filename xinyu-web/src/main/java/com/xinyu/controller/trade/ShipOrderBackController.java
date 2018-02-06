@@ -152,7 +152,7 @@ public class ShipOrderBackController extends BaseController {
 			map.put("returnCode", orderBack.getBackOrderCode());
 			map.put("orderCode", orderBack.getTmsOrderCode());
 			map.put("createDate", sf.format(orderBack.getCreateDate()));
-			System.err.println(orderBack.getId());
+
 			Account account = this.accountService.findAcountById(orderBack.getCreateBy().getId());
 			map.put("account", account.getUserName());
 			map.put("description", orderBack.getDescription());
@@ -497,9 +497,9 @@ public class ShipOrderBackController extends BaseController {
 			String reason = "" + object.getString("reason");
 			String description = "" + object.getString("description");
 			orderBack.setDescription(reason + ";" + description);
-
+		
 			orderBack.setCreateBy(this.getCurrentAccount());
-
+			
 			Object rows = request.getParameter("rows"); // 集合数据来源
 			JSONArray array = JSONArray.fromObject(rows);
 
@@ -700,6 +700,8 @@ public class ShipOrderBackController extends BaseController {
 			
 		for(Map<String, Object> bakcMap:backMaps){
 			
+			logger.error("" + bakcMap.get("orderId") + "开始导出！");
+			
 			String userId = "" + bakcMap.get("userId");
 			
 			String orderId = "" + bakcMap.get("orderId");
@@ -726,7 +728,7 @@ public class ShipOrderBackController extends BaseController {
 			poiModel.setM4(""+bakcMap.get("backOrderCode"));
 			
 			//商品明细
-			if (StringUtils.isNotBlank(orderId)) {
+			if (bakcMap.get("orderId")!=null) {
 				TmsOrder order = this.tmsOrderService.getTmsOrderById(orderId);
 				if (order!=null) {
 					//仓库备注
@@ -746,6 +748,8 @@ public class ShipOrderBackController extends BaseController {
 			
 			//退货原因
 			poiModel.setM6(""+bakcMap.get("description"));
+			
+			logger.error("" + bakcMap.get("orderId") + "结束导出！");
 			
 			poiModels.add(poiModel);
 		}		
