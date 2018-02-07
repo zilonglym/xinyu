@@ -16,10 +16,17 @@
 				<option value="${user.id}">${user.subscriberName}</option>
 			</#list>
 		</select>
-		<input class="easyui-datetimebox" name="beigainTime" id="beigainTime" data-options="prompt:'请选择起始时间'" style="width:160px"/>
+		<select id="sysId" name="sysId" class="easyui-combobox" style="width:160px;">
+			<option value="">全部</option> 
+			<#list companys as company>
+				<option value="${company.value}">${company.description}</option>
+			</#list>
+		</select>
+		<input class="easyui-datetimebox" name="beigainTime" id="beigainTime" data-options="prompt:'起始时间'" style="width:160px"/>
 		~
-		<input class="easyui-datetimebox" name="lastTime" id="lastTime" data-options="prompt:'请选择截止时间'" style="width:160px"/>    
-		<a href="javascript:report.search();" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+		<input class="easyui-datetimebox" name="lastTime" id="lastTime" data-options="prompt:'截止时间'" style="width:160px"/>   
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-export'" onclick="report.exportData();">导出</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="report.search();">查询</a>
 	</div>
 	<div data-options="title:'发货统计'" style="padding:2px;">
 		<table id="tb_report">

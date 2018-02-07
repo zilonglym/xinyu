@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/wlpost/!svn/ver/2067/trunk/xinyu-check/src/main/resources
+END
+webdefault.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/resources/webdefault.xml
+END
+xinyu_Base.properties
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/resources/xinyu_Base.properties
+END
+applicationContext-web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/2067/trunk/xinyu-check/src/main/resources/applicationContext-web.xml
+END
+applicationContext-service.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/resources/applicationContext-service.xml
+END
+spring-redis.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/wlpost/!svn/ver/2067/trunk/xinyu-check/src/main/resources/spring-redis.xml
+END
+applicationContext-dao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/resources/applicationContext-dao.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/wlpost/!svn/ver/2067/trunk/xinyu-check/src/main/resources/log4j.properties
+END
+sqlmap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/resources/sqlmap.xml
+END

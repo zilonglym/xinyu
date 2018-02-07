@@ -11,6 +11,9 @@
 	<if test="userId!=null and userId!=''">
 		and s.FKuserID=#{userId}
 	</if>
+	<if test="cu!=null and cu!=''">
+		and s.FCU=#{cu}
+	</if>
 	<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
     		<![CDATA[
 			and s.`FlastUpdateTime` > date_format(#{startDate},'%Y-%m-%d %H:%i')
@@ -25,6 +28,9 @@
 		from t_xinyu_item i
 		inner join t_xinyu_user u on u.fid = i.FKuserID
 	where i.FwmsGrossWeight is null or i.FwmsGrossWeight=""
+	<if test="cu!=null and cu!=''">
+		and i.FCU=#{cu}
+	</if>
 	group by i.FKuserID
 	</select>
 	
@@ -46,11 +52,14 @@
 	<if test="status=='report'">
 		and (s.Fstatus='WMS_FINASH'||s.Fstatus='WMS_RETURN') and s.FtmsOrderCode is not null
 	</if>
+	<if test="cu!=null and cu!=''">
+		and s.FCU=#{cu}
+	</if>
 	<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
-    		<![CDATA[
+    	<![CDATA[
 			and s.`FlastUpdateTime` > date_format(#{startDate},'%Y-%m-%d %H:%i')
 			and s.`FlastUpdateTime` <= date_format(#{endDate},'%Y-%m-%d %H:%i')
-			]]>
+		]]>
     </if> 
 	group by s.FKuserID
 	</select>
@@ -63,6 +72,9 @@
 	where (s.Fstatus='WMS_FINASH'||s.Fstatus='WMS_RETURN') and s.FtmsOrderCode is not null
 	<if test="userId!=null and userId!=''">
 		and s.FKuserID=#{userId}
+	</if>
+	<if test="cu!=null and cu!=''">
+		and s.FCU=#{cu}
 	</if>
 	<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
     		<![CDATA[

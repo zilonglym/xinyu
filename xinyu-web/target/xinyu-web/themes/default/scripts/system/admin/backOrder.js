@@ -10,8 +10,10 @@ backOrder.initTable=function(){
 	    remoteSort:false,
 	    singleSelect:true,
 	    queryParams:{
-	    	userId:$("#userId").val(),
-	    	q:$("#q").val()
+	       	userId:$("#userId").combobox('getValue'),
+	       	startDate:$("#startDate").datetimebox('getValue'),
+	       	endDate:$("#endDate").datetimebox('getValue'),
+	       	q:$("#q").textbox('getValue')
 	    },
 	    rownumbers:true,
 	    columns:[[
@@ -74,6 +76,8 @@ backOrder.initTable=function(){
 backOrder.search=function(){
 	$('#tb_backOrder').datagrid('load', {
    		userId:$("#userId").combobox('getValue'),
+   		startDate:$("#startDate").datetimebox('getValue'),
+   		endDate:$("#endDate").datetimebox('getValue'),
    		q:$("#q").textbox('getValue')
 	});
 }
@@ -108,15 +112,18 @@ backOrder.add=function(){
                     	 $.messager.progress('close');
                     	 $('#dialog').window('close');
                     	 $.messager.alert('提示',data.msg);
+                    	 $('#tb_backOrder').datagrid('load', {
+                    	   	userId:$("#userId").combobox('getValue'),
+                    	   	startDate:$("#startDate").datetimebox('getValue'),
+                    	   	endDate:$("#endDate").datetimebox('getValue'),
+                    	   	q:$("#q").textbox('getValue')
+                    	});
                      });
                     }
                 },{
                     text:'取消',
                     handler:function(){
                        $('#dialog').window('close');
-                       $('#tb_person').datagrid('load',{
-              			 name:null
-              		 });
                     }
                 }]
 	});
@@ -149,7 +156,6 @@ backOrder.edit=function(id){
                      json=json+"description:'"+$("#description").textbox("getValue")+"'}";
                      var rows = $('#tb_backOrderItem').datagrid("getRows");
                      var dateStr = JSON.stringify(rows); 
-                     console.info(dateStr);
                      $.messager.progress({
              		    title: '请稍等',
              		    msg: '数据处理中，请稍等...',
@@ -159,15 +165,18 @@ backOrder.edit=function(id){
                     	 $.messager.progress('close');
                     	 $('#dialog').window('close');
                     	 $.messager.alert('提示',data.msg);
+                    	 $('#tb_backOrder').datagrid('load', {
+                    	   	userId:$("#userId").combobox('getValue'),
+                    	   	startDate:$("#startDate").datetimebox('getValue'),
+                    	   	endDate:$("#endDate").datetimebox('getValue'),
+                    	   	q:$("#q").textbox('getValue')
+                    	});
                      });
                     }
                 },{
                     text:'取消',
                     handler:function(){
                        $('#dialog').window('close');
-                       $('#tb_person').datagrid('load',{
-              			 name:null
-              		 });
                     }
                 }]
 	});
@@ -301,6 +310,15 @@ backOrder.initItems = function(){
 	    		    }
 	    	 	}
 		});
+}
+
+backOrder.exportData = function(){
+	var userId = $("#userId").combobox('getValue');
+	var startDate = $("#startDate").datetimebox('getValue');
+	var endDate = $("#endDate").datetimebox('getValue');
+	var q = $("#q").textbox('getValue');
+	var url = ctx + "/orderBack/report/xls?userId="+userId+"&startDate="+startDate+"&endDate="+endDate+"&q="+q;
+	window.location.href = url;
 }
 
 $.extend($.fn.datagrid.methods, {

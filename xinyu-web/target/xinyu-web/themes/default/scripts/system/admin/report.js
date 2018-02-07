@@ -1,7 +1,9 @@
 $(document).ready(function(){
 	report.initTable();
 });
+
 var report={};
+
 report.initTable=function(){
 	$("#tb_report").datagrid({
 		url:ctx+"/report/ship/listData",
@@ -17,8 +19,9 @@ report.initTable=function(){
 		  {field:'operation',title:'操作',width:200,formatter:function(value,row,index){
 			  var startDate=$("#beigainTime").datetimebox('getValue');
 			  var endDate=$("#lastTime").datetimebox('getValue');
-			  var url2=ctx+"/report/ship/xls?userId="+row.userId+"&startDate="+startDate+"&endDate="+endDate;
-			  var url3=ctx+"/report/ship/item/xls?userId="+row.userId+"&startDate="+startDate+"&endDate="+endDate;
+			  var cpCode = $('#sysId').combobox('getValue');
+			  var url2=ctx+"/report/ship/xls?userId="+row.userId+"&startDate="+startDate+"&endDate="+endDate+"&cpCode="+cpCode;
+			  var url3=ctx+"/report/ship/item/xls?userId="+row.userId+"&startDate="+startDate+"&endDate="+endDate+"&cpCode="+cpCode;
 			  return "<a href='"+url2+"' target='_blank'>发货明细</a>&nbsp;|&nbsp;<a href='"+url3+"'>发货汇总</a>";  
 		  }}
 		]],
@@ -47,9 +50,23 @@ report.initTable=function(){
 report.search=function(){
 	$('#tb_report').datagrid('load',{
 		userId:$('#userId').combobox('getValue'),
+		cpCode:$('#sysId').combobox('getValue'),
 	    startDate:$('#beigainTime').datetimebox('getValue'),
 	    endDate:$('#lastTime').datetimebox('getValue')
 	});
+}
+
+report.exportData = function(){
+	var cpCode = $('#sysId').combobox('getValue');
+	var userId = $('#userId').combobox('getValue');
+	var startDate = $('#beigainTime').datetimebox('getValue');
+	var endDate = $('#lastTime').datetimebox('getValue');
+	if(typeof startDate == "undefined" || startDate == null || startDate == ""||typeof endDate == "undefined" || endDate == null || endDate == ""){
+		$.messager.alert("错误","起始截止时间不能为空!");
+	}else{
+		var url = ctx + "/report/order/xls?userId="+userId+"&cpCode="+cpCode+"&startDate="+startDate+"&endDate="+endDate;
+		window.location.href = url;
+	}
 }
 
 function compute() {//计算函数

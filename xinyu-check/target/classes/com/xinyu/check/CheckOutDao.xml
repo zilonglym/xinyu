@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.checkOutDao">
+
+	<resultMap id="checkOutEntity" type="com.xinyu.check.model.CheckOut">
+		<result property="id" column="id" />
+		<result property="barCode" column="bar_code" />
+		<result property="orderId" column="order_id" />
+		<result property="centroId" column="centro_id" />
+		<result property="createDate" column="create_date" />
+		<result property="orderCode" column="order_code" />
+		<result property="itemId" column="item_id" />
+		<result property="itemName" column="item_name" />
+		<result property="userId" column="user_id" />
+		<result property="personId" column="person_id" />
+		<result property="status" column="status" />
+		<result property="msg" column="msg" />
+		<result property="weight" column="weight" />
+		<result property="cpCompany" column="cp_company" />
+		<result property="state" column="state" />
+		<result property="num" column="num" />
+	</resultMap>
+
+	<select id="isExistsOrderCode" parameterType="map" resultType="int">
+		select count(1)
+		from sc_check_out a
+		where 1=1
+		and
+		a.status='SUCCESS_TRADE'
+		and a.order_code=#{orderCode}
+	</select>
+
+	<update id="updateCheckOut">
+		update sc_check_out
+		<set>
+			<if test="userId!=null and userId!='' and userId!=0">
+				user_id=#{userId},
+			</if>
+			<if test="orderId!=null and orderId!='' and orderId!=0">
+				order_id=#{orderId},
+			</if>
+			<if test="state!=null and state!=''">
+				state=#{state},
+			</if>
+			<if test="weight!=null and weight!=''">
+				weight=#{weight},
+			</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+	<insert id="save" parameterType="com.xinyu.check.model.CheckOut"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into sc_check_out(
+		bar_code,order_id,create_date,order_code,item_id,item_name,user_id,status,msg,weight,centro_id,cp_company,state,person_id,num)
+		values (
+		#{barCode},#{orderId},#{createDate},#{orderCode},#{itemId},#{itemName},#{userId},#{status},#{msg},#{weight},
+		#{centroId},#{cpCompany} ,#{state}, #{personId},#{num})
+	</insert>
+
+	<select id="findCheckOut" parameterType="map" resultMap="checkOutEntity">
+		select a.*
+		from sc_check_out a
+		where 1=1
+		<if test="status!=null and status=='SUCCESS'">
+			and (a.status='SUCCESS' or a.status='SUCCESS_GOODS' or
+			a.status='SUCCESS_TRADE' or a.status='SUCCESS_ADD')
+		</if>
+		<if test="status!=null and status=='FAIL'">
+			and (a.status='FAIL' or a.status='FAIL_ADD' or
+			a.status='FAIL_TRADE' or a.status='FAIL_GOODS')
+		</if>
+		<if test="status!=null and status=='REPEAT'">
+			and a.msg like "%订单重复%"
+		</if>
+		<if test="barCode!=null and barCode!=''">
+			and a.bar_code=#{barCode}
+		</if>
+		<if test="orderId!=null and orderId!='' and orderId!='0'">
+			and a.order_id=#{orderId}
+		</if>
+		<if test="orderCode!=null and orderCode!=''">
+			and a.order_code=#{orderCode}
+		</if>
+		<if test="itemId!=null and itemId!='' and itemId!='0'">
+			and a.item_id=#{itemId}
+		</if>
+		<if test="itemName!=null and itemName!=''">
+			and a.item_name=#{itemName}
+		</if>
+		<if test="userId!='' and userId!='0'">
+			and a.user_id=#{userId}
+		</if>
+		<if test="expressCompany!=null and expressCompany!=''">
+			and a.cp_company=#{expressCompany}
+		</if>
+		<if test="q!=null and q!=''">
+			and (a.item_name like "%"#{q}"%" or a.bar_code like
+			"%"#{q}"%" or a.order_code like "%"#{q}"%")
+		</if>
+		<if
+			test="startDate!=null and endDate!=null and startDate!='' and endDate!=''">
+			<![CDATA[
+				and a.create_date > date_format(#{startDate},'%Y-%m-%d %H:%i')
+				and a.create_date <= date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+		</if>
+		order by a.create_date desc
+		<if test="start!=null and offset!=null">
+			limit #{start},#{offset}
+		</if>
+	</select>
+
+</mapper> 

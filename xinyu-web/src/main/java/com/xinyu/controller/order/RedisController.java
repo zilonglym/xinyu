@@ -68,11 +68,11 @@ public class RedisController extends BaseController {
 
 	@RequestMapping(value = "index")
 	public void index() {
-		String itemKey=RdsConstants.ORDER_ACCEPT+"*";
+		String itemKey="9892134464715";
 		Set<String> itemKeys=this.redisProxy.keys(itemKey);
-//		Map<String, Object> map = (Map<String, Object>) ObjectTranscoder.deserialize(this.redisProxy.get(item.getBytes()));
+		Map<String, Object> map = (Map<String, Object>) ObjectTranscoder.deserialize(this.redisProxy.get(itemKey.getBytes()));
 		System.err.println(itemKeys.size());
-		
+		System.err.println(map);
 
 	}
 	
