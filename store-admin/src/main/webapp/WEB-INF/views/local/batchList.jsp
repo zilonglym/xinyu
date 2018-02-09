@@ -30,7 +30,7 @@
 		<input class="easyui-datetimebox" name="endDate" id="endDate" data-options="prompt:'请选择截止时间'" style="width:120px"/>
 		<input style="width:350px;" id="q" name="q" type="text" class="easyui-textbox" data-options="prompt:'请输入关键信息'"/>
 		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="localBatch.search();" >查询</a>
-		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-print'" onclick="localBatch.print();" >重打</a>
+		<!-- <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-print'" onclick="localBatch.print();" >重打</a> -->
 	</div>
 	<div data-options="title:'单据信息'" style="padding:2px;">
 		<table id="tb_localBatch"  >
