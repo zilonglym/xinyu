@@ -199,7 +199,18 @@ audit.auditTrade=function(){
 		if(data && data.ret==1){
 			$('#myModal').hide();
 			$('.modal-backdrop').css("display","nones");
-			$('#tb_auditTable').datagrid('reload');   
+			$('#tb_auditTable').datagrid('load', {
+				 userId:$("#selectUser").combobox('getValue'),
+		   		 q:$("#q").textbox('getValue'),
+		   		 searchType:$("#searchType").textbox('getValue'),
+		   		 others:$("#others").combobox('getValue'),
+		   		 state:$("#selectState").combobox('getValue'),
+		   		 beigainTime:$('#beigainTime').datetimebox('getValue'),
+		   		 weight_x:$('#weight_x').combobox('getValue'),
+		   		 weight:$("#weight").textbox('getValue'),
+				 lastTime:$('#lastTime').datetimebox('getValue'),
+				 company:$('#selectCompany').combobox('getValue')
+			});
 		}else{
 			 $.messager.alert('审核失败','订单审核失败,请联系管理员!');
 		}

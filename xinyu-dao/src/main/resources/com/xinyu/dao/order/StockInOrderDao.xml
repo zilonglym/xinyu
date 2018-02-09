@@ -132,7 +132,7 @@ VALUES(#{cu},#{state,jdbcType=VARCHAR},#{id},#{user.id,jdbcType=VARCHAR},#{owner
 <update id="updateStockInOrder" parameterType="com.xinyu.model.order.StockInOrder" >
 	update T_xinyu_StockInOrder
 	<set>
-		<if test="cu!=null and cu!=''">and Fcu=#{cu}</if>
+		
 		<if test="user!=null and user!=''">FKuserID=#{user.id},</if>
 		<if test="ownerUserName!=null and ownerUserName!=''">FownerUserName=#{ownerUserName},</if>
 		<if test="storeCode!=null and storeCode!=''">FstoreCode=#{storeCode},</if>

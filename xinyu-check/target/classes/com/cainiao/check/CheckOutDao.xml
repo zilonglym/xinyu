@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.checkOutDao">
+
+	<resultMap id="CheckOutResult" type="com.xinyu.model.trade.CheckOut">
+		<result property="id" column="FID" />
+		<result property="item.id" column="FKitemID" />
+		<result property="shipOrder.id" column="FKshipOrderID" />
+		<result property="createDate" column="FcreateDate" />
+		<result property="orderCode" column="ForderCode" />
+		<result property="cpCompany" column="FcpCompany" />
+		<result property="barCode" column="FbarCode" />
+		<result property="itemName" column="FitemName" />
+		<result property="user.id" column="FKuserID" />
+		<result property="account.id" column="FKaccountID" />
+		<result property="num" column="Fnum" />
+		<result property="msg" column="Fmsg" />
+		<result property="status" column="FKstatus" />
+		<result property="state" column="Fstate" />
+		<result property="weight" column="Fweight" />
+	</resultMap>
+
+
+
+	<select id="isExistsOrderCode" parameterType="map" resultType="int">
+		select count(1)
+		from T_xinyu_checkout a
+		where 1=1
+		and
+		a.FKstatus='SUCCESS_TRADE'
+		and a.ForderCode=#{orderCode}
+	</select>
+
+
+
+
+
+	<insert id="save" parameterType="com.xinyu.check.model.CheckOut"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into
+		T_xinyu_checkout(FID,FKitemID,FKshipOrderID,FcreateDate,ForderCode,FcpCompany,FbarCode,FitemName,FKuserID,FKaccountID,Fnum,Fmsg,FKstatus,Fstate,Fweight)
+		VALUES(#{id},#{item.id,jdbcType=VARCHAR},#{shipOrder.id,jdbcType=VARCHAR},#{createDate,jdbcType=datetime},#{orderCode,jdbcType=VARCHAR},#{cpCompany,jdbcType=VARCHAR},#{barCode,jdbcType=VARCHAR},#{itemName,jdbcType=VARCHAR},#{user.id,jdbcType=VARCHAR},#{account.id,jdbcType=VARCHAR},#{num,jdbcType=VARCHAR},#{msg,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR},#{state,jdbcType=VARCHAR},#{weight,jdbcType=VARCHAR})
+	</insert>
+
+	<select id="findCheckOut" parameterType="map" resultMap="checkOutEntity">
+		SELECT T.*
+		FROM T_xinyu_checkout T where 1=1
+		<if test="itemId!=null and itemId!=''"> and FKitemID=#{itemId}</if>
+		<if test="orderId!=null and orderId!=''">and FKshipOrderID=#{orderId}</if>
+		<if test="createDate!=null and createDate!=''">and FcreateDate=#{createDate}</if>
+		<if test="orderCode!=null and orderCode!=''"> and ForderCode=#{orderCode}</if>
+		<if test="cpCompany!=null and cpCompany!=''">and FcpCompany=#{cpCompany}</if>
+		<if test="barCode!=null and barCode!=''">and FbarCode=#{barCode}</if>
+		<if test="itemName!=null and itemName!=''">and FitemName=#{itemName}</if>
+		<if test="userId!=null and userId!=''">and FKuserID=#{userId}</if>
+		<if test="accountId!=null and accountId!=''">and FKaccountID=#{accountId}</if>
+		<if test="msg!=null and msg!=''">and Fmsg=#{msg}</if>
+		<if test="status!=null and status!=''">and FKstatus=#{status}</if>
+		<if test="success=='1'">and FKstatus like "SUCCESS%"</if>
+		<if test="success=='0'">and FKstatus like "FAIL%"</if>
+		<if test="searchText!=null and searchText!=''">
+			and (ForderCode like "%"#{searchText}"%" or FbarCode like
+			"%"#{searchText}"%" or FitemName like "%"#{searchText}"%" or Fmsg
+			like "%"#{searchText}"%")
+		</if>
+		<if test="startDate!=null and endDate!=null and startDate!='' and endDate!=''">
+			 <![CDATA[
+			 and  t.FcreateDate >= date_format(#{startDate},'%Y-%m-%d %H:%i') and  t.FcreateDate < date_format(#{endDate},'%Y-%m-%d %H:%i')
+			 ]]>
+		</if>
+	</select>
+
+</mapper> 

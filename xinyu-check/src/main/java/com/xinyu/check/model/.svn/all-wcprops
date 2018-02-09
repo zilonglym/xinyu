@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/model
+END
+ShipOrder.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/model/ShipOrder.java
+END
+ShipOrderReturn.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/model/ShipOrderReturn.java
+END
+ShipOrderDetail.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/model/ShipOrderDetail.java
+END
+SystemItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/model/SystemItem.java
+END
+CheckOut.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/model/CheckOut.java
+END
+Person.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/model/Person.java
+END
+StoreSystemItemEnums.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/model/StoreSystemItemEnums.java
+END
+Centro.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/model/Centro.java
+END
+Item.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/model/Item.java
+END
+User.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/wlpost/!svn/ver/1694/trunk/xinyu-check/src/main/java/com/xinyu/check/model/User.java
+END

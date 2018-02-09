@@ -20,9 +20,7 @@
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/xinyu-parent" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/xinyu-service" type="4"/>
 </workingSet>
-<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1499331286592_4" label="check" name="check">
-<item elementID="=xinyu-check" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1499331286592_4" label="check" name="check"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1478076947788_0" label="Window Working Set" name="Aggregate for window 1478076947787"/>
 <mruList name="zc"/>
 <mruList name="store"/>

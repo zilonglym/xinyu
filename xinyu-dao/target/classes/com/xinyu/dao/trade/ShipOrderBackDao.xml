@@ -139,6 +139,7 @@
 		update T_xinyu_ShipOrderBack
 		<set>	
 			<if test="cu!=null and cu!=''">Fcu=#{cu},</if>
+			<if test="description!=null and description!=''">Fdescription=#{description},</if>
 			<if test="orderId!=null and orderId!=''">ForderId=#{orderId},</if>
 			<if test="userId!=null and userId!=''">FuserId=#{userId},</if>
 			<if test="tmsOrderCode!=null and tmsOrderCode!=''">FtmsOrderCode=#{tmsOrderCode},</if>
