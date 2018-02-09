@@ -19,7 +19,7 @@
 			<option value="75">火焰皇</option>
 			<option value="26">山东烤箱</option>
 		</select>  
-		<input id="q" name="q" class="easyui-textbox" style="width:200px"/>
+		<input id="others" name="others" class="easyui-textbox" style="width:200px"/>
 		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchItem();" >查询</a>
 	</div>
 
@@ -58,7 +58,7 @@
 	function searchItem(){
 		$('#tb_item').datagrid('load',{
 			userId:$('#shop').combobox("getValue"),
-			q:$("#q").textbox("getValue")
+			q:$("#others").textbox("getValue")
 		});
 	}
 	</script>
