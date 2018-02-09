@@ -17,6 +17,7 @@
 		<result property="remark" column="Fremark" />
 		<result property="ownerCode" column="FownerCode" />
 		<result property="shortName" column="FshortName" />	
+		<result property="cu" column="Fcu" />	
 	</resultMap>
 	
 	<select id="getUserById" parameterType="string" resultMap="UserResult">
