@@ -244,20 +244,22 @@ public class RedisTask extends BaseController{
 				/**
 				 * 在系统中已有的订单不允许拒单
 				 */
-				
+				this.redisProxy.del(key);		
+				logger.error("ORDER_REJECT:"+key);
 				continue;
 			}
-			User user=this.userService.getUserById(order.getUser().getId());
-			buildCuByStoreCode(user);
-			operator.setAccount(this.getCurrentAccount());
+//			User user=this.userService.getUserById(order.getUser().getId());
+//			buildCuByStoreCode(user);
+//			operator.setAccount(this.getCurrentAccount());
 			this.orderStatusUploadService.updateOrderState(null, map, RdsConstants.ORDER_REJECT);
 			logger.error(map);
-			this.redisProxy.del(key);			
-			operator.setDescription("订单接单"+orderCode);
+				
+			operator.setDescription("订单拒单"+orderCode);
 			operator.setOperatorDate(new Date());
 			operator.setOperatorModel(OperatorModel.TRADE_REJECT);
-			operator.setShipOrder(order);
-			this.operatorService.saveShipOrderOperator(operator);
+//			operator.setShipOrder(order);
+//			this.operatorService.saveShipOrderOperator(operator);
+			logger.error("ORDER_REJECT success:"+key);
 		}
 		logger.error("拒单操作结束!");
 	}

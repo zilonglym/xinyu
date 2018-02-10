@@ -220,7 +220,7 @@ public class WmsConsignOrderNotifyCpImpl
 		order.setBuyerMessage(request.getBuyerMessage());
 		order.setSellerMessage(request.getSellerMessage());
 		order.setServiceFee(request.getServiceFee());
-		this.buildCuByStoreCode(order.getUser());
+		this.buildCuByStoreCode(user);
 		this.buildDeliverRequirements(order, request);
 		this.buildReceiverInfo(order, request);
 		this.buildSenderInfo(order, request);

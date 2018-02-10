@@ -126,7 +126,7 @@ public class CainiaoController extends BaseController {
 		SendSysParams params = new SendSysParams();
 		params.setFromCode(Constants.cainiao_fromCode);
 		LpcPackPubQueryRequest request = new LpcPackPubQueryRequest();
-		request.setAppName("中仓网络仓储");
+		request.setAppName("ZHONGCANG");
 		request.setCpCode("STO");
 		request.setMailNo("3348858809845");
 		LpcPackPubQueryResponse response = CaiNiaoPacClient.getClient().send(request, params);
