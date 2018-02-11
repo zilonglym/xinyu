@@ -211,6 +211,17 @@ public class AdminPcLocalController extends BaseController {
 		String itemId = request.getParameter("id");
 		LocalItem localItem = this.localRemote.getLocalItemById(Integer.parseInt(itemId));
 		model.put("localItem", localItem);
+		
+		//生成日志
+		LocalOperateRecord operateRecord = new LocalOperateRecord();
+		operateRecord.setCreateDate(new Date());
+		operateRecord.setDescription(localItem.getId()+"|"+localItem.getName()+"|"+localItem.getSku()+"生成批次号单据！");
+		operateRecord.setModel("getno");
+		operateRecord.setOperateId(String.valueOf(this.getCurrentUser().getId()));
+		operateRecord.setBatchCode(String.valueOf(localItem.getId()));
+		operateRecord.setFastCode(String.valueOf(localItem.getId()));
+		this.localRemote.saveOperateRecord(operateRecord);
+		
 		return "local/toPrintCode";
 	}
 	

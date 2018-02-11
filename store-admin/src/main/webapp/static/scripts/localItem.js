@@ -156,20 +156,29 @@ function batch(id){
 			buttons:[{
                 text:'确认',
                 iconCls:'icon-ok',
-                handler:function(){
-                	 var id = $('#id').val();  
-                	 var anum = $('#anum').textbox('getValue');  
-                	 var isHigh = $('#isHigh').combobox('getValue');  
-                	 var code = $('#code').textbox('getValue');  
-                	 var cnum = $('#cnum').textbox('getValue');  
-                	 var birthDate = $('#birthDate').datetimebox('getValue');  
-                	 window.open(ctx+"/pcLocal/localBatch/print/list?id="+id+"&anum="+anum+"&isHigh="+isHigh+"&code="+code+"&cnum="+cnum+"&birthDate="+birthDate);
-                	 $('#dialog').window('close');
+                handler:function(){ 
+                	var id = $('#id').val();  
+                	var anum = $('#anum').textbox('getValue');  
+                	var isHigh = $('#isHigh').combobox('getValue');  
+                	var code = $('#code').textbox('getValue');  
+                	var cnum = $('#cnum').textbox('getValue');  
+                	var birthDate = $('#birthDate').datetimebox('getValue'); 
+                	if(code == "" || code == null || code == undefined){
+                		$.messager.alert("提示","入库单号不能为空");
+                	}else if(anum == "" || anum == null || anum == undefined){
+                		$.messager.alert("提示","入库数量不能为空");
+                	}else if(id == "" || id == null || id == undefined){
+                		$.messager.alert("提示","请重新选择商品");
+                	}else if(isHigh == "true"){
+                		if(cnum == "" || cnum == null || cnum == undefined){
+                			$.messager.alert("提示","请填入自定义数量");
+                		}
+                	}else{
+                		 window.open(ctx+"/pcLocal/localBatch/print/list?id="+id+"&anum="+anum+"&isHigh="+isHigh+"&code="+code+"&cnum="+cnum+"&birthDate="+birthDate);
+                    	 $('#dialog').window('close');
+                	}
                 }
             }],
 		});
-	}else{
-		$.messager.alert('提示','请勾选需要修改的商品！');
 	}
-
 }
