@@ -22,7 +22,7 @@
 			</c:forEach>
 		</select>
 		<select id="sysId" name="sysId" class="easyui-combobox">
-			<option value="0">全部</option> 
+			<option value="">全部</option> 
 			<c:forEach items="${companys}" var="company">				
 				<option value="${company.value}">${company.description}</option>	
 			</c:forEach>
