@@ -354,6 +354,8 @@ public class ShipOrderServiceImpl extends BaseServiceImpl implements ShipOrderSe
 				items = items + item.getName() + "/" + item.getItemCode() + "/" + sku+ "("+orderItem.getItemQuantity()+"件);|";
 			}else if (("idzc660824712").equals(item.getUser().getId())) {
 				items = items + item.getName() + "/" + (item.getGoodsNo()!=null?(item.getGoodsNo()+ "/"):"")  + sku+ "("+orderItem.getItemQuantity()+"件);|";
+			}else if (("idzc2732851928").equals(item.getUser().getId())) {
+				items = items + item.getName() + ":" + (item.getColor()!=null?item.getColor():item.getSpecification())  + "("+orderItem.getItemQuantity()+"件);|";
 			}else{
 				items = items + item.getName() +":"+sku+ "("+orderItem.getItemQuantity()+"件);|";
 			}
@@ -378,6 +380,8 @@ public class ShipOrderServiceImpl extends BaseServiceImpl implements ShipOrderSe
 				items = items + item.getItemCode()+":"+item.getSpecification()+"("+orderItem.getItemQuantity()+"件);";
 			}else if (("idzc2902840865").equals(item.getUser().getId())) {
 				items = items + item.getName() + "/" + item.getItemCode() + "/" + sku+ "("+orderItem.getItemQuantity()+"件);";
+			}else if (("idzc2732851928").equals(item.getUser().getId())) {
+				items = items + item.getName() + ":" + (item.getColor()!=null?item.getColor():item.getSpecification()) + "("+orderItem.getItemQuantity()+"件);";
 			}else{
 				items = items + item.getName() +":"+sku+ "("+orderItem.getItemQuantity()+"件);";
 			}
