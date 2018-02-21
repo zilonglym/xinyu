@@ -2497,6 +2497,9 @@ public class ShipOrderService {
 // 				ShipOrder order1 = shipOrderDao.getShipOrder(1L); 
 				System.err.println("order1:" + order1.getDetails().size());
 				ShipOrder order = null;
+				
+				Double weight = 0d;
+				
 				try {
 					order = (ShipOrder) order1.clone();
 					List<ShipOrderDetail> list = new ArrayList<ShipOrderDetail>();
@@ -2504,8 +2507,7 @@ public class ShipOrderService {
 					for (int j = 0, jsize = itemList.size(); j < jsize; j++) {
 						ShipOrderDetail detail = (ShipOrderDetail) order1.getDetails().get(0).clone();
 						Item item = itemList.get(j);
-						
-						System.out.println("item:" + item.getId());
+						System.err.println("item:" + item.getId());
 						String itemCountStr = itemListCount.get(j);
 						detail.setId(null);
 						detail.setItem(item); // 商品信息
@@ -2513,7 +2515,8 @@ public class ShipOrderService {
 							detail.setNum(Long.valueOf(itemCountStr)); // 商品数量
 							detail.setActualnum(Integer.valueOf(itemCountStr)); // 商品实际数量
 						}
-						
+						//计算重量
+						weight = weight + item.getWeight()*detail.getNum();
 						
 						detail.setTradeOrderNo(tbNumber);
 						list.add(detail);
@@ -2559,7 +2562,7 @@ public class ShipOrderService {
 				order.setSellerMemo("");
 				order.setSellerMessage("");
 				order.setTradeBatch(tbNumber);
-				order.setTotalWeight(0d);
+				order.setTotalWeight(weight);	
 				order.setOperatorName(accountId);
 				this.saveEntryOrder(order);
 				for (int j = 0; order.getDetails() != null && j < order.getDetails().size(); j++) {
