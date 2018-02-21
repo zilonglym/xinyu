@@ -329,6 +329,9 @@ public class WmsConsignOrderNotifyCpImpl
 			}else if(("idzc660824712").equals(order.getUser().getId())){
 				String goodsNo = (itemObj.getGoodsNo()!=null?itemObj.getGoodsNo():"");
 				buffer.append(itemObj.getName()).append("/").append(goodsNo).append("/").append(itemObj.getSpecification()).append("(").append(item.getItemQuantity()).append("件);|");
+			}else if(("idzc2732851928").equals(order.getUser().getId())){
+				String skuStr = (itemObj.getColor()!=null?itemObj.getColor():itemObj.getSpecification());
+				buffer.append(itemObj.getName()).append(":").append(skuStr).append("(").append(item.getItemQuantity()).append("件);|");
 			}else {
 				buffer.append(itemObj.getName()).append(":").append(sku).append("(").append(item.getItemQuantity()).append("件);|");
 			}
