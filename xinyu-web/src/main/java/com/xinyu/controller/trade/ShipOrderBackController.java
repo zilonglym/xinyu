@@ -502,16 +502,12 @@ public class ShipOrderBackController extends BaseController {
 			
 			Object rows = request.getParameter("rows"); // 集合数据来源
 			JSONArray array = JSONArray.fromObject(rows);
-
+		
 			for (Object jsonObj : array) {
 				net.sf.json.JSONObject obj = (net.sf.json.JSONObject) jsonObj;
 				String itemId = "" + obj.getString("itemId");
 				String num = "" + obj.getString("num");
 				String userId = "" + obj.getString("userId");
-				String itemName = "" + obj.getString("itemName");
-				String itemSku = "" + obj.getString("itemSku");
-				String itemCode = "" + obj.getString("itemCode");
-				String barCode = "" + obj.getString("barCode");
 				orderBack.setUserId(userId);
 				Item item = this.itemService.getItem(itemId);
 
@@ -525,13 +521,14 @@ public class ShipOrderBackController extends BaseController {
 					orderBackItem.setItemName(name);
 					orderBackItem.setItem(item);
 				} else {
-					String name = itemName + itemSku;
+					Map<String, Object> itemMap = this.itemService.findStoreItemById(itemId);
+					String name = ""+ itemMap.get("name") + itemMap.get("specification");
 					Item storeItem = new Item();
 					storeItem.setId(itemId);
-					storeItem.setName(itemName);
-					storeItem.setItemCode(itemCode);
-					storeItem.setSpecification(itemSku);
-					storeItem.setBarCode(barCode);
+					storeItem.setName(""+ itemMap.get("name"));
+					storeItem.setItemCode(""+ itemMap.get("itemCode"));
+					storeItem.setSpecification(""+ itemMap.get("specification"));
+					storeItem.setBarCode(""+ itemMap.get("barCode"));
 
 					orderBackItem.setItemName(name);
 					orderBackItem.setItem(storeItem);
@@ -625,10 +622,7 @@ public class ShipOrderBackController extends BaseController {
 				String itemId = "" + obj.getString("itemId");
 				String num = "" + obj.getString("num");
 				String userId = "" + obj.getString("userId");
-				String itemName = "" + obj.getString("itemName");
-				String itemSku = "" + obj.getString("itemSku");
-				String itemCode = "" + obj.getString("itemCode");
-				String barCode = "" + obj.getString("barCode");
+			
 				orderBack.setUserId(userId);
 				Item item = this.itemService.getItem(itemId);
 
@@ -642,13 +636,14 @@ public class ShipOrderBackController extends BaseController {
 					orderBackItem.setItemName(name);
 					orderBackItem.setItem(item);
 				} else {
-					String name = itemName + itemSku;
+					Map<String, Object> itemMap = this.itemService.findStoreItemById(itemId);
+					String name = ""+ itemMap.get("name") + itemMap.get("specification");
 					Item storeItem = new Item();
 					storeItem.setId(itemId);
-					storeItem.setName(itemName);
-					storeItem.setItemCode(itemCode);
-					storeItem.setSpecification(itemSku);
-					storeItem.setBarCode(barCode);
+					storeItem.setName(""+ itemMap.get("name"));
+					storeItem.setItemCode(""+ itemMap.get("itemCode"));
+					storeItem.setSpecification(""+ itemMap.get("specification"));
+					storeItem.setBarCode(""+ itemMap.get("barCode"));
 
 					orderBackItem.setItemName(name);
 					orderBackItem.setItem(storeItem);
