@@ -152,9 +152,13 @@ public class ShipOrderBackController extends BaseController {
 			map.put("returnCode", orderBack.getBackOrderCode());
 			map.put("orderCode", orderBack.getTmsOrderCode());
 			map.put("createDate", sf.format(orderBack.getCreateDate()));
-
-			Account account = this.accountService.findAcountById(orderBack.getCreateBy().getId());
-			map.put("account", account.getUserName());
+			
+			//操作人是否为空
+			if(orderBack.getCreateBy()!=null){
+				Account account = this.accountService.findAcountById(orderBack.getCreateBy().getId());
+				map.put("account", account.getUserName());
+			}
+			
 			map.put("description", orderBack.getDescription());
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("orderBackId", orderBack.getId());
