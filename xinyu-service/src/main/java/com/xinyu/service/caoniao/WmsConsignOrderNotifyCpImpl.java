@@ -326,12 +326,15 @@ public class WmsConsignOrderNotifyCpImpl
 				buffer.append(itemObj.getName()).append(":").append(sku).append("(").append(item.getItemQuantity()).append("件);|").append("\n");
 			}else if(("idzc2902840865").equals(order.getUser().getId())){
 				buffer.append(itemObj.getName()).append("/").append(itemObj.getItemCode()).append("/").append(itemObj.getSpecification()).append("(").append(item.getItemQuantity()).append("件);|");
-			}else if(("idzc660824712").equals(order.getUser().getId())){
+			}else if(("idzc660824712").equals(order.getUser().getId()) ){
 				String goodsNo = (itemObj.getGoodsNo()!=null?itemObj.getGoodsNo():"");
 				buffer.append(itemObj.getName()).append("/").append(goodsNo).append("/").append(itemObj.getSpecification()).append("(").append(item.getItemQuantity()).append("件);|");
 			}else if(("idzc2732851928").equals(order.getUser().getId())){
 				String skuStr = (itemObj.getColor()!=null?itemObj.getColor():itemObj.getSpecification());
 				buffer.append(itemObj.getName()).append(":").append(skuStr).append("(").append(item.getItemQuantity()).append("件);|");
+			}else if(order.getShopName()!=null && order.getShopName().indexOf("jaya千金净雅西谷专卖店")!=-1){
+				String goodsNo = (itemObj.getGoodsNo()!=null?itemObj.getGoodsNo():"");
+				buffer.append(goodsNo).append("/").append(itemObj.getSpecification()).append("(").append(item.getItemQuantity()).append("件);|");
 			}else {
 				buffer.append(itemObj.getName()).append(":").append(sku).append("(").append(item.getItemQuantity()).append("件);|");
 			}
