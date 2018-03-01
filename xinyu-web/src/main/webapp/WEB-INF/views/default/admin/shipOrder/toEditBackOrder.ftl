@@ -9,7 +9,7 @@
 		<table cellpadding="5">
 				<tr>
 	    			<td>原始单号:</td>
-	    			<td><input id="orderCode" name="orderCode" class="easyui-textbox" type="text" style="width:200px;" value="${orderBack.tmsOrderCode}"/></td>
+	    			<td><input id="orderCode" name="orderCode" class="easyui-textbox" type="text" style="width:200px;" <#if orderBack.tmsOrderCode??>value="${orderBack.tmsOrderCode}"</#if>/></td>
 	    			<td>退回单号:</td>
 	    			<td><input class="easyui-textbox" type="text" id="returnCode" name="returnCode" style="width:200px;" value="${orderBack.backOrderCode}"/></td> 
 	    		</tr>
