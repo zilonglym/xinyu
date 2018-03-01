@@ -172,10 +172,13 @@ function batch(id){
                 	}else if(isHigh == "true"){
                 		if(cnum == "" || cnum == null || cnum == undefined){
                 			$.messager.alert("提示","请填入自定义数量");
-                		}
+                		}else{
+					window.open(ctx+"/pcLocal/localBatch/print/list?id="+id+"&anum="+anum+"&isHigh="+isHigh+"&code="+code+"&cnum="+cnum+"&birthDate="+birthDate);
+                    	 		$('#dialog').window('close');
+				}
                 	}else{
                 		 window.open(ctx+"/pcLocal/localBatch/print/list?id="+id+"&anum="+anum+"&isHigh="+isHigh+"&code="+code+"&cnum="+cnum+"&birthDate="+birthDate);
-                    	 $('#dialog').window('close');
+                    	 	$('#dialog').window('close');
                 	}
                 }
             }],
