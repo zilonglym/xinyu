@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.financial.ExpressPriceDao">
+	
+	<resultMap id="expressPriceEntity" type="com.xinyu.model.financial.ExpressPrice">
+		<result property="id" column="fid" />
+		<result property="cu" column="fcu" />
+		<result property="area" column="Farea" />
+		<result property="code" column="Fcode" />
+		<result property="name" column="Fname" />
+		<result property="userId" column="FuserId" />
+		<result property="firstPrice" column="Ffirst_price" />
+		<result property="initialPrice" column="Finitial_price" />
+		<result property="otherPrice" column="Fother_price" />
+		<result property="deliveryPrice" column="Fdelivery_price" />
+		<result property="firstCost" column="Ffirst_cost" />
+		<result property="initialCost" column="Finitial_cost" />
+		<result property="otherCost" column="Fother_cost" />
+		<result property="deliveryCost" column="Fdelivery_cost" />
+	</resultMap>
+	
+	<select id="findExpressPriceByParam" resultType="com.xinyu.model.financial.ExpressPrice" parameterType="map">
+		select a.fid as "id",a.Farea as "area",a.Fcode as "code",a.fname as "name",a.FuserId as "userId",
+			   a.Ffirst_price as "firstPrice",a.Finitial_price as "initialPrice",a.Fother_price as "otherPrice",
+			   a.Fdelivery_price as "deliveryPrice",a.Ffirst_cost as "firstCost",a.Finitial_cost as "initialCost",
+			   a.Fother_cost as "otherCost",a.Fdelivery_cost as "deliveryCost"
+		from t_xinyu_expressprice a
+		where 
+		1=1
+		<if test="area!=null and area!=''">
+			and a.farea like "%"#{area}"%"
+		</if>
+		<if test="code!=null and code!=''">
+			and a.fcode  like #{code}
+		</if>
+		<if test="name!=null and name!=''">
+			and a.fname like #{name}
+		</if>
+		<if test="userId!=null and userId!=''">
+			and a.fuserId=#{userId}
+		</if>
+		<if test="id!=null and id!=''">
+			and a.fid=#{id}
+		</if>
+	</select>
+	
+	<select id="findExpressPriceList" resultMap="expressPriceEntity" parameterType="map">
+		select a.*
+	    from t_xinyu_expressprice a
+		where 
+		1=1
+		<if test="area!=null and area!=''">
+			and a.farea like "%"#{area}"%"
+		</if>		
+		<if test="code!=null and code!=''">
+			and a.fcode=#{code}
+		</if>
+		<if test="userId!=null and userId!=''">
+			and a.fuserId=#{userId}
+		</if>
+		limit #{start},#{offset}
+	</select>
+	
+	<select id="getTotalResult" resultType="int" parameterType="map">
+		select count(1) 
+		from t_xinyu_expressprice 
+		where 
+		1=1
+		<if test="area!=null and area!=''">
+			and a.farea like "%"#{area}"%"
+		</if>		
+		<if test="code!=null and code!=''">
+			and a.fcode=#{code}
+		</if>
+		<if test="userId!=null and userId!=''">
+			and a.fuserId=#{userId}
+		</if>
+	</select>
+	
+	<update id="update">
+		update t_xinyu_expressprice
+		<set>
+			<if test="area!=null and area!=''">
+				farea=#{area},
+			</if>
+			<if test="firstPrice!=null">
+				ffirst_price=#{firstPrice},
+			</if>
+			<if test="initialPrice!=null">
+				finitial_price=#{initialPrice},
+			</if>	
+			<if test="otherPrice!=null">
+				fother_price=#{otherPrice},
+			</if>	
+			<if test="deliveryPrice!=null">
+				fdelivery_price=#{deliveryPrice},
+			</if>	
+			<if test="firstCost!=null">
+				ffirst_cost=#{firstCost},
+			</if>
+			<if test="initialCost!=null">
+				finitial_cost=#{initialCost},
+			</if>	
+			<if test="otherCost!=null">
+				fother_cost=#{otherCost},
+			</if>	
+			<if test="deliveryCost!=null">
+				fdelivery_cost=#{deliveryCost},
+			</if>	
+			<if test="name!=null and name!=''">
+				fname=#{name},
+			</if>
+			<if test="code!=null and code!=''">
+				fcode=#{code},
+			</if>
+			<if test="userId!=null and userId!=''">
+				fuserId=#{userId},
+			</if>
+		</set>
+		where fid=#{id}
+	</update>
+	
+	<insert id="save" parameterType="com.xinyu.model.financial.ExpressPrice">
+		insert into t_xinyu_expressprice(fid,fcu,farea,ffirst_price,finitial_price,fname,fcode,fuserId,fother_price,fdelivery_price,ffirst_cost,finitial_cost,fother_cost,fdelivery_cost) 
+		value(#{id},#{cu},#{area},#{firstPrice},#{initialPrice},#{name},#{code},#{userId},#{otherPrice},#{deliveryPrice},#{firstCost},#{initialCost},#{otherCost},#{deliveryCost})
+	</insert>
+	
+	
+	<resultMap id="priceMapEntity" type="com.xinyu.model.financial.ExpressPriceMapping">
+		<result property="id" column="fid" />
+		<result property="cu" column="fcu" />
+		<result property="orderId" column="forderId" />
+		<result property="firstWeight" column="ffirst_weight" />
+		<result property="firstPrice" column="ffirst_price" />
+		<result property="initialWeight" column="finitial_weight" />
+		<result property="initialPrice" column="finitial_price" />
+		<result property="otherPrice" column="fother_price" />
+		<result property="totalPrice" column="ftotal_price" />
+	</resultMap>
+	
+	<select id="findPriceMappingByParams" parameterType="map" resultType="com.xinyu.model.financial.ExpressPriceMapping">
+		select *
+		from t_xinyu_expressprice_mapiing
+		where 1=1
+		<if test="orderId!=null and orderId!=0">
+			and forderId = #{orderId}
+		</if>	
+		<if test="id!=null and id!=0">
+			and fid = #{id}
+		</if>		
+	</select>	
+	
+	<insert id="insert" parameterType="com.xinyu.model.financial.ExpressPriceMapping">
+		insert into t_xinyu_expressprice_mapiing(fid,fcu,forderId,ffirst_weight,ffirst_price,finitial_weight,finitial_price,fother_price,ftotal_price) 
+		value(#{id},#{cu},#{orderId},#{firstWeight},#{firstPrice},#{initialWeight},#{initialPrice},#{otherPrice},#{totalPrice})
+	</insert>
+	
+	<update id="updatePriceMapping">
+		update t_xinyu_expressprice_mapiing
+		<set>
+			<if test="orderId!=null and orderId!=''">
+				forderId=#{orderId},
+			</if>
+			<if test="firstPrice!=null">
+				ffirst_price=#{firstPrice},
+			</if>
+			<if test="initialPrice!=null">
+				finitial_price=#{initialPrice},
+			</if>	
+			<if test="otherPrice!=null">
+				fother_price=#{otherPrice},
+			</if>	
+			<if test="totalPrice!=null">
+				ftotal_price=#{totalPrice},
+			</if>	
+			<if test="firstWeight!=null">
+				ffirst_weight=#{firstWeight},
+			</if>
+			<if test="initialWeight!=null">
+				finitial_weight=#{initialWeight},
+			</if>	
+		</set>
+		where fid=#{id}
+	</update>
+	
+</mapper> 
