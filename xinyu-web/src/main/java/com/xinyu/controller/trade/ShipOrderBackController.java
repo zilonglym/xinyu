@@ -119,6 +119,7 @@ public class ShipOrderBackController extends BaseController {
 		params.put("q", q);
 		params.put("startDate", startDate);
 		params.put("endDate", endDate);
+		System.err.println("params:"+params);
 		List<ShipOrderBack> orderBacks = this.orderBackService.getShipOrderBackListByPage(params, page, rows);
 		int total = this.orderBackService.getTotal(params);
 
@@ -303,9 +304,9 @@ public class ShipOrderBackController extends BaseController {
 				map.put("shopName", ""+userMap.get("shopName"));
 				map.put("userId", ""+itemMap.get("userId"));
 				map.put("itemId", ""+itemMap.get("itemId"));
-				map.put("itemName", ""+itemMap.get("itemName"));
+				map.put("itemName", ""+itemMap.get("name"));
 				map.put("itemCode", ""+itemMap.get("itemCode"));
-				map.put("itemSku", ""+itemMap.get("itemSku"));
+				map.put("itemSku", ""+itemMap.get("specification"));
 				map.put("barCode", ""+itemMap.get("barCode"));
 				map.put("num", "1");
 			}
@@ -362,9 +363,9 @@ public class ShipOrderBackController extends BaseController {
 					map.put("shopName", "" + userMap.get("shopName"));
 					map.put("userId", "" + itemMap.get("userId"));
 					map.put("itemId", "" + itemMap.get("itemId"));
-					map.put("itemName", "" + itemMap.get("itemName"));
+					map.put("itemName", "" + itemMap.get("name"));
 					map.put("itemCode", "" + itemMap.get("itemCode"));
-					map.put("itemSku", "" + itemMap.get("itemSku"));
+					map.put("itemSku", "" + itemMap.get("specification"));
 					map.put("barCode", "" + itemMap.get("barCode"));
 				}
 
@@ -522,6 +523,7 @@ public class ShipOrderBackController extends BaseController {
 				 */
 				if (item != null) {
 					String name = item.getName() + item.getSpecification();
+					System.err.println("name:"+name);
 					orderBackItem.setItemName(name);
 					orderBackItem.setItem(item);
 				} else {
@@ -775,4 +777,101 @@ public class ShipOrderBackController extends BaseController {
         return null; 
 	}
 
+	/**
+	 * 发货汇总单下载
+	 * @param userId
+	 * @param startDate
+	 * @param endDate
+	 * @param format
+	 * @return ModelAndView
+	 * */
+	@RequestMapping(value = "/item/xls")
+	public String shipItem(
+			@RequestParam(value = "userId") String userId,
+			@RequestParam(value = "startDate") String startDate,
+			@RequestParam(value = "endDate") String endDate,
+			@RequestParam(value = "q") String q,HttpServletResponse response) {	
+		
+		Map<String, Object> p = new HashMap<String, Object>();
+		p.put("userId", userId);
+		p.put("startDate", startDate);
+		p.put("endDate", endDate);
+ 		p.put("q", q);
+//		p.put("status", "WMS_FINASH");
+		
+		List<Map<String,Object>> results = this.orderBackService.findItemCount(p);
+		List<POIModel> poiModels=new ArrayList<POIModel>();	
+	
+		for(Map<String,Object> objectMap:results){
+			
+			POIModel poiModel=new POIModel();
+			
+			User user = this.userService.getUserById(""+objectMap.get("userId"));
+			if (user!=null) {
+				poiModel.setM0(user.getSubscriberName());
+			}else {
+				Map<String, Object> userMap = this.userService.getStoreUserById(""+objectMap.get("userId"));
+				poiModel.setM0(""+userMap.get("shopName"));
+			}
+					
+			String itemId = "" + objectMap.get("itemId");
+			Item item = this.itemService.getItem(itemId);
+			if (item!=null) {
+				
+				poiModel.setM1(item.getName());
+				
+				poiModel.setM2(item.getItemCode());
+				
+				poiModel.setM3(item.getBarCode());
+				
+				poiModel.setM5(item.getColor()+";"+item.getSpecification());
+				
+			}else {
+				Map<String, Object> itemMap = this.itemService.findStoreItemById(itemId);
+				
+				poiModel.setM1(""+itemMap.get("name"));
+				
+				poiModel.setM2(""+itemMap.get("itemCode"));
+				
+				poiModel.setM3(""+itemMap.get("barCode"));
+				
+				poiModel.setM5(""+itemMap.get("specification"));
+			}
+			
+			
+			
+			String numStr = "" + objectMap.get("num");
+			Double num = Double.valueOf(numStr);
+			int i = (new Double(num)).intValue();
+			poiModel.setM4(String.valueOf(i));
+			
+			poiModels.add(poiModel);
+		}
+		
+		User user = this.userService.getUserById(userId);
+		//时间格式化
+//		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		
+		//拼接Excel文件名称
+//		String filename=desktopPath+sdf.format(new Date())+user.getShopName()+"发货明细.xls";
+		
+		//新建PoiExcelExport对象
+		PoiExcelExport pee = new PoiExcelExport(response,"退货商品汇总","sheet1");
+		
+		//Excel文件填充内容属性
+		String titleColumn[] = {"m0","m1","m2","m5","m3","m4"};  
+       
+		//Excel文件填充内容列名
+		String titleName[] = {"店铺名称","商品名称","商品编码","SKU","商品条码","数量"};  
+		
+		//Excel文件填充内容列宽
+		int titleSize[] = {20,20,20,20,20,20};  
+		
+		//调用PoiExcelExport导出Excel文件
+        pee.wirteExcel(titleColumn, titleName, titleSize, poiModels);
+		
+        return null; 
+	}
+	
+	
 }
