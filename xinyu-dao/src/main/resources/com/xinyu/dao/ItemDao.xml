@@ -75,7 +75,7 @@
 	</select>
 
 	<select id="findStoreItemById" parameterType="string" resultType="map">
-		SELECT t.id as "itemId",t.code as "itemCode",t.title as "itemName",t.bar_code as "barCode",t.sku as "itemSku",t.userid as "userId" 
+		SELECT t.id as "itemId",t.code as "itemCode",t.title as "name",t.bar_code as "barCode",t.sku as "specification",t.userid as "userId" 
 		FROM store.sc_item t where t.id=#{id}
 	</select>
 	
