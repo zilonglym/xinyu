@@ -30,7 +30,8 @@
 		<input  style="width:150px;" id="q" name="q" type="text" class="easyui-textbox"/>
 	   	<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="backOrder.search();" >查询</a>
 	   	<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="backOrder.add();" >新建</a>
-	   	<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-export'" onclick="backOrder.exportData();" >导出</a>
+	   	<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-export'" onclick="backOrder.exportData();" >明细</a>
+	   	<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-export'" onclick="backOrder.itemCount();" >汇总</a>
 	</div>
 	
 	<table id="tb_backOrder"  >
