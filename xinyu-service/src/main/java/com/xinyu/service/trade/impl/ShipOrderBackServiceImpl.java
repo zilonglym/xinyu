@@ -54,5 +54,10 @@ public class ShipOrderBackServiceImpl extends BaseServiceImpl implements ShipOrd
 	public List<Map<String, Object>> getOrderBackMapList(Map<String, Object> p) {
 		return this.orderBackDao.getOrderBackMapList(p);
 	}
+	
+	@Override
+	public List<Map<String, Object>> findItemCount(Map<String, Object> p) {
+		return this.orderBackDao.findItemCount(p);
+	}
 
 }
