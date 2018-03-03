@@ -22,4 +22,6 @@ public interface ShipOrderBackDao extends BaseDao{
 
 	public List<Map<String, Object>> getOrderBackMapList(Map<String, Object> p);
 	
+	public List<Map<String, Object>> findItemCount(Map<String, Object> p);
+	
 }
