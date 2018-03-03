@@ -24,4 +24,6 @@ public ShipOrderBack getShipOrderBackByParams(Map<String, Object> params);
 
 	public List<Map<String, Object>> getOrderBackMapList(Map<String, Object> p);
 	
+	public List<Map<String, Object>> findItemCount(Map<String, Object> p);
+	
 }
