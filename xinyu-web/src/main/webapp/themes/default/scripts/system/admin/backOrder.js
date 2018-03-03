@@ -321,6 +321,15 @@ backOrder.exportData = function(){
 	window.location.href = url;
 }
 
+backOrder.itemCount = function(){ 
+	var userId = $("#userId").combobox('getValue'); 
+	var startDate = $("#startDate").datetimebox('getValue'); 
+	var endDate = $("#endDate").datetimebox('getValue'); 
+	var q = $("#q").textbox('getValue');
+	var url = ctx + "/orderBack/item/xls?userId="+userId+"&startDate="+startDate+"&endDate="+endDate+"&q="+q; 
+	window.location.href = url;
+}
+
 $.extend($.fn.datagrid.methods, {
     editCell : function(jq, param) {
         return jq.each(function() {
