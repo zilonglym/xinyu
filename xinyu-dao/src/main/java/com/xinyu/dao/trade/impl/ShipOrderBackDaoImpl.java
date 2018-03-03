@@ -42,5 +42,10 @@ public class ShipOrderBackDaoImpl extends BaseDaoImpl implements ShipOrderBackDa
 	public List<Map<String, Object>> getOrderBackMapList(Map<String, Object> p) {
 		return (List<Map<String, Object>>) super.selectList(this.statement+"getOrderBackMapList", p);
 	}
+	
+	@Override
+	public List<Map<String, Object>> findItemCount(Map<String, Object> p) {
+		return (List<Map<String, Object>>) super.selectList(this.statement+"findItemCount", p);
+	}
 
 }
