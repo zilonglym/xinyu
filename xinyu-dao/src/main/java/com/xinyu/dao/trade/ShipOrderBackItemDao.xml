@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.xinyu.dao.trade.ShipOrderBackItemDao">
+	<resultMap id="ShipOrderBackItemResult" type="com.xinyu.model.trade.ShipOrderBackItem">
+		<result property="id" column="FID" />
+		<result property="cu" column="Fcu" />
+		<result property="orderBack.id" column="FKorderBackId" />
+		<result property="item.id" column="FKitemId" />
+		<result property="itemName" column="FitemName" />
+		<result property="quantity" column="Fquantity" />
+	</resultMap>
+
+	<select id="getOrderBackItemList" parameterType="map" resultMap="ShipOrderBackItemResult">
+		SELECT T.*
+		FROM t_xinyu_orderbackitem T
+		where 1=1
+		<if test="orderBackId!=null and orderBackId!=''">
+			and T.FKorderBackId=#{orderBackId}
+		</if>
+		<if test="cu!=null and cu!=''">
+			and T.Fcu=#{cu}
+		</if>
+	</select>
+	
+	<insert id="insertOrderBackItem" parameterType="com.xinyu.model.trade.ShipOrderBackItem">
+		insert into
+		t_xinyu_orderbackitem(FID,Fcu,FKorderBackId,FKitemId,FitemName,Fquantity)
+		VALUES(#{id},#{cu},#{orderBack.id},#{item.id},#{itemName},#{quantity})
+	</insert>
+
+	<update id="updateOrderBackItem" parameterType="com.xinyu.model.trade.ShipOrderBackItem">
+		update t_xinyu_orderbackitem
+		<set>	
+			<if test="cu!=null and cu!=''">Fcu=#{cu},</if>
+			<if test="orderBack!=null">FKorderBackId=#{orderBack.id},</if>
+			<if test="item!=null">FKitemId=#{item.id},</if>
+			<if test="itemName!=null and itemName!=''">FitemName=#{itemName},</if>
+			<if test="quantity!=null and quantity!=''">Fquantity=#{quantity},</if>
+		</set>
+		where fid=#{id}
+	</update>
+
+	<delete id="deleteOrderBackItemById" parameterType="string">
+		delete from
+		t_xinyu_orderbackitem where fid=#{id}
+	</delete>
+
+	<delete id="deleteOrderBackItemByBackId" parameterType="string">
+		delete from
+		t_xinyu_orderbackitem where FKorderBackId=#{orderBack.id}
+	</delete>
+	
+</mapper>
