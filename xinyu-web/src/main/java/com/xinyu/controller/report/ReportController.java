@@ -133,7 +133,7 @@ public class ReportController extends BaseController{
 		p.put("endDate", endDate);
 		p.put("tmsServiceCode", cpCode);
 //		p.put("status", "WMS_FINASH");
-		System.err.println(p);
+//		System.err.println(p);
 		
 		List<Map<String,Object>> results = this.reportService.findItemCount(p);
 		List<POIModel> poiModels=new ArrayList<POIModel>();	
@@ -151,6 +151,8 @@ public class ReportController extends BaseController{
 			poiModel.setM2(item.getItemCode());
 			
 			poiModel.setM3(item.getBarCode());
+			
+			poiModel.setM6(item.getGoodsNo());
 			
 			poiModel.setM5(item.getColor()+";"+item.getSpecification());
 			
@@ -173,13 +175,13 @@ public class ReportController extends BaseController{
 		PoiExcelExport pee = new PoiExcelExport(response,user.getSubscriberName()+"商品汇总","sheet1");
 		
 		//Excel文件填充内容属性
-		String titleColumn[] = {"m0","m1","m2","m5","m3","m4"};  
+		String titleColumn[] = {"m0","m1","m2","m6","m5","m3","m4"};  
        
 		//Excel文件填充内容列名
-		String titleName[] = {"店铺名称","商品名称","商品编码","SKU","商品条码","数量"};  
+		String titleName[] = {"店铺名称","商品名称","商品编码","产品编码","SKU","商品条码","数量"};  
 		
 		//Excel文件填充内容列宽
-		int titleSize[] = {20,20,20,20,20,20};  
+		int titleSize[] = {20,20,20,20,20,20,20};  
 		
 		//调用PoiExcelExport导出Excel文件
         pee.wirteExcel(titleColumn, titleName, titleSize, poiModels);
