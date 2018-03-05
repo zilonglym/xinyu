@@ -1017,6 +1017,9 @@ public class AdminPcLocalController extends BaseController {
 				JSONObject object = new JSONObject(json);
 				String plateId = object.getString("id");
 				LocalPlate plate = this.localRemote.findLocalPlate(plateId);
+				//批次号
+				String batchID = plate.getbatchId();
+				
 				Object rows = request.getParameter("rows");  //集合数据来源   
 				JSONArray array = JSONArray.fromObject(rows);
 				for(Object jsonObj:array){
@@ -1031,7 +1034,8 @@ public class AdminPcLocalController extends BaseController {
 					params.put("itemId", itemId);
 					params.put("num", Integer.valueOf(num));
 					params.put("opertionId", String.valueOf(this.getCurrentUser().getId()));
-//					params.put("batchId", batchId);
+					//批次号
+					params.put("batchId", batchID);
 					//上架
 					this.localRemote.upLocalPlate(params);
 				}
