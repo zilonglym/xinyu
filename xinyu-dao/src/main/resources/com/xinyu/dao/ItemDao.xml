@@ -86,8 +86,8 @@
 		<if test="userId!=null and userId!=''">
 			and t.userid = #{userId}
 		</if>
-		<if test="q!=null and q!=''">
-			and (t.title like "%"#{q}"%" or t.code like "%"#{q}"%" or t.bar_code like "%"#{q}"%")
+		<if test="searchText!=null and searchText!=''">
+			and (t.title like "%"#{searchText}"%" or t.code like "%"#{searchText}"%" or t.bar_code like "%"#{searchText}"%")
 		</if>
 		<if test="pageSize!=null and pageSize!=''">
 			limit #{pageNum},#{pageSize}    
@@ -101,8 +101,8 @@
 		<if test="userId!=null and userId!=''">
 			and t.userid = #{userId}
 		</if>
-		<if test="q!=null and q!=''">
-			and (t.title like "%"#{q}"%" or t.code like "%"#{q}"%" or t.bar_code like "%"#{q}"%")
+		<if test="searchText!=null and searchText!=''">
+			and (t.title like "%"#{searchText}"%" or t.code like "%"#{searchText}"%" or t.bar_code like "%"#{searchText}"%")
 		</if>
 	</select>
 
