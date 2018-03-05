@@ -324,6 +324,8 @@ public class ShipOrderServiceImpl extends BaseServiceImpl implements ShipOrderSe
 				items = items + item.getItemCode()+":"+item.getSpecification()+"("+orderItem.getItemQuantity()+"件);";
 			}else if(("idzc2902840865").equals(item.getUser().getId())){
 				items = items + item.getName() + "/" + item.getItemCode() + "/" + item.getSpecification()+"("+orderItem.getItemQuantity()+"件);";
+			}else if (shipOrder.getShopName()!=null && shipOrder.getShopName().indexOf("jaya千金净雅西谷专卖店")!=-1) {
+				items = items + item.getGoodsNo() + ":" + sku + "("+orderItem.getItemQuantity()+"件);|";
 			}else{
 				items = items + item.getName() +":"+sku+ "("+orderItem.getItemQuantity()+"件);";
 			}
@@ -334,6 +336,9 @@ public class ShipOrderServiceImpl extends BaseServiceImpl implements ShipOrderSe
 	
 	
 	public String bulidItemsDataByTms(TmsOrder tmsOrder) {
+		
+		ShipOrder order = this.shipOrderDao.getShipOrderById(tmsOrder.getOrder().getId());
+		
 		String items = "";
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("tmsOrderId", tmsOrder.getId());
@@ -356,6 +361,8 @@ public class ShipOrderServiceImpl extends BaseServiceImpl implements ShipOrderSe
 				items = items + item.getName() + "/" + (item.getGoodsNo()!=null?(item.getGoodsNo()+ "/"):"")  + sku+ "("+orderItem.getItemQuantity()+"件);|";
 			}else if (("idzc2732851928").equals(item.getUser().getId())) {
 				items = items + item.getName() + ":" + (item.getColor()!=null?item.getColor():item.getSpecification())  + "("+orderItem.getItemQuantity()+"件);|";
+			}else if (order.getShopName()!=null && order.getShopName().indexOf("jaya千金净雅西谷专卖店")!=-1) {
+				items = items + item.getGoodsNo() + ":" + sku + "("+orderItem.getItemQuantity()+"件);|";
 			}else{
 				items = items + item.getName() +":"+sku+ "("+orderItem.getItemQuantity()+"件);|";
 			}
@@ -367,6 +374,9 @@ public class ShipOrderServiceImpl extends BaseServiceImpl implements ShipOrderSe
 	private String bulidItemsDataByTms(List<TmsOrderItem> orderItems) {
 		String items = "";
 		for(TmsOrderItem orderItem:orderItems){
+			
+			ShipOrder order = this.shipOrderDao.getShipOrderById(orderItem.getOrder().getId());
+			
 			Item item = this.itemDao.getItem(orderItem.getItem().getId());
 			/**
 			 * 如果订单商品是天际的，订单明细用Specification字段拼
@@ -382,6 +392,8 @@ public class ShipOrderServiceImpl extends BaseServiceImpl implements ShipOrderSe
 				items = items + item.getName() + "/" + item.getItemCode() + "/" + sku+ "("+orderItem.getItemQuantity()+"件);";
 			}else if (("idzc2732851928").equals(item.getUser().getId())) {
 				items = items + item.getName() + ":" + (item.getColor()!=null?item.getColor():item.getSpecification()) + "("+orderItem.getItemQuantity()+"件);";
+			}else if (order.getShopName()!=null && order.getShopName().indexOf("jaya千金净雅西谷专卖店")!=-1) {
+				items = items + item.getGoodsNo() + ":" + sku + "("+orderItem.getItemQuantity()+"件);|";
 			}else{
 				items = items + item.getName() +":"+sku+ "("+orderItem.getItemQuantity()+"件);";
 			}
