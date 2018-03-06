@@ -21,7 +21,7 @@
 		inner join t_xinyu_orderbackitem i on s.FID = i.FKorderBackId
 	where 1=1
 		<if test="userId!=null and userId!=''">
-			and s.FKuserID=#{userId}
+			and s.FuserId=#{userId}
 		</if>
 		<if test="q!=null and q!=''">
 			and (T.FbackOrderCode=#{q} or T.FtmsOrderCode=#{q})
