@@ -26,7 +26,6 @@
 	<select id="findCheckOuts" parameterType="string"  resultMap="CheckOutResult" >
 		 SELECT T.* 
 			FROM T_xinyu_checkout T where 1=1
-		<if test="cu!=null and cu!=''">and T.Fcu = #{cu}</if>
 		<if test="orderCode!=null and orderCode!=''"> and T.ForderCode=#{orderCode}</if>
 		<if test="cpCompany!=null and cpCompany!=''">and T.FcpCompany=#{cpCompany}</if>
 		<if test="barCode!=null and barCode!=''">and T.FbarCode=#{barCode}</if>
@@ -51,7 +50,6 @@
 	<select id="getTotal" parameterType="map"  resultType="int" >
 		 SELECT count(1)
 			FROM T_xinyu_checkout T where 1=1
-		<if test="cu!=null and cu!=''">and T.Fcu = #{cu}</if>
 		<if test="orderCode!=null and orderCode!=''"> and T.ForderCode=#{orderCode}</if>
 		<if test="cpCompany!=null and cpCompany!=''">and T.FcpCompany=#{cpCompany}</if>
 		<if test="barCode!=null and barCode!=''">and T.FbarCode=#{barCode}</if>
