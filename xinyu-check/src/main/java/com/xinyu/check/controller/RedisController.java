@@ -36,32 +36,33 @@ public class RedisController extends BaseController {
 
 	public static void main(String[] args) {
 		// {zpIndex=120, zcIndex=1, 2902082140620=1, 6940971207081=1}
-		String orderCode = "9891297785185";
+		String orderCode = "Return457485462729";
 		// String keyValue="20170920Check_out_db"+orderCode+"*";
 		// String keyValue="2017-12-10CheckOut*";
 		int v = 20171016;
-		String keyValue = "success_record*";
-		String historyKey = "20170920Check_out_history_db" + orderCode + "*";
+//		String keyValue = "success_record*";
+//		String historyKey = "20170920Check_out_history_db" + orderCode + "*";
 		// 连接本地的 Redis 服务
 		Jedis jedis = RedisUtil.getJedis();
 		System.out.println("连接成功");
 		// 查看服务是否运行
-		System.err.println(jedis.keys(keyValue).size());
+		System.err.println(jedis.keys(orderCode).size());
 //		deleteInfo(jedis);
 
-		 orderInfo(keyValue);
+		 orderInfo(orderCode);
 	}
 
 	private static void orderInfo(String keyValue) {
 		Jedis jedis = RedisUtil.getJedis();
 		System.err.println("-------------");
-		MemcachedManager manager = new MemcachedManager();
 		Set<String> sets=jedis.keys(keyValue);
 		int i=0;
 		for (Iterator<String> iterator = sets.iterator(); iterator.hasNext();) {
 			String k=iterator.next();
-			jedis.del(k);
-			System.err.println(k);
+			
+//			Map<String, String> map=(Map<String, String>) ObjectTranscoder.deserialize(jedis.get(k.getBytes()));
+			System.err.println(jedis.get(k));
+			
 			i++;
 			if(i==10000){
 				break;

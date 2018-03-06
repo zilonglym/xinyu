@@ -322,7 +322,7 @@ public class WaybillServiceImpl extends BaseServiceImpl implements WayBillServic
 			List<TradeOrderInfoDto> tradeInfoList = new ArrayList<TradeOrderInfoDto>();// 请求面单信息
 			TradeOrderInfoDto tradeOrderInfo = new TradeOrderInfoDto();
 			tradeInfoList.add(tradeOrderInfo);
-			tradeOrderInfo.setLogisticsServices("{\"SVC-COD\": {\"value\":  \"NORMAL\"} }");
+//			tradeOrderInfo.setLogisticsServices("{\"SVC-COD\": {\"value\":  \"NORMAL\"} }");
 			tradeOrderInfo.setObjectId(tmsOrder.getId());
 			OrderInfoDto tradeInfo = new OrderInfoDto();// 订单信息
 

@@ -129,7 +129,7 @@ public class WmsConsignOrderNotifyCpImpl
 			rejectMap.put("description", e.getMessage());
 			String rejectKey=RdsConstants.ORDER_REJECT+request.getOrderCode();
 			this.redisProxy.set(rejectKey.getBytes(), ObjectTranscoder.serialize(rejectMap));
-			response.setSuccess(false);
+			response.setSuccess(true);
 			response.setErrorMsg(e.getMessage());
 			e.printStackTrace();
 		}		

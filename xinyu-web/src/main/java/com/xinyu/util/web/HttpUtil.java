@@ -25,12 +25,12 @@ public class HttpUtil {
 	
 	
 	
-	private static String secretKey=Constants.cainiao_secretKey;
-	private static String appKey=Constants.cainiao_appKey;
-	private static String url="http://link.cainiao.com/gateway/link.do";
-//	private static String url="http://pac.partner.taobao.com/gateway/mock.do?key=pactrue";
-//	private static String appKey="SANDBOX-198831";
-//	private static String secretKey="W7H2B2eU5DOaNq703fY7PHVz0I0e98wu";
+//	private static String secretKey=Constants.cainiao_secretKey;
+//	private static String appKey=Constants.cainiao_appKey;
+//	private static String url="http://link.cainiao.com/gateway/link.do";
+	public static String url="https://link.tbsandbox.com/gateway/link.do";
+	public static String appKey="SANDBOX026991";
+	public static String secretKey="49j3ZNoOe36kqof6c484SHG00W27J83i";
 	/**
 	 * 提交奇门的发送请求
 	 * @param xmlStr XML格式的参数体

@@ -1,5 +1,6 @@
 package com.xinyu.dao.base.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	 * */
 	@Override
 	public List<User> getUserBySearch(Map<String, Object> params) {
+		if(params==null){
+			params=new HashMap<String, Object>();
+		}
 		// TODO Auto-generated method stub
 		return (List<User>) super.selectList("com.xinyu.dao.base.UserDao.getUserBySearch", params);
 	}

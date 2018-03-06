@@ -124,7 +124,8 @@ public class ShipOrderController extends BaseController {
 	 */
 	@RequestMapping(value = "ShipOrderList")
 	public String ShipOrderList(ModelMap model) {
-		List<User> users = this.userService.getUserBySearch(null);
+		Map<String,Object> params=new HashMap<String, Object>();
+		List<User> users = this.userService.getUserBySearch(params);
 		model.put("users", users);
 		return "admin/shipOrder/shipOrderList";
 	}

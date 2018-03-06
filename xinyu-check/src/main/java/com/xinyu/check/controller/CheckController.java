@@ -224,6 +224,7 @@ public class CheckController extends BaseController {
 		 * 统计处理
 		 */
 		String key = ssdf.format(new Date());
+		orderCode=orderCode.toUpperCase();
 		/**
 		 * 累加器
 		 */
@@ -283,7 +284,8 @@ public class CheckController extends BaseController {
 		Map<String, String> checkOut =  new HashMap<String, String>();
 		
 		// 判断单据是否退货
-		String returnMap = (String) manager.get(memcached_return + orderCode);
+//		String returnMap = (String) manager.get(memcached_return + orderCode);
+		String returnMap=jedisProxy.get(memcached_return + orderCode);
 		if (StringUtils.isNotEmpty(returnMap)) {
 			memcachedMap = new HashMap<String, String>();
 			memcachedMap.put("status", FAIL_TRADE);

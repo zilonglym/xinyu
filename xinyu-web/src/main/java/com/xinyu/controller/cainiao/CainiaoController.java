@@ -124,7 +124,8 @@ public class CainiaoController extends BaseController {
 		System.out.println("进入测试");
 
 		SendSysParams params = new SendSysParams();
-		params.setFromCode(Constants.cainiao_fromCode);
+		params.setFromCode("xxxxx");
+		params.setToCode("LD-PACKPUSH");
 		LpcPackPubQueryRequest request = new LpcPackPubQueryRequest();
 		request.setAppName("ZHONGCANG");
 		request.setCpCode("STO");
