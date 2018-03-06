@@ -28,7 +28,6 @@
 		resultMap="AccountRoleRelationResult">
 		SELECT T.*
 		FROM T_xinyu_AccountRoleRelation T where 1=1
-		<if test="cu!=null and cu!=''">and t.FCU=#{cu}</if>
 		<if test="accountId!=null and accountId!=''">and t.FKaccountID=#{accountId}</if>
 		<if test="roleId!=null and roleId!=''">and t.FKroleID=#{roleId}</if>
 	</select>
