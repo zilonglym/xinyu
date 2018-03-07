@@ -26,7 +26,6 @@
 		FROM T_xinyu_InventoryRecord T
 		left join T_xinyu_item i on t.FKitemID = i.FID
 		where 1=1
-		<if test="cu!=null and cu!=''">and FCU=#{cu}</if>
 		<if test="item!=null and item!=''">and FKitemID=#{item.id}</if>
 		<if test="user!=null and user!=''">and FKuserID=#{user.id}</if>
 		<if test="createDate!=null and createDate!=''">and FcreateDate=#{createDate}</if>
@@ -41,7 +40,6 @@
 		FROM T_xinyu_InventoryRecord T
 		left join T_xinyu_item i on t.FKitemID = i.FID
 		where 1=1
-		<if test="cu!=null and cu!=''">and FCU=#{cu}</if>
 		<if test="item!=null and item!=''">and FKitemID=#{item.id}</if>
 		<if test="user!=null and user!=''">and FKuserID=#{user.id}</if>
 		<if test="createDate!=null and createDate!=''">and FcreateDate=#{createDate}</if>
