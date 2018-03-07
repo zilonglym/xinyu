@@ -53,9 +53,6 @@
 		<if test="orderId!=null and orderId!=''">
 			and t.order_id = #{orderId}
 		</if>
-		<if test="cu!=null and cu!=null">
-		    and T.Fcu=#{cu}
-		 </if>
 	</select>
 	
 	<select id="getWmsConsignOrderItemByList" parameterType="map"
@@ -67,9 +64,6 @@
 		    <if test="orderId!=null and orderId!=''">
 		        and FKorderID=#{orderId}
 		    </if>
-		    <if test="cu!=null and cu!=null">
-		    	and T.Fcu=#{cu}
-		 	</if>
 		</where>
 		order by forderitemid
 	</select>
