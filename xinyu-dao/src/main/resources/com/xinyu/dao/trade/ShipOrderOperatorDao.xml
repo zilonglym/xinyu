@@ -25,9 +25,6 @@
 		SELECT T.*
 		FROM T_xinyu_ShipOrderOperator T 
 		where 1=1
-		 <if test="cu!=null and cu!=null">
-		        and T.Fcu=#{cu}
-		  </if>
 		<if test="accountId!=null and accountId!=''">
 			and t.FKaccountID = #{accountId}
 		</if>
