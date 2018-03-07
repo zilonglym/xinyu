@@ -23,9 +23,6 @@
 			<if test="orderItemId!=null and orderItemId!=''">
 				and T.ForderItemId=#{orderItemId}
 			</if>
-			<if test="cu!=null and cu!=''">
-				and T.Fcu = #{cu}
-			</if>
 	</select>
 	
 	<insert id="insertStockOutCheckItem" parameterType="com.xinyu.model.order.child.StockOutCheckItem" >
