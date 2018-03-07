@@ -34,9 +34,6 @@
 			 <if test="stockOutOrderId!=null and stockOutOrderId!=''">
 			       and t.FKstockOutOrderID  =  #{stockOutOrderId}		        
 			 </if>
-			  <if test="cu!=null and cu!=''">
-			      	and T.Fcu = #{cu}
-			  </if>
 	</select>
 	<select id="findWmsStockOutOrderItems" parameterType="map"  resultMap="WmsStockOutOrderItemResult" >
 		select w.FKitemID as "itemId",
