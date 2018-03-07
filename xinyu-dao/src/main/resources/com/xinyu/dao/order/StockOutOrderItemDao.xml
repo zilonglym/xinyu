@@ -22,9 +22,6 @@
 			      <if test="stockOutOrderID!=null  and  stockOutOrderID!=''">
 			        and  T.FKstockOutOrderID =#{stockOutOrderID}
 			      </if>
-			      <if test="cu!=null and cu!=''">
-			      	and T.Fcu=#{cu}
-			      </if>
 			</where>
 	</select>
 	<insert id="insertStockOutOrderItem" parameterType="com.xinyu.model.order.child.StockOutOrderItem" >
