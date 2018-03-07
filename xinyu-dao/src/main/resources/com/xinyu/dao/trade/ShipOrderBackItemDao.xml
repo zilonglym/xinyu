@@ -19,9 +19,6 @@
 		<if test="orderBackId!=null and orderBackId!=''">
 			and T.FKorderBackId=#{orderBackId}
 		</if>
-		<if test="cu!=null and cu!=''">
-			and T.Fcu=#{cu}
-		</if>
 	</select>
 	
 	<insert id="insertOrderBackItem" parameterType="com.xinyu.model.trade.ShipOrderBackItem">
