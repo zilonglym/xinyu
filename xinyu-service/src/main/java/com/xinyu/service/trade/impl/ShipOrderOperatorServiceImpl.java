@@ -105,6 +105,8 @@ public class ShipOrderOperatorServiceImpl extends BaseServiceImpl implements Shi
 			if (operator.getOperatorModel()!=null) {
 				map.put("model", operator.getOperatorModel().getDescription());
 			}
+			//添加订单ID
+			map.put("remark", operator.getShipOrder().getId());
 			
 			map.put("oldValue", operator.getOldValue());
 			map.put("newValue", operator.getNewValue());
