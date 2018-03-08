@@ -35,7 +35,7 @@
 		    and FoperatorModel=#{operatorModel}
 		</if>
 		<if test="searchText!=null and searchText!=''">
-			and (t.FoldValue like "%"#{searchText}"%" or t.FnewValue like "%"#{searchText}"%" or t.Fdescription like "%"#{searchText}"%")
+			and (t.FKshipOrderID = #{searchText} or t.Fdescription like "%"#{searchText}"%")
 		</if>
 		<if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
     		<![CDATA[
