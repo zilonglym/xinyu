@@ -558,7 +558,7 @@ public class WmsConsignOrderNotifyCpImpl
 				}
 				detail.setPrice(item.getPrice());
 				detail.setQuantity(item.getQuantity());
-				detail.setAmount(item.getAmount());
+				detail.setAmount(item.getAmount()==null?0:item.getAmount());
 				if (item.getSpecificModel()!=null) {
 					detail.setSpecificModel(item.getSpecificModel());
 				}		
