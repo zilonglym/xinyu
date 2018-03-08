@@ -734,7 +734,7 @@ public class WayBillController extends BaseController{
 			 * 根据items是否为空，打印明细
 			 * */
 			String userId = order.getUser().getId();
-			if (userId.equals("idzc16473350920")||userId.equals("idzc16473350942")||userId.equals("idzc16473350928")||userId.equals(" idzc1674590543")) {
+			if (userId.equals("idzc164733509201")||userId.equals("idzc16473350942")||userId.equals("idzc16473350928")||userId.equals(" idzc1674590543")) {
 				if (StringUtils.isEmpty(tmsOrder.getItems())) {
 					data.put("item_name", this.shipOrderService.bulidItemsDataByTms(tmsOrder)+(order.getSellerMessage()!=null?(" 卖家："+order.getSellerMessage()):""));
 				}else {
@@ -1049,7 +1049,7 @@ public class WayBillController extends BaseController{
 			 * 世派和现代不打印备注
 			 * 根据items是否为空，打印明细
 			 * */
-			if (!(" idzc1674590543".equals(shipOrder.getUser().getId()))&&!("idzc16473350928".equals(shipOrder.getUser().getId()))&&!("idzc16473350920".equals(shipOrder.getUser().getId()))&&!("idzc16473350942".equals(shipOrder.getUser().getId()))) {
+			if (!(" idzc1674590543".equals(shipOrder.getUser().getId()))&&!("idzc16473350928".equals(shipOrder.getUser().getId()))&&!("idzc164733509201".equals(shipOrder.getUser().getId()))&&!("idzc16473350942".equals(shipOrder.getUser().getId()))) {
  				if (StringUtils.isEmpty(tmsOrder.getItems())) {
 					map.put("sf_selleritems", this.shipOrderService.bulidItemsDataByTms(tmsOrder));
 				}else if (shipOrder.getSellerMessage()!=null &&  (shipOrder.getSellerMessage()).indexOf("闪电发货")!=-1) {
