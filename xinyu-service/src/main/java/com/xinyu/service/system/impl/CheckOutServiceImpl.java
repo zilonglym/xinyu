@@ -105,7 +105,6 @@ public class CheckOutServiceImpl extends BaseServiceImpl implements CheckOutServ
 				}else {
 					Person person = this.personDao.findStroePersonById(checkOut.getAccount().getId());
 					map.put("person", person.getName());
-					map.put("person", "");
 				}	
 			}
 			map.put("msg", checkOut.getMsg());
