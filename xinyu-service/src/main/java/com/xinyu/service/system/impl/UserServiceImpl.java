@@ -92,9 +92,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService{
 	 * */
 	@Override
 	public User getUserByOwnerCode(String ownerCode) {
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("ownerCode", ownerCode);
-		return this.userDao.getUserBySearch(params).get(0);
+		return this.userDao.findUserByOwnerCode(ownerCode);
 	}
 	
 	/**
