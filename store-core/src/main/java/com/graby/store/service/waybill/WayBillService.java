@@ -187,7 +187,7 @@ public class WayBillService {
 		List<LogisticsService> logisticsList = new ArrayList<LogisticsService>();
 		LogisticsService logisticsItem = new LogisticsService();
 
-		logisticsItem.setServiceValue4Json( "{\"value\": \"NORMAL\"}");
+//		logisticsItem.setServiceValue4Json( "{\"value\": \"NORMAL\"}");
 		logisticsItem.setServiceCode("SVC-DELIVERY-ENV");
 		logisticsList.add(logisticsItem);
 		tradeItem.setLogisticsServiceList(logisticsList);
@@ -517,7 +517,7 @@ public class WayBillService {
 			List<TradeOrderInfoDto> tradeInfoList = new ArrayList<TradeOrderInfoDto>();//请求面单信息
 			TradeOrderInfoDto tradeOrderInfo = new TradeOrderInfoDto();
 			tradeInfoList.add(tradeOrderInfo);
-			tradeOrderInfo.setLogisticsServices("{\"SVC-COD\": {\"value\":  \"NORMAL\"} }");
+//			tradeOrderInfo.setLogisticsServices("{\"SVC-COD\": {\"value\":  \"NORMAL\"} }");
 			tradeOrderInfo.setObjectId(trade.getOtherOrderNo().toString());
 			OrderInfoDto tradeInfo = new OrderInfoDto();//订单信息
 			

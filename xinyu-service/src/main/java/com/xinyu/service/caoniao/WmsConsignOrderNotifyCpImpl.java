@@ -155,7 +155,9 @@ public class WmsConsignOrderNotifyCpImpl
 		String ownerUserId = request.getOwnerUserId();
 		Map<String, Object> p = new HashMap<String, Object>();
 		p.put("ownerCode", ownerUserId);
-		User user = this.userService.getUserBySearch(p).get(0);
+		p.put("cu", "no");
+//		User user = this.userService.getUserBySearch(p).get(0);
+		User user = this.userService.getUserByOwnerCode(ownerUserId);
 		/**
 		 * 判断当前的订单是否存在数据库
 		 */

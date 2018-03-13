@@ -13,6 +13,7 @@ import java.util.Map;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -99,7 +100,12 @@ public class BaseDaoImpl extends SqlSessionDaoSupport implements BaseDao {
 					entity.setCu(account.getCu());
 				} else if (parameter instanceof Map) {
 					Map map=(Map) parameter;
-					map.put("cu", account.getCu());
+					String cu=(String) map.get("cu");
+					if(StringUtils.isNotEmpty(cu) && cu.equals("no")){
+						map.remove("cu");
+					}else{
+						map.put("cu", account.getCu());
+					}
 				}
 			}
 			List<T> items = getCustomSqlSession().selectList(statement, parameter,
@@ -136,7 +142,12 @@ public class BaseDaoImpl extends SqlSessionDaoSupport implements BaseDao {
 				entity.setCu(account.getCu());
 			} else if (parameter instanceof Map) {
 				Map map=(Map) parameter;
-				map.put("cu", account.getCu());
+				String cu=(String) map.get("cu");
+				if(StringUtils.isNotEmpty(cu) && cu.equals("no")){
+					map.remove("cu");
+				}else{
+					map.put("cu", account.getCu());
+				}
 			}
 		}
 		return (Integer) getCustomSqlSession().selectOne(statement,
@@ -192,7 +203,12 @@ public class BaseDaoImpl extends SqlSessionDaoSupport implements BaseDao {
 				entity.setCu(account.getCu());
 			} else if (parameter instanceof Map) {
 				Map map=(Map) parameter;
-				map.put("cu", account.getCu());
+				String cu=(String) map.get("cu");
+				if(StringUtils.isNotEmpty(cu) && cu.equals("no")){
+					map.remove("cu");
+				}else{
+					map.put("cu", account.getCu());
+				}
 			}
 		}
 		List<T> items = getCustomSqlSession().selectList(statement, parameter,
@@ -227,7 +243,12 @@ public class BaseDaoImpl extends SqlSessionDaoSupport implements BaseDao {
 				entity.setCu(account.getCu());
 			} else if (parameter instanceof Map) {
 				Map map=(Map) parameter;
-				map.put("cu", account.getCu());
+				String cu=(String) map.get("cu");
+				if(StringUtils.isNotEmpty(cu) && cu.equals("no")){
+					map.remove("cu");
+				}else{
+					map.put("cu", account.getCu());
+				}
 			}
 		}
 		List<?> items = getCustomSqlSession().selectList(statement, parameter);
