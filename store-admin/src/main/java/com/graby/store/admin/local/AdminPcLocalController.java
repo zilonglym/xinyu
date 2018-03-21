@@ -1149,6 +1149,11 @@ public class AdminPcLocalController extends BaseController {
 							map.put("barCode", item.getBarCode());
 							map.put("code", batch.getOrderCode());
 							map.put("num", batch.getNum());
+							
+							//添加打印生产日期
+							SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+							map.put("birthDate", sf.format(batch.getBirthDate()));
+							
 							printList.add(map);
 						
 							//更新单据状态
