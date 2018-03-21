@@ -27,6 +27,11 @@
 		<c:forEach items="${list}" var="s" >
    	   
    	    LODOP.NewPage();
+	    
+	    LODOP.SET_PRINT_STYLE("FontSize",12);
+   	    LODOP.ADD_PRINT_TEXT(250,10,250,30,"生产日期:");
+	    LODOP.ADD_PRINT_TEXT(270,10,250,30,"${s.birthDate}");
+	    
    	      //付款方式   
    	    LODOP.SET_PRINT_STYLE("FontSize",18);
    	    LODOP.ADD_PRINT_TEXT(80,135,250,30,"${s.shopName}");
