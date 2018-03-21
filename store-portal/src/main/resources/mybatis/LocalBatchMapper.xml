@@ -27,7 +27,7 @@
 	</insert>
 	
 	<select id="findLocalBatchById"  parameterType="int" resultMap="localBatchEntity">
-	    select t.shop_id,t.item_id,t.num,t.order_code,t.entry_code,t.create_date,t.last_update,t.status,t.is_high
+	    select t.shop_id,t.item_id,t.num,t.order_code,t.entry_code,t.create_date,t.last_update,t.status,t.is_high,t.birth_date
 	    from sc_local_batch t
 		where t.id = #{id}
 	</select>
