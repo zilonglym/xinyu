@@ -27,6 +27,7 @@
 		<input class="easyui-datetimebox" name="lastTime" id="lastTime" data-options="prompt:'截止时间'" style="width:160px"/>   
 		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-export'" onclick="report.exportData();">导出</a>
 		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="report.search();">查询</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-export'" onclick="report.export();">未出库导出</a>
 	</div>
 	<div data-options="title:'发货统计'" style="padding:2px;">
 		<table id="tb_report">
