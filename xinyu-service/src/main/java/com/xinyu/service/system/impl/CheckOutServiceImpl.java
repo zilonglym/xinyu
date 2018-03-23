@@ -194,4 +194,19 @@ public class CheckOutServiceImpl extends BaseServiceImpl implements CheckOutServ
 		this.checkOutDao.insertCheckOut(checkOut);
 	}
 	
+	@Override
+	public List<Map<String, Object>> findNotExist(Map<String, Object> params, int page, int rows) {
+		int pageSize = rows;
+		int pageNum = (page-1)*rows;
+		params.put("pageSize", pageSize);
+		params.put("pageNum", pageNum);
+		List<Map<String, Object>> noList = this.checkOutDao.findNotExist(params);
+		return noList;
+	}
+
+	@Override
+	public int findNotExistCount(Map<String, Object> params) {
+		return this.checkOutDao.findNotExistCount(params);
+	}
+	
 }
