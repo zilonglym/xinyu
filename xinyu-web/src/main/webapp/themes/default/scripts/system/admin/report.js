@@ -80,3 +80,14 @@ function compute() {//计算函数
     //新增一行显示统计信息
     $('#tb_report').datagrid('appendRow', { itemid: '<b>统计：</b><b>总数</b>', listprice: ptotal, unitcost: utotal });
 }
+
+report.export=function(){
+		var startDate = $('#beigainTime').datetimebox('getValue');
+		var endDate = $('#lastTime').datetimebox('getValue');
+		if(typeof startDate == "undefined" || startDate == null || startDate == ""||typeof endDate == "undefined" || endDate == null || endDate == ""){
+			$.messager.alert("错误","起始截止时间不能为空!");
+		}else{
+			var url = ctx + "/report/notExist/xls?startDate="+startDate+"&endDate="+endDate;
+			window.location.href = url;
+		}
+	}
