@@ -346,5 +346,15 @@ public class ReportRemoteImpl implements ReportRemote {
 	public List<Map<String, Object>> findUnfinishOrder(Map<String, Object> params) {	
 		return this.reportService.findUnfinishOrder(params);
 	}
+	
+	/**
+	 * 未出库统计
+	 * @param map
+	 * @return list
+	 * */
+	@Override
+	public List<Map<String, Object>> findNotExist(Map<String, Object> params) {
+		return this.reportService.findNotExist(params);
+	}
 
 }
