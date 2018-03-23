@@ -224,7 +224,12 @@ public interface ReportRemote {
 	 * */
 	public List<Map<String, Object>> findUnfinishOrder(Map<String, Object> params);
 
-	
+	/**
+	 * 未出库统计
+	 * @param params
+	 * @return
+	 */
+	List<Map<String, Object>> findNotExist(Map<String, Object> params);
 
 	
 }
