@@ -28,6 +28,13 @@ public interface CheckOutDao extends BaseDao{
 	
 	int getTotal(Map<String, Object> params);
 	
+	/**
+	 * 未出库统计
+	 * @param params
+	 * @return
+	 */
+	int findNotExistCount(Map<String, Object> params);
 	
+	List<Map<String, Object>> findNotExist(Map<String, Object> params);
 
 }
