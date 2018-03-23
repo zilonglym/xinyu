@@ -73,3 +73,14 @@ ship.exportData = function(){
 		window.location.href = url;
 	}
 }
+
+ship.notExist = function(){
+	var startDate = $('#beigainTime').datetimebox('getValue');
+	var endDate = $('#lastTime').datetimebox('getValue');
+	if(typeof startDate == "undefined" || startDate == null || startDate == ""||typeof endDate == "undefined" || endDate == null || endDate == ""){
+		$.messager.alert("错误","起始截止时间不能为空!");
+	}else{
+		var url = ctx + "/report/notExist/xls?startDate="+startDate+"&endDate="+endDate;
+		window.location.href = url;
+	}
+}
