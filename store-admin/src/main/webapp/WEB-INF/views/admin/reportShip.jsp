@@ -32,6 +32,7 @@
 		<input class="easyui-datetimebox" name="lastTime" id="lastTime" data-options="prompt:'请选择截止时间'" style="width:160px"/>    
 		<a href="javascript:ship.search();" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
 		<a href="javascript:ship.exportData();" class="easyui-linkbutton" data-options="iconCls:'icon-export'">导出</a>
+		<a href="javascript:ship.notExist();" class="easyui-linkbutton" data-options="iconCls:'icon-export'">未出库导出</a>
 	</div>
 	<div data-options="title:'发货统计'" style="padding:2px;">
 		<table id="tb_ship">
