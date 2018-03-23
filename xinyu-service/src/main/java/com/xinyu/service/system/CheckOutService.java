@@ -36,5 +36,16 @@ public interface CheckOutService extends BaseService{
 	List<Map<String, Object>> buildData(List<CheckOut> checkOuts);
 	
 	void insertCheckOut(CheckOut checkOut);
+	
+	/**
+	 * 未出库统计
+	 * @param params
+	 * @param page
+	 * @param rows
+	 * @return
+	 */
+	List<Map<String, Object>> findNotExist(Map<String, Object> params, int page, int rows);
+
+	int findNotExistCount(Map<String, Object> params);
 
 }
