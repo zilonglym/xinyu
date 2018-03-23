@@ -784,6 +784,100 @@ public class ReportController extends BaseController{
 		model.put("format",format);
 		return new ModelAndView("checkOutByItemReport",model);
 	}
+	
+	/**
+	 * 未出库xls导出
+	 * @param startDate
+	 * @param endDate
+	 * @return 
+	 * @throws IOException 
+	 * */
+	@RequestMapping(value = "/notExist/xls")
+	public String notExistReport(	
+			@RequestParam(value = "startDate") String startDate,
+			@RequestParam(value = "endDate") String endDate,HttpServletResponse response) throws IOException {
+		long start = new Date().getTime();
+	
+		Map<String, Object> p = new HashMap<String, Object>();
+		p.put("startDate", startDate);
+		p.put("endDate", endDate);
+		
+		//新建shipOrder数组存放新shipOrder对象
+		List<POIModel> poiModels=new ArrayList<POIModel>();	
+		
+		List<Map<String, Object>> noList = this.reportRemote.findNotExist(p);
+		
+		for(Map<String, Object> map:noList){
+			
+			//新建一个shipOrder对象
+			POIModel poiModel=new POIModel();
+			
+			//对新shipOrder对象进行赋值
+			//时间
+			poiModel.setM1(""+map.get("lastUpdateTime"));
+			
+			//商家
+			poiModel.setM2(""+map.get("subscriberName"));
+				
+			//物流公司
+			poiModel.setM3(""+map.get("code"));
+			
+			//物流单号
+			poiModel.setM4(""+map.get("orderCode"));
+			
+			//昵称
+			poiModel.setM5(""+map.get("receiverNick"));
+			
+			//收件人
+			poiModel.setM6(""+map.get("receiverName"));
+			
+			//联系方式
+			String phone=map.get("receiverMobile")+","+map.get("receiverPhone");
+			poiModel.setM7(phone);
+			
+			//收件地址
+			poiModel.setM8(""+map.get("receiverProvince"));
+			
+			poiModel.setM9(""+map.get("receiverCity"));
+			
+			poiModel.setM10(""+map.get("receiverArea"));
+			
+			poiModel.setM11(""+map.get("receiverAddress"));
+	
+			//重量
+			poiModel.setM12(""+map.get("totalWeight"));		
+			
+			//商品明细
+			poiModel.setM13(""+map.get("items"));
+			
+			//添加到新shipOrder数组
+			poiModels.add(poiModel);
+		}		
+		
+		//时间格式化
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		
+		//新建PoiExcelExport对象
+		PoiExcelExport pee = new PoiExcelExport(response,"中仓未出库统计","sheet1");
+		
+		//Excel文件填充内容属性
+		String titleColumn[] = {"m1","m2","m3","m4","m5","m6","m7","m8","m9","m10","m11","m13","m12"};  
+       
+		//Excel文件填充内容列名
+		String titleName[] = {"时间","店铺","物流公司","物流单号","昵称","收件人","联系方式","省","市","区","地址","商品明细","重量(kg)"};  
+		
+		//Excel文件填充内容列宽
+		int titleSize[] = {20,20,20,20,20,20,20,20,20,20,20,20,20};  
+		
+		//调用PoiExcelExport导出Excel文件
+        	pee.wirteExcel(titleColumn, titleName, titleSize, poiModels);
+        
+        	long end = new Date().getTime();
+        
+        	System.err.println("未出库明细导出耗时："+(end - start));
+        
+        	return null; 
+	}
 
 }
 
