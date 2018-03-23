@@ -68,6 +68,53 @@
 		order by t.FcreateDate desc
 	</select>
 	
+	<select id="findNotExist" parameterType="map"  resultType="map" >
+		SELECT
+			date_format(s.FlastUpdateTime,'%Y-%m-%d %H:%i:%s') as "lastUpdateTime",
+			u.FsubscriberName as "subscriberName",
+			o.Fcode as "code",
+			o.ForderCode as "orderCode",
+			r.FreceiverNick as "receiverNick",
+			r.FreceiverName as "receiverName",
+			r.FreceiverMobile as "receiverMobile",
+			r.FreceiverPhone as "receiverPhone",
+			r.FreceiverProvince as "receiverProvince",
+			r.FreceiverCity as "receiverCity",
+			r.FreceiverArea as "receiverArea",
+			r.FreceiveTown as "receiveTown",
+			r.FreceiverAddress as "receiverAddress",
+			o.Fitems as "items",
+			s.FtotalWeight/1000 as "totalWeight",
+			s.Fremark as "remark"
+		FROM
+			t_xinyu_tmsorder o
+		INNER JOIN t_xinyu_shiporder s on o.FKorderID = s.FID
+		INNER JOIN t_xinyu_receiverinfo r ON s.FKreceiverInfoID = r.FID
+		INNER JOIN t_xinyu_user u ON s.FKuserID = u.FID
+		where s.FtmsOrderCode is not NULL
+		<![CDATA[
+		 and  s.FlastUpdateTime >= date_format(#{startDate},'%Y-%m-%d %H:%i') and  s.FlastUpdateTime < date_format(#{endDate},'%Y-%m-%d %H:%i')
+		 ]]>
+		AND not EXISTS(select 1 from t_xinyu_checkout c where c.ForderCode = o.ForderCode and c.FcreateDate>= date_format(#{startDate},'%Y-%m-%d %H:%i'))
+		<if test="pageSize!=null and pageSize!=''">
+			limit #{pageNum},#{pageSize}    
+		</if>
+	</select>
+	
+	<select id="findNotExistCount" parameterType="map"  resultType="int" >
+		SELECT count(1)
+		FROM
+			t_xinyu_tmsorder o
+		INNER JOIN t_xinyu_shiporder s on o.FKorderID = s.FID
+		INNER JOIN t_xinyu_receiverinfo r ON s.FKreceiverInfoID = r.FID
+		INNER JOIN t_xinyu_user u ON s.FKuserID = u.FID
+		where s.FtmsOrderCode is not NULL
+		<![CDATA[
+			and  s.FlastUpdateTime >= date_format(#{startDate},'%Y-%m-%d %H:%i') and  s.FlastUpdateTime < date_format(#{endDate},'%Y-%m-%d %H:%i')
+		]]>
+		AND not EXISTS(select 1 from t_xinyu_checkout c where c.ForderCode = o.ForderCode and c.FcreateDate>= date_format(#{startDate},'%Y-%m-%d %H:%i'))
+	</select>
+	
 	<select id="getCheckOutById" parameterType="map"  resultMap="CheckOutResult" >
 		 SELECT T.* 
 			FROM T_xinyu_checkout T where T.FID=#{id}
