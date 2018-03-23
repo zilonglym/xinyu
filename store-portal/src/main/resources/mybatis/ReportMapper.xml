@@ -252,5 +252,34 @@
         </if> 
 		group by a.`create_userid`
 	</select>	
-
+	
+	<select id="findNotExist" parameterType="map" resultType="map">
+		select 
+		date_format(t.last_update_date,'%Y-%m-%d %H:%i') as 'lastUpdateTime',
+		u.shop_name as "subscriberName",
+		t.receiver_name as "receiverName",
+		t.buyer_nick as "receiverNick",
+		t.receiver_mobile as "receiverMobile",
+		t.receiver_phone as "receiverPhone",
+		t.receiver_state as "receiverProvince",
+		t.receiver_city as "receiverCity",
+		t.receiver_district as "receiverArea",
+		t.receiver_address as "receiverAddress",
+		t.express_company as "code",
+		t.express_orderno as "orderCode",
+		t.items as "items",
+		t.total_weight as "totalWeight"
+		from sc_ship_order t 
+		inner join sc_user u on t.create_userid=u.id
+		where t.express_orderno is not null 
+		 <if test="startDate != null and endDate!=null and startDate != '' and endDate!= ''">  
+    		<![CDATA[
+			and t.`last_update_date` > date_format(#{startDate},'%Y-%m-%d %H:%i')
+			and t.`last_update_date` < date_format(#{endDate},'%Y-%m-%d %H:%i')
+			]]>
+        </if> 
+		and not EXISTS(select 1 from xinyu.t_xinyu_checkout c where c.forderCode = t.express_orderno and c.fcreateDate > date_format(#{startDate},'%Y-%m-%d %H:%i'))
+		order by t.last_update_date
+	</select>
+	
 </mapper> 
