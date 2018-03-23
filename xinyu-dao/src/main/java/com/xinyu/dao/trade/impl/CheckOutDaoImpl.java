@@ -42,4 +42,14 @@ public class CheckOutDaoImpl extends BaseDaoImpl implements CheckOutDao{
 		return (Integer) super.selectOne(this.statement+"getTotal", params);
 	}
 
+	@Override
+	public int findNotExistCount(Map<String, Object> params) {
+		return (Integer) super.selectOne(this.statement+"findNotExistCount", params);
+	}
+
+	@Override
+	public List<Map<String, Object>> findNotExist(Map<String, Object> params) {
+		return (List<Map<String, Object>>) super.selectList(this.statement+"findNotExist", params);
+	}
+
 }
