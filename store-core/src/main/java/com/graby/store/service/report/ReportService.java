@@ -97,5 +97,14 @@ public class ReportService {
 	public List<Map<String, Object>> findUnfinishOrder(Map<String, Object> params) {
 		return reportDao.findUnfinishOrder(params);
 	}
+	
+	/**
+	 * 未出库统计
+	 * @param map
+	 * @return list
+	 * */
+	public List<Map<String, Object>> findNotExist(Map<String, Object> params) {
+		return reportDao.findNotExist(params);
+	}
 
 }
