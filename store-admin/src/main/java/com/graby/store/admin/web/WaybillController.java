@@ -560,8 +560,8 @@ public class WaybillController extends BaseController{
 		    //目的地
 			map.put("sf_destcode", sendShipOrder.getSellerPhone());
 			
-			DecimalFormat df=new DecimalFormat("######0.00");
-			map.put("weight", sendShipOrder.getTotalWeight()==null?"0":df.format(sendShipOrder.getTotalWeight())+"KG");
+			//DecimalFormat df=new DecimalFormat("######0.00");
+			//map.put("weight", sendShipOrder.getTotalWeight()==null?"0":df.format(sendShipOrder.getTotalWeight())+"KG");
 			
 		    //收货地址
 			map.put("sf_destaddress", address);
