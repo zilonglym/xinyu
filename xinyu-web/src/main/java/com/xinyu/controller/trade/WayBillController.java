@@ -962,10 +962,10 @@ public class WayBillController extends BaseController{
 			//目的地
 			map.put("sf_destcode", tmsOrder.getRouteCode());
 			
-			DecimalFormat df=new DecimalFormat("######0.00");
-			Double weight = (tmsOrder.getPackageWeight());
-			Double totalWeight = weight/1000;
-			map.put("weight", df.format(totalWeight)+"KG");
+			//DecimalFormat df=new DecimalFormat("######0.00");
+			//Double weight = (tmsOrder.getPackageWeight());
+			//Double totalWeight = weight/1000;
+			//map.put("weight", df.format(totalWeight)+"KG");
 			
 		    //收货地址
 			map.put("sf_destaddress", address);
