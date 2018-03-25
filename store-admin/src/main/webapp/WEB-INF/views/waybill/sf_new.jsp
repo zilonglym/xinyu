@@ -227,7 +227,7 @@
    	    
    	    //计费重量
    	    LODOP.ADD_PRINT_TEXTA("label_weight",206,149,73,18,"计费重量:");
-   	    LODOP.ADD_PRINT_TEXTA("s_weight",206,209,53,18,"${trade.weight}");
+   	    //LODOP.ADD_PRINT_TEXTA("s_weight",206,209,53,18,"${trade.weight}");
    	    LODOP.SET_PRINT_STYLE("FontSize",8);
    	    //打印时间
    	    LODOP.ADD_PRINT_TEXTA("label_time",182,250,74,18,"打印时间：");
