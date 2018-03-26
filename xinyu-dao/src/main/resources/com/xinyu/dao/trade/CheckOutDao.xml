@@ -91,7 +91,7 @@
 		INNER JOIN t_xinyu_shiporder s on o.FKorderID = s.FID
 		INNER JOIN t_xinyu_receiverinfo r ON s.FKreceiverInfoID = r.FID
 		INNER JOIN t_xinyu_user u ON s.FKuserID = u.FID
-		where s.FtmsOrderCode is not NULL
+		where o.ForderStatus = "WMS_FINASH"
 		<![CDATA[
 		 and  s.FlastUpdateTime >= date_format(#{startDate},'%Y-%m-%d %H:%i') and  s.FlastUpdateTime < date_format(#{endDate},'%Y-%m-%d %H:%i')
 		 ]]>
@@ -108,7 +108,7 @@
 		INNER JOIN t_xinyu_shiporder s on o.FKorderID = s.FID
 		INNER JOIN t_xinyu_receiverinfo r ON s.FKreceiverInfoID = r.FID
 		INNER JOIN t_xinyu_user u ON s.FKuserID = u.FID
-		where s.FtmsOrderCode is not NULL
+		where o.ForderStatus = "WMS_FINASH"
 		<![CDATA[
 			and  s.FlastUpdateTime >= date_format(#{startDate},'%Y-%m-%d %H:%i') and  s.FlastUpdateTime < date_format(#{endDate},'%Y-%m-%d %H:%i')
 		]]>
