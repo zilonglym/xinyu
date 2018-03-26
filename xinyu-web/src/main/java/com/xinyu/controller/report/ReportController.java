@@ -27,6 +27,7 @@ import com.xinyu.model.trade.ShipOrder;
 import com.xinyu.model.trade.TmsOrder;
 import com.xinyu.model.util.POIModel;
 import com.xinyu.service.report.ReportService;
+import com.xinyu.service.system.CheckOutService;
 import com.xinyu.service.system.ItemService;
 import com.xinyu.service.system.SystemItemService;
 import com.xinyu.service.system.UserService;
@@ -41,6 +42,9 @@ import com.xinyu.util.PoiExcelExport;
 @RequestMapping(value = "/report")
 public class ReportController extends BaseController{
 
+	@Autowired
+	private CheckOutService checkOutService;
+	
 	@Autowired
 	private UserService userService;
 	
