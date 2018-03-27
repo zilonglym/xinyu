@@ -32,7 +32,7 @@
 		where 1=1
 		<if test="cu!=null and cu!=''">and FCU=#{cu}</if>
 		<if test="userId!=null and userId!=''">and FKuserID=#{userId}</if>
-		<if test="centroId!=null and centroId!=''">adn FKcentroID=#{centroId}</if>
+		<if test="centroId!=null and centroId!=''">and FKcentroID=#{centroId}</if>
 		<if test="adjustBizKey!=null and adjustBizKey!=''">and FadjustOrderCode=#{adjustBizKey}</if>
 		<if test="outBizCode!=null and outBizCode!=''">and FoutBizCode=#{outBizCode}</if>
 		<if test="remark!=null and remark!=''">and Fremark=#{remark}</if>
@@ -49,7 +49,7 @@
 		where 1=1
 		<if test="cu!=null and cu!=''">and FCU=#{cu}</if>
 		<if test="userId!=null and userId!=''">and FKuserID=#{userId}</if>
-		<if test="centroId!=null and centroId!=''">adn FKcentroID=#{centroId}</if>
+		<if test="centroId!=null and centroId!=''">and FKcentroID=#{centroId}</if>
 		<if test="adjustBizKey!=null and adjustBizKey!=''">and FadjustOrderCode=#{adjustBizKey}</if>
 		<if test="outBizCode!=null and outBizCode!=''">and FoutBizCode=#{outBizCode}</if>
 		<if test="remark!=null and remark!=''">and Fremark=#{remark}</if>
